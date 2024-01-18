@@ -30,4 +30,5 @@
 .towerButton{
     height: 60px;
     width: 60px;
+    background-size: cover;
 }
