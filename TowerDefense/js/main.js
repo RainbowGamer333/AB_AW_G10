@@ -23,12 +23,10 @@ function init(){
     //Create ground
     let image = new Image();
     image.src = Path.GRASS;
-
-
     let tileCPT = 0;
-    for (let i = 0; i < Constants.colums; i++) {
-        for (let j = 0; j < Constants.rows; j ++){
-            let tile = new GameObject("tile_"+tileCPT++,i*Constants.TILE_SIZE_ZOOMED,j*Constants.TILE_SIZE_ZOOMED);
+    for (let i = 0; i < Constants.rows; i++) {
+        for (let j = 0; j < Constants.colums; j ++){
+            let tile = new GameObject("tile_"+tileCPT++,j*Constants.TILE_SIZE_ZOOMED,i*Constants.TILE_SIZE_ZOOMED);
             tile.addComponent(new SpriteRenderer(ctx,image));
             gameObjects.push(tile);
             // console.log(tile.name + " x:"+tile.x+" y:"+tile.y);
@@ -70,7 +68,6 @@ function renderGame() {
         gameObjects[i].render();
     }
 
-    // // Exemple : dessiner les tours, les ennemis, etc.
     // ctx.fillStyle = "#ffffff"; // Couleur du carré (blanc ici)
     // ctx.fillRect(50, 50, 50, 50); // Paramètres : position x, position y, largeur, hauteur
 }
@@ -95,8 +92,7 @@ function getCursorPosition(canvas, event) {
     let tileX = x/Constants.TILE_SIZE_ZOOMED;
     let tileY =y/Constants.TILE_SIZE_ZOOMED;
 
-    // console.log("x: " + float2int(tileX) + " y: " + float2int(tileY));
-    // console.log("x: " + x + " y: " + y);
+
 }
 
 
@@ -120,7 +116,7 @@ canvas.addEventListener("click", function(event) {
             adjustedMouseY >= sprite.y &&
             adjustedMouseY <= sprite.y + Constants.TILE_SIZE_ZOOMED
         ) {
-            console.log("Sprite cliqué :"+sprite.name);
+            console.log("Sprite cliqué :"+sprite.name+ " x: "+sprite.x+" y: "+sprite.y);
             // Faites quelque chose avec le sprite cliqué
             break; // Vous pouvez arrêter la recherche si un sprite est trouvé
         }
