@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e39f20a1-27ad-4b1c-b925-41d03f2f79c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TowerDefense/css/towerDefense.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TowerDefense/js/gui/TowerButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TowerDefense/js/entity/Tower.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TowerDefense/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TowerDefense/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TowerDefense/js/Entity.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/Entity.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TowerDefense/js/Entity.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/entity/Entity.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TowerDefense/js/enemy.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/entity/Enemy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TowerDefense/js/tower.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +56,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\js\entity" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -68,7 +73,7 @@
       <workItem from="1705323157985" duration="772000" />
       <workItem from="1705402106625" duration="54000" />
       <workItem from="1705402168279" duration="519000" />
-      <workItem from="1705565854312" duration="2282000" />
+      <workItem from="1705565854312" duration="2395000" />
     </task>
     <servers />
   </component>
