@@ -9,15 +9,18 @@ import {GameObject} from "./GameObject.js";
 import {SpriteRenderer} from "./component/SpriteRenderer.js";
 import {Path} from "./constants/Path.js";
 import {MonsterSpawner} from "./entity/MonsterSpawner.js";
+import {Global} from "./constants/Global.js";
 
-const canvas = document.getElementById("gameCanvas");
-const  ctx = canvas.getContext("2d");
-const gameObjects = [];
+Global.canvas = document.getElementById("gameCanvas");
+const canvas = Global.canvas;
+Global.context = Global.canvas.getContext("2d");
+let gameObjects = [];
+Global.gameObjects = gameObjects;
 const gui = new Gui();
 
 
 function init(){
-    ctx.imageSmoothingEnabled = false;
+    Global.context.imageSmoothingEnabled = false;
 
 
 
@@ -28,13 +31,13 @@ function init(){
     for (let i = 0; i < Constants.rows; i++) {
         for (let j = 0; j < Constants.colums; j ++){
             let tile = new GameObject("tile_"+tileCPT++,j*Constants.TILE_SIZE_ZOOMED,i*Constants.TILE_SIZE_ZOOMED);
-            tile.addComponent(new SpriteRenderer(ctx,image));
+            tile.addComponent(new SpriteRenderer(image));
             gameObjects.push(tile);
             // console.log(tile.name + " x:"+tile.x+" y:"+tile.y);
         }
     }
 
-    //Create the monster spawner
+    //Create the enemy spawner
     gameObjects.push(new MonsterSpawner("MonsterSpawner",0,0));
 
     //Apply canvas size
@@ -65,7 +68,7 @@ function updateGame(dt) {
 // Définir la fonction de rendu du jeu
 function renderGame() {
     // Effacer le canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    Global.context.clearRect(0, 0, canvas.width, canvas.height);
 
     // Dessiner les éléments du jeu ici
     for (let i = 0; i < gameObjects.length; i++){
@@ -103,33 +106,6 @@ function getCursorPosition(canvas, event) {
 
 }
 
-
-// Ajouter un gestionnaire d'événements de clic au canvas
-canvas.addEventListener("click", function(event) {
-    // Récupérer les coordonnées du clic par rapport au canvas en pixels
-    const mouseX = event.clientX - canvas.getBoundingClientRect().left;
-    const mouseY = event.clientY - canvas.getBoundingClientRect().top;
-
-    // Ajuster les coordonnées en fonction de la différence de taille entre le canvas HTML et le canvas en pixels
-    const scaleX = canvas.width / canvas.clientWidth;
-    const scaleY = canvas.height / canvas.clientHeight;
-    const adjustedMouseX = mouseX * scaleX;
-    const adjustedMouseY = mouseY * scaleY;
-
-    // Vérifier quel sprite a été cliqué
-    for (const sprite of gameObjects) {
-        if (
-            adjustedMouseX >= sprite.x &&
-            adjustedMouseX <= sprite.x + Constants.TILE_SIZE_ZOOMED &&
-            adjustedMouseY >= sprite.y &&
-            adjustedMouseY <= sprite.y + Constants.TILE_SIZE_ZOOMED
-        ) {
-            console.log("Sprite cliqué :"+sprite.name+ " x: "+sprite.x+" y: "+sprite.y);
-            // Faites quelque chose avec le sprite cliqué
-            break; // Vous pouvez arrêter la recherche si un sprite est trouvé
-        }
-    }
-});
 
 init();
 // gameLoop();

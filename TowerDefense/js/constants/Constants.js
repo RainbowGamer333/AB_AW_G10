@@ -5,7 +5,7 @@ export class Constants {
     static rows = 9;
 
     static TILE_SIZE = 32;
-    static ZOOM_FACTOR = 1
+    static ZOOM_FACTOR = 1.2;
     static TILE_SIZE_ZOOMED = Constants.TILE_SIZE * Constants.ZOOM_FACTOR;
 
     static width= Constants.colums * Constants.TILE_SIZE_ZOOMED;

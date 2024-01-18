@@ -1,18 +1,30 @@
 import {GameObject} from "../GameObject.js";
+import {EntityFactory} from "../EntityFactory.js";
+import {Global} from "../constants/Global.js";
+import {Constants} from "../constants/Constants.js";
+import {Utils} from "../utils/Utils.js";
 
-const spawnInterval = 1;
+const spawnInterval = 5;
 let accumulatedTime = 0.0; // Temps accumulé depuis le dernier spawn
+let counter = 0;
 export class MonsterSpawner extends GameObject{
     update(dt) {
-        // Accumuler le deltaTime
         accumulatedTime += dt;
 
 
-        // Vérifier si le temps accumulé atteint ou dépasse l'intervalle de spawn
         if (accumulatedTime >= spawnInterval) {
-            // Effectuer l'action (dans ce cas, le spawn de monstres)
-            console.log("Spawning monsters");
 
+            //Spawning enemy
+            console.log("Spawning monsters");
+            const entity = EntityFactory.create_monster();
+
+            let col = Utils.randomIntFromInterval(0,Constants.colums-1);
+            col *= Constants.TILE_SIZE_ZOOMED;
+            entity.x = col;
+            entity.y = -32;
+            entity.name += "_"+ counter++;
+
+            Global.gameObjects.push(entity);
             // Réinitialiser le temps accumulé
             accumulatedTime = 0;
         }
