@@ -1,9 +1,21 @@
 // main.js
 
 // Récupérer le canvas et son contexte
+
+
+import {Gui} from "./gui/Gui.js";
+
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const gameObjects = [];
+const gui = new Gui();
+
+
+function init(){
+    console.log("Successfully initialized");
+}
+
+
 
 // Définir la fonction de mise à jour du jeu
 function updateGame() {
@@ -42,5 +54,5 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
-// Lancer la boucle de jeu
+init();
 gameLoop();
