@@ -31,4 +31,16 @@
     height: 60px;
     width: 60px;
     background-size: cover;
+    image-rendering: pixelated;
+    background-position: center;
+    border: none;
+}
+
+.towerButton>.cost{
+    color: beige;
+    display: flex;
+}
+
+.towerButton:hover{
+    filter: brightness(1.2);
 }
