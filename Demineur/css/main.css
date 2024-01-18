@@ -1,0 +1,17 @@
+:root {
+    --cell-size: 30px;
+}
+
+.red {
+    background-color: red;
+}
+
+#miningGrid > tr, td {
+    border: 1px solid black;
+    width: var(--cell-size);
+    height: var(--cell-size);
+}
+
+#miningGrid {
+    border-collapse: collapse;
+}
