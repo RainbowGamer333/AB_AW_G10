@@ -20,4 +20,14 @@ export class GameObject {
             this.components[i].render();
         }
     }
+
+    addComponent(component){
+        this.components.push(component);
+        component.parent = this;
+    }
+
+    removeComponent(component){
+        this.components.remove(component);//TODO
+        component.parent = null;
+    }
 }
