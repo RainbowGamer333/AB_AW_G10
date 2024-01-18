@@ -38,6 +38,12 @@ function init(){
     //Apply canvas size
     canvas.width = Constants.width;
     canvas.height = Constants.height;
+    console.log(canvas.width + " x:"+canvas.height);
+
+
+    canvas.addEventListener('mousedown', function(e) {
+        getCursorPosition(canvas, e)
+    })
 
     console.log("Successfully initialized");
 }
@@ -80,6 +86,46 @@ function gameLoop() {
     // Appeler la boucle de jeu à nouveau
     requestAnimationFrame(gameLoop);
 }
+
+function getCursorPosition(canvas, event) {
+    const rect = canvas.getBoundingClientRect()
+    const x = event.clientX - rect.left ;
+    const y = event.clientY - rect.top ;
+
+    let tileX = x/Constants.TILE_SIZE_ZOOMED;
+    let tileY =y/Constants.TILE_SIZE_ZOOMED;
+
+    // console.log("x: " + float2int(tileX) + " y: " + float2int(tileY));
+    // console.log("x: " + x + " y: " + y);
+}
+
+
+// Ajouter un gestionnaire d'événements de clic au canvas
+canvas.addEventListener("click", function(event) {
+    // Récupérer les coordonnées du clic par rapport au canvas en pixels
+    const mouseX = event.clientX - canvas.getBoundingClientRect().left;
+    const mouseY = event.clientY - canvas.getBoundingClientRect().top;
+
+    // Ajuster les coordonnées en fonction de la différence de taille entre le canvas HTML et le canvas en pixels
+    const scaleX = canvas.width / canvas.clientWidth;
+    const scaleY = canvas.height / canvas.clientHeight;
+    const adjustedMouseX = mouseX * scaleX;
+    const adjustedMouseY = mouseY * scaleY;
+
+    // Vérifier quel sprite a été cliqué
+    for (const sprite of gameObjects) {
+        if (
+            adjustedMouseX >= sprite.x &&
+            adjustedMouseX <= sprite.x + Constants.TILE_SIZE_ZOOMED &&
+            adjustedMouseY >= sprite.y &&
+            adjustedMouseY <= sprite.y + Constants.TILE_SIZE_ZOOMED
+        ) {
+            console.log("Sprite cliqué :"+sprite.name);
+            // Faites quelque chose avec le sprite cliqué
+            break; // Vous pouvez arrêter la recherche si un sprite est trouvé
+        }
+    }
+});
 
 init();
 gameLoop();
