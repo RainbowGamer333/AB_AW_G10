@@ -8,6 +8,7 @@ import {Constants} from "./constants/Constants.js";
 import {GameObject} from "./GameObject.js";
 import {SpriteRenderer} from "./component/SpriteRenderer.js";
 import {Path} from "./constants/Path.js";
+import {MonsterSpawner} from "./entity/MonsterSpawner.js";
 
 const canvas = document.getElementById("gameCanvas");
 const  ctx = canvas.getContext("2d");
@@ -33,6 +34,9 @@ function init(){
         }
     }
 
+    //Create the monster spawner
+    gameObjects.push(new MonsterSpawner("MonsterSpawner",0,0));
+
     //Apply canvas size
     canvas.width = Constants.width;
     canvas.height = Constants.height;
@@ -49,12 +53,12 @@ function init(){
 
 
 // Définir la fonction de mise à jour du jeu
-function updateGame() {
+function updateGame(dt) {
     // Mettez à jour la logique du jeu ici
 
     // Exemple : déplacer les ennemis, vérifier les collisions, etc.
     for (let i = 0; i < gameObjects.length; i++){
-        gameObjects[i].update();
+        gameObjects[i].update(dt);
     }
 }
 
@@ -72,10 +76,14 @@ function renderGame() {
     // ctx.fillRect(50, 50, 50, 50); // Paramètres : position x, position y, largeur, hauteur
 }
 
-// Définir la fonction principale de la boucle de jeu
-function gameLoop() {
+// G A M E  L O O P
+let lastTimestamp = 0;
+function gameLoop(timestamp) {
     // Mettre à jour le jeu
-    updateGame();
+    const dt = (timestamp - lastTimestamp) / 1000;
+    lastTimestamp = timestamp;
+
+    updateGame(dt);
 
     // Rendre le jeu
     renderGame();
@@ -124,4 +132,5 @@ canvas.addEventListener("click", function(event) {
 });
 
 init();
-gameLoop();
+// gameLoop();
+requestAnimationFrame(gameLoop);
