@@ -35,6 +35,10 @@ function init(){
         }
     }
 
+    //Apply canvas size
+    canvas.width = Constants.width;
+    canvas.height = Constants.height;
+
     console.log("Successfully initialized");
 }
 
