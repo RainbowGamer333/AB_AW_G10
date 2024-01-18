@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e39f20a1-27ad-4b1c-b925-41d03f2f79c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TowerDefense/js/entity/MonsterSpawner.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TowerDefense/js/EntityFactory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TowerDefense/js/constants/Global.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TowerDefense/js/entity/Enemy.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/entity/Enemy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TowerDefense/js/entity/Entity.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/entity/Entity.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TowerDefense/js/entity/MonsterSpawner.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/entity/MonsterSpawner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TowerDefense/js/entity/Tower.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/entity/Tower.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TowerDefense/js/gui/TowerButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/gui/TowerButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TowerDefense/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/main.js" afterDir="false" />
     </list>
@@ -72,7 +77,7 @@
       <workItem from="1705402106625" duration="54000" />
       <workItem from="1705402168279" duration="519000" />
       <workItem from="1705565854312" duration="10962000" />
-      <workItem from="1705591597194" duration="6774000" />
+      <workItem from="1705591597194" duration="8392000" />
     </task>
     <servers />
   </component>
