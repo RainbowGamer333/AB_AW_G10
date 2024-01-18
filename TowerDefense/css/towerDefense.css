@@ -1,0 +1,33 @@
+.gui-top{
+    flex-direction: row-reverse;
+
+
+
+}
+
+
+.gui{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #424242;
+    height: 60px;
+}
+
+.guiCard{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
+    margin-left: 10px;
+}
+
+.guiCard>span{
+    text-align: center;
+}
+
+
+.towerButton{
+    height: 60px;
+    width: 60px;
+}

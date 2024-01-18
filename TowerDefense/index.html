@@ -3,15 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/towerDefense.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tower Defense</title>
 </head>
 <body>
     <a href="../">accueil</a>
     <div class="gameContainer">
+        <div class="gui gui-top">
+            <div class="guiCard">
+                <span class="guiCard-title">Score</span>
+                <span class="guiCard-value">12</span>
+            </div>
+            <div class="guiCard" id="progress">
+                <span class="guiCard-title">Progress</span>
+                <span class="guiCard-value">50%</span>
+            </div>
+        </div>
+
         <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="gui">
-            <span id="score">12</span>
+
+        <div class="gui gui-bottom">
+            <button class="towerButton" id="tower1"></button>
+            <button class="towerButton" id="tower2"></button>
+            <button class="towerButton" id="tower3"></button>
+            <button class="towerButton" id="tower4"></button>
+            <button class="towerButton" id="tower5"></button>
+            <button class="towerButton" id="tower6"></button>
         </div>
     </div>
     <section>

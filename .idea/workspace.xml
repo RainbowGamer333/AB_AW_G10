@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e39f20a1-27ad-4b1c-b925-41d03f2f79c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TowerDefense/js/Entity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TowerDefense/js/GameObject.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TowerDefense/js/enemy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TowerDefense/js/tower.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TowerDefense/css/towerDefense.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TowerDefense/js/gui/TowerButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TowerDefense/asset/image.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TowerDefense/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TowerDefense/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TowerDefense/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TowerDefense/js/Entity.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/Entity.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +68,7 @@
       <workItem from="1705323157985" duration="772000" />
       <workItem from="1705402106625" duration="54000" />
       <workItem from="1705402168279" duration="519000" />
-      <workItem from="1705565854312" duration="842000" />
+      <workItem from="1705565854312" duration="2282000" />
     </task>
     <servers />
   </component>

@@ -12,5 +12,5 @@ canvas{
 .gameContainer{
     width: 70%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
