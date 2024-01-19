@@ -1,0 +1,17 @@
+import {Enemy} from "../Enemy.js";
+import {Path} from "../../constants/Path.js";
+import {SpriteRenderer} from "../../component/SpriteRenderer.js";
+
+export class Goblin extends Enemy{
+
+    constructor() {
+        const health = 20;
+        const velocity = 120;
+
+        let image = new Image();
+        image.src = Path.GOBLIN;
+        const spriteRenderer = new SpriteRenderer(image);
+        super("goblin", 0, 0, velocity, health, health, 2);
+        this.addComponent(spriteRenderer)
+    }
+}
