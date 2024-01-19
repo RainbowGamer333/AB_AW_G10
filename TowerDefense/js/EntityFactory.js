@@ -19,7 +19,7 @@ export class EntityFactory {
 
         const clickable = new Clickable()
 
-        const entity = new Enemy("monster_with_no_name",0,0,4,100,100,3);
+        const entity = new Enemy("monster_with_no_name",0,0,70,100,100,3);
         entity.addComponent(spriteRenderer);
         entity.addComponent(clickable);
 

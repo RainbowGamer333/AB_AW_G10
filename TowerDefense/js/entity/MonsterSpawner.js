@@ -4,7 +4,7 @@ import {Global} from "../constants/Global.js";
 import {Constants} from "../constants/Constants.js";
 import {Utils} from "../utils/Utils.js";
 
-const spawnInterval = 5;
+const spawnInterval = 1;
 let accumulatedTime = 0.0; // Temps accumulé depuis le dernier spawn
 let counter = 0;
 export class MonsterSpawner extends GameObject{

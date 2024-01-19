@@ -1,4 +1,5 @@
 import {GameObject} from "../GameObject.js";
+import {Global} from "../constants/Global.js";
 
 export class Entity extends GameObject{
     velocity;
@@ -6,6 +7,7 @@ export class Entity extends GameObject{
     maxHealth;
     damage;
     spriteRenderer;
+    isAlive = true;
 
     constructor(name, x, y, velocity, health, maxHealth, damage, spriteRenderer) {
         super(name, x, y);
@@ -31,9 +33,22 @@ export class Entity extends GameObject{
         this.health -= amount;
         if(this.health<=0){
             this.health = 0;
-            return true; //Return true if the entity is dead
+            this.onDeath();
+            this.isAlive = false;
         }
-        return false;
+        this.isAlive = true;
+    }
+
+    onDeath(){
+        console.log(this.name+" is dead.");
+        Global.removeGameObject(this);
+    }
+
+    onClick(){
+        this.hurt(50);
+        if (this.isAlive){
+            Global.coinBalance += 1;
+        }
     }
 
 }

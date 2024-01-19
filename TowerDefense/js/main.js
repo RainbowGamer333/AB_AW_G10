@@ -14,8 +14,7 @@ import {Global} from "./constants/Global.js";
 Global.canvas = document.getElementById("gameCanvas");
 const canvas = Global.canvas;
 Global.context = Global.canvas.getContext("2d");
-let gameObjects = [];
-Global.gameObjects = gameObjects;
+Global.gameObjects = [];
 const gui = new Gui();
 
 
@@ -32,13 +31,13 @@ function init(){
         for (let j = 0; j < Constants.colums; j ++){
             let tile = new GameObject("tile_"+tileCPT++,j*Constants.TILE_SIZE_ZOOMED,i*Constants.TILE_SIZE_ZOOMED);
             tile.addComponent(new SpriteRenderer(image));
-            gameObjects.push(tile);
+            Global.gameObjects.push(tile);
             // console.log(tile.name + " x:"+tile.x+" y:"+tile.y);
         }
     }
 
     //Create the enemy spawner
-    gameObjects.push(new MonsterSpawner("MonsterSpawner",0,0));
+    Global.gameObjects.push(new MonsterSpawner("MonsterSpawner",0,0));
 
     //Apply canvas size
     canvas.width = Constants.width;
@@ -57,12 +56,13 @@ function init(){
 
 // Définir la fonction de mise à jour du jeu
 function updateGame(dt) {
-    // Mettez à jour la logique du jeu ici
-
-    // Exemple : déplacer les ennemis, vérifier les collisions, etc.
-    for (let i = 0; i < gameObjects.length; i++){
-        gameObjects[i].update(dt);
+    // Update Game objects
+    for (let i = 0; i < Global.gameObjects.length; i++){
+        Global.gameObjects[i].update(dt);
     }
+
+    //Update Graphical User Interface
+    gui.update(dt);
 }
 
 // Définir la fonction de rendu du jeu
@@ -71,8 +71,8 @@ function renderGame() {
     Global.context.clearRect(0, 0, canvas.width, canvas.height);
 
     // Dessiner les éléments du jeu ici
-    for (let i = 0; i < gameObjects.length; i++){
-        gameObjects[i].render();
+    for (let i = 0; i < Global.gameObjects.length; i++){
+        Global.gameObjects[i].render();
     }
 
     // ctx.fillStyle = "#ffffff"; // Couleur du carré (blanc ici)

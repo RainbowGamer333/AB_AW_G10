@@ -5,10 +5,10 @@ import {Constants} from "../constants/Constants.js";
 export class Clickable extends Component{
     constructor() {
         super();
-        Global.canvas.addEventListener("click",this.handleClick.bind(this));
+        Global.canvas.addEventListener("click",this.checkIfClicked.bind(this));
     }
 
-    handleClick(){
+    checkIfClicked(){
         const mouseX = event.clientX - Global.canvas.getBoundingClientRect().left;
         const mouseY = event.clientY - Global.canvas.getBoundingClientRect().top;
 
@@ -19,18 +19,19 @@ export class Clickable extends Component{
         const adjustedMouseY = mouseY * scaleY;
 
         // Vérifier quel sprite a été cliqué
-
-        if (
-            adjustedMouseX >= this.parent.x &&
+        if (adjustedMouseX >= this.parent.x &&
             adjustedMouseX <= this.parent.x + Constants.TILE_SIZE_ZOOMED &&
             adjustedMouseY >= this.parent.y &&
-            adjustedMouseY <= this.parent.y + Constants.TILE_SIZE_ZOOMED
-        ) {
-            console.log("Sprite cliqué :"+this.parent.name+ " x: "+this.parent.x+" y: "+this.parent.y);
-            // Faites quelque chose avec le sprite cliqué
+            adjustedMouseY <= this.parent.y + Constants.TILE_SIZE_ZOOMED) {
 
+            this.handleClick();
         }
+    }
 
-        // console.log(this.parent.name+" clicked");
+    handleClick(){
+        // console.log("Sprite cliqué :"+this.parent.name+ " x: "+this.parent.x+" y: "+this.parent.y);
+
+        this.parent.onClick();
+
     }
 }

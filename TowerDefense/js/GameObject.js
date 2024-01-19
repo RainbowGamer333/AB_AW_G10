@@ -1,5 +1,8 @@
+import {Global} from "./constants/Global.js";
+
 export class GameObject {
     name;
+    id;
     components = [];
     x;
     y;
@@ -8,6 +11,7 @@ export class GameObject {
         this.name = name;
         this.x = x;
         this.y = y;
+        this.id = Global.lastGameObjectID++;
     }
     update(dt){
         for(let i=0; i<this.components.length; i++){
