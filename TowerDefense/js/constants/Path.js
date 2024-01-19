@@ -14,6 +14,10 @@ export class Path {
 
     //ENEMIES
     static BASE_PATH_ENEMY = Path.BASE_PATH + "enemy/";
-    static MONSTER = Path.BASE_PATH_ENEMY+"monster.png";
     static MONSTER_2 = Path.BASE_PATH_ENEMY+"monster_2.png";
+    static GOBLIN = Path.BASE_PATH_ENEMY+"goblin.png";
+    static OGRE = Path.BASE_PATH_ENEMY+"ogre.png";
+    static DEMON = Path.BASE_PATH_ENEMY+"demon.png";
+    static GOLIATH = Path.BASE_PATH_ENEMY+"goliath.png";
+    static NECROMANCER = Path.BASE_PATH_ENEMY+"necromancer.png";
 }

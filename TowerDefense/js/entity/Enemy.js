@@ -3,8 +3,8 @@ import {Constants} from "../constants/Constants.js";
 
 export class Enemy extends Entity{
 
-    constructor(name, x, y, velocity, health, maxHealth, damage, spriteRenderer) {
-        super(name, x, y, velocity, health, maxHealth, damage, spriteRenderer);
+    constructor(name, x, y, velocity, health, maxHealth, damage) {
+        super(name, x, y, velocity, health, maxHealth, damage);
     }
 
     update(dt) {

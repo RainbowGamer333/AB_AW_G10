@@ -2,20 +2,20 @@ import {GameObject} from "../GameObject.js";
 import {Global} from "../constants/Global.js";
 
 export class Entity extends GameObject{
-    velocity;
-    health;
-    maxHealth;
-    damage;
-    spriteRenderer;
+    velocity = 20;
+    health = 100;
+    maxHealth = 100;
+    damage = 5;
+    attackRate = 1;
     isAlive = true;
 
-    constructor(name, x, y, velocity, health, maxHealth, damage, spriteRenderer) {
+    constructor(name, x, y, velocity, health, maxHealth, damage,attackRate) {
         super(name, x, y);
         this.velocity = velocity;
         this.health = health;
         this.maxHealth = maxHealth;
         this.damage = damage;
-        this.spriteRenderer = spriteRenderer;
+        this.attackRate = attackRate;
     }
 
     isDead(){

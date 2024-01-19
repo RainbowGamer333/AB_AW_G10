@@ -14,7 +14,7 @@ export class EntityFactory {
 
     static create_monster(){
         let image = new Image();
-        image.src = Path.MONSTER_2;
+        image.src = Path.OGRE;
         const spriteRenderer = new SpriteRenderer(image);
 
         const clickable = new Clickable()
