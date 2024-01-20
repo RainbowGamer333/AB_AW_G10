@@ -26,6 +26,7 @@ function init(){
 
     MapUtils.createGround();
     MapUtils.createVillage();
+    MapUtils.createTestTowers();
 
 
 

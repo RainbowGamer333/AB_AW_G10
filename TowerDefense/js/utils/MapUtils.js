@@ -3,6 +3,8 @@ import {Constants} from "../constants/Constants.js";
 import {GameObject} from "../GameObject.js";
 import {SpriteRenderer} from "../component/SpriteRenderer.js";
 import {Global} from "../constants/Global.js";
+import {Utils} from "./Utils.js";
+import {Canon} from "../entity/impl/tower/Canon.js";
 
 export class MapUtils {
     static createGround(){
@@ -23,12 +25,26 @@ export class MapUtils {
         //Create Village
         let tileCPT = 0;
         let image = new Image();
-        image.src = Path.HOUSE_RED;
+        image.src = Path.HOUSE_BLUE;
         const y = Constants.height-Constants.TILE_SIZE_ZOOMED;
         for (let i=0;i<Constants.colums;i++){
             let tile = new GameObject("tile_house_"+tileCPT++,i*Constants.TILE_SIZE_ZOOMED,y);
             tile.addComponent(new SpriteRenderer(image));
             Global.addGameObject(tile);
+        }
+    }
+
+    static createTestTowers(){
+        let tileCPT = 0;
+        let image = new Image();
+        image.src = Path.HOUSE_BLUE;
+        const y = Constants.height-(Constants.TILE_SIZE_ZOOMED*2);
+        for (let i=0;i<Constants.colums;i++){
+            let towerChoice = Utils.randomIntFromInterval(0,5);
+            let tower = new Canon();
+            tower.x = i*Constants.TILE_SIZE_ZOOMED;
+            tower.y = y;
+            Global.addGameObject(tower);
         }
     }
 
