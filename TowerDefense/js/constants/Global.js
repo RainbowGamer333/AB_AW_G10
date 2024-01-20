@@ -26,4 +26,9 @@ export class Global{
             console.log("Can't delete object with id: " + object.id);
         }
     }
+
+    static addGameObject(object){
+        //todo check if object is already in the list
+        this.gameObjects.push(object);
+    }
 }
