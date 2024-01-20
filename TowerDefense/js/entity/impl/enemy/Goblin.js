@@ -1,6 +1,6 @@
-import {Enemy} from "../Enemy.js";
-import {Path} from "../../constants/Path.js";
-import {SpriteRenderer} from "../../component/SpriteRenderer.js";
+import {Enemy} from "../../Enemy.js";
+import {Path} from "../../../constants/Path.js";
+import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 
 export class Goblin extends Enemy{
 

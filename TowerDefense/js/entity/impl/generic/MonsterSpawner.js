@@ -1,13 +1,13 @@
-import {GameObject} from "../GameObject.js";
-import {EntityFactory} from "../EntityFactory.js";
-import {Global} from "../constants/Global.js";
-import {Constants} from "../constants/Constants.js";
-import {Utils} from "../utils/Utils.js";
-import {Goblin} from "./impl/Goblin.js";
-import {Goliath} from "./impl/Goliath.js";
-import {Necromancer} from "./impl/Necromancer.js";
-import {Demon} from "./impl/Demon.js";
-import {Ogre} from "./impl/Ogre.js";
+import {GameObject} from "../../../GameObject.js";
+import {EntityFactory} from "../../../EntityFactory.js";
+import {Global} from "../../../constants/Global.js";
+import {Constants} from "../../../constants/Constants.js";
+import {Utils} from "../../../utils/Utils.js";
+import {Goblin} from "../enemy/Goblin.js";
+import {Goliath} from "../enemy/Goliath.js";
+import {Necromancer} from "../enemy/Necromancer.js";
+import {Demon} from "../enemy/Demon.js";
+import {Ogre} from "../enemy/Ogre.js";
 
 const spawnInterval = 1;
 let accumulatedTime = 0.0; // Temps accumulé depuis le dernier spawn

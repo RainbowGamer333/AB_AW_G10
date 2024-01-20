@@ -1,8 +1,8 @@
-import {Enemy} from "../Enemy.js";
-import {Path} from "../../constants/Path.js";
-import {SpriteRenderer} from "../../component/SpriteRenderer.js";
+import {Enemy} from "../../Enemy.js";
+import {Path} from "../../../constants/Path.js";
+import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Skeleton} from "./Skeleton.js";
-import {Global} from "../../constants/Global.js";
+import {Global} from "../../../constants/Global.js";
 
 export class Necromancer extends Enemy {
      spawnInterval = 1;

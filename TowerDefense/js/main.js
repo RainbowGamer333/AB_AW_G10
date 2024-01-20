@@ -8,7 +8,7 @@ import {Constants} from "./constants/Constants.js";
 import {GameObject} from "./GameObject.js";
 import {SpriteRenderer} from "./component/SpriteRenderer.js";
 import {Path} from "./constants/Path.js";
-import {MonsterSpawner} from "./entity/MonsterSpawner.js";
+import {MonsterSpawner} from "./entity/impl/generic/MonsterSpawner.js";
 import {Global} from "./constants/Global.js";
 
 Global.canvas = document.getElementById("gameCanvas");
@@ -34,6 +34,9 @@ function init(){
             Global.gameObjects.push(tile);
             // console.log(tile.name + " x:"+tile.x+" y:"+tile.y);
         }
+    }
+    for (let i=0;i<Constants.colums;i++){
+        
     }
 
     //Create the enemy spawner
