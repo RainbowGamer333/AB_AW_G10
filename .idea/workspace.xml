@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e39f20a1-27ad-4b1c-b925-41d03f2f79c8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TowerDefense/asset/building/house_blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TowerDefense/js/utils/MapUtils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TowerDefense/js/constants/Constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/constants/Constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TowerDefense/js/constants/Path.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/constants/Path.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TowerDefense/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/main.js" afterDir="false" />
     </list>
@@ -43,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/asend/Documents/GitHub/AB_AW_G10/TowerDefense/asset/enemy",
+    "last_opened_file_path": "C:/Users/asend/Documents/GitHub/AB_AW_G10/TowerDefense/asset/building",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -55,10 +58,13 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\asset\building" />
       <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\asset\enemy" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\asset\building" />
+      <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\js\entity\impl\generic" />
+      <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\js\entity\impl\enemy" />
       <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\js\entity" />
     </key>
   </component>
@@ -75,7 +81,7 @@
       <workItem from="1705402106625" duration="54000" />
       <workItem from="1705402168279" duration="519000" />
       <workItem from="1705565854312" duration="10962000" />
-      <workItem from="1705591597194" duration="22246000" />
+      <workItem from="1705591597194" duration="23866000" />
     </task>
     <servers />
   </component>

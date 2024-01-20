@@ -10,6 +10,7 @@ import {SpriteRenderer} from "./component/SpriteRenderer.js";
 import {Path} from "./constants/Path.js";
 import {MonsterSpawner} from "./entity/impl/generic/MonsterSpawner.js";
 import {Global} from "./constants/Global.js";
+import {MapUtils} from "./utils/MapUtils.js";
 
 Global.canvas = document.getElementById("gameCanvas");
 const canvas = Global.canvas;
@@ -23,21 +24,10 @@ function init(){
 
 
 
-    //Create ground
-    let image = new Image();
-    image.src = Path.GRASS;
-    let tileCPT = 0;
-    for (let i = 0; i < Constants.rows; i++) {
-        for (let j = 0; j < Constants.colums; j ++){
-            let tile = new GameObject("tile_"+tileCPT++,j*Constants.TILE_SIZE_ZOOMED,i*Constants.TILE_SIZE_ZOOMED);
-            tile.addComponent(new SpriteRenderer(image));
-            Global.gameObjects.push(tile);
-            // console.log(tile.name + " x:"+tile.x+" y:"+tile.y);
-        }
-    }
-    for (let i=0;i<Constants.colums;i++){
-        
-    }
+    MapUtils.createGround();
+    MapUtils.createVillage();
+
+
 
     //Create the enemy spawner
     Global.gameObjects.push(new MonsterSpawner("MonsterSpawner",0,0));

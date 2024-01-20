@@ -24,4 +24,5 @@ export class Path {
     //Building
     static BASE_PATH_BUILDING = Path.BASE_PATH + "building/";
     static HOUSE_RED = Path.BASE_PATH_BUILDING+"house_red.png";
+    static HOUSE = Path.BASE_PATH_BUILDING+"house.png";
 }
