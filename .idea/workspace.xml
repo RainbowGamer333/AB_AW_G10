@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3361b858-e175-4dc6-a4ab-a59c51aa81d1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
+=======
+      <change beforePath="$PROJECT_DIR$/Demineur/asset/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Demineur/asset/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demineur/asset/flag.png" beforeDir="false" afterPath="$PROJECT_DIR$/Demineur/asset/flag.png" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/Demineur/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demineur/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Demineur/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demineur/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Demineur/js/cellule.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demineur/js/cellule.js" afterDir="false" />
@@ -52,6 +57,10 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+<<<<<<< Updated upstream
+=======
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+>>>>>>> Stashed changes
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -66,9 +75,15 @@
       <workItem from="1704978370861" duration="898000" />
       <workItem from="1705400660560" duration="187000" />
       <workItem from="1705400859427" duration="1956000" />
+<<<<<<< Updated upstream
       <workItem from="1705566116056" duration="5184000" />
       <workItem from="1705756018700" duration="506000" />
       <workItem from="1705767028217" duration="1688000" />
+=======
+      <workItem from="1705566116056" duration="12223000" />
+      <workItem from="1705747490810" duration="123000" />
+      <workItem from="1705747628526" duration="2460000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

@@ -24,13 +24,18 @@ export class Cell {
         return this._flag;
     }
 
+    setVisible() {
+        this._visible = true;
+        this.element.classList.add("visible");
+    }
+
     swapFlag() {
         if (this._flag) {
             this._flag = false;
-            this.element.classList.remove("flag");
+            this.element.classList.remove("cell-1");
         } else {
             this._flag = true;
-            this.element.classList.add("flag");
+            this.element.classList.add("cell-1");
         }
     }
 

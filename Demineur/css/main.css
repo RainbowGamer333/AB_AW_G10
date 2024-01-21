@@ -1,12 +1,75 @@
 :root {
     --cell-size: 30px;
     --url-flag: url("/Demineur/asset/flag.png");
+    --url-mine: url("/Demineur/asset/-1.png");
+    --url-fake-mine: url("/Demineur/asset/fake-mine.png");
+    --url-1: url("/Demineur/asset/1.png");
+    --url-2: url("/Demineur/asset/2.png");
+    --url-3: url("/Demineur/asset/3.png");
+    --url-4: url("/Demineur/asset/4.png");
+    --url-5: url("/Demineur/asset/5.png");
+    --url-6: url("/Demineur/asset/6.png");
+    --url-7: url("/Demineur/asset/7.png");
+    --url-8: url("/Demineur/asset/8.png");
+}
+
+.cell-assets {
+    background-size: cover;
+}
+
+.flag {
+    background-image: var(--url-flag);
+}
+
+.mine {
+    background-image: var(--url-mine);
+}
+
+.fake-mine {
+    background-image: var(--url-fake-mine);
+}
+
+.cell-1 {
+    background-image: var(--url-1);
+}
+
+.cell-2 {
+    background-image: var(--url-2);
+}
+
+.cell-3 {
+    background-image: var(--url-3);
+}
+
+.cell-4 {
+    background-image: var(--url-4);
+}
+
+.cell-5 {
+    background-image: var(--url-5);
+}
+
+.cell-6 {
+    background-image: var(--url-6);
+}
+
+.cell-7 {
+    background-image: var(--url-7);
+}
+
+.cell-8 {
+    background-image: var(--url-8);
 }
 
 #miningGrid > tr, td {
+    background-color: #eaeaea;
     border: 1px solid black;
     width: var(--cell-size);
     height: var(--cell-size);
+}
+
+td:active {
+    background-color: #bfbfbf;
 }
 
 #miningGrid {
