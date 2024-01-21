@@ -16,7 +16,7 @@ function createGrid(numberRows, numberColumns) {
         let tr = document.createElement("tr");
 
         for (let j = 0; j < numberColumns; j++) {
-            let td = createCell();
+            let td = Cell.createCell();
             tr.appendChild(td.element);
         }
         tbody.appendChild(tr);
@@ -24,29 +24,6 @@ function createGrid(numberRows, numberColumns) {
     }
     grid.appendChild(tbody);
     miningGrid.appendChild(grid);
-}
-
-function createCell() {
-    let cell = new Cell(1);
-
-    // Ajouter un drapeau avec clique droit
-    cell.element.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-        if (cell.visible) return;
-        cell.toggleFlag();
-    });
-
-    // Afficher la cellule avec clique gauche
-    cell.element.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (cell.flag) return;
-
-        if (!cell.isMine()) {
-            cell.afficheCellule();
-        }
-    });
-
-    return cell;
 }
 
 

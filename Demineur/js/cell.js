@@ -67,4 +67,27 @@ export class Cell {
                 return;
         }
     }
+
+    static createCell() {
+        let cell = new Cell(1);
+
+        // Ajouter un drapeau avec clique droit
+        cell.element.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+            if (cell.visible) return;
+            cell.toggleFlag();
+        });
+
+        // Afficher la cellule avec clique gauche
+        cell.element.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (cell.flag) return;
+
+            if (!cell.isMine()) {
+                cell.afficheCellule();
+            }
+        });
+
+        return cell;
+    }
 }
