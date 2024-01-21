@@ -24,18 +24,13 @@ export class Cell {
         return this._flag;
     }
 
-    setVisible() {
-        this._visible = true;
-        this.element.classList.add("visible");
-    }
-
-    swapFlag() {
+    toggleFlag() {
         if (this._flag) {
             this._flag = false;
-            this.element.classList.remove("cell-1");
+            this.element.classList.remove("cell-flag");
         } else {
             this._flag = true;
-            this.element.classList.add("cell-1");
+            this.element.classList.add("cell-flag");
         }
     }
 
@@ -43,7 +38,8 @@ export class Cell {
         return this._valeur === -1;
     }
 
-    addValeurClass() {
+    afficheCellule() {
+        this._visible = true;
         switch(this._valeur) {
             case 1:
                 this.element.classList.add("cell-1");
@@ -53,6 +49,21 @@ export class Cell {
                 return;
             case 3:
                 this.element.classList.add("cell-3");
+                return;
+            case 4:
+                this.element.classList.add("cell-4");
+                return;
+            case 5:
+                this.element.classList.add("cell-5");
+                return;
+            case 6:
+                this.element.classList.add("cell-6");
+                return;
+            case 7:
+                this.element.classList.add("cell-7");
+                return;
+            case 8:
+                this.element.classList.add("cell-8");
                 return;
         }
     }

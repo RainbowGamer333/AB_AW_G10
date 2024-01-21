@@ -17,15 +17,15 @@
     background-size: cover;
 }
 
-.flag {
+.cell-flag {
     background-image: var(--url-flag);
 }
 
-.mine {
+.cell-mine {
     background-image: var(--url-mine);
 }
 
-.fake-mine {
+.cell-fake-mine {
     background-image: var(--url-fake-mine);
 }
 
@@ -68,7 +68,7 @@
     height: var(--cell-size);
 }
 
-td:active {
+td:active:not([class*="cell-"]) {
     background-color: #bfbfbf;
 }
 
