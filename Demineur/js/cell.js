@@ -41,6 +41,12 @@ export class Cell {
     afficheCellule() {
         this._visible = true;
         switch(this._valeur) {
+            case -1:
+                this.element.classList.add("cell-mine");
+                return;
+            case -1 && this._flag:
+                this.element.classList.add("cell-fake-mine");
+                return;
             case 1:
                 this.element.classList.add("cell-1");
                 return;
@@ -69,7 +75,7 @@ export class Cell {
     }
 
     static createCell() {
-        let cell = new Cell(1);
+        let cell = new Cell(-1);
 
         // Ajouter un drapeau avec clique droit
         cell.element.addEventListener("contextmenu", function (e) {

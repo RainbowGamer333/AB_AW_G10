@@ -17,6 +17,7 @@ function createGrid(numberRows, numberColumns) {
 
         for (let j = 0; j < numberColumns; j++) {
             let td = Cell.createCell();
+            td.afficheCellule();
             tr.appendChild(td.element);
         }
         tbody.appendChild(tr);
@@ -24,6 +25,14 @@ function createGrid(numberRows, numberColumns) {
     }
     grid.appendChild(tbody);
     miningGrid.appendChild(grid);
+}
+
+
+function afficherMines() {
+    let cells = document.getElementsByClassName("cell-mine");
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].afficheCellule();
+    }
 }
 
 
