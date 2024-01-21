@@ -37,4 +37,18 @@ export class Cell {
     isMine() {
         return this._valeur === -1;
     }
+
+    addValeurClass() {
+        switch(this._valeur) {
+            case 1:
+                this.element.classList.add("cell-1");
+                return;
+            case 2:
+                this.element.classList.add("cell-2");
+                return;
+            case 3:
+                this.element.classList.add("cell-3");
+                return;
+        }
+    }
 }

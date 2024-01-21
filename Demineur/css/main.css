@@ -1,9 +1,6 @@
 :root {
     --cell-size: 30px;
-}
-
-.red {
-    background-color: red;
+    --url-flag: url("/Demineur/asset/flag.png");
 }
 
 #miningGrid > tr, td {
@@ -14,4 +11,10 @@
 
 #miningGrid {
     border-collapse: collapse;
+    background-color: #d9d9d9;
+}
+
+.flag {
+    background-image: var(--url-flag);
+    background-size: var(--cell-size);
 }
