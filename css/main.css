@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'robotoregular';
+    src: url('/font/roboto-regular-webfont.woff2') format('woff2'),
+    url('/font/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html{
+    background-color: var(--backgroundColor);
+    font-family: 'robotoregular', sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x:  hidden;
+}
+
+main{
+    width: var(--mainWidth);
+    height: 100vh;
+    background: #45314d;
+    box-shadow: var(--baseShadow);
+    margin: 60px auto 0 auto;
+}
+
+footer{
+    height: 20vh;
+    width: 100vw;
+    background-color: #221c25;
+}
