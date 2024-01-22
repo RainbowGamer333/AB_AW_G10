@@ -1,0 +1,11 @@
+.gameCard{
+    width: 200px;
+    height: 200px;
+    border-radius: var(--borderRadius);
+    background-color: var(--gameCardColor);
+    box-shadow:var(--baseShadow);
+}
+
+.gameCard>.gameTitle{
+    width: 100%;
+}

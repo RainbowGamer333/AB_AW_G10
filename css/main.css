@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+main{
+    width: var(--mainWidth);
+    height: 100vh;
+    margin: auto;
+    background: antiquewhite;
+    box-shadow: var(--baseShadow);
+    padding-top: 60px ;
+}
+
+footer{
+    height: 20vh;
+    width: 100vw;
+    background-color: #888888;
+}

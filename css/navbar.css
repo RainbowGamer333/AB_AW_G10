@@ -1,0 +1,12 @@
+nav{
+    background: var(--navbarColor);
+    width: 100vw;
+    height: 60px;
+    box-shadow: var(--navShadow);
+    position: fixed;
+}
+
+nav>.container{
+    width: var(--mainWidth);
+    margin:auto;
+}
