@@ -16,3 +16,7 @@ nav>.container{
     align-items: center;
     justify-content: space-between;
 }
+
+nav>.container>img{
+    height: 60px;
+}
