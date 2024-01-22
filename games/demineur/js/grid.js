@@ -114,10 +114,20 @@ export class Grid {
         return nbMines;
     }
 
+    gameOver() {
+        this.afficherMines();
+    }
+
     afficherMines() {
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
-                if (this.cells[i][j].isMine()) this.cells[i][j].afficheCellule();
+                let cell = this.cells[i][j];
+                if (cell.isMine() && !cell.flag) {
+                    this.cells[i][j].afficheCellule();
+                }
+                else if (!cell.isMine() && cell.flag) {
+                    this.cells[i][j].afficheFakeMine();
+                }
             }
         }
     }

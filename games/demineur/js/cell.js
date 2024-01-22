@@ -45,11 +45,7 @@ export class Cell {
         this._visible = true;
         switch(this._valeur) {
             case -1:
-                if (this.flag) {
-                    this.element.classList.remove("flag");
-                    this.element.classList.add("fake-mine");
-                }
-                else this.element.classList.add("mine");
+                if (!this.flag) this.element.classList.add("mine");
                 return;
             case 1:
                 this.element.classList.add("one");
@@ -76,6 +72,10 @@ export class Cell {
                 this.element.classList.add("eight");
                 return;
         }
+    }
+
+    afficheFakeMine() {
+        this.element.classList.add("fake-mine");
     }
 
     static creerCellule() {
