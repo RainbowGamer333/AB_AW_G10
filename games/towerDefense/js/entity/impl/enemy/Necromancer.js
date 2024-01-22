@@ -3,6 +3,8 @@ import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Skeleton} from "./Skeleton.js";
 import {Global} from "../../../constants/Global.js";
+import {Utils} from "../../../utils/Utils.js";
+import {Constants} from "../../../constants/Constants.js";
 
 export class Necromancer extends Enemy {
      spawnInterval = 1;
@@ -17,7 +19,7 @@ export class Necromancer extends Enemy {
         let image = new Image();
         image.src = Path.NECROMANCER;
         const spriteRenderer = new SpriteRenderer(image);
-        super("demon", 0, 0, velocity, health, health, damage,attackRate);
+        super("Necromancer", 0, 0, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
         this.spawnInterval = 5;
     }
@@ -35,8 +37,43 @@ export class Necromancer extends Enemy {
     }
 
     spawnSkeleton(){
+        //const choice = Utils.randomIntFromInterval(0,10);
+        const choice = 3;
+        switch (choice) {
+            case 0: { // Spawn at the same position
+                const skeleton = new Skeleton(this.x, this.y);
+                Global.addGameObject(skeleton);
+                break;
+            }
+            case 1: { //Spawn left
+                if (this.getColumn() != 1){ // Check if not extreme left
+                    const skeleton = new Skeleton(this.x-Constants.TILE_SIZE_ZOOMED, this.y);
+                    Global.addGameObject(skeleton);
+                    break;
+                }
+            }
+            case 2: { //Spawn right
+                if (this.getColumn() != Constants.colums){ // Check if not extreme right
+                    const skeleton = new Skeleton(this.x+Constants.TILE_SIZE_ZOOMED, this.y);
+                    Global.addGameObject(skeleton);
+                    break;
+                }
+            }
+            case 3: { //Spawn same position, left, right
+                const column = this.getColumn();
+                if (column != 1 && column != Constants.colums ){
+                    const skeletons = [];
+                    skeletons.push( new Skeleton(this.x, this.y));
+                    skeletons.push( new Skeleton(this.x-Constants.TILE_SIZE_ZOOMED, this.y));
+                    skeletons.push( new Skeleton(this.x+Constants.TILE_SIZE_ZOOMED, this.y));
+                    Global.addGameObjects(skeletons);
+                    break;
+                }
+            }
+            default: break;
 
-        const skeleton = new Skeleton(this.x, this.y);
-        Global.addGameObject(skeleton);
+        }
+
+
     }
 }

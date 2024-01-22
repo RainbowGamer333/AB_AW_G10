@@ -31,4 +31,10 @@ export class Global{
         //todo check if object is already in the list
         this.gameObjects.push(object);
     }
+
+    static addGameObjects(gameObjects){
+        for (const gameObject of gameObjects){
+            this.gameObjects.push(gameObject);
+        }
+    }
 }

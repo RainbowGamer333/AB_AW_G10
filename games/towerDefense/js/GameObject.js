@@ -1,4 +1,5 @@
 import {Global} from "./constants/Global.js";
+import {Constants} from "./constants/Constants.js";
 
 export class GameObject {
     name;
@@ -33,5 +34,9 @@ export class GameObject {
     removeComponent(component){
         this.components.remove(component);//TODO
         component.parent = null;
+    }
+
+    getColumn(){
+        return this.x / Constants.TILE_SIZE_ZOOMED;
     }
 }

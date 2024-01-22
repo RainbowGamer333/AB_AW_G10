@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e39f20a1-27ad-4b1c-b925-41d03f2f79c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TowerDefense/js/entity/Projectile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TowerDefense/js/entity/impl/projectile/Fireball.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TowerDefense/js/entity/impl/tower/Canon.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TowerDefense/js/constants/Path.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/constants/Path.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TowerDefense/js/entity/Tower.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/entity/Tower.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TowerDefense/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TowerDefense/js/utils/MapUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/TowerDefense/js/utils/MapUtils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/enemy/demon.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/enemy/demon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/GameObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/GameObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/constants/Constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/constants/Constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/constants/Global.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/constants/Global.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/enemy/Demon.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/enemy/Demon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/enemy/Necromancer.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/enemy/Necromancer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/asend/Documents/GitHub/AB_AW_G10/TowerDefense/asset/building",
+    "last_opened_file_path": "C:/Users/asend/OneDrive/Documents/GitHub/AB_AW_G10/games/towerDefense/js/entity/impl/enemy",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -60,10 +60,12 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\asend\OneDrive\Documents\GitHub\AB_AW_G10\games\towerDefense\js\entity\impl\enemy" />
       <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\asset\building" />
       <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\asset\enemy" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asend\OneDrive\Documents\GitHub\AB_AW_G10\games" />
       <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\js\entity" />
       <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\asset\building" />
       <recent name="C:\Users\asend\Documents\GitHub\AB_AW_G10\TowerDefense\js\entity\impl\generic" />
@@ -84,6 +86,7 @@
       <workItem from="1705402168279" duration="519000" />
       <workItem from="1705565854312" duration="10962000" />
       <workItem from="1705591597194" duration="27378000" />
+      <workItem from="1705946895901" duration="2923000" />
     </task>
     <servers />
   </component>
