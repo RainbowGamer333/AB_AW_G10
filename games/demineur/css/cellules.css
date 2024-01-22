@@ -22,7 +22,6 @@
 
 .cell.unclicked {
     background-image: var(--url-unclicked);
-    border: none;
 }
 
 .cell.flag {
@@ -31,6 +30,10 @@
 
 .cell.mine {
     background-image: var(--url-mine);
+}
+
+.cell.mine.clicked {
+    background-color: red;
 }
 
 .cell.fake-mine {

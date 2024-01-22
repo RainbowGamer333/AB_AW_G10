@@ -44,6 +44,13 @@ export class Cell {
     afficheCellule() {
         this._visible = true;
         switch(this._valeur) {
+            case -3:
+                this.element.classList.add("fake-mine");
+                return;
+            case -2:
+                this.element.classList.add("mine");
+                this.element.classList.add("clicked");
+                return;
             case -1:
                 if (!this.flag) this.element.classList.add("mine");
                 return;

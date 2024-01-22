@@ -66,8 +66,7 @@ export class Grid {
                     e.preventDefault();
                     if (cell.flag) return;
                     if (cell.isMine()) {
-                        console.log("Vous avez perdu !");
-                        this.gameOver();
+                        this.gameOver(cell);
                         return;
                     }
                     cell.afficheCellule();
@@ -110,20 +109,21 @@ export class Grid {
         return nbMines;
     }
 
-    gameOver() {
-        this.afficherMines();
+    gameOver(mineCliquee) {
+        this.afficherMines(mineCliquee);
     }
 
-    afficherMines() {
+    afficherMines(mineCliquee) {
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
                 let cell = this.cells[i][j];
                 if (cell.isMine() && !cell.flag) {
-                    cell.afficheCellule();
+                    if (cell === mineCliquee) cell.valeur = -2;
                 }
                 else if (!cell.isMine() && cell.flag) {
-                    cell.afficheFakeMine();
+                    cell.valeur = -3;
                 }
+                cell.afficheCellule();
             }
         }
     }
