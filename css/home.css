@@ -12,6 +12,8 @@
     box-shadow:var(--baseShadow);
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    color: black;
 }
 
 .gameCard>.gameTitle{
