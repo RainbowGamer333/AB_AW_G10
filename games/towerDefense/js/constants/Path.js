@@ -32,5 +32,5 @@ export class Path {
     static HOUSE_BLUE = Path.BASE_PATH_BUILDING+"house_blue.png";
     static HOUSE_TINY = Path.BASE_PATH_BUILDING+"house_tiny.png";
     static FOUNTAIN = Path.BASE_PATH_BUILDING+"fountain.png";
-    static HOUSE = Path.BASE_PATH_BUILDING+"house.png";
+    static HOUSE_TINY_TINY = Path.BASE_PATH_BUILDING+"house_tiny_tiny.png";
 }

@@ -24,12 +24,31 @@ export class MapUtils {
     static createVillage(){
         //Create Village
         let tileCPT = 0;
+
+
+        let images = [];
         let image = new Image();
         image.src = Path.HOUSE_BLUE;
+        images.push(image);
+        image = new Image();
+        image.src = Path.HOUSE_RED;
+        images.push(image);
+        image = new Image();
+        image.src = Path.FOUNTAIN;
+        images.push(image);
+        image = new Image();
+        image.src = Path.HOUSE_TINY;
+        images.push(image);
+        image = new Image();
+        image.src = Path.HOUSE_TINY_TINY;
+        images.push(image);
+
         const y = Constants.height-Constants.TILE_SIZE_ZOOMED;
         for (let i=0;i<Constants.colums;i++){
-            let tile = new GameObject("tile_house_"+tileCPT++,i*Constants.TILE_SIZE_ZOOMED,y);
-            tile.addComponent(new SpriteRenderer(image));
+            const imageChoice = Utils.randomIntFromInterval(0,images.length-1);
+
+            let tile = new GameObject("tile_building_"+tileCPT++,i*Constants.TILE_SIZE_ZOOMED,y);
+            tile.addComponent(new SpriteRenderer(images[imageChoice]));
             Global.addGameObject(tile);
         }
     }

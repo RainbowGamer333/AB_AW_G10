@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e39f20a1-27ad-4b1c-b925-41d03f2f79c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/tower/Canon.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/tower/Canon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/building/fountain.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/building/fountain.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/building/house.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/building/house_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/building/house_blue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/building/house_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/building/house_red.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/building/house_tiny.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/building/house_tiny.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/constants/Path.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/constants/Path.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/utils/MapUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/utils/MapUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +86,7 @@
       <workItem from="1705402168279" duration="519000" />
       <workItem from="1705565854312" duration="10962000" />
       <workItem from="1705591597194" duration="27378000" />
-      <workItem from="1705946895901" duration="3341000" />
+      <workItem from="1705946895901" duration="4505000" />
     </task>
     <servers />
   </component>
