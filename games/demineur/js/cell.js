@@ -47,6 +47,9 @@ export class Cell {
             case -1:
                 if (!this.flag) this.element.classList.add("mine");
                 return;
+            case 0:
+                this.element.classList.add("zero");
+                return;
             case 1:
                 this.element.classList.add("one");
                 return;

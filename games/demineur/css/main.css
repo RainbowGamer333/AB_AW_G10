@@ -1,11 +1,11 @@
 #miningGrid {
-    margin: auto;
     border: 3px solid black;
 }
 
 #miningGrid > tr, td {
-    background-color: #eaeaea;
-    border: 1px solid white;
+    background-color: #c7c7c7;
+    border: 2px solid #adadad;
+
     width: var(--cell-size);
     height: var(--cell-size);
 }

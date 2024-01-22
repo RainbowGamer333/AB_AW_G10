@@ -11,8 +11,7 @@ export class Grid {
         this.initialiserMines(numberMines);
         this.initialiserValeurs();
 
-        //this.afficherMines();
-        //this.#afficherToutesCellules();
+        //this.debug_afficherToutesCellules();
     }
 
     get miningGrid() {
@@ -63,13 +62,12 @@ export class Grid {
 
 
                 // Afficher la cellule avec clique gauche
-                this.afficherMines = this.afficherMines.bind(this);
                 cell.element.addEventListener("click", (e) => {
                     e.preventDefault();
                     if (cell.flag) return;
                     if (cell.isMine()) {
                         console.log("Vous avez perdu !");
-                        this.afficherMines();
+                        this.gameOver();
                         return;
                     }
                     cell.afficheCellule();
@@ -77,8 +75,6 @@ export class Grid {
             }
         }
     }
-
-
 
     initialiserValeurs() {
         for (let i = 0; i < this.cells.length; i++) {
@@ -123,17 +119,17 @@ export class Grid {
             for (let j = 0; j < this.cells[i].length; j++) {
                 let cell = this.cells[i][j];
                 if (cell.isMine() && !cell.flag) {
-                    this.cells[i][j].afficheCellule();
+                    cell.afficheCellule();
                 }
                 else if (!cell.isMine() && cell.flag) {
-                    this.cells[i][j].afficheFakeMine();
+                    cell.afficheFakeMine();
                 }
             }
         }
     }
 
 
-    #afficherToutesCellules() {
+    debug_afficherToutesCellules() {
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
                 this.cells[i][j].afficheCellule();
