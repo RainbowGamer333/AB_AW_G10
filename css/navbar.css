@@ -4,9 +4,15 @@ nav{
     height: 60px;
     box-shadow: var(--navShadow);
     position: fixed;
+    backdrop-filter: blur(10px);
+    top: 0;
 }
 
 nav>.container{
     width: var(--mainWidth);
-    margin:auto;
+    height: 60px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

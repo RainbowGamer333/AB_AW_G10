@@ -2,6 +2,7 @@
     display: flex;
     max-width: 100%;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .gameCard{
@@ -14,6 +15,13 @@
     flex-direction: column;
     text-decoration: none;
     color: black;
+    margin: 5px;
+}
+.gameCard>img{
+    border-radius:  var(--borderRadius) var(--borderRadius) 0 0;
+    width: 200px;
+    height: 200px;
+    background-color: black;
 }
 
 .gameCard>.gameTitle{
@@ -23,4 +31,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-variant: all-petite-caps;
+    letter-spacing: 2px;
+    text-overflow: ellipsis;
 }
