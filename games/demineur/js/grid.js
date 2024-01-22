@@ -55,7 +55,7 @@ export class Grid {
                 let cell = this.cells[i][j];
 
                 // Ajouter un drapeau avec clique droit
-                cell.element.addEventListener("contextmenu", function (e) {
+                cell.element.addEventListener("contextmenu", (e) => {
                     e.preventDefault();
                     if (cell.visible) return;
                     cell.toggleFlag();
@@ -64,7 +64,7 @@ export class Grid {
 
                 // Afficher la cellule avec clique gauche
                 this.afficherMines = this.afficherMines.bind(this);
-                cell.element.addEventListener("click", function (e) {
+                cell.element.addEventListener("click", (e) => {
                     e.preventDefault();
                     if (cell.flag) return;
                     if (cell.isMine()) {
