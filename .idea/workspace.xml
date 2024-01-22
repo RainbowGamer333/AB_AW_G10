@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e39f20a1-27ad-4b1c-b925-41d03f2f79c8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/enemy/demon.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/enemy/demon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/GameObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/GameObject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/constants/Constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/constants/Constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/constants/Global.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/constants/Global.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/enemy/Demon.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/enemy/Demon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/enemy/Necromancer.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/enemy/Necromancer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/enemy/goblin.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/enemy/goblin.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/enemy/goliath.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/enemy/goliath.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/enemy/monster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/enemy/ogre.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/enemy/ogre.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/projectile/fireball.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/projectile/fireball.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +84,7 @@
       <workItem from="1705402168279" duration="519000" />
       <workItem from="1705565854312" duration="10962000" />
       <workItem from="1705591597194" duration="27378000" />
-      <workItem from="1705946895901" duration="2923000" />
+      <workItem from="1705946895901" duration="3263000" />
     </task>
     <servers />
   </component>
