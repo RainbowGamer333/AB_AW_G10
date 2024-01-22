@@ -10,8 +10,9 @@ export class Grid {
         this.ajouterListeners();
         this.initialiserMines(numberMines);
         this.afficherMines();
+        this.initialiserValeurs();
 
-        //this.#afficherToutesCellules();
+        this.#afficherToutesCellules();
     }
 
     get miningGrid() {
@@ -48,14 +49,6 @@ export class Grid {
         }
     }
 
-    afficherMines() {
-        for (let i = 0; i < this.cells.length; i++) {
-            for (let j = 0; j < this.cells[i].length; j++) {
-                if (this.cells[i][j].isMine()) this.cells[i][j].afficheCellule();
-            }
-        }
-    }
-
     ajouterListeners() {
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
@@ -77,6 +70,55 @@ export class Grid {
             }
         }
     }
+
+
+
+    initialiserValeurs() {
+        for (let i = 0; i < this.cells.length; i++) {
+            for (let j = 0; j < this.cells[i].length; j++) {
+                if (this.cells[i][j].isMine()) continue;
+                this.cells[i][j].valeur = this.compterMines(i, j);
+            }
+        }
+    }
+
+    compterMines(row, col) {
+        let nbMines = 0;
+        let nbRows = this.cells[0].length-1;
+        let nbCols = this.cells.length-1;
+
+        // Haut
+        if (row > 0) {
+            if (col > 0 && this.cells[row - 1][col - 1].isMine()) nbMines++;
+            if (this.cells[row - 1][col].isMine()) nbMines++;
+            if (col < nbCols && this.cells[row - 1][col + 1].isMine()) nbMines++;
+        }
+
+        // Cotes
+        if (col > 0 && this.cells[row][col - 1].isMine()) nbMines++;
+        if (col < nbCols && this.cells[row][col + 1].isMine()) nbMines++;
+
+        // Bas
+        if (row < nbRows) {
+            if (col > 0 && this.cells[row + 1][col - 1].isMine()) nbMines++;
+            if (this.cells[row + 1][col].isMine()) nbMines++;
+            if (col < nbCols && this.cells[row + 1][col + 1].isMine()) nbMines++;
+        }
+
+
+
+        console.log("nombre de mines autour : " + nbMines);
+        return nbMines;
+    }
+
+    afficherMines() {
+        for (let i = 0; i < this.cells.length; i++) {
+            for (let j = 0; j < this.cells[i].length; j++) {
+                if (this.cells[i][j].isMine()) this.cells[i][j].afficheCellule();
+            }
+        }
+    }
+
 
     #afficherToutesCellules() {
         for (let i = 0; i < this.cells.length; i++) {

@@ -24,6 +24,10 @@ export class Cell {
         return this._flag;
     }
 
+    set valeur(valeur) {
+        this._valeur = valeur;
+    }
+
     setMine() {
         this._valeur = -1;
     }
