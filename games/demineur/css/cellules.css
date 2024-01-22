@@ -1,16 +1,16 @@
 :root {
     --cell-size: 30px;
-    --url-flag: url("/Demineur/asset/flag.png");
-    --url-mine: url("/Demineur/asset/mine.png");
-    --url-fake-mine: url("/Demineur/asset/fake-mine.png");
-    --url-1: url("/Demineur/asset/1.png");
-    --url-2: url("/Demineur/asset/2.png");
-    --url-3: url("/Demineur/asset/3.png");
-    --url-4: url("/Demineur/asset/4.png");
-    --url-5: url("/Demineur/asset/5.png");
-    --url-6: url("/Demineur/asset/6.png");
-    --url-7: url("/Demineur/asset/7.png");
-    --url-8: url("/Demineur/asset/8.png");
+    --url-flag: url("../asset/flag.png");
+    --url-mine: url("../asset/mine.png");
+    --url-fake-mine: url("../asset/fake-mine.png");
+    --url-1: url("../asset/1.png");
+    --url-2: url("../asset/2.png");
+    --url-3: url("../asset/3.png");
+    --url-4: url("../asset/4.png");
+    --url-5: url("../asset/5.png");
+    --url-6: url("../asset/6.png");
+    --url-7: url("../asset/7.png");
+    --url-8: url("../asset/8.png");
 }
 
 .cell {

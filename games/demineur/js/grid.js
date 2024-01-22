@@ -9,10 +9,11 @@ export class Grid {
         this.creerGrid(numberRows, numberColumns);
         this.ajouterListeners();
         this.initialiserMines(numberMines);
-        this.afficherMines();
         this.initialiserValeurs();
 
-        this.#afficherToutesCellules();
+
+        //this.afficherMines();
+        //this.#afficherToutesCellules();
     }
 
     get miningGrid() {
