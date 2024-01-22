@@ -29,6 +29,10 @@
     background-image: var(--url-fake-mine);
 }
 
+.cell.zero {
+    background-color: #bfbfbf;
+}
+
 .cell.one {
     background-image: var(--url-1);
 }
@@ -61,10 +65,10 @@
     background-image: var(--url-8);
 }
 
-td:active:not(.one):not(.two):not(.three):not(.four):not(.five):not(.six):not(.seven):not(.eight):not(.flag):not(.mine):not(.fake-mine) {
+td:active:not(.zero):not(.one):not(.two):not(.three):not(.four):not(.five):not(.six):not(.seven):not(.eight):not(.flag):not(.mine):not(.fake-mine) {
     background-color: #bfbfbf;
 }
 
-td:hover:not(.one):not(.two):not(.three):not(.four):not(.five):not(.six):not(.seven):not(.eight):not(.flag):not(.mine):not(.fake-mine) {
+td:hover:not(.zero):not(.one):not(.two):not(.three):not(.four):not(.five):not(.six):not(.seven):not(.eight):not(.flag):not(.mine):not(.fake-mine) {
     background-color: #d9d9d9;
 }
