@@ -24,75 +24,59 @@ export class Cell {
         return this._flag;
     }
 
-    toggleFlag() {
-        if (this._flag) {
-            this._flag = false;
-            this.element.classList.remove("cell-flag");
-        } else {
-            this._flag = true;
-            this.element.classList.add("cell-flag");
-        }
+    setMine() {
+        this._valeur = -1;
     }
 
     isMine() {
         return this._valeur === -1;
     }
 
+    toggleFlag() {
+        this._flag = !this._flag;
+        this.element.classList.toggle("flag");
+    }
+
     afficheCellule() {
         this._visible = true;
         switch(this._valeur) {
             case -1:
-                this.element.classList.add("cell-mine");
-                return;
-            case -1 && this._flag:
-                this.element.classList.add("cell-fake-mine");
+                if (this.flag) {
+                    this.element.classList.remove("flag");
+                    this.element.classList.add("fake-mine");
+                }
+                else this.element.classList.add("mine");
                 return;
             case 1:
-                this.element.classList.add("cell-1");
+                this.element.classList.add("one");
                 return;
             case 2:
-                this.element.classList.add("cell-2");
+                this.element.classList.add("two");
                 return;
             case 3:
-                this.element.classList.add("cell-3");
+                this.element.classList.add("three");
                 return;
             case 4:
-                this.element.classList.add("cell-4");
+                this.element.classList.add("four");
                 return;
             case 5:
-                this.element.classList.add("cell-5");
+                this.element.classList.add("five");
                 return;
             case 6:
-                this.element.classList.add("cell-6");
+                this.element.classList.add("six");
                 return;
             case 7:
-                this.element.classList.add("cell-7");
+                this.element.classList.add("seven");
                 return;
             case 8:
-                this.element.classList.add("cell-8");
+                this.element.classList.add("eight");
                 return;
         }
     }
 
-    static createCell() {
-        let cell = new Cell(-1);
-
-        // Ajouter un drapeau avec clique droit
-        cell.element.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
-            if (cell.visible) return;
-            cell.toggleFlag();
-        });
-
-        // Afficher la cellule avec clique gauche
-        cell.element.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (cell.flag) return;
-
-            if (!cell.isMine()) {
-                cell.afficheCellule();
-            }
-        });
+    static creerCellule() {
+        let cell = new Cell(1);
+        cell.element.classList.add("cell");
 
         return cell;
     }

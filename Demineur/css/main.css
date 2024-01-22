@@ -1,7 +1,7 @@
 :root {
     --cell-size: 30px;
     --url-flag: url("/Demineur/asset/flag.png");
-    --url-mine: url("/Demineur/asset/-1.png");
+    --url-mine: url("/Demineur/asset/mine.png");
     --url-fake-mine: url("/Demineur/asset/fake-mine.png");
     --url-1: url("/Demineur/asset/1.png");
     --url-2: url("/Demineur/asset/2.png");
@@ -13,51 +13,51 @@
     --url-8: url("/Demineur/asset/8.png");
 }
 
-.cell-assets {
+.cell {
     background-size: cover;
 }
 
-.cell-flag {
+.cell.flag {
     background-image: var(--url-flag);
 }
 
-.cell-mine {
+.cell.mine {
     background-image: var(--url-mine);
 }
 
-.cell-fake-mine {
+.cell.fake-mine {
     background-image: var(--url-fake-mine);
 }
 
-.cell-1 {
+.cell.one {
     background-image: var(--url-1);
 }
 
-.cell-2 {
+.cell.two {
     background-image: var(--url-2);
 }
 
-.cell-3 {
+.cell.three {
     background-image: var(--url-3);
 }
 
-.cell-4 {
+.cell.four {
     background-image: var(--url-4);
 }
 
-.cell-5 {
+.cell.five {
     background-image: var(--url-5);
 }
 
-.cell-6 {
+.cell.six {
     background-image: var(--url-6);
 }
 
-.cell-7 {
+.cell.seven {
     background-image: var(--url-7);
 }
 
-.cell-8 {
+.cell.eight {
     background-image: var(--url-8);
 }
 
@@ -68,7 +68,7 @@
     height: var(--cell-size);
 }
 
-td:active:not([class*="cell-"]) {
+td:active:not(.one):not(.two):not(.three):not(.four):not(.five):not(.six):not(.seven):not(.eight):not(.flag):not(.mine):not(.fake-mine) {
     background-color: #bfbfbf;
 }
 
