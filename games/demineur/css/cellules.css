@@ -25,7 +25,7 @@
 }
 
 .cell.flag {
-    background-image: var(--url-flag);
+    background-image:  var(--url-flag), var(--url-unclicked);
 }
 
 .cell.mine {

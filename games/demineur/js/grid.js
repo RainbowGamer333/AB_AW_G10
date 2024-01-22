@@ -56,15 +56,14 @@ export class Grid {
                 // Ajouter un drapeau avec clique droit
                 cell.element.addEventListener("contextmenu", (e) => {
                     e.preventDefault();
-                    if (cell.visible) return;
+                    if (cell.disabled || cell.visible) return;
                     cell.toggleFlag();
                 });
-
 
                 // Afficher la cellule avec clique gauche
                 cell.element.addEventListener("click", (e) => {
                     e.preventDefault();
-                    if (cell.flag) return;
+                    if (cell.disabled || cell.flag) return;
                     if (cell.isMine()) {
                         this.gameOver(cell);
                         return;
@@ -111,6 +110,7 @@ export class Grid {
 
     gameOver(mineCliquee) {
         this.afficherMines(mineCliquee);
+        this.disableCells();
     }
 
     afficherMines(mineCliquee) {
@@ -119,11 +119,20 @@ export class Grid {
                 let cell = this.cells[i][j];
                 if (cell.isMine() && !cell.flag) {
                     if (cell === mineCliquee) cell.valeur = -2;
+                    cell.afficheCellule();
                 }
                 else if (!cell.isMine() && cell.flag) {
                     cell.valeur = -3;
+                    cell.afficheCellule();
                 }
-                cell.afficheCellule();
+            }
+        }
+    }
+
+    disableCells() {
+        for (let i = 0; i < this.cells.length; i++) {
+            for (let j = 0; j < this.cells[i].length; j++) {
+                this.cells[i][j].disable();
             }
         }
     }

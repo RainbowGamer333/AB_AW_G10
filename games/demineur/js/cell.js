@@ -9,6 +9,7 @@ export class Cell {
         this._valeur = valeur;
         this._visible = false;
         this._flag = false;
+        this._disabled = false;
     }
 
 
@@ -22,6 +23,10 @@ export class Cell {
 
     get flag() {
         return this._flag;
+    }
+
+    get disabled() {
+        return this._disabled;
     }
 
     set valeur(valeur) {
@@ -39,6 +44,10 @@ export class Cell {
     toggleFlag() {
         this._flag = !this._flag;
         this.element.classList.toggle("flag");
+    }
+
+    disable() {
+        this._disabled = true;
     }
 
     afficheCellule() {
