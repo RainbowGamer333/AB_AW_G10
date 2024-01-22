@@ -11,7 +11,6 @@ export class Grid {
         this.initialiserMines(numberMines);
         this.initialiserValeurs();
 
-
         //this.afficherMines();
         //this.#afficherToutesCellules();
     }
@@ -62,10 +61,17 @@ export class Grid {
                     cell.toggleFlag();
                 });
 
+
                 // Afficher la cellule avec clique gauche
+                this.afficherMines = this.afficherMines.bind(this);
                 cell.element.addEventListener("click", function (e) {
                     e.preventDefault();
                     if (cell.flag) return;
+                    if (cell.isMine()) {
+                        console.log("Vous avez perdu !");
+                        this.afficherMines();
+                        return;
+                    }
                     cell.afficheCellule();
                 });
             }
@@ -105,10 +111,6 @@ export class Grid {
             if (this.cells[row + 1][col].isMine()) nbMines++;
             if (col < nbCols && this.cells[row + 1][col + 1].isMine()) nbMines++;
         }
-
-
-
-        console.log("nombre de mines autour : " + nbMines);
         return nbMines;
     }
 
