@@ -1,11 +1,24 @@
+.gameCardContainer{
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
 .gameCard{
     width: 200px;
-    height: 200px;
+    height: 240px;
     border-radius: var(--borderRadius);
     background-color: var(--gameCardColor);
     box-shadow:var(--baseShadow);
+    display: flex;
+    flex-direction: column;
 }
 
 .gameCard>.gameTitle{
     width: 100%;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
