@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e39f20a1-27ad-4b1c-b925-41d03f2f79c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/GameObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/GameObject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/generic/MonsterSpawner.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/entity/impl/generic/MonsterSpawner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/gui/Gui.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/gui/Gui.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/games/towerDefense/js/gui/TowerButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/gui/TowerButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -66,19 +66,26 @@ function stopDrag() {
         draggedButton.style.transform = "translate(0, 0)";
 
        const mouseCoordinates = Gui.getCanvasMouseCoordinates();
+       if (mouseCoordinates.x>=0 && mouseCoordinates.x<=Constants.width
+        && mouseCoordinates.y>=0 && mouseCoordinates.y<=Constants.height){
+           const gameObject = new Canon();
+           gameObject.x = mouseCoordinates.x;
+           gameObject.y = mouseCoordinates.y;
+           const col = gameObject.getColumn();
+           const line = gameObject.getLine();
+
+           if (line < Constants.rows-1){ //Can't place to last tine
+               gameObject.x = col * Constants.TILE_SIZE_ZOOMED ;
+               gameObject.y = line * Constants.TILE_SIZE_ZOOMED;
+               console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
+               Global.addGameObject(gameObject);
+
+           }
+       }
         console.log("End drag x:"+mouseCoordinates.x+" y:"+mouseCoordinates.y);
 
-        const gameObject = new Canon();
-        gameObject.x = mouseCoordinates.x;
-        gameObject.y = mouseCoordinates.y;
-        gameObject.x = gameObject.getColumn() * Constants.TILE_SIZE_ZOOMED ;
-        gameObject.y = gameObject.getLine() * Constants.TILE_SIZE_ZOOMED;
-        console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
-        Global.addGameObject(gameObject);
 
         draggedButton = null;
-
-
     }
 }
 document.addEventListener("mousemove", drag);
