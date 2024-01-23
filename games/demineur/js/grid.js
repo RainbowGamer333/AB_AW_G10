@@ -1,15 +1,15 @@
 import {Cell} from "./cell.js";
 
 export class Grid {
+    _firstClick = true;
 
     constructor(numberRows, numberColumns, numberMines) {
         this._miningGrid =  document.createElement("table");
         this._miningGrid.id = "miningGrid";
+        this._numberMines = numberMines;
         this.cells = [];
         this.creerGrid(numberRows, numberColumns);
         this.ajouterListeners();
-        this.initialiserMines(numberMines);
-        this.initialiserValeurs();
 
         //this.debug_afficherToutesCellules();
     }
@@ -45,6 +45,8 @@ export class Grid {
                 // Ajouter un drapeau avec clique droit
                 cell.element.addEventListener("contextmenu", (e) => {
                     e.preventDefault();
+
+                    // Le clique droit ne marche pas sur une cellule désactivée ou déjà visible
                     if (cell.disabled || cell.visible) return;
                     cell.toggleFlag();
                 });
@@ -52,10 +54,21 @@ export class Grid {
                 // Afficher la cellule avec clique gauche
                 cell.element.addEventListener("click", (e) => {
                     e.preventDefault();
+                    // Au premier clique on initialise les mines et les valeurs
+                    // Ceci permet de commencer une partie sans cliquer immédiatement sur une mine
+                    if (this._firstClick) {
+                        this._firstClick = false;
+                        this.initialiserMines(this._numberMines, i, j);
+                        this.initialiserValeurs();
+                    }
+
+                    // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
                     if (cell.disabled || cell.flag) return;
 
+                    // Si la cellule est vide, on affiche récursivement toutes les cellules vides autour d'elle
                     if (cell.valeur === 0) this.decouvrirZeros(i, j);
 
+                    // Cliquer sur une mine fait perdre la partie
                     if (cell.isMine()) {
                         this.gameOver(cell);
                         return;
@@ -66,11 +79,14 @@ export class Grid {
         }
     }
 
-    initialiserMines(numberMines) {
+    initialiserMines(numberMines, row, col) {
         let nbMines = 0;
         while (nbMines < numberMines) {
-            let cellule = this.cells[Math.floor(Math.random() * this.cells.length)][Math.floor(Math.random() * this.cells[0].length)];
-            if (!cellule.isMine()) {
+            let x = Math.floor(Math.random() * this.cells.length);
+            let y = Math.floor(Math.random() * this.cells[0].length);
+            let cellule = this.cells[x][y];
+
+            if ((x !== row || y !== col) && !cellule.isMine()) {
                 cellule.setMine();
                 nbMines++;
             }
