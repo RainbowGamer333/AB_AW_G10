@@ -28,7 +28,6 @@ export class Projectile extends GameObject{
                 if (gameObject.y + Constants.TILE_SIZE_ZOOMED >= this.y // TOP LEFT
                     && gameObject.y <= this.y ){
                     gameObject.hurt(this.damage);
-                    Global.removeGameObject(gameObject);
                     Global.removeGameObject(this);
                 }
             }

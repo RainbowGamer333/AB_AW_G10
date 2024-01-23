@@ -18,6 +18,7 @@ export class Demon extends Enemy {
         const spriteRenderer = new SpriteRenderer(image);
         super("demon", 0, 0, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
+        this.score = 100;
     }
 
     update(dt) {

@@ -14,5 +14,6 @@ export class Skeleton extends Enemy{
         const spriteRenderer = new SpriteRenderer(image);
         super("skeleton", x, y, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
+        this.score = 1;
     }
 }
