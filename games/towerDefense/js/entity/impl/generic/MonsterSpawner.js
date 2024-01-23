@@ -58,8 +58,8 @@ export class MonsterSpawner extends GameObject{
             entity.name += "_"+ counter++;
 
             Global.gameObjects.push(entity);
-            // Réinitialiser le temps accumulé
-            accumulatedTime = 0;
+
+            accumulatedTime -= spawnInterval;
         }
 
     }

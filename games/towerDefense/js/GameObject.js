@@ -37,6 +37,10 @@ export class GameObject {
     }
 
     getColumn(){
-        return this.x / Constants.TILE_SIZE_ZOOMED;
+        return Math.trunc(this.x / Constants.TILE_SIZE_ZOOMED);
+    }
+
+    getLine(){
+        return Math.trunc(this.y / Constants.TILE_SIZE_ZOOMED);
     }
 }

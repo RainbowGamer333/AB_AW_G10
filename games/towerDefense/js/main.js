@@ -26,18 +26,18 @@ function init(){
 
     MapUtils.createGround();
     MapUtils.createVillage();
-    MapUtils.createTestTowers();
-    MapUtils.createSpawner();
+    //MapUtils.createTestTowers();
+    //MapUtils.createSpawner();
 
 
     //Apply canvas size
     canvas.width = Constants.width;
     canvas.height = Constants.height;
-    console.log(canvas.width + " x:"+canvas.height);
+    console.log("width: "+canvas.width + " height:"+canvas.height);
 
 
     canvas.addEventListener('mousedown', function(e) {
-        getCursorPosition(canvas, e)
+        Gui.getCanvasMouseCoordinates(canvas, e)
     })
 
     console.log("Successfully initialized");
@@ -86,16 +86,6 @@ function gameLoop(timestamp) {
     requestAnimationFrame(gameLoop);
 }
 
-function getCursorPosition(canvas, event) {
-    const rect = canvas.getBoundingClientRect()
-    const x = event.clientX - rect.left ;
-    const y = event.clientY - rect.top ;
-
-    let tileX = x/Constants.TILE_SIZE_ZOOMED;
-    let tileY =y/Constants.TILE_SIZE_ZOOMED;
-
-
-}
 
 
 init();

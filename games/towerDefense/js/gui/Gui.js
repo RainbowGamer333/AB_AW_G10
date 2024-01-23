@@ -28,4 +28,19 @@ export class Gui {
      static init(){
 
     }
+
+    static getCanvasMouseCoordinates(){
+        const mouseX = event.clientX - Global.canvas.getBoundingClientRect().left;
+        const mouseY = event.clientY - Global.canvas.getBoundingClientRect().top;
+
+        // Ajuster les coordonnées en fonction de la différence de taille entre le canvas HTML et le canvas en pixels
+        const scaleX = Global.canvas.width / Global.canvas.clientWidth;
+        const scaleY = Global.canvas.height / Global.canvas.clientHeight;
+        const adjustedMouseX = mouseX * scaleX;
+        const adjustedMouseY = mouseY * scaleY;
+        return {
+            x: adjustedMouseX,
+            y: adjustedMouseY
+        };
+    }
 }

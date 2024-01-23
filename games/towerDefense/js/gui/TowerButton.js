@@ -1,5 +1,9 @@
 import {Path} from "../constants/Path.js";
-// import {Constants} from "../constants/Constants";
+import {Gui} from "./Gui.js";
+import {Global} from "../constants/Global.js";
+import {Canon} from "../entity/impl/tower/Canon.js";
+import {Constants} from "../constants/Constants.js";
+// import {Constants} from "../constants/Constants.js";
 let isDragging = false;
 let draggedButton = null;
 let offsetX, offsetY;
@@ -12,7 +16,7 @@ export class TowerButton{
         this.domElement = element;
         let orignalId = element.id.substring(3);
         this.buttonID = orignalId;
-        console.log("create : " + orignalId);
+        //console.log("create : " + orignalId);
 
 
         //Add texture
@@ -53,13 +57,28 @@ function drag(event) {
 
         draggedButton.style.left = `${x}px`;
         draggedButton.style.top = `${y}px`;
+        console.log("draging")
     }
 }
 
 function stopDrag() {
     if (draggedButton) {
         draggedButton.style.transform = "translate(0, 0)";
+
+       const mouseCoordinates = Gui.getCanvasMouseCoordinates();
+        console.log("End drag x:"+mouseCoordinates.x+" y:"+mouseCoordinates.y);
+
+        const gameObject = new Canon();
+        gameObject.x = mouseCoordinates.x;
+        gameObject.y = mouseCoordinates.y;
+        gameObject.x = gameObject.getColumn() * Constants.TILE_SIZE_ZOOMED ;
+        gameObject.y = gameObject.getLine() * Constants.TILE_SIZE_ZOOMED;
+        console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
+        Global.addGameObject(gameObject);
+
         draggedButton = null;
+
+
     }
 }
 document.addEventListener("mousemove", drag);
