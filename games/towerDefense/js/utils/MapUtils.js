@@ -5,6 +5,7 @@ import {SpriteRenderer} from "../component/SpriteRenderer.js";
 import {Global} from "../constants/Global.js";
 import {Utils} from "./Utils.js";
 import {Canon} from "../entity/impl/tower/Canon.js";
+import {MonsterSpawner} from "../entity/impl/generic/MonsterSpawner.js";
 
 export class MapUtils {
     static createGround(){
@@ -65,6 +66,10 @@ export class MapUtils {
             tower.y = y;
             Global.addGameObject(tower);
         }
+    }
+
+    static createSpawner(){
+        Global.gameObjects.push(new MonsterSpawner("MonsterSpawner",0,0));
     }
 
 }

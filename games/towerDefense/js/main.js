@@ -27,11 +27,8 @@ function init(){
     MapUtils.createGround();
     MapUtils.createVillage();
     MapUtils.createTestTowers();
+    MapUtils.createSpawner();
 
-
-
-    //Create the enemy spawner
-    Global.gameObjects.push(new MonsterSpawner("MonsterSpawner",0,0));
 
     //Apply canvas size
     canvas.width = Constants.width;

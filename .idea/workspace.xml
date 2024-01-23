@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e39f20a1-27ad-4b1c-b925-41d03f2f79c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/building/fountain.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/building/fountain.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/building/house.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/building/house_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/building/house_blue.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/building/house_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/building/house_red.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/asset/building/house_tiny.png" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/asset/building/house_tiny.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/constants/Path.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/constants/Path.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/games/towerDefense/js/utils/MapUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/utils/MapUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,9 +40,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.index.html.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "DEV__TowerDefense",
     "last_opened_file_path": "C:/Users/asend/OneDrive/Documents/GitHub/AB_AW_G10/games/towerDefense/js/entity/impl/enemy",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
