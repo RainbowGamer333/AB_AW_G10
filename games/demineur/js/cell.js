@@ -4,9 +4,8 @@ export class Cell {
     _visible;
     _flag;
 
-    constructor(valeur) {
+    constructor() {
         this.element = document.createElement("td");
-        this._valeur = valeur;
         this._visible = false;
         this._flag = false;
         this._disabled = false;
@@ -98,9 +97,8 @@ export class Cell {
     }
 
     static creerCellule() {
-        let cell = new Cell(1);
+        let cell = new Cell();
         cell.element.classList.add("cell");
-
         return cell;
     }
 }
