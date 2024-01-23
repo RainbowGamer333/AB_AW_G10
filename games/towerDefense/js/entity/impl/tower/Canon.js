@@ -30,11 +30,19 @@ export class Canon extends Tower{
 
 
     spawnProjectile() {
+        // const spawnOffset = 10;
+        // const y  = this.y - spawnOffset;
+        // let projectile = new Fireball();
+        // projectile.y = y;
+        // projectile.x = this.x;
+        // Global.addGameObject(projectile);
+
         const spawnOffset = 10;
         const y  = this.y - spawnOffset;
         let projectile = new Fireball();
         projectile.y = y;
         projectile.x = this.x;
         Global.addGameObject(projectile);
+
     }
 }
