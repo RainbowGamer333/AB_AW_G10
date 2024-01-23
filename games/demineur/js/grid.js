@@ -52,28 +52,36 @@ export class Grid {
                 });
 
                 // Afficher la cellule avec clique gauche
-                cell.element.addEventListener("click", (e) => {
+                cell.element.addEventListener("mouseup", (e) => {
                     e.preventDefault();
-                    // Au premier clique on initialise les mines et les valeurs
-                    // Ceci permet de commencer une partie sans cliquer immédiatement sur une mine
-                    if (this._firstClick) {
-                        this._firstClick = false;
-                        this.initialiserMines(this._numberMines, i, j);
-                        this.initialiserValeurs();
+
+                    // Clique du milieu uniquement sur une cellule visible
+                    if (e.button === 1 && cell.visible) {
+                        this.cliqueMilieux(i, j);
                     }
 
-                    // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
-                    if (cell.disabled || cell.flag) return;
+                    else if (e.button === 0) {
+                        // Au premier clique on initialise les mines et les valeurs
+                        // Ceci permet de commencer une partie sans cliquer immédiatement sur une mine
+                        if (this._firstClick) {
+                            this._firstClick = false;
+                            this.initialiserMines(this._numberMines, i, j);
+                            this.initialiserValeurs();
+                        }
 
-                    // Si la cellule est vide, on affiche récursivement toutes les cellules vides autour d'elle
-                    if (cell.valeur === 0) this.decouvrirZeros(i, j);
+                        // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
+                        if (cell.disabled || cell.flag) return;
 
-                    // Cliquer sur une mine fait perdre la partie
-                    if (cell.isMine()) {
-                        this.gameOver(cell);
-                        return;
+                        // Si la cellule est vide, on affiche récursivement toutes les cellules vides autour d'elle
+                        if (cell.valeur === 0) this.decouvrirZeros(i, j);
+
+                        // Cliquer sur une mine fait perdre la partie
+                        if (cell.isMine()) {
+                            this.gameOver(cell);
+                            return;
+                        }
+                        cell.afficheCellule();
                     }
-                    cell.afficheCellule();
                 });
             }
         }
@@ -135,44 +143,44 @@ export class Grid {
 
         // Haut
         if (row > 0) {
-            if (col > 0 && !this.cells[row-1][col-1].visible) {
+            if (col > 0 && this.canDisplay(row-1, col-1)) {
                 if (this.cells[row-1][col-1].valeur === 0) this.decouvrirZeros(row-1, col-1);
                 else if (this.cells[row-1][col-1].valeur > 0) this.cells[row-1][col-1].afficheCellule();
             }
 
-            if (!this.cells[row-1][col].visible) {
+            if (this.canDisplay(row-1, col)) {
                 if (this.cells[row-1][col].valeur === 0) this.decouvrirZeros(row-1, col);
                 else if (this.cells[row-1][col].valeur > 0) this.cells[row-1][col].afficheCellule();
             }
 
-            if (col < nbCols && !this.cells[row-1][col+1].visible) {
+            if (col < nbCols && this.canDisplay(row-1, col+1)) {
                 if (this.cells[row-1][col+1].valeur === 0) this.decouvrirZeros(row-1, col+1);
                 else if (this.cells[row-1][col+1].valeur > 0) this.cells[row-1][col+1].afficheCellule();
             }
         }
 
         // Cotes
-        if (col > 0 && !this.cells[row][col-1].visible) {
+        if (col > 0 && this.canDisplay(row, col-1)) {
             if (this.cells[row][col-1].valeur === 0) this.decouvrirZeros(row, col-1);
             else if (this.cells[row][col-1].valeur > 0) this.cells[row][col-1].afficheCellule();
         }
 
-        if (col < nbCols && !this.cells[row][col+1].visible) {
+        if (col < nbCols && this.canDisplay(row, col+1)) {
             if (this.cells[row][col+1].valeur === 0) this.decouvrirZeros(row, col+1);
             else if (this.cells[row][col+1].valeur > 0) this.cells[row][col+1].afficheCellule();
         }
 
         // Bas
         if (row < nbRows) {
-            if (col > 0 && !this.cells[row+1][col-1].visible) {
+            if (col > 0 && this.canDisplay(row+1, col-1)) {
                 if (this.cells[row+1][col-1].valeur === 0) this.decouvrirZeros(row+1, col-1);
                 else if (this.cells[row+1][col-1].valeur > 0) this.cells[row+1][col-1].afficheCellule();
             }
-            if (!this.cells[row+1][col].visible) {
+            if (this.canDisplay(row+1, col)) {
                 if (this.cells[row+1][col].valeur === 0) this.decouvrirZeros(row+1, col);
                 else if (this.cells[row+1][col].valeur > 0) this.cells[row+1][col].afficheCellule();
             }
-            if (col < nbCols && !this.cells[row+1][col+1].visible) {
+            if (col < nbCols && this.canDisplay(row+1, col+1)) {
                 if (this.cells[row+1][col+1].valeur === 0) this.decouvrirZeros(row+1, col+1);
                 else if (this.cells[row+1][col+1].valeur > 0) this.cells[row+1][col+1].afficheCellule();
             }
@@ -198,6 +206,39 @@ export class Grid {
                 }
             }
         }
+    }
+
+    cliqueMilieux(row, col) {
+        let nbRows = this.cells[0].length-1;
+        let nbCols = this.cells.length-1;
+        let cell;
+
+        // Haut
+        if (row > 0) {
+            if (col > 0 && this.canDisplay(row-1, col-1)) this.cliqueCellule(this.cells[row-1][col-1]);
+            if (this.canDisplay(row-1, col)) this.cliqueCellule(this.cells[row-1][col]);
+            if (col < nbCols && this.canDisplay(row-1, col+1)) this.cliqueCellule(this.cells[row-1][col+1]);
+        }
+
+        // Cotes
+        if (col > 0 && this.canDisplay(row, col-1)) this.cliqueCellule(this.cells[row][col-1]);
+        if (col < nbCols && this.canDisplay(row, col+1)) this.cliqueCellule(this.cells[row][col+1]);
+
+        // Bas
+        if (row < nbRows) {
+            if (col > 0 && this.canDisplay(row+1, col-1)) this.cliqueCellule(this.cells[row+1][col-1]);
+            if (this.canDisplay(row+1, col)) this.cliqueCellule(this.cells[row+1][col]);
+            if (col < nbCols && this.canDisplay(row+1, col+1)) this.cliqueCellule(this.cells[row+1][col+1]);
+        }
+    }
+
+    canDisplay(row, col) {
+        return (!this.cells[row][col].visible && !this.cells[row][col].flag);
+    }
+
+    cliqueCellule(cell) {
+        if (cell.isMine()) this.gameOver(cell);
+        cell.afficheCellule();
     }
 
     disableCells() {
