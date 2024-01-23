@@ -59,13 +59,17 @@ export class MapUtils {
         let image = new Image();
         image.src = Path.HOUSE_BLUE;
         const y = Constants.height-(Constants.TILE_SIZE_ZOOMED*2);
-        for (let i=0;i<Constants.colums;i++){
-            let towerChoice = Utils.randomIntFromInterval(0,5);
-            let tower = new Canon();
-            tower.x = i*Constants.TILE_SIZE_ZOOMED;
-            tower.y = y;
-            Global.addGameObject(tower);
-        }
+        // for (let i=0;i<Constants.colums;i++){
+        //     let towerChoice = Utils.randomIntFromInterval(0,5);
+        //     let tower = new Canon();
+        //     tower.x = i*Constants.TILE_SIZE_ZOOMED;
+        //     tower.y = y;
+        //     Global.addGameObject(tower);
+        // }
+        let tower = new Canon();
+        tower.x = 0*Constants.TILE_SIZE_ZOOMED;
+        tower.y = y;
+        Global.addGameObject(tower);
     }
 
     static createSpawner(){
