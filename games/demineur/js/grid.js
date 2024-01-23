@@ -37,17 +37,6 @@ export class Grid {
         this._miningGrid.appendChild(tbody);
     }
 
-    initialiserMines(numberMines) {
-        let nbMines = 0;
-        while (nbMines < numberMines) {
-            let cellule = this.cells[Math.floor(Math.random() * this.cells.length)][Math.floor(Math.random() * this.cells[0].length)];
-            if (!cellule.isMine()) {
-                cellule.setMine();
-                nbMines++;
-            }
-        }
-    }
-
     ajouterListeners() {
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
@@ -64,12 +53,26 @@ export class Grid {
                 cell.element.addEventListener("click", (e) => {
                     e.preventDefault();
                     if (cell.disabled || cell.flag) return;
+
+                    if (cell.valeur === 0) this.decouvrirZeros(i, j);
+
                     if (cell.isMine()) {
                         this.gameOver(cell);
                         return;
                     }
                     cell.afficheCellule();
                 });
+            }
+        }
+    }
+
+    initialiserMines(numberMines) {
+        let nbMines = 0;
+        while (nbMines < numberMines) {
+            let cellule = this.cells[Math.floor(Math.random() * this.cells.length)][Math.floor(Math.random() * this.cells[0].length)];
+            if (!cellule.isMine()) {
+                cellule.setMine();
+                nbMines++;
             }
         }
     }
@@ -108,6 +111,58 @@ export class Grid {
         return nbMines;
     }
 
+    decouvrirZeros(row, col) {
+        this.cells[row][col].afficheCellule();
+
+        let nbRows = this.cells[0].length-1;
+        let nbCols = this.cells.length-1;
+
+        // Haut
+        if (row > 0) {
+            if (col > 0 && !this.cells[row-1][col-1].visible) {
+                if (this.cells[row-1][col-1].valeur === 0) this.decouvrirZeros(row-1, col-1);
+                else if (this.cells[row-1][col-1].valeur > 0) this.cells[row-1][col-1].afficheCellule();
+            }
+
+            if (!this.cells[row-1][col].visible) {
+                if (this.cells[row-1][col].valeur === 0) this.decouvrirZeros(row-1, col);
+                else if (this.cells[row-1][col].valeur > 0) this.cells[row-1][col].afficheCellule();
+            }
+
+            if (col < nbCols && !this.cells[row-1][col+1].visible) {
+                if (this.cells[row-1][col+1].valeur === 0) this.decouvrirZeros(row-1, col+1);
+                else if (this.cells[row-1][col+1].valeur > 0) this.cells[row-1][col+1].afficheCellule();
+            }
+        }
+
+        // Cotes
+        if (col > 0 && !this.cells[row][col-1].visible) {
+            if (this.cells[row][col-1].valeur === 0) this.decouvrirZeros(row, col-1);
+            else if (this.cells[row][col-1].valeur > 0) this.cells[row][col-1].afficheCellule();
+        }
+
+        if (col < nbCols && !this.cells[row][col+1].visible) {
+            if (this.cells[row][col+1].valeur === 0) this.decouvrirZeros(row, col+1);
+            else if (this.cells[row][col+1].valeur > 0) this.cells[row][col+1].afficheCellule();
+        }
+
+        // Bas
+        if (row < nbRows) {
+            if (col > 0 && !this.cells[row+1][col-1].visible) {
+                if (this.cells[row+1][col-1].valeur === 0) this.decouvrirZeros(row+1, col-1);
+                else if (this.cells[row+1][col-1].valeur > 0) this.cells[row+1][col-1].afficheCellule();
+            }
+            if (!this.cells[row+1][col].visible) {
+                if (this.cells[row+1][col].valeur === 0) this.decouvrirZeros(row+1, col);
+                else if (this.cells[row+1][col].valeur > 0) this.cells[row+1][col].afficheCellule();
+            }
+            if (col < nbCols && !this.cells[row+1][col+1].visible) {
+                if (this.cells[row+1][col+1].valeur === 0) this.decouvrirZeros(row+1, col+1);
+                else if (this.cells[row+1][col+1].valeur > 0) this.cells[row+1][col+1].afficheCellule();
+            }
+        }
+    }
+
     gameOver(mineCliquee) {
         this.afficherMines(mineCliquee);
         this.disableCells();
@@ -137,6 +192,7 @@ export class Grid {
         }
     }
 
+  
 
     debug_afficherToutesCellules() {
         for (let i = 0; i < this.cells.length; i++) {
