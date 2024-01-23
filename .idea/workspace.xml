@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e39f20a1-27ad-4b1c-b925-41d03f2f79c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/gui/TowerButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/gui/TowerButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/constants/Global.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/constants/Global.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/entity/Enemy.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/entity/Enemy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/towerDefense/js/gui/Gui.js" beforeDir="false" afterPath="$PROJECT_DIR$/games/towerDefense/js/gui/Gui.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

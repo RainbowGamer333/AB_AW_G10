@@ -4,6 +4,7 @@ import {Global} from "../constants/Global.js";
 export class Gui {
      towerButtons = [];
      coinElement = null;
+     scoreElement = null;
 
      constructor() {
          let buttons = document.getElementsByClassName("towerButton");
@@ -13,6 +14,7 @@ export class Gui {
          }
 
          this.coinElement = document.getElementById("coin_card_value");
+         this.scoreElement = document.getElementById("score_card_value");
      }
 
 
@@ -22,6 +24,7 @@ export class Gui {
         }
 
         this.coinElement.textContent = Global.coinBalance;
+        this.scoreElement.textContent = Global.score;
      }
 
 

@@ -4,6 +4,7 @@ export class Global{
     static gameObjects;
     static canvas;
     static coinBalance = 12;
+    static score = 0;
 
 
     static removeGameObject(object){
@@ -36,5 +37,9 @@ export class Global{
         for (const gameObject of gameObjects){
             this.gameObjects.push(gameObject);
         }
+    }
+
+    static addScore(amount){
+        this.score+=amount;
     }
 }
