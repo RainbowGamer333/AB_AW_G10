@@ -10,8 +10,6 @@ export class Grid {
         this.cells = [];
         this.creerGrid(numberRows, numberColumns);
         this.ajouterListeners();
-
-        //this.debug_afficherToutesCellules();
     }
 
     get miningGrid() {
@@ -87,6 +85,13 @@ export class Grid {
         }
     }
 
+    cliqueMilieux(row, col) {
+        if (this.compterFlags(row, col) !== this.cells[row][col].valeur) return;
+        this.coordonneesAutour(row, col).forEach((coord) => {
+            if (this.canDisplay(coord[0], coord[1])) this.cliqueCellule(coord[0], coord[1]);
+        });
+    }
+
     initialiserMines(numberMines, row, col) {
         let nbMines = 0;
         while (nbMines < numberMines) {
@@ -112,79 +117,26 @@ export class Grid {
 
     compterMines(row, col) {
         let nbMines = 0;
-        let nbRows = this.cells[0].length-1;
-        let nbCols = this.cells.length-1;
-
-        // Haut
-        if (row > 0) {
-            if (col > 0 && this.cells[row - 1][col - 1].isMine()) nbMines++;
-            if (this.cells[row - 1][col].isMine()) nbMines++;
-            if (col < nbCols && this.cells[row - 1][col + 1].isMine()) nbMines++;
-        }
-
-        // Cotes
-        if (col > 0 && this.cells[row][col - 1].isMine()) nbMines++;
-        if (col < nbCols && this.cells[row][col + 1].isMine()) nbMines++;
-
-        // Bas
-        if (row < nbRows) {
-            if (col > 0 && this.cells[row + 1][col - 1].isMine()) nbMines++;
-            if (this.cells[row + 1][col].isMine()) nbMines++;
-            if (col < nbCols && this.cells[row + 1][col + 1].isMine()) nbMines++;
-        }
+        this.coordonneesAutour(row, col).forEach((coord) => {
+            if (this.cells[coord[0]][coord[1]].isMine()) nbMines++;
+        });
         return nbMines;
+    }
+
+    compterFlags(row, col) {
+        let nbFlags = 0;
+        this.coordonneesAutour(row, col).forEach((coord) => {
+            if (this.cells[coord[0]][coord[1]].flag) nbFlags++;
+        });
+        return nbFlags;
     }
 
     decouvrirZeros(row, col) {
         this.cells[row][col].afficheCellule();
-
-        let nbRows = this.cells[0].length-1;
-        let nbCols = this.cells.length-1;
-
-        // Haut
-        if (row > 0) {
-            if (col > 0 && this.canDisplay(row-1, col-1)) {
-                if (this.cells[row-1][col-1].valeur === 0) this.decouvrirZeros(row-1, col-1);
-                else if (this.cells[row-1][col-1].valeur > 0) this.cells[row-1][col-1].afficheCellule();
-            }
-
-            if (this.canDisplay(row-1, col)) {
-                if (this.cells[row-1][col].valeur === 0) this.decouvrirZeros(row-1, col);
-                else if (this.cells[row-1][col].valeur > 0) this.cells[row-1][col].afficheCellule();
-            }
-
-            if (col < nbCols && this.canDisplay(row-1, col+1)) {
-                if (this.cells[row-1][col+1].valeur === 0) this.decouvrirZeros(row-1, col+1);
-                else if (this.cells[row-1][col+1].valeur > 0) this.cells[row-1][col+1].afficheCellule();
-            }
-        }
-
-        // Cotes
-        if (col > 0 && this.canDisplay(row, col-1)) {
-            if (this.cells[row][col-1].valeur === 0) this.decouvrirZeros(row, col-1);
-            else if (this.cells[row][col-1].valeur > 0) this.cells[row][col-1].afficheCellule();
-        }
-
-        if (col < nbCols && this.canDisplay(row, col+1)) {
-            if (this.cells[row][col+1].valeur === 0) this.decouvrirZeros(row, col+1);
-            else if (this.cells[row][col+1].valeur > 0) this.cells[row][col+1].afficheCellule();
-        }
-
-        // Bas
-        if (row < nbRows) {
-            if (col > 0 && this.canDisplay(row+1, col-1)) {
-                if (this.cells[row+1][col-1].valeur === 0) this.decouvrirZeros(row+1, col-1);
-                else if (this.cells[row+1][col-1].valeur > 0) this.cells[row+1][col-1].afficheCellule();
-            }
-            if (this.canDisplay(row+1, col)) {
-                if (this.cells[row+1][col].valeur === 0) this.decouvrirZeros(row+1, col);
-                else if (this.cells[row+1][col].valeur > 0) this.cells[row+1][col].afficheCellule();
-            }
-            if (col < nbCols && this.canDisplay(row+1, col+1)) {
-                if (this.cells[row+1][col+1].valeur === 0) this.decouvrirZeros(row+1, col+1);
-                else if (this.cells[row+1][col+1].valeur > 0) this.cells[row+1][col+1].afficheCellule();
-            }
-        }
+        this.canDisplayAutour(row, col).forEach((coord) => {
+            if (this.cells[coord[0]][coord[1]].valeur === 0) this.decouvrirZeros(coord[0], coord[1]);
+            else if (this.cells[coord[0]][coord[1]].valeur > 0) this.cells[coord[0]][coord[1]].afficheCellule();
+        });
     }
 
     gameOver(mineCliquee) {
@@ -208,37 +160,63 @@ export class Grid {
         }
     }
 
-    cliqueMilieux(row, col) {
+    /**
+     * Renvoie toutes les coordonnées autour de la cellule. Ne comprend pas les cellules sortant de la grille.
+     * @param row la ligne de la cellule
+     * @param col la colonne de la cellule
+     * @returns {*[]} les coordonnées autour de la cellule
+     */
+    coordonneesAutour(row, col) {
         let nbRows = this.cells[0].length-1;
         let nbCols = this.cells.length-1;
-        let cell;
+        let coordonnees = [];
 
         // Haut
         if (row > 0) {
-            if (col > 0 && this.canDisplay(row-1, col-1)) this.cliqueCellule(this.cells[row-1][col-1]);
-            if (this.canDisplay(row-1, col)) this.cliqueCellule(this.cells[row-1][col]);
-            if (col < nbCols && this.canDisplay(row-1, col+1)) this.cliqueCellule(this.cells[row-1][col+1]);
+            if (col > 0) coordonnees.push([row-1, col-1]);
+            coordonnees.push([row-1, col]);
+            if (col < nbCols) coordonnees.push([row-1, col+1]);
         }
 
         // Cotes
-        if (col > 0 && this.canDisplay(row, col-1)) this.cliqueCellule(this.cells[row][col-1]);
-        if (col < nbCols && this.canDisplay(row, col+1)) this.cliqueCellule(this.cells[row][col+1]);
+        if (col > 0) coordonnees.push([row, col-1]);
+        if (col < nbCols) coordonnees.push([row, col+1]);
 
         // Bas
         if (row < nbRows) {
-            if (col > 0 && this.canDisplay(row+1, col-1)) this.cliqueCellule(this.cells[row+1][col-1]);
-            if (this.canDisplay(row+1, col)) this.cliqueCellule(this.cells[row+1][col]);
-            if (col < nbCols && this.canDisplay(row+1, col+1)) this.cliqueCellule(this.cells[row+1][col+1]);
+            if (col > 0) coordonnees.push([row+1, col-1]);
+            coordonnees.push([row+1, col]);
+            if (col < nbCols) coordonnees.push([row+1, col+1]);
         }
+        return coordonnees;
+    }
+
+    /**
+     * Renvoie toutes les coordonnées autour de la cellule qui peuvent être affichées. Ne comprend pas les cellules sortant de la grille.
+     * @param row la ligne de la cellule
+     * @param col la colonne de la cellule
+     * @returns {*[]} les coordonnées autour de la cellule qui peuvent être affichées
+     */
+    canDisplayAutour(row, col) {
+        let coordonnees = this.coordonneesAutour(row, col);
+        let newCoordonnees = [];
+        coordonnees.forEach((coord) => {
+            if (this.canDisplay(coord[0], coord[1])) newCoordonnees.push(coord);
+        });
+        return newCoordonnees;
     }
 
     canDisplay(row, col) {
         return (!this.cells[row][col].visible && !this.cells[row][col].flag);
     }
 
-    cliqueCellule(cell) {
+    cliqueCellule(row, col) {
+        let cell = this.cells[row][col];
         if (cell.isMine()) this.gameOver(cell);
-        cell.afficheCellule();
+        else {
+            if (cell.valeur === 0) this.decouvrirZeros(row, col);
+            else cell.afficheCellule();
+        }
     }
 
     disableCells() {
@@ -248,7 +226,6 @@ export class Grid {
             }
         }
     }
-
 
     reinitialiserPartie() {
         for (let i = 0; i < this.cells.length; i++) {
