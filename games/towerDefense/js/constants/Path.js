@@ -8,7 +8,7 @@ export class Path {
     //TOWERS
     static BASE_PATH_TOWER = Path.BASE_PATH + "/tower/";
     static CATAPULT = Path.BASE_PATH_TOWER+"catapult.png";
-    static TOWER = Path.BASE_PATH_TOWER+"tower.png";
+    static TOWER = Path.BASE_PATH_TOWER+"lightning_tower.png";
     static TRIPLE_CROSSBOW = Path.BASE_PATH_TOWER+"triple_crossbow.png";
     static CANON = Path.BASE_PATH_TOWER+"canon.png";
     // static CATAPULT = Path.BASE_PATH+"/tower/catapult.png";
