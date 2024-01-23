@@ -1,0 +1,12 @@
+:root{
+    --backgroundColor : #352b3e;
+    --navbarColor :#5c3f802e;
+    --navShadow : 0px 3px 6px -2px #000000;
+    --footerColor :  #221c25;
+
+    --toto : 1s ease-in-out background-color;
+    --mainWidth : 70vw;
+    --gameCardColor : #ffffff;
+    --borderRadius : 10px;
+    --baseShadow : 3px 3px 6px -2px #2b2b2b;
+}
