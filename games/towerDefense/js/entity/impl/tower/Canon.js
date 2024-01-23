@@ -9,7 +9,7 @@ export class Canon extends Tower{
     constructor() {
         const health = 2000;
         const damage = 50;
-        const attackRate = 4;
+        const attackRate = 2;
 
         let image = new Image();
         image.src = Path.CANON;
