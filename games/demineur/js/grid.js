@@ -16,14 +16,21 @@ export class Grid {
         return this._miningGrid;
     }
 
+    /**
+     * Crée la grille de jeu.
+     * @param numberRows le nombre de lignes
+     * @param numberColumns le nombre de colonnes
+     */
     creerGrid(numberRows, numberColumns) {
         let tbody = document.createElement("tbody");
 
         // Génération table
         for (let i = 0; i < numberRows; i++) {
+            // Génération ligne
             let tr = document.createElement("tr");
             let rows = [];
 
+            // Génération cellules de la ligne
             for (let j = 0; j < numberColumns; j++) {
                 let cellule = Cell.creerCellule();
                 tr.appendChild(cellule.element);
@@ -35,6 +42,11 @@ export class Grid {
         this._miningGrid.appendChild(tbody);
     }
 
+    /**
+     * Ajoute les listeners sur les cellules de la grille.
+     * Le clique droit ajoute un drapeau, le clique gauche affiche la cellule,
+     * et le clique du milieu affiche les cellules autour de la cellule si le nombre de drapeaux autour d'elle est égal à sa valeur.
+     */
     ajouterListeners() {
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
@@ -85,6 +97,11 @@ export class Grid {
         }
     }
 
+    /**
+     * Affiche toutes les cellules autour de la cellule si le nombre de drapeaux autour d'elle est égal à sa valeur.
+     * @param row la ligne de la cellule
+     * @param col la colonne de la cellule
+     */
     cliqueMilieux(row, col) {
         if (this.compterFlags(row, col) !== this.cells[row][col].valeur) return;
         this.coordonneesAutour(row, col).forEach((coord) => {
@@ -92,6 +109,12 @@ export class Grid {
         });
     }
 
+    /**
+     * Initialise les mines dans la grille. Exclut la cellule cliquée de départ.
+     * @param numberMines le nombre de mines à placer
+     * @param row la ligne de la cellule cliquée
+     * @param col la colonne de la cellule cliquée
+     */
     initialiserMines(numberMines, row, col) {
         let nbMines = 0;
         while (nbMines < numberMines) {
@@ -106,6 +129,9 @@ export class Grid {
         }
     }
 
+    /**
+     * Initialise les valeurs des cellules. Une cellule a pour valeur le nombre de mines autour d'elle.
+     */
     initialiserValeurs() {
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
@@ -115,6 +141,12 @@ export class Grid {
         }
     }
 
+    /**
+     * Compte le nombre de mines autour de la cellule.
+     * @param row la ligne de la cellule
+     * @param col la colonne de la cellule
+     * @returns {number} le nombre de mines autour de la cellule
+     */
     compterMines(row, col) {
         let nbMines = 0;
         this.coordonneesAutour(row, col).forEach((coord) => {
@@ -123,6 +155,12 @@ export class Grid {
         return nbMines;
     }
 
+    /**
+     * Compte le nombre de drapeaux autour de la cellule.
+     * @param row la ligne de la cellule
+     * @param col la colonne de la cellule
+     * @returns {number} le nombre de drapeaux autour de la cellule
+     */
     compterFlags(row, col) {
         let nbFlags = 0;
         this.coordonneesAutour(row, col).forEach((coord) => {
@@ -131,6 +169,11 @@ export class Grid {
         return nbFlags;
     }
 
+    /**
+     * Affiche toutes les cellules vides groupées autour de la cellule, et affiche les cellules non vides autour d'elles.
+     * @param row la ligne de la cellule
+     * @param col la colonne de la cellule
+     */
     decouvrirZeros(row, col) {
         this.cells[row][col].afficheCellule();
         this.canDisplayAutour(row, col).forEach((coord) => {
@@ -144,6 +187,10 @@ export class Grid {
         this.disableCells();
     }
 
+    /**
+     * Affiche toutes les mines et les drapeaux mal placés. La mine cliquée est affichée en rouge.
+     * @param mineCliquee la mine cliquée
+     */
     afficherMines(mineCliquee) {
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
