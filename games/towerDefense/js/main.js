@@ -77,10 +77,12 @@ function gameLoop(timestamp) {
     const dt = (timestamp - lastTimestamp) / 1000;
     lastTimestamp = timestamp;
 
-    updateGame(dt);
+
 
     // Rendre le jeu
     renderGame();
+
+    updateGame(dt);
 
     // Appeler la boucle de jeu à nouveau
     requestAnimationFrame(gameLoop);
