@@ -30,3 +30,59 @@ body, html {
     height: 100%;
     text-align: center;
 }
+#clickButton {
+    width: 80%;
+    height: 400px;
+    background-color: lightcoral;
+    border-radius: 10%;
+    border: 10px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 30px;
+    color: #fffbbb;
+    text-align: center;
+    line-height: 100px;
+    padding: 10px;
+    margin-left: 10%;
+}
+
+#clickButton:hover {
+    background-color: #f77222;
+    color: #221c25;
+}
+
+#score {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 30%;
+}
+
+.trembling-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+#score.trembling-animation {
+    animation: trembling 0.5s ease-in-out infinite;
+}
+
+@keyframes trembling {
+    0%, 100% {
+        transform: translateY(5px);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(15px);
+    }
+    75% {
+        transform: translateY(-20px);
+    }
+}
