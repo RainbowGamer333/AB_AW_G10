@@ -9,7 +9,7 @@ import {Constants} from "../../../constants/Constants.js";
 export class LightningTower extends Tower {
     constructor() {
         const health = 100;
-        const damage = 20;
+        const damage = 2;
         const attackRate = 0.15;
         const range = 3
 
