@@ -24,7 +24,7 @@ export class Global{
 
             this.gameObjects = halfBeforeTheUnwantedElement.concat(halfAfterTheUnwantedElement);
         }else{
-            console.log("Can't delete object with id: " + object.id);
+            // console.log("Can't delete object with id: " + object.id);
         }
     }
 
