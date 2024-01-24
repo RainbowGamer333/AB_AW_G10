@@ -12,6 +12,7 @@ export class Enemy extends Entity{
         super(name, x, y, velocity, health, maxHealth, damage);
         this.score = 0;
         this.coinDropped = 0;
+        this.attackRate = 1;
     }
 
     update(dt) {
@@ -26,13 +27,12 @@ export class Enemy extends Entity{
                 if (gameObject.y >= this.y // TOP LEFT
                     && gameObject.y <= this.y + Constants.TILE_SIZE_ZOOMED ){
                     this.accumulatedTime+=dt;
+                    isColliding= true;
                     if(this.accumulatedTime>=this.attackRate){
                         gameObject.hurt(this.damage);
                         this.accumulatedTime -= this.attackRate;
                         break;
                     }
-
-                    isColliding= true;
                 }
             }
         }
