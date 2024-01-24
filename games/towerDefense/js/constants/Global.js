@@ -3,7 +3,7 @@ export class Global{
     static context;
     static gameObjects;
     static canvas;
-    static coinBalance = 12;
+    static coinBalance = 500;
     static score = 0;
 
 

@@ -59,8 +59,8 @@ export class TowerButton{
         }
     }
 
-    update(dt){
-        this.domElement.disabled = this.price < Global.coinBalance;
+    update(dt){ //todo could be set with listener instead of updating every frame !
+        this.domElement.disabled = this.price > Global.coinBalance;
     }
 
 
@@ -118,6 +118,7 @@ function stopDrag(event) {
                 gameObject.y = line * Constants.TILE_SIZE_ZOOMED;
                 console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
                 Global.addGameObject(gameObject);
+                Global.coinBalance -= towerButton.price;
             }
         }
         // console.log("End drag x:"+mouseCoordinates.x+" y:"+mouseCoordinates.y);
