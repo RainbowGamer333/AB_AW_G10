@@ -29,17 +29,27 @@
 
 
 .towerButton{
-    height: 60px;
+    height: 80px;
     width: 60px;
     background-size: cover;
     image-rendering: pixelated;
     background-position: center;
     border: none;
+    padding: 0;
+}
+
+.towerButton>img{
+    height: 60px;
+    width: 60px;
 }
 
 .towerButton>.cost{
-    color: beige;
+    height: 20px;
+    width: 100%;
+    color: #000000;
+    font-weight: bold;
     display: flex;
+    justify-content: center;
 }
 
 .towerButton:hover{
