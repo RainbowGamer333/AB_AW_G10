@@ -1,3 +1,7 @@
+:root{
+    --towerButtonSize : 80px;
+}
+
 .gui-top{
     flex-direction: row-reverse;
 
@@ -29,8 +33,8 @@
 
 
 .towerButton{
-    min-height: 80px;
-    width: 60px;
+    min-height: var(--towerButtonSize);
+    width:  var(--towerButtonSize);
     background-size: cover;
     image-rendering: pixelated;
     background-position: center;
@@ -40,8 +44,8 @@
 }
 
 .towerButton>img{
-    height: 60px;
-    width: 60px;
+    height:  var(--towerButtonSize);
+    width:  var(--towerButtonSize);
 }
 
 .towerButton>.cost{

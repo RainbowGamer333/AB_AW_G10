@@ -7,7 +7,7 @@ import {Constants} from "../../../constants/Constants.js";
 
 export class Canon extends Tower{
     constructor() {
-        const health = 2000;
+        const health = 200;
         const damage = 50;
         const attackRate = 2;
 

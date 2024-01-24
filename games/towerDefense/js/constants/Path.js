@@ -12,6 +12,10 @@ export class Path {
     static TRIPLE_CROSSBOW = Path.BASE_PATH_TOWER+"triple_crossbow.png";
     static CANON = Path.BASE_PATH_TOWER+"canon.png";
     static LIGHTNING_TOWER = Path.BASE_PATH_TOWER+"lightning_tower.png";
+    static WALL = Path.BASE_PATH_TOWER+"wall.png";
+    static ANNIHILATOR = Path.BASE_PATH_TOWER+"annihilator.png";
+    static BANK = Path.BASE_PATH_TOWER+"bank.png";
+    static COIN_HARVESTER = Path.BASE_PATH_TOWER+"coin_harvester.png";
     // static CATAPULT = Path.BASE_PATH+"/tower/catapult.png";
 
     //Projectiles

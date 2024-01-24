@@ -10,7 +10,7 @@ export class Gui {
          let buttons = document.getElementsByClassName("towerButton");
 
          for (let i = 0; i < buttons.length; i++) {
-             let towerButton = new TowerButton(buttons[i]);
+             this.towerButtons.push( new TowerButton(buttons[i]));
          }
 
          this.coinElement = document.getElementById("coin_card_value");
@@ -20,7 +20,7 @@ export class Gui {
 
      update(dt){
         for (let i=0; i<this.towerButtons.length; i++){
-            (this.towerButtons)[i].update(dt);
+            this.towerButtons[i].update(dt);
         }
 
         this.coinElement.textContent = Global.coinBalance;
