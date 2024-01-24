@@ -1,9 +1,9 @@
 import {Tower} from "../../Tower.js";
-import {Path} from "../../../constants/Path";
-import {SpriteRenderer} from "../../../component/SpriteRenderer";
-import {Global} from "../../../constants/Global";
+import {Path} from "../../../constants/Path.js";
+import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
+import {Global} from "../../../constants/Global.js";
 
-export class Bank extends Tower{
+export class GoldenTree extends Tower{
     productionAmount;
     constructor() {
         const health = 2000;
@@ -11,11 +11,12 @@ export class Bank extends Tower{
         const attackRate = 2;
 
         let image = new Image();
-        image.src = Path.CANON;
+        image.src = Path.GOLDEN_TREE;
         const spriteRenderer = new SpriteRenderer(image);
         super("canon", 0, 0,0, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
-        this.productionAmount = 1;
+        this.productionAmount = 10;
+        this.attackRate = 2;
     }
 
 
