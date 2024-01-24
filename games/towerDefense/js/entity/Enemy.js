@@ -22,7 +22,7 @@ export class Enemy extends Entity{
         for (let i = 0; i < Global.gameObjects.length; i++) {
             let gameObject = Global.gameObjects[i];
             // console.log(this.y)
-            if (gameObject.x === this.x && gameObject instanceof Tower){ // if they are on the same line
+            if (gameObject.x === this.x && Enemy.isTarget(gameObject)){ // if they are on the same line
                 if (gameObject.y >= this.y // TOP LEFT
                     && gameObject.y <= this.y + Constants.TILE_SIZE_ZOOMED ){
                     this.accumulatedTime+=dt;
@@ -37,7 +37,7 @@ export class Enemy extends Entity{
             }
         }
         if(!isColliding){
-            this.y += this.velocity * dt;
+            this.y +=  this.velocity * dt;
         }
 
         // if (this.y <= -Constants.TILE_SIZE_ZOOMED ){
@@ -50,5 +50,10 @@ export class Enemy extends Entity{
         Global.score+=this.score;
         Global.coinBalance+=this.coinDropped;
         super.onDeath();
+    }
+
+   static isTarget(gameObject) {
+        //todo ajouter une classe building (représentant les éléments du village)
+       return gameObject instanceof Tower ;
     }
 }

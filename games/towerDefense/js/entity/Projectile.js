@@ -8,6 +8,7 @@ export class Projectile extends GameObject{
     velocity;
     damage;
     effect;
+    deadzone;
 
 
     constructor(name, x, y, velocity, damage, effect) {
@@ -15,11 +16,12 @@ export class Projectile extends GameObject{
         this.velocity = velocity;
         this.damage = damage;
         this.effect = effect;
+        this.deadzone = -32;
     }
 
     update(dt) {
-        this.y -= this.velocity*dt;
         super.update(dt);
+        this.y -= this.velocity*dt;
 
         for (let i = 0; i < Global.gameObjects.length; i++) {
             let gameObject = Global.gameObjects[i];
@@ -32,8 +34,12 @@ export class Projectile extends GameObject{
                 }
             }
         }
-        if (this.y <= -Constants.TILE_SIZE_ZOOMED ){//If the projectile is off the screen
+        if (this.y <= this.deadzone){ // Apply the deadzone
             Global.removeGameObject(this);
         }
+    }
+
+    setDeadZone(deadZone){
+        this.deadzone = this.y - (deadZone*Constants.TILE_SIZE_ZOOMED) ;
     }
 }

@@ -22,6 +22,8 @@ export class Necromancer extends Enemy {
         super("Necromancer", 0, 0, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
         this.spawnInterval = 5;
+        this.coinDropped = 5;
+        this.score = 5;
     }
 
 

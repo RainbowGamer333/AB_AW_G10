@@ -40,7 +40,7 @@ export class Entity extends GameObject{
     }
 
     onDeath(){
-        console.log(this.name+" is dead.");
+        // console.log(this.name+" is dead.");
         Global.removeGameObject(this);
     }
 
