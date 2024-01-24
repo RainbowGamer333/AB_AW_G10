@@ -11,7 +11,7 @@
     flex-direction: row;
     justify-content: center;
     background-color: #424242;
-    height: 60px;
+    min-height: 60px;
     flex-wrap: wrap;
 }
 
@@ -34,8 +34,9 @@
     background-size: cover;
     image-rendering: pixelated;
     background-position: center;
-    border: none;
     padding: 0;
+    border: 1px solid;
+    border-radius: 10px;
 }
 
 .towerButton>img{
