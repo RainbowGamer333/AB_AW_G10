@@ -10,7 +10,7 @@ export class Fireball extends Projectile{
 
     constructor() {
         const name = "fireball";
-        const velocity = 40;
+        const velocity = 60;
         const damage = 100;
         super(name, 0, 0, velocity, damage, null);
 
