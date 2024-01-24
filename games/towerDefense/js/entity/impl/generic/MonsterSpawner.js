@@ -9,7 +9,7 @@ import {Necromancer} from "../enemy/Necromancer.js";
 import {Demon} from "../enemy/Demon.js";
 import {Ogre} from "../enemy/Ogre.js";
 
-const spawnInterval = 1;
+const spawnInterval = 2;
 let accumulatedTime = 0.0; // Temps accumulé depuis le dernier spawn
 let counter = 0;
 export class MonsterSpawner extends GameObject{
@@ -20,7 +20,7 @@ export class MonsterSpawner extends GameObject{
         if (accumulatedTime >= spawnInterval) {
 
             //Spawning enemy
-            console.log("Spawning monsters");
+            // console.log("Spawning monsters");
             let entity = null;
             const enemyType = Utils.randomIntFromInterval(0,4);
             // L'interval peut augmenter, au début il est limité au petit ogre et gobelin et progressivement il arrive aux demons

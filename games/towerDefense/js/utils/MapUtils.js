@@ -6,6 +6,7 @@ import {Global} from "../constants/Global.js";
 import {Utils} from "./Utils.js";
 import {Canon} from "../entity/impl/tower/Canon.js";
 import {MonsterSpawner} from "../entity/impl/generic/MonsterSpawner.js";
+import {Building} from "../entity/impl/generic/Building.js";
 
 export class MapUtils {
     static createGround(){
@@ -48,9 +49,9 @@ export class MapUtils {
         for (let i=0;i<Constants.colums;i++){
             const imageChoice = Utils.randomIntFromInterval(0,images.length-1);
 
-            let tile = new GameObject("tile_building_"+tileCPT++,i*Constants.TILE_SIZE_ZOOMED,y);
-            tile.addComponent(new SpriteRenderer(images[imageChoice]));
-            Global.addGameObject(tile);
+            let villageBuilding = new Building("tile_building_"+tileCPT++,i*Constants.TILE_SIZE_ZOOMED,y);
+            villageBuilding.addComponent(new SpriteRenderer(images[imageChoice]));
+            Global.addGameObject(villageBuilding);
         }
     }
 
