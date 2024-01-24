@@ -2,7 +2,7 @@ export class Constants {
 
 
     static colums = 9;
-    static rows = 10;
+    static rows = 12;
 
     static TILE_SIZE = 32;
     static ZOOM_FACTOR = 1.0;
