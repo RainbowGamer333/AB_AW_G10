@@ -24,7 +24,7 @@ export class Projectile extends GameObject{
         for (let i = 0; i < Global.gameObjects.length; i++) {
             let gameObject = Global.gameObjects[i];
             // console.log(this.y)
-            if (gameObject.x === this.x && gameObject instanceof Enemy){ // if they are on the same line
+            if (gameObject.x === this.x && gameObject instanceof Enemy){ // if they are on the same col
                 if (gameObject.y + Constants.TILE_SIZE_ZOOMED >= this.y // TOP LEFT
                     && gameObject.y <= this.y ){
                     gameObject.hurt(this.damage);
