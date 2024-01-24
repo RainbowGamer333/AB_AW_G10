@@ -11,11 +11,13 @@ export class Path {
     static TOWER = Path.BASE_PATH_TOWER+"lightning_tower.png";
     static TRIPLE_CROSSBOW = Path.BASE_PATH_TOWER+"triple_crossbow.png";
     static CANON = Path.BASE_PATH_TOWER+"canon.png";
+    static LIGHTNING_TOWER = Path.BASE_PATH_TOWER+"lightning_tower.png";
     // static CATAPULT = Path.BASE_PATH+"/tower/catapult.png";
 
     //Projectiles
     static BASE_PATH_PROJECTILE = Path.BASE_PATH + "projectile/";
     static FIREBALL = Path.BASE_PATH_PROJECTILE+"fireball.png";
+    static LIGHTNING = Path.BASE_PATH_PROJECTILE+"lightning.png";
 
     //ENEMIES
     static BASE_PATH_ENEMY = Path.BASE_PATH + "enemy/";

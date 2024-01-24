@@ -3,6 +3,7 @@ import {Gui} from "./Gui.js";
 import {Global} from "../constants/Global.js";
 import {Canon} from "../entity/impl/tower/Canon.js";
 import {Constants} from "../constants/Constants.js";
+import {LightningTower} from "../entity/impl/tower/LightningTower.js";
 // import {Constants} from "../constants/Constants.js";
 let isDragging = false;
 let draggedButton = null;
@@ -11,6 +12,7 @@ let offsetX, offsetY;
 export class TowerButton{
     buttonID;
     domElement;
+    linkedTowerClass;
 
     constructor(element){
         this.domElement = element;
@@ -22,6 +24,12 @@ export class TowerButton{
         //Add texture
         let imagePath = Path.BASE_PATH_TOWER+this.buttonID+".png";
         this.domElement.style.backgroundImage = `url(${imagePath})`;
+
+        switch (this.buttonID){
+            case "canon":{
+                this.linkedTowerClass = "Canon";
+            }
+        }
 
 
 
@@ -38,7 +46,10 @@ export class TowerButton{
 
 
 
+    spawnTower(){
+        let tower = new this[this.linkedTowerClass];
 
+    }
 
 }
 
@@ -66,9 +77,9 @@ function stopDrag() {
         draggedButton.style.transform = "translate(0, 0)";
 
        const mouseCoordinates = Gui.getCanvasMouseCoordinates();
-       if (mouseCoordinates.x>=0 && mouseCoordinates.x<=Constants.width
+       if (mouseCoordinates.x>=0 && mouseCoordinates.x<=Constants.width //Check if mouse coordinates are within canvas bounds
         && mouseCoordinates.y>=0 && mouseCoordinates.y<=Constants.height){
-           const gameObject = new Canon();
+           const gameObject = new LightningTower();
            gameObject.x = mouseCoordinates.x;
            gameObject.y = mouseCoordinates.y;
            const col = gameObject.getColumn();
@@ -88,6 +99,8 @@ function stopDrag() {
         draggedButton = null;
     }
 }
+
+
 document.addEventListener("mousemove", drag);
 document.addEventListener("mouseup", stopDrag);
 
