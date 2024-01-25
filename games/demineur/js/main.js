@@ -1,10 +1,14 @@
-import { Grid } from "./grid.js";
+import { GameBoard } from "./gameBoard.js";
+
+let nbRows = 10;
+let nbCols = 10;
+let nbMines = 10;
+
+
 
 function onload() {
-    let gameBoard = document.getElementById("grille");
-    let grid = new Grid(10, 10, 10);
-
-    gameBoard.appendChild(grid.miningGrid);
+    let gameBoard = new GameBoard(nbRows, nbCols, nbMines);
+    //setStyle(nbRows, nbCols, nbMines);
 }
 
 
