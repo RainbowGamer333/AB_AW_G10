@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/towerDefense.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower Defense</title>
+</head>
+<body>
+    <a href="../..">accueil</a>
+    <div class="gameContainer">
+        <div class="gui gui-top">
+            <div class="guiCard">
+                <span class="guiCard-title">Score</span>
+                <span class="guiCard-value" id="score_card_value">12</span>
+            </div>
+            <div class="guiCard" id="progress">
+                <span class="guiCard-title">Progress</span>
+                <span class="guiCard-value">50%</span>
+            </div>
+            <div class="guiCard" id="coin_card">
+                <span class="guiCard-title">coin</span>
+                <span class="guiCard-value" id="coin_card_value">10</span>
+            </div>
+        </div>
+
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+        <div class="gui gui-bottom">
+            <button class="towerButton" id="tb_crossbow">
+                <span class="title">Arbalète</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">12</span>
+            </button>
+            <button class="towerButton" id="tb_triple_crossbow">
+                <span class="title">Triple Arbalète</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">12</span>
+            </button>
+            <button class="towerButton" id="tb_catapult">
+                <span class="title">Catapulte</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">12</span>
+            </button>
+            <button class="towerButton" id="tb_lightning_tower">
+                <span class="title">Tesla</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">12</span>
+            </button>
+            <button class="towerButton" id="tb_wall">
+                <span class="title">Rempart</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">12</span>
+            </button>
+            <button class="towerButton" id="tb_canon">
+                <span class="title">Canon</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">12</span>
+            </button>
+            <button class="towerButton" id="tb_golden_tree">
+                <span class="title">Arbre doré</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">20</span>
+            </button>
+            <button class="towerButton" id="tb_coin_harvester">
+                <span class="title">Récolteur automatique</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">12</span>
+            </button>
+            <button class="towerButton" id="tb_bidirectional_sonar">
+                <span class="title">Sonar bidirectionnel</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">500</span>
+            </button>
+            <button class="towerButton" id="tb_annihilator">
+                <span class="title">Annihilateur</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">1000</span>
+            </button>
+            <button class="towerButton" id="tb_fire_canon">
+                <span class="title">Canon de feu</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">1</span>
+            </button>
+
+        </div>
+    </div>
+    <section>
+        <h2>Règles</h2>
+        <div class="idea">
+            <ul>
+                <li>
+                    Gros projectile qui peut toucher trois ennemis, deviens de plus en plus rapide et petit a chaque touche, fait aussi de moins en moins de dégât
+                </li>
+                <li>
+                    Chaque arbre doré produit <b>10</b> pièces toutes les 10 secondes, chaque arbre multiplie par 2 le nombre de gobelin.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+</body>
+<!-- Ajoutez vos scripts JavaScript ici -->
+<!--<script src="js/entity/Tower.js"></script>-->
+<!--<script src="js/entity/Enemy.js"></script>-->
+<script type="module" src="js/main.js"></script>
+</html>

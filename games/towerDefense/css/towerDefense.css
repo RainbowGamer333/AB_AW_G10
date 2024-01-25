@@ -1,0 +1,74 @@
+:root{
+    --towerButtonSize : 80px;
+}
+
+.gui-top{
+    flex-direction: row-reverse;
+
+
+
+}
+
+
+.gui{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #424242;
+    min-height: 60px;
+    flex-wrap: wrap;
+}
+
+.guiCard{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
+    margin-left: 10px;
+}
+
+.guiCard>span{
+    text-align: center;
+}
+
+
+.towerButton{
+    min-height: var(--towerButtonSize);
+    width:  var(--towerButtonSize);
+    background-size: cover;
+    image-rendering: pixelated;
+    background-position: center;
+    padding: 0;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.towerButton>img{
+    height:  var(--towerButtonSize);
+    width:  var(--towerButtonSize);
+}
+
+.towerButton>.cost{
+    height: 20px;
+    width: 100%;
+    color: #000000;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.towerButton>.title{
+    background-color: #553725;
+    color: white;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.towerButton:not(:disabled):hover{
+    filter: brightness(1.2);
+}
