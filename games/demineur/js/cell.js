@@ -98,7 +98,7 @@ export class Cell {
 
     static creerCellule() {
         let cell = new Cell();
-        cell.element.classList.add("cell");
+        cell.element.classList.add("cell", "unclicked");
         return cell;
     }
 }

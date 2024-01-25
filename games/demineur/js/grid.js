@@ -61,6 +61,11 @@ export class Grid {
                     cell.toggleFlag();
                 });
 
+                cell.element.addEventListener("dblclick", (e) => {
+                    e.preventDefault();
+                    if (cell.visible) this.cliqueMilieux(i, j);
+                });
+
                 // Afficher la cellule avec clique gauche
                 cell.element.addEventListener("mouseup", (e) => {
                     e.preventDefault();

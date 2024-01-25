@@ -16,7 +16,7 @@
 }
 
 .cell {
-    background-image: var(--url-unclicked);
+    background-image: none;
     background-size: cover;
 }
 
