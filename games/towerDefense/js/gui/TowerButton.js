@@ -7,6 +7,7 @@ import {LightningTower} from "../entity/impl/tower/LightningTower.js";
 import {Wall} from "../entity/impl/tower/Wall.js";
 import {GoldenTree} from "../entity/impl/tower/GoldenTree.js";
 import {Annihilator} from "../entity/impl/tower/Annihilator.js";
+import {FireCanon} from "../entity/impl/tower/FireCanon.js";
 // import {Constants} from "../constants/Constants.js";
 let isDragging = false;
 let draggedButton = null;
@@ -59,6 +60,7 @@ export class TowerButton{
             case "wall" : return new Wall();
             case "golden_tree" : return new GoldenTree();
             case "annihilator": return new Annihilator();
+            case "fire_canon" : return new FireCanon();
             default : return new LightningTower();
         }
     }

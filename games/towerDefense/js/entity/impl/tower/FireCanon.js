@@ -4,16 +4,16 @@ import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Fireball} from "../projectile/Fireball.js";
 import {Global} from "../../../constants/Global.js";
 import {Constants} from "../../../constants/Constants.js";
-import {CanonBall} from "../projectile/CanonBall.js";
+import {Canon} from "./Canon.js";
 
-export class Canon extends Tower{
+export class FireCanon extends Tower{
     constructor() {
-        const health = 200;
-        const damage = 50;
-        const attackRate = 2;
+        const health = 300;
+        const damage = 100;
+        const attackRate = 3;
 
         let image = new Image();
-        image.src = Path.CANON;
+        image.src = Path.FIRE_CANON;
         const spriteRenderer = new SpriteRenderer(image);
         super("canon", 0, 0,0, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
@@ -40,9 +40,10 @@ export class Canon extends Tower{
 
         const spawnOffset = 10;
         const y  = this.y - spawnOffset;
-        let projectile = new CanonBall();
+        let projectile = new Fireball();
         projectile.y = y;
         projectile.x = this.x;
+        projectile.damage = this.damage;
         Global.addGameObject(projectile);
 
     }
