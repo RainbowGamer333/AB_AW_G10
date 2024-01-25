@@ -1,0 +1,36 @@
+#gameBoard {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+}
+
+#gameBoardHeader {
+    background-color: lightgreen;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+#miningGrid {
+    border: 3px solid black;
+}
+
+#miningGrid > tr, td {
+    background-color: #c7c7c7;
+    border: 2px solid #adadad;
+    /*
+    width: var(--cell-size);
+    height: var(--cell-size);
+     */
+}
+
+#miningGrid {
+    border-collapse: collapse;
+    background-color: #d9d9d9;
+}
