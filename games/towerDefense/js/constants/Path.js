@@ -17,6 +17,7 @@ export class Path {
     static GOLDEN_TREE = Path.BASE_PATH_TOWER+"golden_tree.png";
     static COIN_HARVESTER = Path.BASE_PATH_TOWER+"coin_harvester.png";
     static FIRE_CANON = Path.BASE_PATH_TOWER+"fire_canon.png";
+    static BIDIRECTIONAL_SONAR = Path.BASE_PATH_TOWER+"bidirectional_sonar.png";
     // static CATAPULT = Path.BASE_PATH+"/tower/catapult.png";
 
     //Projectiles
@@ -24,6 +25,7 @@ export class Path {
     static FIREBALL = Path.BASE_PATH_PROJECTILE+"fireball.png";
     static CANON_BALL = Path.BASE_PATH_PROJECTILE+"canon_ball.png";
     static LIGHTNING = Path.BASE_PATH_PROJECTILE+"lightning.png";
+    static SONAR_BEAM = Path.BASE_PATH_PROJECTILE+"sonar.png";
 
     //ENEMIES
     static BASE_PATH_ENEMY = Path.BASE_PATH + "enemy/";
