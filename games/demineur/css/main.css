@@ -1,0 +1,16 @@
+#miningGrid {
+    border: 3px solid black;
+}
+
+#miningGrid > tr, td {
+    background-color: #c7c7c7;
+    border: 2px solid #adadad;
+
+    width: var(--cell-size);
+    height: var(--cell-size);
+}
+
+#miningGrid {
+    border-collapse: collapse;
+    background-color: #d9d9d9;
+}
