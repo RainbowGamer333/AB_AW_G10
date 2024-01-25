@@ -46,7 +46,7 @@ export class LightningTower extends Tower {
         projectile.y = y;
         projectile.x = this.x;
         projectile.damage = this.damage;
-        projectile.setDeadZone(5);
+        projectile.setDeadZone(6);
         Global.addGameObject(projectile);
 
     }

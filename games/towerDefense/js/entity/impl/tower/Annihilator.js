@@ -3,25 +3,36 @@ import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Fireball} from "../projectile/Fireball.js";
 import {Global} from "../../../constants/Global.js";
+import {AnnihilatorBeam} from "../projectile/AnnihilatorBeam.js";
+import {Constants} from "../../../constants/Constants.js";
+import {AnnihilatorVacuum} from "../projectile/AnnihilatorVacuum.js";
 
 export class Annihilator extends Tower{
+    startFire;
     constructor() {
         const health = 500;
-        const damage = 1000;
-        const attackRate = 2;
+        const damage = 100;
+        const attackRate = 0.15;
 
         let image = new Image();
         image.src = Path.ANNIHILATOR;
         const spriteRenderer = new SpriteRenderer(image);
         super("Annihilator", 0, 0,0, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
+        this.startFire = false;
     }
 
 
     update(dt) {
         this.accumulatedTime+=dt;
         if (this.accumulatedTime>=this.attackRate){
-            this.spawnProjectile();
+            this.spawnVacuum();
+
+            if (this.startFire){
+                this.spawnProjectile();
+                this.hurt(20);
+            }
+
             this.accumulatedTime -= this.attackRate;
         }
         super.update(dt);
@@ -29,19 +40,24 @@ export class Annihilator extends Tower{
 
 
     spawnProjectile() {
-        // const spawnOffset = 10;
-        // const y  = this.y - spawnOffset;
-        // let projectile = new Fireball();
-        // projectile.y = y;
-        // projectile.x = this.x;
-        // Global.addGameObject(projectile);
-
         const spawnOffset = 10;
         const y  = this.y - spawnOffset;
-        let projectile = new Fireball();
+        let projectile = new AnnihilatorBeam();
         projectile.y = y;
         projectile.x = this.x;
+        projectile.damage = this.damage;
         Global.addGameObject(projectile);
 
+    }
+
+    spawnVacuum(){
+        const spawnOffset = 10;
+        const y  = this.y - spawnOffset;
+        let projectile = new AnnihilatorVacuum(this);
+        projectile.y = Constants.height;
+        projectile.x = this.x;
+        projectile.damage = this.damage;
+        projectile.deadzone = this.y ;
+        Global.addGameObject(projectile);
     }
 }

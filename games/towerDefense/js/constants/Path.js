@@ -26,6 +26,8 @@ export class Path {
     static CANON_BALL = Path.BASE_PATH_PROJECTILE+"canon_ball.png";
     static LIGHTNING = Path.BASE_PATH_PROJECTILE+"lightning.png";
     static SONAR_BEAM = Path.BASE_PATH_PROJECTILE+"sonar.png";
+    static ANNIHILATOR_BEAM = Path.BASE_PATH_PROJECTILE+"annihilator_beam.png";
+    static ANNIHILATOR_VACUUM = Path.BASE_PATH_PROJECTILE+"annihilator_vacuum.png";
 
     //ENEMIES
     static BASE_PATH_ENEMY = Path.BASE_PATH + "enemy/";

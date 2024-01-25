@@ -4,7 +4,7 @@ import {Entity} from "./Entity.js";
 import {Constants} from "../constants/Constants.js";
 import {Enemy} from "./Enemy.js";
 
-export class Projectile extends GameObject{
+export class Projectile extends Entity{
     velocity;
     damage;
     effect;
@@ -29,17 +29,22 @@ export class Projectile extends GameObject{
             if (gameObject.x === this.x && gameObject instanceof Enemy){ // if they are on the same col
                 if (gameObject.y + Constants.TILE_SIZE_ZOOMED >= this.y // TOP LEFT
                     && gameObject.y <= this.y ){
-                    gameObject.hurt(this.damage);
-                    Global.removeGameObject(this);
+                    this.onTargetTouched(gameObject);
                 }
             }
         }
         if (this.y <= this.deadzone){ // Apply the deadzone
-            Global.removeGameObject(this);
+            this.onDeath();
+            // Global.removeGameObject(this);
         }
     }
 
     setDeadZone(deadZone){
         this.deadzone = this.y - (deadZone*Constants.TILE_SIZE_ZOOMED) ;
+    }
+
+    onTargetTouched(target){
+        target.hurt(this.damage);
+        Global.removeGameObject(this);
     }
 }

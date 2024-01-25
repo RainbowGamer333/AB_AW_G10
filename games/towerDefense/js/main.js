@@ -27,7 +27,7 @@ function init(){
     MapUtils.createGround();
     MapUtils.createVillage();
     //MapUtils.createTestTowers();
-    // MapUtils.createSpawner();
+    MapUtils.createSpawner();
 
 
     //Apply canvas size

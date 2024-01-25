@@ -9,7 +9,7 @@ export class Demon extends Enemy {
     accumulatedTime = 0.0;
     constructor() {
         const health = 2000;
-        const velocity = 1;
+        const velocity = 3;
         const damage = 50;
         const attackRate = 4;
 
