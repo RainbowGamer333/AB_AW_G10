@@ -58,7 +58,8 @@
 }
 
 .towerButton>.title{
-    background-color: beige;
+    background-color: #553725;
+    color: white;
     width: 100%;
     height: 30px;
     display: flex;
@@ -68,6 +69,6 @@
     border-radius: 10px 10px 0 0;
 }
 
-.towerButton:hover{
+.towerButton:not(:disabled):hover{
     filter: brightness(1.2);
 }
