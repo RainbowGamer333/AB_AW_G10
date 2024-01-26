@@ -40,9 +40,14 @@ export class Cell {
         return this._valeur === -1;
     }
 
-    toggleFlag() {
-        this._flag = !this._flag;
-        this.element.classList.toggle("flag");
+    addFlag() {
+        this._flag = true;
+        this.element.classList.add("flag");
+    }
+
+    removeFlag() {
+        this._flag = false;
+        this.element.classList.remove("flag");
     }
 
     disable() {

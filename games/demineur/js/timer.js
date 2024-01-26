@@ -2,13 +2,15 @@ export class Timer {
 
     interval;
     time;
-    src = "./assets/timer/timer";
+    src = "./assets/header/timer";
 
     constructor() {
         this.timer = document.getElementById("gameBoardHeaderTime");
         this.timerUnit = document.createElement("img");
         this.timerTens = document.createElement("img");
         this.timerHundreds = document.createElement("img");
+
+        this.setBackground();
 
         this.timer.appendChild(this.timerHundreds);
         this.timer.appendChild(this.timerTens);
@@ -24,8 +26,14 @@ export class Timer {
         this.displayTimer();
     }
 
+    setBackground() {
+        this.timerHundreds.style.backgroundImage = "url('" + this.src + "Background.png')";
+        this.timerTens.style.backgroundImage = "url('" + this.src + "Background.png')";
+        this.timerUnit.style.backgroundImage = "url('" + this.src + "Background.png')";
+    }
+
     startTimer() {
-        console.log("starting timer");
+        console.log("starting header");
         this.interval = setInterval(() => this.updateTimer(), 1000);
     }
 
@@ -35,18 +43,16 @@ export class Timer {
     }
 
     stopTimer() {
-        console.log("stopping timer");
+        console.log("stopping header");
         clearInterval(this.interval);
     }
 
     displayTimer() {
-        let hundreds = Math.floor(this.time / 100);
-        let tens = Math.floor((this.time - hundreds * 100) / 10);
-        let unit = this.time - (hundreds * 100) - (tens * 10);
+        let minesDisplay = String(this.time).padStart(3, "0");
 
-        this.timerHundreds.src = this.src + hundreds + ".png";
-        this.timerTens.src = this.src + tens + ".png";
-        this.timerUnit.src = this.src + unit + ".png";
+        this.timerHundreds.src = this.src + minesDisplay[0] + ".png";
+        this.timerTens.src = this.src + minesDisplay[1] + ".png";
+        this.timerUnit.src = this.src + minesDisplay[2] + ".png";
     }
 
 }

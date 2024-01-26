@@ -1,7 +1,5 @@
 import { Grid } from "./grid.js";
 
-
-
 export class GameBoard {
     constructor(nbRows, nbCols, nbMines) {
         this.gameBoard = document.getElementById("gameBoard");

@@ -1,5 +1,6 @@
 import {Cell} from "./cell.js";
 import {Timer} from "./timer.js";
+import {MineCounter} from "./mineCounter.js";
 
 export class Grid {
     _firstClick = true;
@@ -8,6 +9,7 @@ export class Grid {
         this._miningGrid =  document.createElement("table");
         this._miningGrid.id = "miningGrid";
         this.timer = new Timer();
+        this.minesCounter = new MineCounter();
 
         this._numberMines = numberMines;
         this.cells = [];
@@ -61,7 +63,14 @@ export class Grid {
 
                     // Le clique droit ne marche pas sur une cellule désactivée ou déjà visible
                     if (cell.disabled || cell.visible) return;
-                    cell.toggleFlag();
+                    if (cell.flag) {
+                        cell.removeFlag();
+                        this.minesCounter.incrementMineCounter();
+                    }
+                    else {
+                        cell.addFlag();
+                        this.minesCounter.decrementMineCounter();
+                    }
                 });
 
                 cell.element.addEventListener("dblclick", (e) => {
@@ -86,9 +95,11 @@ export class Grid {
                         // Ceci permet de commencer une partie sans cliquer immédiatement sur une mine
                         if (this._firstClick) {
                             this._firstClick = false;
-                            this.initialiserMines(this._numberMines, i, j);
 
+                            this.initialiserMines(this._numberMines, i, j);
                             this.initialiserValeurs();
+
+                            this.minesCounter.initialiseMineCounter(this._numberMines);
                             this.timer.startTimer();
                         }
 

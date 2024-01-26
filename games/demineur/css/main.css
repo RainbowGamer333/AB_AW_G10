@@ -1,7 +1,5 @@
 #gameBoard {
-    /*
-    background-color: red;
-     */
+    border: 6px solid #c7c7c7;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +9,8 @@
 }
 
 #gameBoardHeader {
-    background-color: lightgreen;
+    background-image: url("../assets/grille/unclicked.png");
+    background-size: 100% 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -19,29 +18,25 @@
 }
 
 
-#gameBoardHeaderTime {
-    /*
-    background-color: lightblue;
-     */
+#gameBoardHeaderTime, #gameBoardHeaderMineCounter {
+    background-color: black;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
+    margin: 10px;
 }
 
 
-#miningGrid {
-    border: 3px solid black;
+#grille {
+    border: 3px solid #adadad;
+    border-bottom: none;
 }
+
 
 #miningGrid > tr, td {
     background-color: #c7c7c7;
     border: 2px solid #adadad;
-    /*
-    width: var(--cell-size);
-    height: var(--cell-size);
-     */
 }
 
 #miningGrid {
