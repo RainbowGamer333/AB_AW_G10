@@ -10,24 +10,42 @@
 <body>
     <a href="../..">accueil</a>
     <div class="gameContainer">
-        <div class="gui gui-top">
-            <div class="guiCard">
-                <span class="guiCard-title">Score</span>
-                <span class="guiCard-value" id="score_card_value">12</span>
+        <div class="gui left-container">
+            <button class="towerButton" id="tb_spell_wind">
+                <span class="title">Couloir venteux</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">75</span>
+            </button>
+            <button class="towerButton" id="tb_annihilator">
+                <span class="title">Annihilateur</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">1000</span>
+            </button>
+        </div>
+        <div class="middle-container">
+            <div class="gui gui-top">
+                <div class="guiCard">
+                    <span class="guiCard-title">Score</span>
+                    <span class="guiCard-value" id="score_card_value">12</span>
+                </div>
+                <div class="guiCard" id="progress">
+                    <span class="guiCard-title">Progress</span>
+                    <span class="guiCard-value">50%</span>
+                </div>
+                <div class="guiCard" id="coin_card">
+                    <img class = "coin_logo" src="asset/coin.png" alt="coin">
+                    <span class="guiCard-value" id="coin_card_value">10</span>
+                </div>
             </div>
-            <div class="guiCard" id="progress">
-                <span class="guiCard-title">Progress</span>
-                <span class="guiCard-value">50%</span>
-            </div>
-            <div class="guiCard" id="coin_card">
-                <span class="guiCard-title">coin</span>
-                <span class="guiCard-value" id="coin_card_value">10</span>
+
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+            <div class="gui gui-bottom">
+
+
             </div>
         </div>
-
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-
-        <div class="gui gui-bottom">
+        <div class="gui right-container">
             <button class="towerButton" id="tb_crossbow">
                 <span class="title">Arbalète</span>
                 <img src="asset/placeholder.png" alt="placeholder">
@@ -73,17 +91,11 @@
                 <img src="asset/placeholder.png" alt="placeholder">
                 <span class="cost">500</span>
             </button>
-            <button class="towerButton" id="tb_annihilator">
-                <span class="title">Annihilateur</span>
-                <img src="asset/placeholder.png" alt="placeholder">
-                <span class="cost">1000</span>
-            </button>
             <button class="towerButton" id="tb_fire_canon">
                 <span class="title">Canon de feu</span>
                 <img src="asset/placeholder.png" alt="placeholder">
                 <span class="cost">500</span>
             </button>
-
         </div>
     </div>
     <section>
@@ -95,6 +107,9 @@
                 </li>
                 <li>
                     Chaque arbre doré produit <b>10</b> pièces toutes les 10 secondes, chaque arbre multiplie par 2 le nombre de gobelin.
+                </li>
+                <li>
+                    Le <b>Canon de feu</b> tire des gros boulets enflammés capable de traverser le premier ennemi qu'il touche
                 </li>
             </ul>
         </div>

@@ -41,7 +41,7 @@ export class TowerButton{
            startDrag(event,this);
         });
         // element.addEventListener("mousedown",this.handleClick);
-        Global.canvas.addEventListener("mouseup", (event) => {
+        document.addEventListener("mouseup", (event) => {
             stopDrag(event,this);
         });
     }

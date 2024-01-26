@@ -17,7 +17,10 @@
     background-color: #424242;
     min-height: 60px;
     flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-start;
 }
+
 
 .guiCard{
     display: flex;
@@ -25,6 +28,24 @@
     align-content: center;
     justify-content: space-evenly;
     margin-left: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+#coin_card_value{
+    text-shadow: 1px 1px 6px rgb(255 212 122);
+}
+#coin_card{
+    image-rendering: pixelated;
+}
+
+.right-container {
+    width: 600px;
+    border-radius: 0 10px 10px 0;
+}
+
+.left-container{
+    border-radius: 10px 0 0 10px;
 }
 
 .guiCard>span{
@@ -34,6 +55,7 @@
 
 .towerButton{
     min-height: var(--towerButtonSize);
+    height: fit-content;
     width:  var(--towerButtonSize);
     background-size: cover;
     image-rendering: pixelated;
@@ -41,6 +63,7 @@
     padding: 0;
     border: 1px solid;
     border-radius: 10px;
+    margin: 2px;
 }
 
 .towerButton>img{
