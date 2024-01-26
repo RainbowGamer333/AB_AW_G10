@@ -20,14 +20,7 @@ export class FireCanon extends Tower{
     }
 
 
-    update(dt) {
-        this.accumulatedTime+=dt;
-        if (this.accumulatedTime>=this.attackRate){
-            this.spawnProjectile();
-            this.accumulatedTime -= this.attackRate;
-        }
-        super.update(dt);
-    }
+
 
 
     spawnProjectile() {

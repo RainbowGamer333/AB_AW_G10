@@ -19,5 +19,4 @@ export class Wall extends Tower{
     }
 
 
-
 }

@@ -15,7 +15,7 @@ export class Goblin extends Enemy{
         this.addComponent(spriteRenderer)
         this.attackRate = 1;
         this.damage = 20;
-        this.coinDropped = 1;
+        this.coinDropped = 5;
         this.score = 10;
     }
 }

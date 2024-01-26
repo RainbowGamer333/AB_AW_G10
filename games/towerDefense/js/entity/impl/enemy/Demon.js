@@ -19,6 +19,7 @@ export class Demon extends Enemy {
         super("demon", 0, 0, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
         this.score = 100;
+        this.coinDropped = 250;
     }
 
     update(dt) {

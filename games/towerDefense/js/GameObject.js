@@ -15,6 +15,10 @@ export class GameObject {
         this.id = Global.lastGameObjectID++;
     }
     update(dt){
+        this.updateComponents(dt);
+    }
+
+    updateComponents(dt){
         for(let i=0; i<this.components.length; i++){
             this.components[i].update(dt);
         }

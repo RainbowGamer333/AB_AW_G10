@@ -15,5 +15,6 @@ export class Goliath extends Enemy{
         super("goliath", 0, 0, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
         this.score = 250;
+        this.coinDropped = 100;
     }
 }
