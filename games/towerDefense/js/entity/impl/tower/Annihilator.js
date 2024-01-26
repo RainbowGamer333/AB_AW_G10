@@ -32,10 +32,9 @@ export class Annihilator extends Tower{
                 this.spawnProjectile();
                 this.hurt(20);
             }
-
-            this.accumulatedTime -= this.attackRate;
+            this.accumulatedTime = 0;
         }
-        super.update(dt);
+        super.updateComponents(dt);
     }
 
 
