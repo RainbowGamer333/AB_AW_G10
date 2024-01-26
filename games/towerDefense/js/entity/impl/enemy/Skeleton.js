@@ -6,7 +6,7 @@ export class Skeleton extends Enemy{
     constructor(x,y) {
         const health = 1;
         const velocity = 50;
-        const damage = 10;
+        const damage = 5;
         const attackRate = 4;
 
         let image = new Image();
