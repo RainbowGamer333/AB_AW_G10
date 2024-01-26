@@ -43,4 +43,16 @@ export class GameObject {
     getLine(){
         return Math.trunc(this.y / Constants.TILE_SIZE_ZOOMED);
     }
+
+    getComponent(componentClass){ //todo Dont work
+        console.log("okkkk")
+        for (let i = 0; i < this.components; i++){
+            console.log(this.components[i].className)
+            if (this.components[i].className === componentClass.className) {
+
+                return this.components[i];
+            }
+        }
+        return null;
+    }
 }

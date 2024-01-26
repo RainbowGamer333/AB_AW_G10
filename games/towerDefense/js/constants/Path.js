@@ -23,6 +23,7 @@ export class Path {
     //Projectiles
     static BASE_PATH_PROJECTILE = Path.BASE_PATH + "projectile/";
     static FIREBALL = Path.BASE_PATH_PROJECTILE+"fireball.png";
+    static FIREBALL_SMALL = Path.BASE_PATH_PROJECTILE+"fireball_small.png";
     static CANON_BALL = Path.BASE_PATH_PROJECTILE+"canon_ball.png";
     static LIGHTNING = Path.BASE_PATH_PROJECTILE+"lightning.png";
     static SONAR_BEAM = Path.BASE_PATH_PROJECTILE+"sonar.png";
