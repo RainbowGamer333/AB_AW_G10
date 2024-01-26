@@ -57,9 +57,9 @@ export class GameBoard {
         let tens = Math.floor((time - hundreds * 100) / 10);
         let unit = time - (hundreds * 100) - (tens * 10);
 
-        this.timerHundreds.src = "./assets/timer" + hundreds + ".png";
-        this.timerTens.src = "./assets/timer" + tens + ".png";
-        this.timerUnit.src = "./assets/timer" + unit + ".png";
+        this.timerHundreds.src = "./assets/timer/timer" + hundreds + ".png";
+        this.timerTens.src = "./assets/timer/timer" + tens + ".png";
+        this.timerUnit.src = "./assets/timer/timer" + unit + ".png";
     }
 
     ajouterGrille() {
