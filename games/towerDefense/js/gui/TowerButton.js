@@ -9,6 +9,7 @@ import {GoldenTree} from "../entity/impl/tower/GoldenTree.js";
 import {Annihilator} from "../entity/impl/tower/Annihilator.js";
 import {FireCanon} from "../entity/impl/tower/FireCanon.js";
 import {BidirectionalSonar} from "../entity/impl/tower/BidirectionalSonar.js";
+import {Tower} from "../entity/Tower.js";
 // import {Constants} from "../constants/Constants.js";
 let isDragging = false;
 let draggedButton = null;
@@ -86,7 +87,7 @@ function startDrag(event,towerButton) {
     const offsetY = event.clientY - draggedButton.getBoundingClientRect().top;
 
     draggedButton.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    console.log("start dragging "+towerButton.buttonID)
+    // console.log("start dragging "+towerButton.buttonID)
 }
 
 function drag(event) {
@@ -109,21 +110,24 @@ function stopDrag(event) {
             draggingElement = null;
             return;
         }
+
         draggedButton.style.transform = "translate(0, 0)";
 
         const mouseCoordinates = Gui.getCanvasMouseCoordinates();
         if (mouseCoordinates.x>=0 && mouseCoordinates.x<=Constants.width //Check if mouse coordinates are within canvas bounds
             && mouseCoordinates.y>=0 && mouseCoordinates.y<=Constants.height){
-            console.log("stop drag : "+towerButton.buttonID)
+            // console.log("stop drag : "+towerButton.buttonID)
             let gameObject = towerButton.createTower();
             gameObject.x = mouseCoordinates.x;
             gameObject.y = mouseCoordinates.y;
             const col = gameObject.getColumn();
             const line = gameObject.getLine();
 
-            if (line < Constants.rows-1){ //Can't place to last tine
-                gameObject.x = col * Constants.TILE_SIZE_ZOOMED ;
-                gameObject.y = line * Constants.TILE_SIZE_ZOOMED;
+            //line < Constants.rows-1 &&
+            gameObject.x = col * Constants.TILE_SIZE_ZOOMED ;
+            gameObject.y = line * Constants.TILE_SIZE_ZOOMED;
+            if ( Global.isTileFree(gameObject.x,gameObject.y)){ //Can't place to last tine
+
                 console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
                 Global.addGameObject(gameObject);
                 Global.coinBalance -= towerButton.price;
@@ -134,6 +138,8 @@ function stopDrag(event) {
         draggingElement = null;
     }
 }
+
+
 
 
 

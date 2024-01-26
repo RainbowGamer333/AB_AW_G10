@@ -53,10 +53,9 @@ export class MapUtils {
             villageBuilding.addComponent(new SpriteRenderer(images[imageChoice]));
             Global.addGameObject(villageBuilding);
             Global.maxVillageHealth += villageBuilding.maxHealth;
-            console.log("kiki")
         }
         Global.villageHealth = Global.maxVillageHealth;
-        console.log("VILLAGE HEALTH: " +Global.villageHealth);
+
     }
 
     static createTestTowers(){
