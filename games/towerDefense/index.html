@@ -26,9 +26,18 @@
                 <img src="asset/placeholder.png" alt="placeholder">
                 <span class="cost">1000</span>
             </button>
+            <button class="towerButton" id="tb_remover">
+                <span class="title">Retirer</span>
+                <img src="asset/placeholder.png" alt="placeholder">
+                <span class="cost">100</span>
+            </button>
         </div>
         <div class="middle-container">
             <div class="gui gui-top">
+                <div class="guiCard">
+                    <span class="guiCard-title">Village</span>
+                    <span class="guiCard-value" id="village_card_value">12%</span>
+                </div>
                 <div class="guiCard">
                     <span class="guiCard-title">Score</span>
                     <span class="guiCard-value" id="score_card_value">12</span>
@@ -107,6 +116,9 @@
         <h2>Règles</h2>
         <div class="idea">
             <ul>
+                <li>
+                   <b>But : </b> Protéger le village des monstre, la partie est finie lorsque l'état du village tombe à 0%.
+                </li>
                 <li>
                     Gros projectile qui peut toucher trois ennemis, deviens de plus en plus rapide et petit a chaque touche, fait aussi de moins en moins de dégât
                 </li>
