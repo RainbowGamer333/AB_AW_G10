@@ -1,4 +1,5 @@
 import {Tower} from "../entity/Tower.js";
+import {gState} from "../main.js";
 
 export class Engine { //TODO RENAME TO GameEngine
     static lastGameObjectID = 0;
@@ -9,6 +10,7 @@ export class Engine { //TODO RENAME TO GameEngine
     static score = 0;
     static villageHealth = 0;
     static maxVillageHealth = 0;
+    static gameState = null;
 
 
     static removeGameObject(object){
@@ -49,11 +51,11 @@ export class Engine { //TODO RENAME TO GameEngine
 
     static isTileFree(x,y){
         // console.log("OKKKKKKKKKKKKKK")
-        console.log(" checking x:"+x+" y:"+y)
+        // console.log(" checking x:"+x+" y:"+y)
         for (let i=0; i<Engine.gameObjects.length; i++){
             let obj = Engine.gameObjects[i];
             if (obj instanceof Tower){
-                console.log("IS A TOWER" + obj.name + " x:"+obj.x + " y:"+obj.y)
+                // console.log("IS A TOWER" + obj.name + " x:"+obj.x + " y:"+obj.y)
                 if (obj.x === x && obj.y === y){
                     return false;
                 }
@@ -62,5 +64,14 @@ export class Engine { //TODO RENAME TO GameEngine
 
         }
         return true;
+    }
+
+    static hurtVillage(amount){
+        Engine.villageHealth -= amount;
+        if (Engine.villageHealth <= 0) {
+            Engine.villageHealth = 0;
+            Engine.gameState = gState.END;
+            console.log("THE END OF THE GAME")
+        }
     }
 }

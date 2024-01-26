@@ -18,10 +18,9 @@ export class Building extends Tower{
 
 
     hurt(amount) {
-        Engine.villageHealth -= amount;
-        if (Engine.villageHealth < 0) Engine.villageHealth = 0;
-        super.hurt(amount);
-
+       Engine.hurtVillage(amount);
+       super.hurt(amount);
+0
     }
 
     onDeath() {

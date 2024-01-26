@@ -18,16 +18,16 @@ const canvas = Engine.canvas;
 Engine.context = Engine.canvas.getContext("2d");
 Engine.gameObjects = [];
 const gui = new Gui();
-let gameState = null;
-const gState = {
+
+export const gState = {
     MENU : 1,
     GAME : 2,
-    END: 2
+    END: 3
 }
 
 function init(){
     Engine.context.imageSmoothingEnabled = false;
-    gameState = gState.GAME;
+    Engine.gameState = gState.GAME;
 
 
 
@@ -54,19 +54,12 @@ function init(){
 
 // Définir la fonction de mise à jour du jeu
 function updateGame(dt) {
-    if (gameState === gState.GAME){
-        // Update Game objects
-        for (let i = 0; i < Engine.gameObjects.length; i++){
-            Engine.gameObjects[i].update(dt);
-        }
-
-        //Update Graphical User Interface
-        gui.update(dt);
-    }else if (gameState === gState.MENU){
-
-    }else if (gameState === gState.END){
-
+    for (let i = 0; i < Engine.gameObjects.length; i++){
+        Engine.gameObjects[i].update(dt);
     }
+    //Update Graphical User Interface
+    gui.update(dt);
+
 
 }
 
@@ -91,12 +84,18 @@ function gameLoop(timestamp) {
     const dt = (timestamp - lastTimestamp) / 1000;
     lastTimestamp = timestamp;
 
+    if (Engine.gameState === gState.GAME){
+        // Rendre le jeu
+        renderGame();
 
-
-    // Rendre le jeu
-    renderGame();
-
-    updateGame(dt);
+        updateGame(dt);
+    }else if (Engine.gameState === gState.MENU){
+        console.log("MENU STATE")
+    }else if (Engine.gameState === gState.END){
+        renderGame();
+        //TODO
+        // console.log("END STATEEE")
+    }
 
     // Appeler la boucle de jeu à nouveau
     requestAnimationFrame(gameLoop);
