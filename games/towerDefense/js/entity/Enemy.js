@@ -1,6 +1,6 @@
 import {Entity} from "./Entity.js";
 import {Constants} from "../constants/Constants.js";
-import {Global} from "../constants/Global.js";
+import {Engine} from "../constants/Engine.js";
 import {Tower} from "./Tower.js";
 
 export class Enemy extends Entity{
@@ -20,8 +20,8 @@ export class Enemy extends Entity{
 
 
         let isColliding = false;
-        for (let i = 0; i < Global.gameObjects.length; i++) {
-            let gameObject = Global.gameObjects[i];
+        for (let i = 0; i < Engine.gameObjects.length; i++) {
+            let gameObject = Engine.gameObjects[i];
             // console.log(this.y)
             if (gameObject.x === this.x && Enemy.isTarget(gameObject)){ // if they are on the same line
                 if (gameObject.y >= this.y // TOP LEFT
@@ -41,14 +41,14 @@ export class Enemy extends Entity{
         }
 
         // if (this.y <= -Constants.TILE_SIZE_ZOOMED ){
-        //     Global.removeGameObject(this);
+        //     Engine.removeGameObject(this);
         // }
     }
 
 
     onDeath() {
-        Global.score+=this.score;
-        Global.coinBalance+=this.coinDropped;
+        Engine.score+=this.score;
+        Engine.coinBalance+=this.coinDropped;
         super.onDeath();
     }
 

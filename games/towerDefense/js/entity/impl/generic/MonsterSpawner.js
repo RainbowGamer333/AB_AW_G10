@@ -1,6 +1,6 @@
 import {GameObject} from "../../../GameObject.js";
 import {EntityFactory} from "../../../EntityFactory.js";
-import {Global} from "../../../constants/Global.js";
+import {Engine} from "../../../constants/Engine.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";
 import {Goblin} from "../enemy/Goblin.js";
@@ -57,7 +57,7 @@ export class MonsterSpawner extends GameObject{
             entity.y = -32;
             entity.name += "_"+ counter++;
 
-            Global.gameObjects.push(entity);
+            Engine.gameObjects.push(entity);
 
             accumulatedTime -= spawnInterval;
         }

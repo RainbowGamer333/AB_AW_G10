@@ -2,7 +2,7 @@ import {Projectile} from "../../Projectile.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {GameObject} from "../../../GameObject.js";
-import {Global} from "../../../constants/Global.js";
+import {Engine} from "../../../constants/Engine.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Entity} from "../../Entity.js";
 import {Enemy} from "../../Enemy.js";
@@ -26,19 +26,19 @@ export class SonarBeam extends Projectile{
         // super.update(dt);
         this.x -= this.velocity*dt;
 
-        for (let i = 0; i < Global.gameObjects.length; i++) {
-            let gameObject = Global.gameObjects[i];
+        for (let i = 0; i < Engine.gameObjects.length; i++) {
+            let gameObject = Engine.gameObjects[i];
             // console.log(this.y)
             if (gameObject.y === this.y && gameObject instanceof Enemy){ // if they are on the same line
                 if (gameObject.x + Constants.TILE_SIZE_ZOOMED >= this.x // TOP LEFT
                     && gameObject.x <= this.x ){
                     gameObject.hurt(this.damage);
-                    Global.removeGameObject(this);
+                    Engine.removeGameObject(this);
                 }
             }
         }
         if (this.x <= this.deadzone){ // Apply the deadzone
-            Global.removeGameObject(this);
+            Engine.removeGameObject(this);
         }
     }
 }

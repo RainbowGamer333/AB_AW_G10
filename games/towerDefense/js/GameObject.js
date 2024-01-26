@@ -1,4 +1,4 @@
-import {Global} from "./constants/Global.js";
+import {Engine} from "./constants/Engine.js";
 import {Constants} from "./constants/Constants.js";
 
 export class GameObject {
@@ -12,7 +12,7 @@ export class GameObject {
         this.name = name;
         this.x = x;
         this.y = y;
-        this.id = Global.lastGameObjectID++;
+        this.id = Engine.lastGameObjectID++;
     }
     update(dt){
         this.updateComponents(dt);

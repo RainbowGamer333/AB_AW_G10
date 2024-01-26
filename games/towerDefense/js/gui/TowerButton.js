@@ -1,6 +1,6 @@
 import {Path} from "../constants/Path.js";
 import {Gui} from "./Gui.js";
-import {Global} from "../constants/Global.js";
+import {Engine} from "../constants/Engine.js";
 import {Canon} from "../entity/impl/tower/Canon.js";
 import {Constants} from "../constants/Constants.js";
 import {LightningTower} from "../entity/impl/tower/LightningTower.js";
@@ -69,14 +69,14 @@ export class TowerButton{
     }
 
     update(dt){ //todo could be set with listener instead of updating every frame !
-        this.domElement.disabled = this.price > Global.coinBalance;
+        this.domElement.disabled = this.price > Engine.coinBalance;
     }
 
 
 }
 
 function startDrag(event,towerButton) {
-    if (towerButton.price > Global.coinBalance){
+    if (towerButton.price > Engine.coinBalance){
         console.log("Not enough coins");
         return;
     }
@@ -104,7 +104,7 @@ function drag(event) {
 function stopDrag(event) {
     if (draggedButton && draggingElement) {
         let towerButton = draggingElement;
-        if (towerButton.price > Global.coinBalance){
+        if (towerButton.price > Engine.coinBalance){
             console.log("Not enough coins");
             draggedButton = null;
             draggingElement = null;
@@ -126,11 +126,11 @@ function stopDrag(event) {
             //line < Constants.rows-1 &&
             gameObject.x = col * Constants.TILE_SIZE_ZOOMED ;
             gameObject.y = line * Constants.TILE_SIZE_ZOOMED;
-            if ( Global.isTileFree(gameObject.x,gameObject.y)){ //Can't place to last tine
+            if ( Engine.isTileFree(gameObject.x,gameObject.y)){ //Can't place to last tine
 
                 console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
-                Global.addGameObject(gameObject);
-                Global.coinBalance -= towerButton.price;
+                Engine.addGameObject(gameObject);
+                Engine.coinBalance -= towerButton.price;
             }
         }
         // console.log("End drag x:"+mouseCoordinates.x+" y:"+mouseCoordinates.y);

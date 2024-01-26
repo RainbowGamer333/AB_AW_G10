@@ -1,7 +1,7 @@
 import {Tower} from "../../Tower.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
-import {Global} from "../../../constants/Global.js";
+import {Engine} from "../../../constants/Engine.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";
 import {Goblin} from "../enemy/Goblin.js";
@@ -26,7 +26,7 @@ export class GoldenTree extends Tower{
     update(dt) {
         this.accumulatedTime+=dt;
         if (this.accumulatedTime>=this.attackRate){
-            Global.coinBalance += this.productionAmount;
+            Engine.coinBalance += this.productionAmount;
             this.spawnGobelin();
             this.accumulatedTime = 0;
         }
@@ -37,6 +37,6 @@ export class GoldenTree extends Tower{
         const col = Utils.randomIntFromInterval(0,Constants.colums);
         const entity = new Goblin();
         entity.x = col * Constants.TILE_SIZE_ZOOMED;
-        Global.addGameObject(entity);
+        Engine.addGameObject(entity);
     }
 }

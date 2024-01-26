@@ -1,5 +1,5 @@
 import {GameObject} from "../GameObject.js";
-import {Global} from "../constants/Global.js";
+import {Engine} from "../constants/Engine.js";
 
 export class Entity extends GameObject{
     velocity = 20;
@@ -41,13 +41,13 @@ export class Entity extends GameObject{
 
     onDeath(){
         // console.log(this.name+" is dead.");
-        Global.removeGameObject(this);
+        Engine.removeGameObject(this);
     }
 
     onClick(){
         this.hurt(50);
         if (this.isAlive){
-            Global.coinBalance += 1;
+            Engine.coinBalance += 1;
         }
     }
 

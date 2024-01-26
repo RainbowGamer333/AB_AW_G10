@@ -1,5 +1,5 @@
 import {TowerButton} from "./TowerButton.js";
-import {Global} from "../constants/Global.js";
+import {Engine} from "../constants/Engine.js";
 
 export class Gui {
      towerButtons = [];
@@ -27,10 +27,10 @@ export class Gui {
 
 
         //TODO DO EVENT NOT UPDATE !
-        this.coinElement.textContent = Global.coinBalance;
-        this.scoreElement.textContent = Global.score;
+        this.coinElement.textContent = Engine.coinBalance;
+        this.scoreElement.textContent = Engine.score;
 
-        this.villageElement.textContent =  Math.trunc(Global.villageHealth/Global.maxVillageHealth*100)+"%";
+        this.villageElement.textContent =  Math.trunc(Engine.villageHealth/Engine.maxVillageHealth*100)+"%";
      }
 
 
@@ -39,12 +39,12 @@ export class Gui {
     }
 
     static getCanvasMouseCoordinates(){
-        const mouseX = event.clientX - Global.canvas.getBoundingClientRect().left;
-        const mouseY = event.clientY - Global.canvas.getBoundingClientRect().top;
+        const mouseX = event.clientX - Engine.canvas.getBoundingClientRect().left;
+        const mouseY = event.clientY - Engine.canvas.getBoundingClientRect().top;
 
         // Ajuster les coordonnées en fonction de la différence de taille entre le canvas HTML et le canvas en pixels
-        const scaleX = Global.canvas.width / Global.canvas.clientWidth;
-        const scaleY = Global.canvas.height / Global.canvas.clientHeight;
+        const scaleX = Engine.canvas.width / Engine.canvas.clientWidth;
+        const scaleY = Engine.canvas.height / Engine.canvas.clientHeight;
         const adjustedMouseX = mouseX * scaleX;
         const adjustedMouseY = mouseY * scaleY;
         return {

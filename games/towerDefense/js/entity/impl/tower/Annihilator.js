@@ -2,7 +2,7 @@ import {Tower} from "../../Tower.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Fireball} from "../projectile/Fireball.js";
-import {Global} from "../../../constants/Global.js";
+import {Engine} from "../../../constants/Engine.js";
 import {AnnihilatorBeam} from "../projectile/AnnihilatorBeam.js";
 import {Constants} from "../../../constants/Constants.js";
 import {AnnihilatorVacuum} from "../projectile/AnnihilatorVacuum.js";
@@ -45,7 +45,7 @@ export class Annihilator extends Tower{
         projectile.y = y;
         projectile.x = this.x;
         projectile.damage = this.damage;
-        Global.addGameObject(projectile);
+        Engine.addGameObject(projectile);
 
     }
 
@@ -57,6 +57,6 @@ export class Annihilator extends Tower{
         projectile.x = this.x;
         projectile.damage = this.damage;
         projectile.deadzone = this.y ;
-        Global.addGameObject(projectile);
+        Engine.addGameObject(projectile);
     }
 }

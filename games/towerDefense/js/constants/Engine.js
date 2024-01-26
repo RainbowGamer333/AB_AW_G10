@@ -1,6 +1,6 @@
 import {Tower} from "../entity/Tower.js";
 
-export class Global{ //TODO RENAME TO GameEngine
+export class Engine { //TODO RENAME TO GameEngine
     static lastGameObjectID = 0;
     static context;
     static gameObjects;
@@ -50,8 +50,8 @@ export class Global{ //TODO RENAME TO GameEngine
     static isTileFree(x,y){
         // console.log("OKKKKKKKKKKKKKK")
         console.log(" checking x:"+x+" y:"+y)
-        for (let i=0;i<Global.gameObjects.length;i++){
-            let obj = Global.gameObjects[i];
+        for (let i=0; i<Engine.gameObjects.length; i++){
+            let obj = Engine.gameObjects[i];
             if (obj instanceof Tower){
                 console.log("IS A TOWER" + obj.name + " x:"+obj.x + " y:"+obj.y)
                 if (obj.x === x && obj.y === y){

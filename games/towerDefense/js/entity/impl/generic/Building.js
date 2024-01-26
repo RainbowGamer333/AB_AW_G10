@@ -3,7 +3,7 @@ import {Tower} from "../../Tower.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Entity} from "../../Entity.js";
-import {Global} from "../../../constants/Global.js";
+import {Engine} from "../../../constants/Engine.js";
 
 export class Building extends Tower{
     constructor(name,x,y) {
@@ -18,16 +18,16 @@ export class Building extends Tower{
 
 
     hurt(amount) {
-        Global.villageHealth -= amount;
-        if (Global.villageHealth < 0) Global.villageHealth = 0;
+        Engine.villageHealth -= amount;
+        if (Engine.villageHealth < 0) Engine.villageHealth = 0;
         super.hurt(amount);
 
     }
 
     onDeath() {
         console.log("END")
-        // Global.villageHealth = 0;
-        console.log(Global.villageHealth)
+        // Engine.villageHealth = 0;
+        console.log(Engine.villageHealth)
         super.onDeath();
     }
 }

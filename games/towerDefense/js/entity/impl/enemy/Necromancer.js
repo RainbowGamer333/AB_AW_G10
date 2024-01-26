@@ -2,7 +2,7 @@ import {Enemy} from "../../Enemy.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Skeleton} from "./Skeleton.js";
-import {Global} from "../../../constants/Global.js";
+import {Engine} from "../../../constants/Engine.js";
 import {Utils} from "../../../utils/Utils.js";
 import {Constants} from "../../../constants/Constants.js";
 
@@ -44,20 +44,20 @@ export class Necromancer extends Enemy {
         switch (choice) {
             case 0: { // Spawn at the same position
                 const skeleton = new Skeleton(this.x, this.y);
-                Global.addGameObject(skeleton);
+                Engine.addGameObject(skeleton);
                 break;
             }
             case 1: { //Spawn left
                 if (this.getColumn() != 1){ // Check if not extreme left
                     const skeleton = new Skeleton(this.x-Constants.TILE_SIZE_ZOOMED, this.y);
-                    Global.addGameObject(skeleton);
+                    Engine.addGameObject(skeleton);
                     break;
                 }
             }
             case 2: { //Spawn right
                 if (this.getColumn() != Constants.colums){ // Check if not extreme right
                     const skeleton = new Skeleton(this.x+Constants.TILE_SIZE_ZOOMED, this.y);
-                    Global.addGameObject(skeleton);
+                    Engine.addGameObject(skeleton);
                     break;
                 }
             }
@@ -68,7 +68,7 @@ export class Necromancer extends Enemy {
                     skeletons.push( new Skeleton(this.x, this.y));
                     skeletons.push( new Skeleton(this.x-Constants.TILE_SIZE_ZOOMED, this.y));
                     skeletons.push( new Skeleton(this.x+Constants.TILE_SIZE_ZOOMED, this.y));
-                    Global.addGameObjects(skeletons);
+                    Engine.addGameObjects(skeletons);
                     break;
                 }
             }
