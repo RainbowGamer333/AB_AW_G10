@@ -1,5 +1,6 @@
 :root{
     --towerButtonSize : 80px;
+    --GuiBackgroundColor : #5c6370;
 }
 
 .gui-top{
@@ -9,12 +10,18 @@
 
 }
 
+.gameContainer{
+    background-color: var(--GuiBackgroundColor);
+    width: max-content;
+    border-radius: 10px;
+}
+
 
 .gui{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: #424242;
+    background-color: var(--GuiBackgroundColor);
     min-height: 60px;
     flex-wrap: wrap;
     align-items: center;
@@ -40,12 +47,16 @@
 }
 
 .right-container {
-    width: 600px;
+    width: 425px;
     border-radius: 0 10px 10px 0;
 }
 
 .left-container{
     border-radius: 10px 0 0 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 180px;
 }
 
 .guiCard>span{

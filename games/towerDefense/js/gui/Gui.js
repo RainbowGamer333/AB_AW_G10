@@ -5,6 +5,7 @@ export class Gui {
      towerButtons = [];
      coinElement = null;
      scoreElement = null;
+     villageElement = null;
 
      constructor() {
          let buttons = document.getElementsByClassName("towerButton");
@@ -15,6 +16,7 @@ export class Gui {
 
          this.coinElement = document.getElementById("coin_card_value");
          this.scoreElement = document.getElementById("score_card_value");
+         this.villageElement = document.getElementById("village_card_value");
      }
 
 
@@ -23,8 +25,12 @@ export class Gui {
             this.towerButtons[i].update(dt);
         }
 
+
+        //TODO DO EVENT NOT UPDATE !
         this.coinElement.textContent = Global.coinBalance;
         this.scoreElement.textContent = Global.score;
+
+        this.villageElement.textContent =  Math.trunc(Global.villageHealth/Global.maxVillageHealth*100)+"%";
      }
 
 

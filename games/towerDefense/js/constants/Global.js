@@ -5,6 +5,8 @@ export class Global{
     static canvas;
     static coinBalance = 20000;//150
     static score = 0;
+    static villageHealth = 0;
+    static maxVillageHealth = 0;
 
 
     static removeGameObject(object){
