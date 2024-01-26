@@ -70,11 +70,12 @@
     width:  var(--towerButtonSize);
     background-size: cover;
     image-rendering: pixelated;
-    background-position: center;
     padding: 0;
     border: 2px solid;
     border-radius: 10px;
     margin: 2px;
+    background: radial-gradient(circle, rgba(251, 206, 63, 0.6327323165594363) 0%, rgba(121, 58, 58, 255) 100%) center;
+    /*background-image: url("asset/tower_background.png");*/
 }
 
 .towerButton>img{
@@ -92,7 +93,7 @@
 }
 
 .towerButton>.title{
-    background-color: #553725;
+    background-color: #252524;
     color: white;
     width: 100%;
     height: 30px;
@@ -106,3 +107,13 @@
 .towerButton:not(:disabled):hover{
     filter: brightness(1.2);
 }
+
+/*.towerButton .glow {*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    left: 0;*/
+/*    top: 0;*/
+
+/*    background-image: radial-gradient(circle at 50% -20%, #ffffff22, #0000000f);*/
+/*}*/

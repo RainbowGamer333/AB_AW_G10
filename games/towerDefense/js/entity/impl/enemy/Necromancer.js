@@ -11,7 +11,7 @@ export class Necromancer extends Enemy {
      accumulatedTime = 0.0;
     constructor() {
         const health = 300;
-        const velocity = 3;
+        const velocity = 6;
         const damage = 50;
         const attackRate = 10;
 

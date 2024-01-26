@@ -35,8 +35,14 @@ export class GoldenTree extends Tower{
 
     spawnGobelin(){
         const col = Utils.randomIntFromInterval(0,Constants.colums);
+        const randomPlacedEntity = new Goblin();
+        randomPlacedEntity.x = col * Constants.TILE_SIZE_ZOOMED;
+        randomPlacedEntity.y = -32;
         const entity = new Goblin();
-        entity.x = col * Constants.TILE_SIZE_ZOOMED;
+        entity.x = this.x;
+        entity.y = -32;
+
+        Engine.addGameObject(randomPlacedEntity);
         Engine.addGameObject(entity);
     }
 }

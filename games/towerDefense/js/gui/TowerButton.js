@@ -36,7 +36,7 @@ export class TowerButton{
         // this.stopDrag = this.stopDrag.bind(this);
         // this.createTower = this.createTower.bind(this);
         // this.drag = this.drag.bind(this);
-        document.addEventListener("mousemove", this.drag);
+        document.addEventListener("mousemove", drag);
         // element.addEventListener("click", this.handleClick.bind(this));
         element.addEventListener("mousedown", (event) => {
            startDrag(event,this);
@@ -91,12 +91,15 @@ function startDrag(event,towerButton) {
 }
 
 function drag(event) {
+    // console.log("drag")
     if (draggedButton) {
-        const x = event.clientX - draggedButton.offsetWidth / 2 - this.offsetX;
-        const y = event.clientY - draggedButton.offsetHeight / 2 - this.offsetY;
+        const mooseCoordinate = Gui.getCanvasMouseCoordinates();
 
-        // draggedButton.style.left = `${x}px`;
-        // draggedButton.style.top = `${y}px`;
+        // draggedButton.style.position = `absolute`;
+        // draggedButton.style.left = `${mooseCoordinate.x}px`;
+        // draggedButton.style.top = `${mooseCoordinate.y}px`;
+        // draggedButton.style.transform = `translate(${mooseCoordinate.x}px, ${mooseCoordinate.y}px)`;
+        // console.log(`translate(${mooseCoordinate.x}px, ${mooseCoordinate.y}px)`)
         // console.log("draging")
     }
 }
@@ -111,6 +114,7 @@ function stopDrag(event) {
             return;
         }
 
+        draggedButton.style.position = `static`;
         draggedButton.style.transform = "translate(0, 0)";
 
         const mouseCoordinates = Gui.getCanvasMouseCoordinates();
