@@ -1,17 +1,17 @@
 :root {
-    --url-unclicked: url("../assets/unclicked.png");
-    --url-flag: url("../assets/flag.png");
-    --url-mine: url("../assets/mine.png");
-    --url-fake-mine: url("../assets/fake-mine.png");
-    --url-0: url("../assets/0.png");
-    --url-1: url("../assets/1.png");
-    --url-2: url("../assets/2.png");
-    --url-3: url("../assets/3.png");
-    --url-4: url("../assets/4.png");
-    --url-5: url("../assets/5.png");
-    --url-6: url("../assets/6.png");
-    --url-7: url("../assets/7.png");
-    --url-8: url("../assets/8.png");
+    --url-unclicked: url("../assets/grille/unclicked.png");
+    --url-flag: url("../assets/grille/flag.png");
+    --url-mine: url("../assets/grille/mine.png");
+    --url-fake-mine: url("../assets/grille/fake-mine.png");
+    --url-0: url("../assets/grille/0.png");
+    --url-1: url("../assets/grille/1.png");
+    --url-2: url("../assets/grille/2.png");
+    --url-3: url("../assets/grille/3.png");
+    --url-4: url("../assets/grille/4.png");
+    --url-5: url("../assets/grille/5.png");
+    --url-6: url("../assets/grille/6.png");
+    --url-7: url("../assets/grille/7.png");
+    --url-8: url("../assets/grille/8.png");
 }
 
 .cell {
