@@ -1,5 +1,4 @@
 import { Grid } from "./grid.js";
-import { Timer } from "./timer.js";
 
 
 
@@ -7,7 +6,6 @@ export class GameBoard {
     constructor(nbRows, nbCols, nbMines) {
         this.gameBoard = document.getElementById("gameBoard");
         this.grille = document.getElementById("grille");
-        this.timer = new Timer();
 
         this.nbRows = nbRows;
         this.nbCols = nbCols;
@@ -21,8 +19,6 @@ export class GameBoard {
         this.ajouterGrille();
         this.setStyle();
     }
-
-
 
     ajouterGrille() {
         this.grille.appendChild(this.grid.miningGrid);

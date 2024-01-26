@@ -1,17 +1,11 @@
 export class Timer {
 
     interval;
-    time = 0;
+    time;
     src = "./assets/timer/timer";
 
     constructor() {
         this.timer = document.getElementById("gameBoardHeaderTime");
-        this.initialiseTimer();
-        this.displayTimer();
-    }
-
-
-    initialiseTimer() {
         this.timerUnit = document.createElement("img");
         this.timerTens = document.createElement("img");
         this.timerHundreds = document.createElement("img");
@@ -19,19 +13,29 @@ export class Timer {
         this.timer.appendChild(this.timerHundreds);
         this.timer.appendChild(this.timerTens);
         this.timer.appendChild(this.timerUnit);
+
+        this.initialiseTimer();
+        this.displayTimer();
+    }
+
+
+    initialiseTimer() {
+        this.time = 0;
+        this.displayTimer();
     }
 
     startTimer() {
+        console.log("starting timer");
         this.interval = setInterval(() => this.updateTimer(), 1000);
     }
 
     updateTimer() {
-        console.log("timer updated");
         if (this.time < 999) this.time++;
         this.displayTimer();
     }
 
     stopTimer() {
+        console.log("stopping timer");
         clearInterval(this.interval);
     }
 

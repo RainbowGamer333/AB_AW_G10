@@ -1,4 +1,5 @@
 import {Cell} from "./cell.js";
+import {Timer} from "./timer.js";
 
 export class Grid {
     _firstClick = true;
@@ -6,6 +7,8 @@ export class Grid {
     constructor(numberRows, numberColumns, numberMines) {
         this._miningGrid =  document.createElement("table");
         this._miningGrid.id = "miningGrid";
+        this.timer = new Timer();
+
         this._numberMines = numberMines;
         this.cells = [];
         this.creerGrid(numberRows, numberColumns);
@@ -63,7 +66,7 @@ export class Grid {
 
                 cell.element.addEventListener("dblclick", (e) => {
                     e.preventDefault();
-                    if (cell.visible) this.cliqueMilieux(i, j);
+                    if (cell.visible) this.decouvrirAlentours(i, j);
                 });
 
                 // Afficher la cellule avec clique gauche
@@ -72,26 +75,28 @@ export class Grid {
 
                     // Clique du milieu uniquement sur une cellule visible
                     if (e.button === 1 && cell.visible) {
-                        this.cliqueMilieux(i, j);
+                        this.decouvrirAlentours(i, j);
                     }
 
                     else if (e.button === 0) {
+                        // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
+                        if (cell.disabled || cell.flag) return;
+
                         // Au premier clique on initialise les mines et les valeurs
                         // Ceci permet de commencer une partie sans cliquer immédiatement sur une mine
                         if (this._firstClick) {
                             this._firstClick = false;
                             this.initialiserMines(this._numberMines, i, j);
-                            this.initialiserValeurs();
-                        }
 
-                        // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
-                        if (cell.disabled || cell.flag) return;
+                            this.initialiserValeurs();
+                            this.timer.startTimer();
+                        }
 
                         // Si la cellule est vide, on affiche récursivement toutes les cellules vides autour d'elle
                         if (cell.valeur === 0) this.decouvrirZeros(i, j);
 
                         // Cliquer sur une mine fait perdre la partie
-                        if (cell.isMine()) {
+                        else if (cell.isMine()) {
                             this.gameOver(cell);
                             return;
                         }
@@ -107,7 +112,7 @@ export class Grid {
      * @param row la ligne de la cellule
      * @param col la colonne de la cellule
      */
-    cliqueMilieux(row, col) {
+    decouvrirAlentours(row, col) {
         if (this.compterFlags(row, col) !== this.cells[row][col].valeur) return;
         this.coordonneesAutour(row, col).forEach((coord) => {
             if (this.canDisplay(coord[0], coord[1])) this.cliqueCellule(coord[0], coord[1]);
@@ -188,6 +193,7 @@ export class Grid {
     }
 
     gameOver(mineCliquee) {
+        this.timer.stopTimer();
         this.afficherMines(mineCliquee);
         this.disableCells();
     }
@@ -219,8 +225,8 @@ export class Grid {
      * @returns {*[]} les coordonnées autour de la cellule
      */
     coordonneesAutour(row, col) {
-        let nbRows = this.cells[0].length-1;
-        let nbCols = this.cells.length-1;
+        let nbCols = this.cells[0].length-1;
+        let nbRows = this.cells.length-1;
         let coordonnees = [];
 
         // Haut
@@ -280,17 +286,11 @@ export class Grid {
     }
 
     reinitialiserPartie() {
+        this._firstClick = true;
+        this.timer.initialiseTimer();
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
                 this.cells[i][j] = Cell.creerCellule();
-            }
-        }
-    }
-
-    debug_afficherToutesCellules() {
-        for (let i = 0; i < this.cells.length; i++) {
-            for (let j = 0; j < this.cells[i].length; j++) {
-                this.cells[i][j].afficheCellule();
             }
         }
     }
