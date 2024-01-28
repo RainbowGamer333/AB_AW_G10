@@ -1,13 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
     var clickButton = document.getElementById('clickButton');
     var autoClickButton = document.getElementById('autoClickButton');
-    var crossIcon = document.getElementById('crossIcon');
+    var clicPlus1Button = document.getElementById('clicPlus1');
     var scoreDisplay = document.getElementById('score');
-    var imageDisplay = document.getElementById('imageDisplay');
+    var autoClickCostDisplay = document.getElementById('autoClickCostDisplay');
+    var autoClickPlus1CostDisplay = document.getElementById('autoClickPlus1CostDisplay');
 
     var score = 0;
     var autoClicks = 0;
+    var clicPlus1 = 0;
+    var clicPlus1Multiplier = 1; // Nouvelle variable pour le multiplicateur du bonus Clic +1
     var autoClickCost = 100;
+    var clicPlus1Cost = 500;
 
     function updateScore() {
         scoreDisplay.textContent = 'Score: ' + score;
@@ -16,33 +20,28 @@ document.addEventListener('DOMContentLoaded', function () {
             scoreDisplay.classList.remove("trembling-animation");
         }, 500);
 
-        // Vérifiez si le score est suffisant pour afficher la croix
-        if (score >= autoClickCost) {
-            crossIcon.classList.remove("hidden");
-        }
+        autoClickCostDisplay.textContent = 'Prochain achat d\'autoclic: ' + autoClickCost;
+        autoClickPlus1CostDisplay.textContent = 'Prochain achat de clic +1: ' + clicPlus1Cost;
     }
 
     clickButton.addEventListener('click', function () {
-        score++;
+        score += clicPlus1Multiplier; // Score augmente de +2 lorsqu'il y a un clic +1 actif
         updateScore();
     });
 
     function toggleAutoClick() {
         if (score >= autoClickCost) {
-            autoClicks = autoClics + 2;
-            score -= autoClickCost; // Déduisez le coût du clic automatique
-            autoClickCost += 100; // Augmentez le coût pour le prochain clic automatique
+            autoClicks += 5;
+            score -= autoClickCost;
+            autoClickCost += 50;
             updateScore();
 
-            // Démarrez l'intervalle uniquement si ce n'était pas déjà en cours
-            if (autoClicks === 1) {
+            if (autoClicks === 5) {
                 setInterval(function () {
                     score += autoClicks;
                     updateScore();
                 }, 1000);
             }
-
-            crossIcon.classList.add("hidden"); // Cachez la croix après avoir activé le clic automatique
         }
     }
 
@@ -50,7 +49,16 @@ document.addEventListener('DOMContentLoaded', function () {
         toggleAutoClick();
     });
 
-    crossIcon.addEventListener('click', function () {
-        toggleAutoClick();
+    function toggleClicPlus1() {
+        if (score >= clicPlus1Cost) {
+            score -= clicPlus1Cost;
+            clicPlus1Cost += 500;
+            clicPlus1Multiplier++; // Augmente le multiplicateur du bonus Clic +1
+            updateScore();
+        }
+    }
+
+    clicPlus1Button.addEventListener('click', function () {
+        toggleClicPlus1();
     });
 });

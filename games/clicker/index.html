@@ -7,12 +7,15 @@
 </head>
 <body>
 <div id="leftPanel">
-    <div id="crossIcon" class="hidden" onclick="toggleAutoClick()">❌</div>
     <h1 id="title">Pixel Clicker</h1>
-    <button id="clickButton">Clique plus vite !!</button>
-    <button id="autoClickButton">Clic automatique</button>
-    <p class="trembling-text" contenteditable="true" id="score">Score: 0</p>
-    <script src="js/main.js"></script>
+    <button id="clickButton">Clique plus vite</button>
+    <p class="trembling-text" id="score">Score: 0</p>
+    <div id="zoneBonus">
+        <button id="autoClickButton">Clic automatique</button>
+        <button id="clicPlus1">Clic + 1</button>
+        <p id="autoClickCostDisplay">Prochain achat d'autoclic: 100</p>
+        <p id="autoClickPlus1CostDisplay">Prochain achat de clic +1: 500</p>
+    </div>
 </div>
 <div id="rightPanel">
     <h1 id="zoneClicker">Image à découvrir</h1>
@@ -21,3 +24,4 @@
 <script src="js/main.js"></script>
 </body>
 </html>
+
