@@ -51,7 +51,8 @@ export class MonsterSpawner extends GameObject{
                 }
             }
 
-            let col = Utils.randomIntFromInterval(0,Constants.colums-1);
+            let col = Utils.randomIndexFromTrueBooleans(Engine.villageHousesAlive);
+
             col *= Constants.TILE_SIZE_ZOOMED;
             entity.x = col;
             entity.y = -32;
@@ -59,7 +60,7 @@ export class MonsterSpawner extends GameObject{
 
             Engine.gameObjects.push(entity);
 
-            accumulatedTime -= spawnInterval;
+            accumulatedTime = 0;
         }
 
     }
