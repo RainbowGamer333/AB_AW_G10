@@ -4,8 +4,8 @@ import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 
 export class Goliath extends Enemy{
     constructor() {
-        const health = 2000;
-        const velocity = 1;
+        const health = 3000;
+        const velocity = 3;
         const damage = 2;
         const attackRate = 9;
 
