@@ -42,6 +42,7 @@ export class BidirectionalSonar extends Tower{
         let projectile = new SonarBeam();
         projectile.y = y;
         projectile.x = x;
+        projectile.source = this;
         Engine.addGameObject(projectile);
     }
 

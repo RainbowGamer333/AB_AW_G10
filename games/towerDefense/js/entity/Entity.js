@@ -29,7 +29,7 @@ export class Entity extends GameObject{
         }
     }
 
-    hurt(amount){
+    hurt(amount,source){
         this.health -= amount;
         if(this.health<=0){
             this.health = 0;
@@ -39,13 +39,14 @@ export class Entity extends GameObject{
         this.isAlive = true;
     }
 
+
     onDeath(){
         // console.log(this.name+" is dead.");
         Engine.removeGameObject(this);
     }
 
     onClick(){
-        this.hurt(50);
+        this.hurt(50,null);
         if (this.isAlive){
             Engine.coinBalance += 1;
         }

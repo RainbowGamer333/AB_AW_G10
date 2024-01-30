@@ -32,7 +32,7 @@ export class SonarBeam extends Projectile{
             if (gameObject.y === this.y && gameObject instanceof Enemy){ // if they are on the same line
                 if (gameObject.x + Constants.TILE_SIZE_ZOOMED >= this.x // TOP LEFT
                     && gameObject.x <= this.x ){
-                    gameObject.hurt(this.damage);
+                    gameObject.hurt(this.damage,this);
                     Engine.removeGameObject(this);
                 }
             }

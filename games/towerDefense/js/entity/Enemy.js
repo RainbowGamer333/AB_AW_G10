@@ -29,7 +29,7 @@ export class Enemy extends Entity{
                     this.accumulatedTime+=dt;
                     isColliding= true;
                     if(this.accumulatedTime>=this.attackRate){
-                        gameObject.hurt(this.damage);
+                        gameObject.hurt(this.damage,this);
                         this.accumulatedTime -= this.attackRate;
                         break;
                     }

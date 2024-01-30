@@ -14,4 +14,15 @@ export class Utils{
         const choices = this.randomIntFromInterval(0,trueIndexes.length-1);
         return trueIndexes[choices];
     }
+
+    static distance(go1, go2) {
+        let x1 = go1.x;
+        let y1 = go1.y;
+        let x2 = go2.x;
+        let y2 = go2.y;
+
+        const distance = Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
+        //console.log("Distance = " + distance);
+        return distance;
+    }
 }

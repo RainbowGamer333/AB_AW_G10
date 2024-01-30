@@ -35,6 +35,7 @@ export class Canon extends Tower{
         let projectile = new CanonBall();
         projectile.y = y;
         projectile.x = this.x;
+        projectile.source = this;
         Engine.addGameObject(projectile);
 
     }

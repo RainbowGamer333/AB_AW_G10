@@ -28,7 +28,7 @@ export class Fireball extends Projectile{
 
     onTargetTouched(target) {
         if (!this.lastEnemyTouched){//If first enemy touched
-            target.hurt(this.damage);
+            target.hurt(this.damage,this);
             if(target.health>this.damage){//If the entity will not be killed
                 this.lastEnemyTouched = target;
                 this.damage*=0.8;

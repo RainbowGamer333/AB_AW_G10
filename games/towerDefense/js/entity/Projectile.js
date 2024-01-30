@@ -9,14 +9,16 @@ export class Projectile extends Entity{
     damage;
     effect;
     deadzone;
+    source;
 
 
-    constructor(name, x, y, velocity, damage, effect) {
+    constructor(name, x, y, velocity, damage, effect,source) {
         super(name, x, y);
         this.velocity = velocity;
         this.damage = damage;
         this.effect = effect;
         this.deadzone = -32;
+        this.source = source;
     }
 
     update(dt) {
@@ -44,7 +46,7 @@ export class Projectile extends Entity{
     }
 
     onTargetTouched(target){
-        target.hurt(this.damage);
+        target.hurt(this.damage,this);
         Engine.removeGameObject(this);
     }
 }

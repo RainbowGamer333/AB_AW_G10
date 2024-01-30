@@ -37,6 +37,7 @@ export class FireCanon extends Tower{
         projectile.y = y;
         projectile.x = this.x;
         projectile.damage = this.damage;
+        projectile.source = this;
         Engine.addGameObject(projectile);
 
     }

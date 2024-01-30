@@ -14,6 +14,7 @@ export class Path {
     static LIGHTNING_TOWER = Path.BASE_PATH_TOWER+"lightning_tower.png";
     static WALL = Path.BASE_PATH_TOWER+"wall.png";
     static LOW_WALL = Path.BASE_PATH_TOWER+"low_wall.png";
+    static LANDMINE = Path.BASE_PATH_TOWER+"landmine.png";
     static ANNIHILATOR = Path.BASE_PATH_TOWER+"annihilator.png";
     static GOLDEN_TREE = Path.BASE_PATH_TOWER+"golden_tree.png";
     static COIN_HARVESTER = Path.BASE_PATH_TOWER+"coin_harvester.png";

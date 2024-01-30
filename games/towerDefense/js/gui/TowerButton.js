@@ -11,6 +11,7 @@ import {FireCanon} from "../entity/impl/tower/FireCanon.js";
 import {BidirectionalSonar} from "../entity/impl/tower/BidirectionalSonar.js";
 import {Tower} from "../entity/Tower.js";
 import {LowWall} from "../entity/impl/tower/LowWall.js";
+import {Landmine} from "../entity/impl/tower/Landmine.js";
 // import {Constants} from "../constants/Constants.js";
 let isDragging = false;
 let draggedButton = null;
@@ -60,6 +61,7 @@ export class TowerButton{
         switch (this.buttonID){ //todo put values in variables
             case "canon": return new Canon();
             case "lightning_tower": return new LightningTower();
+            case "landmine": return new Landmine();
             case "wall" : return new Wall();
             case "low_wall" : return new LowWall();
             case "golden_tree" : return new GoldenTree();

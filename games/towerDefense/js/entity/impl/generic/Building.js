@@ -17,9 +17,9 @@ export class Building extends Tower{
     }
 
 
-    hurt(amount) {
+    hurt(amount,source) {
        Engine.hurtVillage(amount);
-       super.hurt(amount);
+       super.hurt(amount,source);
 0
     }
 

@@ -30,7 +30,7 @@ export class Annihilator extends Tower{
 
             if (this.startFire){
                 this.spawnProjectile();
-                this.hurt(20);
+                this.hurt(20,this);
             }
             this.accumulatedTime = 0;
         }
@@ -45,6 +45,7 @@ export class Annihilator extends Tower{
         projectile.y = y;
         projectile.x = this.x;
         projectile.damage = this.damage;
+        projectile.source = this;
         Engine.addGameObject(projectile);
 
     }
