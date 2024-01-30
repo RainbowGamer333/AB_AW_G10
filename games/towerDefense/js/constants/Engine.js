@@ -10,6 +10,7 @@ export class Engine { //TODO RENAME TO GameEngine
     static score = 0;
     static villageHealth = 0;
     static maxVillageHealth = 0;
+    static villageHousesAlive = [];
     static gameState = null;
 
 

@@ -24,9 +24,8 @@ export class Building extends Tower{
     }
 
     onDeath() {
-        console.log("END")
-        // Engine.villageHealth = 0;
         console.log(Engine.villageHealth)
+        Engine.villageHousesAlive[this.getColumn()] = false;
         super.onDeath();
     }
 }

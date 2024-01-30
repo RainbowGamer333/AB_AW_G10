@@ -53,6 +53,7 @@ export class MapUtils {
             villageBuilding.addComponent(new SpriteRenderer(images[imageChoice]));
             Engine.addGameObject(villageBuilding);
             Engine.maxVillageHealth += villageBuilding.maxHealth;
+            Engine.villageHousesAlive.push(true);
         }
         Engine.villageHealth = Engine.maxVillageHealth;
 
