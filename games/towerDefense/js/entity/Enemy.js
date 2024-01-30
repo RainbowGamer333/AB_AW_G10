@@ -51,13 +51,11 @@ export class Enemy extends Entity{
         Engine.score+=this.score;
         Engine.coinBalance+=this.coinDropped;
         const ghost = new Ghost(this.x,this.y);
-        console.log("spooky dooky")
         Engine.addGameObject(ghost);
         super.onDeath();
     }
 
    static isTarget(gameObject) {
-        //todo ajouter une classe building (représentant les éléments du village)
        return gameObject instanceof Tower ;
     }
 }
