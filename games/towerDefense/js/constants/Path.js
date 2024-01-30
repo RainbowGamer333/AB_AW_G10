@@ -40,6 +40,7 @@ export class Path {
     static GOLIATH = Path.BASE_PATH_ENEMY+"goliath.png";
     static NECROMANCER = Path.BASE_PATH_ENEMY+"necromancer.png";
     static SKELETON = Path.BASE_PATH_ENEMY+"skeleton.png";
+    static GHOST = Path.BASE_PATH_ENEMY+"ghost.png";
 
     //Building
     static BASE_PATH_BUILDING = Path.BASE_PATH + "building/";

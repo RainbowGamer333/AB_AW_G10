@@ -2,6 +2,7 @@ import {Entity} from "./Entity.js";
 import {Constants} from "../constants/Constants.js";
 import {Engine} from "../constants/Engine.js";
 import {Tower} from "./Tower.js";
+import {Ghost} from "./impl/generic/Ghost.js";
 
 export class Enemy extends Entity{
     score;
@@ -49,6 +50,9 @@ export class Enemy extends Entity{
     onDeath() {
         Engine.score+=this.score;
         Engine.coinBalance+=this.coinDropped;
+        const ghost = new Ghost(this.x,this.y);
+        console.log("spooky dooky")
+        Engine.addGameObject(ghost);
         super.onDeath();
     }
 
