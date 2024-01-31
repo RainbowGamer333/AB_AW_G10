@@ -7,7 +7,7 @@ export class MineCounter {
         this.mineCounterUnit = document.querySelector("#mineU");
         this.mineCounterTens = document.querySelector("#mineT");
         this.mineCounterHundreds = document.querySelector("#mineH");
-
+        this.initialiseMineCounter(0);
     }
 
     initialiseMineCounter(nbMines) {

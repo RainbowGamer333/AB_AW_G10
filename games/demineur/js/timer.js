@@ -8,7 +8,7 @@ export class Timer {
         this.timerUnit = document.querySelector("#timerU");
         this.timerTens = document.querySelector("#timerT");
         this.timerHundreds = document.querySelector("#timerH");
-        this.time = 0;
+        this.initialiseTimer();
     }
 
 
