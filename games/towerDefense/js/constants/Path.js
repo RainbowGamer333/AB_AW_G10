@@ -6,12 +6,13 @@ export class Path {
     static GRASS = Path.BASE_PATH+"grass.png";
 
     //TOWERS
+    static TOWERS_DATA = Path.BASE_PATH +"tower_data.json"
     static BASE_PATH_TOWER = Path.BASE_PATH + "/tower/";
     static CATAPULT = Path.BASE_PATH_TOWER+"catapult.png";
-    static TOWER = Path.BASE_PATH_TOWER+"lightning_tower.png";
+    static TOWER = Path.BASE_PATH_TOWER+"tesla.png";
     static TRIPLE_CROSSBOW = Path.BASE_PATH_TOWER+"triple_crossbow.png";
     static CANON = Path.BASE_PATH_TOWER+"canon.png";
-    static LIGHTNING_TOWER = Path.BASE_PATH_TOWER+"lightning_tower.png";
+    static LIGHTNING_TOWER = Path.BASE_PATH_TOWER+"tesla.png";
     static WALL = Path.BASE_PATH_TOWER+"wall.png";
     static LOW_WALL = Path.BASE_PATH_TOWER+"low_wall.png";
     static LANDMINE = Path.BASE_PATH_TOWER+"landmine.png";

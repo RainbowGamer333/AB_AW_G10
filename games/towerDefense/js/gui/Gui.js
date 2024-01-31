@@ -1,5 +1,7 @@
 import {TowerButton} from "./TowerButton.js";
 import {Engine} from "../constants/Engine.js";
+import {Path} from "../constants/Path.js";
+import {Utils} from "../utils/Utils.js";
 
 export class Gui {
      towerButtons = [];
@@ -10,9 +12,40 @@ export class Gui {
      constructor() {
          let buttons = document.getElementsByClassName("towerButton");
 
-         for (let i = 0; i < buttons.length; i++) {
-             this.towerButtons.push( new TowerButton(buttons[i]));
-         }
+         let rightContainer = document.getElementById("right-container");
+         let leftContainer = document.getElementById("left-container");
+
+         // for (let i = 0; i < buttons.length; i++) {
+         //     this.towerButtons.push( new TowerButton(buttons[i]));
+         // }
+
+
+         Utils.readTextFile(Path.TOWERS_DATA, function(text){
+             let dataArray = JSON.parse(text);
+             for (let i = 0; i < dataArray.length; i++){
+                 let towerButtonElement = dataArray[i];
+                 //this.towerButtons.push()
+                 const name = towerButtonElement.name;
+                 const displayName = towerButtonElement.display_name;
+                 const cost = towerButtonElement.price;
+                 const element = Utils.fromHTML(" <button class=\"towerButton\" id=\"tb_"+name+"\">\n" +
+                     "                <span class=\"title\">"+displayName+"</span>\n" +
+                     "                <img src=\"asset/placeholder.png\" alt=\"placeholder\">\n" +
+                     "                <span class=\"cost\">"+cost+"</span>\n" +
+                     "            </button>")
+
+
+                 if (towerButtonElement.isSpecial){
+                     leftContainer.appendChild(element);
+                 }else{
+                     rightContainer.appendChild(element);
+                 }
+                 const buttonElement = new TowerButton(element);
+                 // this.towerButtons.push( buttonElement);
+             }
+
+             console.log(dataArray);
+         });
 
          this.coinElement = document.getElementById("coin_card_value");
          this.scoreElement = document.getElementById("score_card_value");

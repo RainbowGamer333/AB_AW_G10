@@ -14,7 +14,7 @@
     "isSpecial": true
   },
   {
-    "name": "remove",
+    "name": "remover",
     "display_name": "Retirer",
     "price":100,
     "cool_down": 1000,
@@ -28,7 +28,7 @@
     "isSpecial": false
   },
   {
-    "name": "mine",
+    "name": "landmine",
     "display_name": "Mine",
     "price":50,
     "cool_down": 1000,

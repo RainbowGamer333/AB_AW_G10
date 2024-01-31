@@ -28,6 +28,7 @@ export class TowerButton{
     constructor(element){
         this.domElement = element;
         this.buttonID = element.id.substring(3);
+        console.log(this.buttonID);
 
         // Add texture
         let imagePath = Path.BASE_PATH_TOWER + this.buttonID + ".png";
