@@ -5,6 +5,7 @@ import {Smiley} from "./smiley.js";
 
 export class Grid {
     _firstClick = true;
+    _isClicked = false;
 
     constructor(numberRows, numberColumns, numberMines) {
         this._miningGrid =  document.createElement("table");
@@ -80,9 +81,28 @@ export class Grid {
                     if (cell.visible) this.decouvrirAlentours(i, j);
                 });
 
+                cell.element.addEventListener("mousedown", (e) => {
+                    e.preventDefault();
+                    if (e.button === 0 && !cell.visible && !cell.disabled) {
+                        this._isClicked = true;
+                        cell.element.classList.remove("unclicked");
+                    }
+                });
+
+                cell.element.addEventListener("mouseout", (e) => {
+                    e.preventDefault();
+                    if (e.button === 0) cell.element.classList.add("unclicked");
+                });
+
+                cell.element.addEventListener("mouseover", (e) => {
+                    e.preventDefault();
+                    if (e.button === 0 && this._isClicked) cell.element.classList.remove("unclicked");
+                });
+
                 // Afficher la cellule avec clique gauche
                 cell.element.addEventListener("mouseup", (e) => {
                     e.preventDefault();
+                    this._isClicked = false;
 
                     // Clique du milieu uniquement sur une cellule visible
                     if (e.button === 1 && cell.visible) {
