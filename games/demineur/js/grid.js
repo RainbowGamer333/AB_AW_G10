@@ -1,6 +1,7 @@
 import {Cell} from "./cell.js";
 import {Timer} from "./timer.js";
 import {MineCounter} from "./mineCounter.js";
+import {Smiley} from "./smiley.js";
 
 export class Grid {
     _firstClick = true;
@@ -10,6 +11,7 @@ export class Grid {
         this._miningGrid.id = "miningGrid";
         this.timer = new Timer();
         this.minesCounter = new MineCounter();
+        this.smiley = new Smiley();
 
         this._numberMines = numberMines;
         this.cells = [];
@@ -299,6 +301,7 @@ export class Grid {
     reinitialiserPartie() {
         this._firstClick = true;
         this.timer.initialiseTimer();
+        this.minesCounter.initialiseMineCounter(0);
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
                 this.cells[i][j] = Cell.creerCellule();
