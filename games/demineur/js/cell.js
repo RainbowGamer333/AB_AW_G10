@@ -101,6 +101,27 @@ export class Cell {
         this.element.classList.add("fake-mine");
     }
 
+    reinitialiserCellule() {
+        this._visible = false;
+        this._flag = false;
+        this._disabled = false;
+        this.element.classList.remove("mine");
+        this.element.classList.remove("flag");
+        this.element.classList.remove("clicked");
+        this.element.classList.remove("zero");
+        this.element.classList.remove("one");
+        this.element.classList.remove("two");
+        this.element.classList.remove("three");
+        this.element.classList.remove("four");
+        this.element.classList.remove("five");
+        this.element.classList.remove("six");
+        this.element.classList.remove("seven");
+        this.element.classList.remove("eight");
+        this.element.classList.remove("fake-mine");
+        this.element.classList.add("unclicked");
+
+    }
+
     static creerCellule() {
         let cell = new Cell();
         cell.element.classList.add("cell", "unclicked");

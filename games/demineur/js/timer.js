@@ -18,7 +18,6 @@ export class Timer {
     }
 
     startTimer() {
-        console.log("starting header");
         this.interval = setInterval(() => this.updateTimer(), 1000);
     }
 
@@ -28,7 +27,6 @@ export class Timer {
     }
 
     stopTimer() {
-        console.log("stopping header");
         clearInterval(this.interval);
     }
 

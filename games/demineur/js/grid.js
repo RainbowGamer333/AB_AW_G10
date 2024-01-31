@@ -7,12 +7,14 @@ export class Grid {
     _firstClick = true;
     _isClicked = false;
 
-    constructor(numberRows, numberColumns, numberMines) {
-        this._miningGrid =  document.createElement("table");
+    constructor(gameBoard, numberRows, numberColumns, numberMines) {
+        this._gameBoard = gameBoard;
+        this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
         this.timer = new Timer();
         this.minesCounter = new MineCounter();
         this.smiley = new Smiley();
+        this.smiley.initialiserListeners(this);
 
         this._numberMines = numberMines;
         this.cells = [];
@@ -50,6 +52,8 @@ export class Grid {
         this._miningGrid.appendChild(tbody);
     }
 
+
+
     /**
      * Ajoute les listeners sur les cellules de la grille.
      * Le clique droit ajoute un drapeau, le clique gauche affiche la cellule,
@@ -69,8 +73,7 @@ export class Grid {
                     if (cell.flag) {
                         cell.removeFlag();
                         this.minesCounter.incrementMineCounter();
-                    }
-                    else {
+                    } else {
                         cell.addFlag();
                         this.minesCounter.decrementMineCounter();
                     }
@@ -107,9 +110,7 @@ export class Grid {
                     // Clique du milieu uniquement sur une cellule visible
                     if (e.button === 1 && cell.visible) {
                         this.decouvrirAlentours(i, j);
-                    }
-
-                    else if (e.button === 0) {
+                    } else if (e.button === 0) {
                         // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
                         if (cell.disabled || cell.flag) return;
 
@@ -242,8 +243,7 @@ export class Grid {
                 if (cell.isMine() && !cell.flag) {
                     if (cell === mineCliquee) cell.valeur = -2;
                     cell.afficheCellule();
-                }
-                else if (!cell.isMine() && cell.flag) {
+                } else if (!cell.isMine() && cell.flag) {
                     cell.valeur = -3;
                     cell.afficheCellule();
                 }
@@ -258,26 +258,26 @@ export class Grid {
      * @returns {*[]} les coordonnées autour de la cellule
      */
     coordonneesAutour(row, col) {
-        let nbCols = this.cells[0].length-1;
-        let nbRows = this.cells.length-1;
+        let nbCols = this.cells[0].length - 1;
+        let nbRows = this.cells.length - 1;
         let coordonnees = [];
 
         // Haut
         if (row > 0) {
-            if (col > 0) coordonnees.push([row-1, col-1]);
-            coordonnees.push([row-1, col]);
-            if (col < nbCols) coordonnees.push([row-1, col+1]);
+            if (col > 0) coordonnees.push([row - 1, col - 1]);
+            coordonnees.push([row - 1, col]);
+            if (col < nbCols) coordonnees.push([row - 1, col + 1]);
         }
 
         // Cotes
-        if (col > 0) coordonnees.push([row, col-1]);
-        if (col < nbCols) coordonnees.push([row, col+1]);
+        if (col > 0) coordonnees.push([row, col - 1]);
+        if (col < nbCols) coordonnees.push([row, col + 1]);
 
         // Bas
         if (row < nbRows) {
-            if (col > 0) coordonnees.push([row+1, col-1]);
-            coordonnees.push([row+1, col]);
-            if (col < nbCols) coordonnees.push([row+1, col+1]);
+            if (col > 0) coordonnees.push([row + 1, col - 1]);
+            coordonnees.push([row + 1, col]);
+            if (col < nbCols) coordonnees.push([row + 1, col + 1]);
         }
         return coordonnees;
     }
@@ -320,12 +320,15 @@ export class Grid {
 
     reinitialiserPartie() {
         this._firstClick = true;
+        this.timer.stopTimer();
         this.timer.initialiseTimer();
         this.minesCounter.initialiseMineCounter(0);
-        for (let i = 0; i < this.cells.length; i++) {
-            for (let j = 0; j < this.cells[i].length; j++) {
-                this.cells[i][j] = Cell.creerCellule();
-            }
-        }
+
+        // Reinitialiser toutes les cellules
+        this.cells.forEach((rows) => {
+            rows.forEach((cell) => {
+                cell.reinitialiserCellule();
+            });
+        });
     }
 }

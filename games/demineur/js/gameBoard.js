@@ -12,7 +12,7 @@ export class GameBoard {
         this.tailleCells = 30;
         this.tailleMargin = 60;
 
-        this.grid = new Grid(nbRows, nbCols, nbMines);
+        this.grid = new Grid(this, nbRows, nbCols, nbMines);
 
         this.ajouterGrille();
         this.setStyle();
