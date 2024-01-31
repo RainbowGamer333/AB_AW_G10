@@ -41,7 +41,7 @@ export class Gui {
                      rightContainer.appendChild(element);
                  }
                  const buttonElement = new TowerButton(element);
-                 // this.towerButtons.push( buttonElement);
+                 // this.towerButtons.push( buttonElement); //TODO ENABLE THIS
              }
 
              console.log(dataArray);

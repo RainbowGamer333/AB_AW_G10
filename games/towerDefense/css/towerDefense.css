@@ -95,6 +95,19 @@
     justify-content: center;
 }
 
+.towerButton>.cost::after{
+    height: 15px;
+    width: 15px;
+    display: block;
+    background-image: url('../asset/coin.png');
+    content : '';
+
+    padding: 0;
+    background-size: contain;
+    transform: scale(2.2);
+    margin-left: 5px;
+}
+
 .towerButton>.title{
     background-color: #252524;
     color: white;
