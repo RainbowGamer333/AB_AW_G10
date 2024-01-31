@@ -4,24 +4,10 @@ export class MineCounter {
     mines = 0;
 
     constructor() {
-        this.mineCounter = document.getElementById("gameBoardHeaderMineCounter");
-        this.mineCounterUnit = document.createElement("img");
-        this.mineCounterTens = document.createElement("img");
-        this.mineCounterHundreds = document.createElement("img");
+        this.mineCounterUnit = document.querySelector("#mineU");
+        this.mineCounterTens = document.querySelector("#mineT");
+        this.mineCounterHundreds = document.querySelector("#mineH");
 
-        this.setBackground();
-
-        this.mineCounter.appendChild(this.mineCounterHundreds);
-        this.mineCounter.appendChild(this.mineCounterTens);
-        this.mineCounter.appendChild(this.mineCounterUnit);
-
-        this.displayMineCounter();
-    }
-
-    setBackground() {
-        this.mineCounterHundreds.style.backgroundImage = "url('" + this.src + "Background.png')";
-        this.mineCounterTens.style.backgroundImage = "url('" + this.src + "Background.png')";
-        this.mineCounterUnit.style.backgroundImage = "url('" + this.src + "Background.png')";
     }
 
     initialiseMineCounter(nbMines) {

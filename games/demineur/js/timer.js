@@ -5,31 +5,16 @@ export class Timer {
     src = "./assets/header/timer";
 
     constructor() {
-        this.timer = document.getElementById("gameBoardHeaderTime");
-        this.timerUnit = document.createElement("img");
-        this.timerTens = document.createElement("img");
-        this.timerHundreds = document.createElement("img");
-
-        this.setBackground();
-
-        this.timer.appendChild(this.timerHundreds);
-        this.timer.appendChild(this.timerTens);
-        this.timer.appendChild(this.timerUnit);
-
-        this.initialiseTimer();
-        this.displayTimer();
+        this.timerUnit = document.querySelector("#timerU");
+        this.timerTens = document.querySelector("#timerT");
+        this.timerHundreds = document.querySelector("#timerH");
+        this.time = 0;
     }
 
 
     initialiseTimer() {
         this.time = 0;
         this.displayTimer();
-    }
-
-    setBackground() {
-        this.timerHundreds.style.backgroundImage = "url('" + this.src + "Background.png')";
-        this.timerTens.style.backgroundImage = "url('" + this.src + "Background.png')";
-        this.timerUnit.style.backgroundImage = "url('" + this.src + "Background.png')";
     }
 
     startTimer() {
