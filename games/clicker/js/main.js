@@ -1,17 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
     var clickButton = document.getElementById('clickButton');
     var autoClickButton = document.getElementById('autoClickButton');
-    var clicPlus1Button = document.getElementById('clicPlus1');
+    var clickPlus1Button = document.getElementById('clickPlus1');
     var scoreDisplay = document.getElementById('score');
     var autoClickCostDisplay = document.getElementById('autoClickCostDisplay');
     var autoClickPlus1CostDisplay = document.getElementById('autoClickPlus1CostDisplay');
 
+    var coins = 0;
     var score = 0;
     var autoClicks = 0;
-    var clicPlus1 = 0;
-    var clicPlus1Multiplier = 1; // Nouvelle variable pour le multiplicateur du bonus Clic +1
+    var clickPlus1Multiplier = 1; // Nouvelle variable pour le multiplicateur du bonus Clic +1
     var autoClickCost = 100;
-    var clicPlus1Cost = 500;
+    var clickPlus1Cost = 500;
+
+    var hasReachedButtonOne = false;
+
+    function updateButton() {
+        // Affiche/masque le bouton clicPlus1 en fonction du score
+        console.log('score:', score);
+        if (score >= 100 || hasReachedButtonOne) {
+            clickPlus1Button.classList.remove('hidden');
+        } else {
+            clickPlus1Button.classList.add('hidden');
+        }
+
+    }
 
     function updateScore() {
         scoreDisplay.textContent = 'Score: ' + score;
@@ -21,13 +34,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 500);
 
         autoClickCostDisplay.textContent = 'Prochain achat d\'autoclic: ' + autoClickCost;
-        autoClickPlus1CostDisplay.textContent = 'Prochain achat de clic +1: ' + clicPlus1Cost;
+        autoClickPlus1CostDisplay.textContent = 'Prochain achat de clic +1: ' + clickPlus1Cost;
+        updateButton();
     }
 
-    clickButton.addEventListener('click', function () {
-        score += clicPlus1Multiplier; // Score augmente de +2 lorsqu'il y a un clic +1 actif
-        updateScore();
-    });
+
 
     function toggleAutoClick() {
         if (score >= autoClickCost) {
@@ -45,20 +56,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function toggleClickPlus1() {
+        if (score >= clickPlus1Cost) {
+            score -= clickPlus1Cost;
+            clickPlus1Cost += 500;
+            clickPlus1Multiplier++; // Augmente le multiplicateur du bonus Clic +1
+            updateScore();
+
+            // Marquer le palier des 100 comme atteint une fois que le bouton a été acheté
+            hasReachedButtonOne = true;
+            console.log('hasReachedButtonOne:', hasReachedButtonOne);
+        }
+    }
+
+
+    clickButton.addEventListener('click', function () {
+        score += clickPlus1Multiplier; // Score augmente de +2 lorsqu'il y a un clic +1 actif
+        updateScore();
+    });
+
     autoClickButton.addEventListener('click', function () {
         toggleAutoClick();
     });
 
-    function toggleClicPlus1() {
-        if (score >= clicPlus1Cost) {
-            score -= clicPlus1Cost;
-            clicPlus1Cost += 500;
-            clicPlus1Multiplier++; // Augmente le multiplicateur du bonus Clic +1
-            updateScore();
-        }
-    }
-
-    clicPlus1Button.addEventListener('click', function () {
-        toggleClicPlus1();
+    clickPlus1Button.addEventListener('click', function () {
+        toggleClickPlus1();
     });
+
+    updateButton();
+
 });

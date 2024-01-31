@@ -4,9 +4,6 @@ body, html {
     overflow: hidden;
 }
 
-#hidden {
-    display: none;
-}
 
 #leftPanel {
     width: 33.33%;
@@ -114,7 +111,7 @@ je veux que la taille de police ne soit adapté
 }
 
 /* Ajoutez cette règle CSS à votre fichier CSS existant */
-#clicPlus1 {
+#clickPlus1 {
     width: 20%;
     height: 15%;
     background-color: lightgreen;
@@ -128,10 +125,14 @@ je veux que la taille de police ne soit adapté
     text-align: center;
     line-height: 50px;
     padding: 5px;
-    margin: 10px 0;
+    margin: 10px;
+
 }
 
-#clicPlus1:hover {
+#clickPlus1:hover {
     background-color: #4CAF50;
 }
 
+.hidden {
+    display: none;
+}
