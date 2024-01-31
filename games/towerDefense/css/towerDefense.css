@@ -5,9 +5,10 @@
 
 .gui-top{
     flex-direction: row-reverse;
+}
 
-
-
+canvas{
+    width: 400px;
 }
 
 .gameContainer{

@@ -40,7 +40,7 @@ export class Gui {
                  }else{
                      rightContainer.appendChild(element);
                  }
-                 const buttonElement = new TowerButton(element);
+                 const buttonElement = new TowerButton(element,towerButtonElement.isSpecial);
                  // this.towerButtons.push( buttonElement); //TODO ENABLE THIS
              }
 

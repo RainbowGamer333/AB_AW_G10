@@ -23,12 +23,13 @@ export class TowerButton{
     buttonID;
     domElement;
     price;
+    isSpecial;
 
 
-    constructor(element){
+    constructor(element,isSpacial){
         this.domElement = element;
         this.buttonID = element.id.substring(3);
-        console.log(this.buttonID);
+        this.isSpecial = isSpacial;
 
         // Add texture
         let imagePath = Path.BASE_PATH_TOWER + this.buttonID + ".png";
