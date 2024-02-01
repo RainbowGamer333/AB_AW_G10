@@ -1,5 +1,6 @@
 import {GameObject} from "../GameObject.js";
 import {Engine} from "../constants/Engine.js";
+// import {Ghost} from "./impl/particle/Ghost.js";
 
 export class Entity extends GameObject{
     velocity = 20;
@@ -51,5 +52,7 @@ export class Entity extends GameObject{
             Engine.coinBalance += 1;
         }
     }
+
+
 
 }

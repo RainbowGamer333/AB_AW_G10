@@ -2,7 +2,9 @@ import {Entity} from "./Entity.js";
 import {Constants} from "../constants/Constants.js";
 import {Engine} from "../constants/Engine.js";
 import {Tower} from "./Tower.js";
-import {Ghost} from "./impl/generic/Ghost.js";
+import {Ghost} from "./impl/particle/Ghost.js";
+import {Hitmarker} from "./impl/particle/Hitmarker.js";
+
 
 export class Enemy extends Entity{
     score;
@@ -50,12 +52,31 @@ export class Enemy extends Entity{
     onDeath() {
         Engine.score+=this.score;
         Engine.coinBalance+=this.coinDropped;
-        const ghost = new Ghost(this.x,this.y);
-        Engine.addGameObject(ghost);
+        this.spawnParticleGhost();
         super.onDeath();
     }
 
    static isTarget(gameObject) {
        return gameObject instanceof Tower ;
     }
+
+
+    hurt(amount, source) {
+        super.hurt(amount, source);
+        if(!this.isDead()){
+            this.spawnParticleHitmarker();
+        }
+    }
+
+    spawnParticleGhost(){
+        const ghost = new Ghost(this.x,this.y);
+        Engine.addGameObject(ghost);
+    }
+
+    spawnParticleHitmarker(){
+        const hm = new Hitmarker(this.x,this.y);
+        Engine.addGameObject(hm);
+    }
+
+
 }
