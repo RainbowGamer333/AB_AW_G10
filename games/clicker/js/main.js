@@ -1,3 +1,4 @@
+/////////////////////////////partie clicker/////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', function () {
     var clickButton = document.getElementById('clickButton');
     var autoClickButton = document.getElementById('autoClickButton');
@@ -111,5 +112,50 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     updateButton();
+///////////////////partie image/////////////////////////////
+
+    var imageDisplay = document.getElementById('imageDisplay');
+    var imageSize = 512;
+    var pixelsVisibility = new Array(imageSize * imageSize).fill(false);
+
+    function updateImage() {
+        var imageHTML = '';
+
+        for (var i = 0; i < pixelsVisibility.length; i++) {
+            if (pixelsVisibility[i]) {
+                imageHTML += '<div class="pixel"></div>';
+            } else {
+                imageHTML += '<div class="pixel hidden"></div>';
+            }
+        }
+
+        imageDisplay.innerHTML = imageHTML;
+    }
+
+    function getRandomPixel() {
+        var randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * (imageSize * imageSize));
+        } while (pixelsVisibility[randomIndex]);
+
+        return randomIndex;
+    }
+
+    function revealRandomPixel() {
+        var randomPixel = getRandomPixel();
+        pixelsVisibility[randomPixel] = true;
+        updateImage();
+    }
+
+    // Ajoutez cet événement de clic au bouton clickButton (ou à toute autre action de clic que vous utilisez)
+    clickButton.addEventListener('click', function () {
+        incrementScore(clickPlus1Multiplier);
+        incrementCoins(clickPlus1Multiplier);
+        revealRandomPixel();
+    });
+
+    updateImage();
+
+
 });
 
