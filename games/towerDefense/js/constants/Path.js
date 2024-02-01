@@ -39,6 +39,7 @@ export class Path {
     static GHOST = Path.BASE_PATH_PARTICLE+"ghost.png";
     static HITMARKER_DAMAGE = Path.BASE_PATH_PARTICLE+"hitmarker_damage.png";
     static HITMARKER_HEAL = Path.BASE_PATH_PARTICLE+"hitmarker_heal.png";
+    static EXPLOSION = Path.BASE_PATH_PARTICLE+"explosion.png";
 
 
     //ENEMIES

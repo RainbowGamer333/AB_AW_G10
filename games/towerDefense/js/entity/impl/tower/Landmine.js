@@ -5,6 +5,7 @@ import {Fireball} from "../projectile/Fireball.js";
 import {Engine} from "../../../constants/Engine.js";
 import {Constants} from "../../../constants/Constants.js";
 import {CanonBall} from "../projectile/CanonBall.js";
+import {Explosion} from "../particle/Explosion.js";
 
 export class Landmine extends Tower{
     constructor() {
@@ -31,7 +32,7 @@ export class Landmine extends Tower{
     hurt(amount, source) {
         this.health = 0;
         source.hurt(this.damage,this);
-
+        Engine.addGameObject(new Explosion(this.x,this.y));
         super.hurt(amount, source);
 
     }
