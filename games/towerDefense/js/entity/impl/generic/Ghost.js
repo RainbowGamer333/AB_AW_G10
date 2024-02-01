@@ -5,8 +5,9 @@ import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";
 import {GameObject} from "../../../GameObject.js";
 import {Engine} from "../../../constants/Engine.js";
+import {Particle} from "../../Particle.js";
 
-export class Ghost extends GameObject {
+export class Ghost extends Particle {
     lifespan = 2;
     accumulatedTime = 0.0;
     constructor( x, y) {
@@ -19,11 +20,7 @@ export class Ghost extends GameObject {
 
     update(dt) {
         super.update(dt);
-        this.accumulatedTime += dt;
-        this.y -= 4 * dt;
-        if (this.accumulatedTime >= this.lifespan) {
-            Engine.removeGameObject(this);
-        }
+        this.y -=3 * dt;
     }
 
 
