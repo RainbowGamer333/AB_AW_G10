@@ -102,6 +102,7 @@ export class Cell {
     }
 
     reinitialiserCellule() {
+        this.valeur = 0;
         this._visible = false;
         this._flag = false;
         this._disabled = false;
