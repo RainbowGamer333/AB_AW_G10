@@ -33,6 +33,14 @@ export class Path {
     static ANNIHILATOR_BEAM = Path.BASE_PATH_PROJECTILE+"annihilator_beam.png";
     static ANNIHILATOR_VACUUM = Path.BASE_PATH_PROJECTILE+"annihilator_vacuum.png";
 
+
+    //PARTICLES
+    static BASE_PATH_PARTICLE = Path.BASE_PATH + "particle/";
+    static GHOST = Path.BASE_PATH_PARTICLE+"ghost.png";
+    static HITMARKER_DAMAGE = Path.BASE_PATH_PARTICLE+"hitmarker_damage.png";
+    static HITMARKER_HEAL = Path.BASE_PATH_PARTICLE+"hitmarker_heal.png";
+
+
     //ENEMIES
     static BASE_PATH_ENEMY = Path.BASE_PATH + "enemy/";
     static GOBLIN = Path.BASE_PATH_ENEMY+"goblin.png";
@@ -41,7 +49,7 @@ export class Path {
     static GOLIATH = Path.BASE_PATH_ENEMY+"goliath.png";
     static NECROMANCER = Path.BASE_PATH_ENEMY+"necromancer.png";
     static SKELETON = Path.BASE_PATH_ENEMY+"skeleton.png";
-    static GHOST = Path.BASE_PATH_ENEMY+"ghost.png";
+
 
     //Building
     static BASE_PATH_BUILDING = Path.BASE_PATH + "building/";
