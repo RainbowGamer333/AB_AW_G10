@@ -20,7 +20,7 @@ export class Gui {
          // }
 
 
-         Utils.readTextFile(Path.TOWERS_DATA, function(text){
+         Utils.readTextFile(Path.TOWERS_DATA, (text) =>{
              let dataArray = JSON.parse(text);
              for (let i = 0; i < dataArray.length; i++){
                  let towerButtonElement = dataArray[i];
@@ -41,7 +41,7 @@ export class Gui {
                      rightContainer.appendChild(element);
                  }
                  const buttonElement = new TowerButton(element,towerButtonElement.isSpecial);
-                 // this.towerButtons.push( buttonElement); //TODO ENABLE THIS
+                 this.towerButtons.push( buttonElement); //TODO ENABLE THIS
              }
 
              console.log(dataArray);

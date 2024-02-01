@@ -126,6 +126,10 @@ canvas{
     transition: 0.2s filter ease;
 }
 
+.towerButton:disabled{
+    filter: saturate(0);
+}
+
 /*.towerButton .glow {*/
 /*    position: absolute;*/
 /*    width: 100%;*/

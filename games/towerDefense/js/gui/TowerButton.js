@@ -31,10 +31,13 @@ export class TowerButton{
         this.buttonID = element.id.substring(3);
         this.isSpecial = isSpacial;
 
+
+
         // Add texture
         let imagePath = Path.BASE_PATH_TOWER + this.buttonID + ".png";
         this.domElement.querySelector("img").src = imagePath;
         this.price = element.querySelector(".cost").innerText;
+        console.log(this.price)
 
         // Add listeners
         // this.stopDrag = this.stopDrag.bind(this);
