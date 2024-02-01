@@ -63,6 +63,13 @@
     "isSpecial": false
   },
   {
+    "name": "triple_canon",
+    "display_name": "Triple canon",
+    "price":400,
+    "cool_down": 1000,
+    "isSpecial": false
+  },
+  {
     "name": "fire_canon",
     "display_name": "Canon de feu",
     "price":500,
