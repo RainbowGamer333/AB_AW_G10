@@ -130,6 +130,10 @@ canvas{
     filter: saturate(0);
 }
 
+.towerButton:hover{
+    cursor: pointer;
+}
+
 /*.towerButton .glow {*/
 /*    position: absolute;*/
 /*    width: 100%;*/
