@@ -2,7 +2,7 @@ import { GameBoard } from "./gameBoard.js";
 
 let nbRows = 10;
 let nbCols = 11;
-let nbMines = 10;
+let nbMines = 20;
 
 
 

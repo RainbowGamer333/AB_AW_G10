@@ -56,22 +56,24 @@ export class Grid {
     }
 
     afficherCellule(row, col) {
-
         let cell = this.cells[row][col];
+
         // N'affiche pas des cellules déjà visible
         if (cell.visible) return;
-        this._nbCellulesRevelee += 1;
         cell.afficheCellule();
+        this._nbCellulesRevelee += 1;
 
         if (cell.valeur === 0) {
             this.decouvrirZeros(row, col);
         }
-
         else if (cell.isMine()) {
-            
+            this.gameOver(cell);
         }
-
-        console.log(this._nbCellulesRevelee);
+        else if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
+            this.timer.stopTimer();
+            this.smiley.victory();
+            this.disableCells();
+        }
     }
 
 
@@ -125,18 +127,20 @@ export class Grid {
                     if (e.button === 0 && this._isClicked) cell.element.classList.remove("unclicked");
                 });
 
-                // Afficher la cellule avec clique gauche
                 cell.element.addEventListener("mouseup", (e) => {
                     e.preventDefault();
-                    this.smiley.normal();
                     this._isClicked = false;
 
                     // Clique du milieu uniquement sur une cellule visible
                     if (e.button === 1 && cell.visible) {
                         this.decouvrirAlentours(i, j);
-                    } else if (e.button === 0) {
+                    }
+
+                    // Afficher la cellule avec clique gauche
+                    else if (e.button === 0) {
                         // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
                         if (cell.disabled || cell.flag || cell.visible) return;
+                        this.smiley.normal();
 
                         // Au premier clique on initialise les mines et les valeurs
                         // Ceci permet de commencer une partie sans cliquer immédiatement sur une mine
@@ -151,14 +155,6 @@ export class Grid {
                         }
 
                         this.afficherCellule(i, j);
-
-                        // Si la cellule est vide, on affiche récursivement toutes les cellules vides autour d'elle
-                        if (cell.valeur === 0) this.decouvrirZeros(i, j);
-
-                        // Cliquer sur une mine fait perdre la partie
-                        else if (cell.isMine()) {
-                            this.gameOver(cell);
-                        }
                     }
                 });
             }
@@ -263,10 +259,10 @@ export class Grid {
                 let cell = this.cells[i][j];
                 if (cell.isMine() && !cell.flag) {
                     if (cell === mineCliquee) cell.valeur = -2;
-                    this.afficherCellule(i, j);
+                    cell.afficheCellule();
                 } else if (!cell.isMine() && cell.flag) {
                     cell.valeur = -3;
-                    this.afficherCellule(i, j);
+                    cell.afficheCellule();
                 }
             }
         }
