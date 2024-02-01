@@ -4,17 +4,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var clickPlus1Button = document.getElementById('clickPlus1');
     var scoreDisplay = document.getElementById('score');
     var autoClickCostDisplay = document.getElementById('autoClickCostDisplay');
-    var autoClickPlus1CostDisplay = document.getElementById('autoClickPlus1CostDisplay');
+    var clickPlus1CostDisplay = document.getElementById('clickPlus1CostDisplay'); // Correction ici
     var coinsDisplay = document.getElementById('coinsDisplay');
 
     var score = 0;
     var autoClicks = 0;
     var clickPlus1Multiplier = 1;
     var autoClickCost = 1500;
-    var clickPlus1Cost = 150;
+    var clickPlus1Cost = 500;
     var coins = 0;
 
     var hasReachedButtonOne = false;
+    var hasReachedButtonTwo = false;
 
     function updateButton() {
         if (coins >= autoClickCost) {
@@ -23,13 +24,15 @@ document.addEventListener('DOMContentLoaded', function () {
             autoClickButton.setAttribute('disabled', 'disabled');
         }
 
-        if (score >= 100 || hasReachedButtonOne) {
+        if (score >= 300 || hasReachedButtonOne) {
             clickPlus1Button.classList.remove('hidden');
+            clickPlus1CostDisplay.classList.remove('hidden');
         } else {
             clickPlus1Button.classList.add('hidden');
         }
-        if (score >= 200 || hasReachedButtonOne) {
+        if (score >= 1000 || hasReachedButtonTwo) {
             autoClickButton.classList.remove('hidden');
+            autoClickCostDisplay.classList.remove('hidden');
         } else {
             autoClickButton.classList.add('hidden');
         }
@@ -43,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 500);
 
         autoClickCostDisplay.textContent = 'Prochain achat d\'autoclic: ' + autoClickCost;
-        autoClickPlus1CostDisplay.textContent = 'Prochain achat de clic +1: ' + clickPlus1Cost;
+        clickPlus1CostDisplay.textContent = 'Prochain achat de clic +1: ' + clickPlus1Cost;
         updateCoins();
         updateButton();
         console.log('Score: ' + score);
@@ -52,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateCoins() {
         coinsDisplay.textContent = 'Pièces: ' + coins;
         autoClickCostDisplay.textContent = 'Prochain achat d\'autoclic: ' + autoClickCost;
-        autoClickPlus1CostDisplay.textContent = 'Prochain achat de clic +1: ' + clickPlus1Cost;
+        clickPlus1CostDisplay.textContent = 'Prochain achat de clic +1: ' + clickPlus1Cost;
         console.log("Coins: " + coins);
     }
 
@@ -79,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     incrementCoins(autoClicks);
                 }, 750);
             }
+            hasReachedButtonTwo = true;
         }
     }
 
@@ -95,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     clickButton.addEventListener('click', function () {
         incrementScore(clickPlus1Multiplier);
-        incrementCoins(clickPlus1Multiplier); // Ajout de pièces pour chaque clic
+        incrementCoins(clickPlus1Multiplier);
     });
 
     autoClickButton.addEventListener('click', function () {
@@ -108,3 +112,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
     updateButton();
 });
+
