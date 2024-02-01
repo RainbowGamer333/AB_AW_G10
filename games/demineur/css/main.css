@@ -28,11 +28,17 @@
 }
 
 #gameBoardHeaderSmileyButton {
+    background-color: #c7c7c7;
     background-image: url("../assets/grille/unclicked.png");
     background-size: 100% 100%;
     border: none;
     width: 50px;
     height: 50px;
+}
+
+#gameBoardHeaderSmileyButton.pressed {
+    background-image: none;
+    border: #d2d2d2 3px inset;
 }
 
 #smiley {

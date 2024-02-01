@@ -7,9 +7,20 @@ export class Smiley {
     }
 
     initialiserListeners(grid) {
-        this.button.addEventListener("click", () => {
+        this.button.addEventListener("click", (e) => {
+            e.preventDefault();
             grid.reinitialiserPartie();
             this.normal();
+        });
+
+        this.button.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            this.button.classList.add("pressed");
+        });
+
+        this.button.addEventListener("mouseup", (e) => {
+            e.preventDefault();
+            this.button.classList.remove("pressed");
         });
     }
 
