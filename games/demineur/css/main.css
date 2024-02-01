@@ -27,7 +27,7 @@
     margin: 10px;
 }
 
-#buttonSmiley {
+#gameBoardHeaderSmileyButton {
     background-image: url("../assets/grille/unclicked.png");
     background-size: 100% 100%;
     border: none;
@@ -36,7 +36,6 @@
 }
 
 #smiley {
-    /*background-image: url("../assets/header/normal.png");*/
     background-size: 100% 100%;
     max-width: 100%;
     max-height: 100%;

@@ -97,10 +97,6 @@ export class Cell {
         }
     }
 
-    afficheFakeMine() {
-        this.element.classList.add("fake-mine");
-    }
-
     reinitialiserCellule() {
         this.valeur = 0;
         this._visible = false;
