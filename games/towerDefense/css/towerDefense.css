@@ -1,0 +1,145 @@
+:root{
+    --towerButtonSize : 80px;
+    --GuiBackgroundColor : #5c6370;
+}
+
+.gui-top{
+    flex-direction: row-reverse;
+}
+
+canvas{
+    width: 400px;
+}
+
+.gameContainer{
+    background-color: var(--GuiBackgroundColor);
+    width: max-content;
+    border-radius: 10px;
+}
+
+
+.gui{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--GuiBackgroundColor);
+    min-height: 60px;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-start;
+}
+
+
+.guiCard{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
+    margin-left: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+#coin_card_value{
+    text-shadow: 1px 1px 6px rgb(255 212 122);
+}
+#coin_card{
+    image-rendering: pixelated;
+}
+
+.right-container {
+    width: 425px;
+    border-radius: 0 10px 10px 0;
+}
+
+.left-container{
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 180px;
+}
+
+.guiCard>span{
+    text-align: center;
+}
+
+
+.towerButton{
+    min-height: var(--towerButtonSize);
+    height: fit-content;
+    width:  var(--towerButtonSize);
+    background-size: cover;
+    image-rendering: pixelated;
+    padding: 0;
+    border: 2px solid;
+    border-radius: 10px;
+    margin: 2px;
+    background: radial-gradient(circle, rgba(251, 206, 63, 0.6327323165594363) 0%, rgba(121, 58, 58, 255) 100%) center;
+
+    filter: brightness(1.0);
+    transition: 0.1s filter ease;
+    /*background-image: url("asset/tower_background.png");*/
+}
+
+.towerButton>img{
+    height:  var(--towerButtonSize);
+    width: 100%;
+}
+
+.towerButton>.cost{
+    height: 20px;
+    width: 100%;
+    color: #000000;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.towerButton>.cost::after{
+    height: 15px;
+    width: 15px;
+    display: block;
+    background-image: url('../asset/coin.png');
+    content : '';
+
+    padding: 0;
+    background-size: contain;
+    transform: scale(2.2);
+    margin-left: 5px;
+}
+
+.towerButton>.title{
+    background-color: #252524;
+    color: white;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.towerButton:not(:disabled):hover{
+    filter: brightness(1.2);
+    transition: 0.2s filter ease;
+}
+
+.towerButton:disabled{
+    filter: saturate(0);
+}
+
+.towerButton:hover{
+    cursor: pointer;
+}
+
+/*.towerButton .glow {*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    left: 0;*/
+/*    top: 0;*/
+
+/*    background-image: radial-gradient(circle at 50% -20%, #ffffff22, #0000000f);*/
+/*}*/
