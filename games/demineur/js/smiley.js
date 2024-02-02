@@ -4,6 +4,15 @@ export class Smiley {
     constructor() {
         this.button = document.querySelector("#gameBoardHeaderSmileyButton");
         this.smiley = document.querySelector("#smiley");
+        this._isClicked = false;
+    }
+
+    get isClicked() {
+        return this._isClicked;
+    }
+
+    set isClicked(value) {
+        this._isClicked = value;
     }
 
     initialiserListeners(grid) {
@@ -18,7 +27,7 @@ export class Smiley {
             this.button.classList.add("pressed");
         });
 
-        this.button.addEventListener("mouseup", (e) => {
+        this.button.addEventListener("mouseout", (e) => {
             e.preventDefault();
             this.button.classList.remove("pressed");
         });

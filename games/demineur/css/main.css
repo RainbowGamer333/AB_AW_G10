@@ -1,3 +1,29 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+    height: 15px;
+    text-align: center;
+}
+
+/*
+input[type="radio"] {
+    margin: 0;
+    padding: 0;
+    height: 15px;
+    text-align: center;
+}
+ */
+
+
 #gameBoard {
     border: 6px solid #c7c7c7;
     display: flex;

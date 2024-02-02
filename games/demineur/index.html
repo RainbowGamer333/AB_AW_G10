@@ -7,6 +7,39 @@
     <link rel="stylesheet" href="css/cellules.css">
 </head>
 <body>
+    <form onsubmit="console.log('test')">
+        <label>
+            <input type="radio" id="easy" name="difficulty" value="easy" checked>
+            Facile
+        </label>
+        <label>
+            <input type="radio" id="medium" name="difficulty" value="medium">
+            Moyen
+        </label>
+        <label>
+            <input type="radio" id="hard" name="difficulty" value="hard">
+            Difficile
+        </label>
+        <label>
+            <input type="radio" id="custom" name="difficulty" value="custom">
+            Personnalisé
+        </label>
+        <label>
+            <input type="number" id="customWidth" name="customWidth" value="10" min="2">
+            Largeur
+        </label>
+        <label>
+            <input type="number" id="customHeight" name="customHeight" value="10" min="2">
+            Hauteur
+        </label>
+        <label>
+            <input type="number" id="customMines" name="customMines" value="10" min="10">
+            Mines
+        </label>
+        <input type="submit" value="Submit">
+    </form>
+
+
     <div id="gameBoard">
         <div id="gameBoardHeader">
             <div id="gameBoardHeaderMineCounter">
