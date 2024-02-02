@@ -7,8 +7,8 @@ import {AnnihilatorBeam} from "../projectile/AnnihilatorBeam.js";
 import {Constants} from "../../../constants/Constants.js";
 import {AnnihilatorVacuum} from "../projectile/AnnihilatorVacuum.js";
 
-export class Annihilator extends Tower{
-
+export class Wind extends Tower{
+    startFire;
     constructor() {
         const health = 500;
         const damage = 100;
@@ -26,24 +26,22 @@ export class Annihilator extends Tower{
     update(dt) {
         this.accumulatedTime+=dt;
         if (this.accumulatedTime>=this.attackRate){
-            this.spawnProjectile();
+            this.spawnVacuum();
             this.hurt(20,this);
-
             this.accumulatedTime = 0;
         }
         super.updateComponents(dt);
     }
 
 
-    spawnProjectile() {
+    spawnVacuum(){
         const spawnOffset = 10;
         const y  = this.y - spawnOffset;
-        let projectile = new AnnihilatorBeam();
-        projectile.y = Constants.height + Constants.TILE_SIZE_ZOOMED;
+        let projectile = new AnnihilatorVacuum(this);
+        projectile.y = Constants.height;
         projectile.x = this.x;
         projectile.damage = this.damage;
-        projectile.source = this;
+        projectile.deadzone = -32 ;
         Engine.addGameObject(projectile);
-
     }
 }
