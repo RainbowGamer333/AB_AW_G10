@@ -1,12 +1,12 @@
 import {Component} from "./Component.js";
-import {Global} from "../constants/Global.js";
+import {Engine} from "../constants/Engine.js";
 import {Constants} from "../constants/Constants.js";
 import {Gui} from "../gui/Gui.js";
 
 export class Clickable extends Component{
     constructor() {
         super();
-        Global.canvas.addEventListener("click",this.checkIfClicked.bind(this));
+        Engine.canvas.addEventListener("click",this.checkIfClicked.bind(this));
     }
 
     checkIfClicked(){

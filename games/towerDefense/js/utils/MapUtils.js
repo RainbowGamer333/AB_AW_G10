@@ -2,7 +2,7 @@ import {Path} from "../constants/Path.js";
 import {Constants} from "../constants/Constants.js";
 import {GameObject} from "../GameObject.js";
 import {SpriteRenderer} from "../component/SpriteRenderer.js";
-import {Global} from "../constants/Global.js";
+import {Engine} from "../constants/Engine.js";
 import {Utils} from "./Utils.js";
 import {Canon} from "../entity/impl/tower/Canon.js";
 import {MonsterSpawner} from "../entity/impl/generic/MonsterSpawner.js";
@@ -18,7 +18,7 @@ export class MapUtils {
             for (let j = 0; j < Constants.colums; j ++){
                 let tile = new GameObject("tile_"+tileCPT++,j*Constants.TILE_SIZE_ZOOMED,i*Constants.TILE_SIZE_ZOOMED);
                 tile.addComponent(new SpriteRenderer(image));
-                Global.addGameObject(tile);
+                Engine.addGameObject(tile);
                 // console.log(tile.name + " x:"+tile.x+" y:"+tile.y);
             }
         }
@@ -51,8 +51,12 @@ export class MapUtils {
 
             let villageBuilding = new Building("tile_building_"+tileCPT++,i*Constants.TILE_SIZE_ZOOMED,y);
             villageBuilding.addComponent(new SpriteRenderer(images[imageChoice]));
-            Global.addGameObject(villageBuilding);
+            Engine.addGameObject(villageBuilding);
+            Engine.maxVillageHealth += villageBuilding.maxHealth;
+            Engine.villageHousesAlive.push(true);
         }
+        Engine.villageHealth = Engine.maxVillageHealth;
+
     }
 
     static createTestTowers(){
@@ -65,16 +69,16 @@ export class MapUtils {
         //     let tower = new Canon();
         //     tower.x = i*Constants.TILE_SIZE_ZOOMED;
         //     tower.y = y;
-        //     Global.addGameObject(tower);
+        //     Engine.addGameObject(tower);
         // }
         let tower = new Canon();
         tower.x = 0*Constants.TILE_SIZE_ZOOMED;
         tower.y = y;
-        Global.addGameObject(tower);
+        Engine.addGameObject(tower);
     }
 
     static createSpawner(){
-        Global.gameObjects.push(new MonsterSpawner("MonsterSpawner",0,0));
+        Engine.gameObjects.push(new MonsterSpawner("MonsterSpawner",0,0));
     }
 
 }

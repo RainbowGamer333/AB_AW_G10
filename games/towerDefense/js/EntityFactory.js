@@ -3,7 +3,7 @@ import {Enemy} from "./entity/Enemy.js";
 import {Path} from "./constants/Path.js";
 import {SpriteRenderer} from "./component/SpriteRenderer.js";
 import {Constants} from "./constants/Constants.js";
-import {Global} from "./constants/Global.js";
+import {Engine} from "./constants/Engine.js";
 import {Clickable} from "./component/Clickable.js";
 
 export class EntityFactory {

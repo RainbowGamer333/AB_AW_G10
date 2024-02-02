@@ -1,0 +1,101 @@
+[
+  {
+    "name": "spell_heal",
+    "display_name": "Soin",
+    "price":75,
+    "cool_down": 1000,
+    "isSpecial": true
+  },
+  {
+    "name": "spell_wind",
+    "display_name": "Sort de Vent",
+    "price":75,
+    "cool_down": 1000,
+    "isSpecial": true
+  },
+  {
+    "name": "annihilator",
+    "display_name": "Annihilateur",
+    "price":1000,
+    "cool_down": 1000,
+    "isSpecial": true
+  },
+  {
+    "name": "remover",
+    "display_name": "Retirer",
+    "price":100,
+    "cool_down": 1000,
+    "isSpecial": true
+  },
+  {
+    "name": "mini_canon",
+    "display_name": "Mini canon",
+    "price":30,
+    "cool_down": 1000,
+    "isSpecial": false
+  },
+  {
+    "name": "double_canon",
+    "display_name": "Double canon",
+    "price":60,
+    "cool_down": 1000,
+    "isSpecial": false
+  },
+  {
+    "name": "triple_canon",
+    "display_name": "Triple canon",
+    "price":400,
+    "cool_down": 1000,
+    "isSpecial": false
+  },
+  {
+    "name": "canon",
+    "display_name": "Canon",
+    "price":200,
+    "cool_down": 1000,
+    "isSpecial": false
+  },
+  {
+    "name": "fire_canon",
+    "display_name": "Canon de feu",
+    "price":500,
+    "cool_down": 1000,
+    "isSpecial": false
+  },
+  {
+    "name": "tesla",
+    "display_name": "Tesla",
+    "price":120,
+    "cool_down": 1000,
+    "isSpecial": false
+  },
+  {
+    "name": "landmine",
+    "display_name": "Mine",
+    "price":50,
+    "cool_down": 1000,
+    "isSpecial": false
+  },
+  {
+    "name": "low_wall",
+    "display_name": "Muret",
+    "price":50,
+    "cool_down": 1000,
+    "isSpecial": false
+  },
+  {
+    "name": "wall",
+    "display_name": "Rempart",
+    "price":250,
+    "cool_down": 1000,
+    "isSpecial": false
+  },
+
+  {
+    "name": "golden_tree",
+    "display_name": "Arbre doré",
+    "price":50,
+    "cool_down": 1000,
+    "isSpecial": false
+  }
+]

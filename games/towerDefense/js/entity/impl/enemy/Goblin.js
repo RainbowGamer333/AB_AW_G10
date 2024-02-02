@@ -6,7 +6,7 @@ export class Goblin extends Enemy{
 
     constructor() {
         const health = 20;
-        const velocity = 80;
+        const velocity = 40;
 
         let image = new Image();
         image.src = Path.GOBLIN;
@@ -15,7 +15,7 @@ export class Goblin extends Enemy{
         this.addComponent(spriteRenderer)
         this.attackRate = 1;
         this.damage = 20;
-        this.coinDropped = 1;
+        this.coinDropped = 5;
         this.score = 10;
     }
 }

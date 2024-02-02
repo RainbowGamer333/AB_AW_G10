@@ -9,18 +9,25 @@ import {GameObject} from "./GameObject.js";
 import {SpriteRenderer} from "./component/SpriteRenderer.js";
 import {Path} from "./constants/Path.js";
 import {MonsterSpawner} from "./entity/impl/generic/MonsterSpawner.js";
-import {Global} from "./constants/Global.js";
+import {Engine} from "./constants/Engine.js";
 import {MapUtils} from "./utils/MapUtils.js";
 
-Global.canvas = document.getElementById("gameCanvas");
-const canvas = Global.canvas;
-Global.context = Global.canvas.getContext("2d");
-Global.gameObjects = [];
+
+Engine.canvas = document.getElementById("gameCanvas");
+const canvas = Engine.canvas;
+Engine.context = Engine.canvas.getContext("2d");
+Engine.gameObjects = [];
 const gui = new Gui();
 
+export const gState = {
+    MENU : 1,
+    GAME : 2,
+    END: 3
+}
 
 function init(){
-    Global.context.imageSmoothingEnabled = false;
+    Engine.context.imageSmoothingEnabled = false;
+    Engine.gameState = gState.GAME;
 
 
 
@@ -47,23 +54,23 @@ function init(){
 
 // Définir la fonction de mise à jour du jeu
 function updateGame(dt) {
-    // Update Game objects
-    for (let i = 0; i < Global.gameObjects.length; i++){
-        Global.gameObjects[i].update(dt);
+    for (let i = 0; i < Engine.gameObjects.length; i++){
+        Engine.gameObjects[i].update(dt);
     }
-
     //Update Graphical User Interface
     gui.update(dt);
+
+
 }
 
 // Définir la fonction de rendu du jeu
 function renderGame() {
     // Effacer le canvas
-    Global.context.clearRect(0, 0, canvas.width, canvas.height);
+    Engine.context.clearRect(0, 0, canvas.width, canvas.height);
 
     // Dessiner les éléments du jeu ici
-    for (let i = 0; i < Global.gameObjects.length; i++){
-        Global.gameObjects[i].render();
+    for (let i = 0; i < Engine.gameObjects.length; i++){
+        Engine.gameObjects[i].render();
     }
 
     // ctx.fillStyle = "#ffffff"; // Couleur du carré (blanc ici)
@@ -77,12 +84,18 @@ function gameLoop(timestamp) {
     const dt = (timestamp - lastTimestamp) / 1000;
     lastTimestamp = timestamp;
 
+    if (Engine.gameState === gState.GAME){
+        // Rendre le jeu
+        renderGame();
 
-
-    // Rendre le jeu
-    renderGame();
-
-    updateGame(dt);
+        updateGame(dt);
+    }else if (Engine.gameState === gState.MENU){
+        console.log("MENU STATE")
+    }else if (Engine.gameState === gState.END){
+        renderGame();
+        //TODO
+        // console.log("END STATEEE")
+    }
 
     // Appeler la boucle de jeu à nouveau
     requestAnimationFrame(gameLoop);

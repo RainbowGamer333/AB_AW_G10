@@ -1,6 +1,6 @@
 import {GameObject} from "../../../GameObject.js";
 import {EntityFactory} from "../../../EntityFactory.js";
-import {Global} from "../../../constants/Global.js";
+import {Engine} from "../../../constants/Engine.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";
 import {Goblin} from "../enemy/Goblin.js";
@@ -51,15 +51,16 @@ export class MonsterSpawner extends GameObject{
                 }
             }
 
-            let col = Utils.randomIntFromInterval(0,Constants.colums-1);
+            let col = Utils.randomIndexFromTrueBooleans(Engine.villageHousesAlive);
+
             col *= Constants.TILE_SIZE_ZOOMED;
             entity.x = col;
             entity.y = -32;
             entity.name += "_"+ counter++;
 
-            Global.gameObjects.push(entity);
+            Engine.gameObjects.push(entity);
 
-            accumulatedTime -= spawnInterval;
+            accumulatedTime = 0;
         }
 
     }

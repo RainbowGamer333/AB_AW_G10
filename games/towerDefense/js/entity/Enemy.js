@@ -1,7 +1,10 @@
 import {Entity} from "./Entity.js";
 import {Constants} from "../constants/Constants.js";
-import {Global} from "../constants/Global.js";
+import {Engine} from "../constants/Engine.js";
 import {Tower} from "./Tower.js";
+import {Ghost} from "./impl/particle/Ghost.js";
+import {Hitmarker} from "./impl/particle/Hitmarker.js";
+
 
 export class Enemy extends Entity{
     score;
@@ -20,8 +23,8 @@ export class Enemy extends Entity{
 
 
         let isColliding = false;
-        for (let i = 0; i < Global.gameObjects.length; i++) {
-            let gameObject = Global.gameObjects[i];
+        for (let i = 0; i < Engine.gameObjects.length; i++) {
+            let gameObject = Engine.gameObjects[i];
             // console.log(this.y)
             if (gameObject.x === this.x && Enemy.isTarget(gameObject)){ // if they are on the same line
                 if (gameObject.y >= this.y // TOP LEFT
@@ -29,7 +32,7 @@ export class Enemy extends Entity{
                     this.accumulatedTime+=dt;
                     isColliding= true;
                     if(this.accumulatedTime>=this.attackRate){
-                        gameObject.hurt(this.damage);
+                        gameObject.hurt(this.damage,this);
                         this.accumulatedTime -= this.attackRate;
                         break;
                     }
@@ -40,20 +43,40 @@ export class Enemy extends Entity{
             this.y +=  this.velocity * dt;
         }
 
-        // if (this.y <= -Constants.TILE_SIZE_ZOOMED ){
-        //     Global.removeGameObject(this);
-        // }
+        if (this.y >= Constants.height+Constants.TILE_SIZE_ZOOMED ){
+            Engine.removeGameObject(this);
+        }
     }
 
 
     onDeath() {
-        Global.score+=this.score;
-        Global.coinBalance+=this.coinDropped;
+        Engine.score+=this.score;
+        Engine.coinBalance+=this.coinDropped;
+        this.spawnParticleGhost();
         super.onDeath();
     }
 
    static isTarget(gameObject) {
-        //todo ajouter une classe building (représentant les éléments du village)
        return gameObject instanceof Tower ;
     }
+
+
+    hurt(amount, source) {
+        super.hurt(amount, source);
+        if(!this.isDead()){
+            this.spawnParticleHitmarker();
+        }
+    }
+
+    spawnParticleGhost(){
+        const ghost = new Ghost(this.x,this.y);
+        Engine.addGameObject(ghost);
+    }
+
+    spawnParticleHitmarker(){
+        const hm = new Hitmarker(this.x,this.y);
+        Engine.addGameObject(hm);
+    }
+
+
 }

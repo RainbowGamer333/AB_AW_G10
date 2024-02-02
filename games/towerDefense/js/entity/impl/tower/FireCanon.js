@@ -2,7 +2,7 @@ import {Tower} from "../../Tower.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Fireball} from "../projectile/Fireball.js";
-import {Global} from "../../../constants/Global.js";
+import {Engine} from "../../../constants/Engine.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Canon} from "./Canon.js";
 
@@ -20,14 +20,7 @@ export class FireCanon extends Tower{
     }
 
 
-    update(dt) {
-        this.accumulatedTime+=dt;
-        if (this.accumulatedTime>=this.attackRate){
-            this.spawnProjectile();
-            this.accumulatedTime -= this.attackRate;
-        }
-        super.update(dt);
-    }
+
 
 
     spawnProjectile() {
@@ -36,7 +29,7 @@ export class FireCanon extends Tower{
         // let projectile = new Fireball();
         // projectile.y = y;
         // projectile.x = this.x;
-        // Global.addGameObject(projectile);
+        // Engine.addGameObject(projectile);
 
         const spawnOffset = 10;
         const y  = this.y - spawnOffset;
@@ -44,7 +37,8 @@ export class FireCanon extends Tower{
         projectile.y = y;
         projectile.x = this.x;
         projectile.damage = this.damage;
-        Global.addGameObject(projectile);
+        projectile.source = this;
+        Engine.addGameObject(projectile);
 
     }
 }

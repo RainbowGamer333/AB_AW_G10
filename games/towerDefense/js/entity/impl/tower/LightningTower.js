@@ -2,7 +2,7 @@ import {Tower} from "../../Tower.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Fireball} from "../projectile/Fireball.js";
-import {Global} from "../../../constants/Global.js";
+import {Engine} from "../../../constants/Engine.js";
 import {Lightning} from "../projectile/Lightning.js";
 import {Constants} from "../../../constants/Constants.js";
 
@@ -22,15 +22,6 @@ export class LightningTower extends Tower {
     }
 
 
-    update(dt) {
-        this.accumulatedTime+=dt;
-        if (this.accumulatedTime>=this.attackRate){
-            this.spawnProjectile();
-            this.accumulatedTime -= this.attackRate;
-        }
-        super.update(dt);
-    }
-
 
     spawnProjectile() {
         // const spawnOffset = 10;
@@ -38,7 +29,7 @@ export class LightningTower extends Tower {
         // let projectile = new Fireball();
         // projectile.y = y;
         // projectile.x = this.x;
-        // Global.addGameObject(projectile);
+        // Engine.addGameObject(projectile);
 
         const spawnOffset = 14;
         const y  = this.y - spawnOffset;
@@ -46,8 +37,8 @@ export class LightningTower extends Tower {
         projectile.y = y;
         projectile.x = this.x;
         projectile.damage = this.damage;
-        projectile.setDeadZone(5);
-        Global.addGameObject(projectile);
+        projectile.setDeadZone(6);
+        Engine.addGameObject(projectile);
 
     }
 }

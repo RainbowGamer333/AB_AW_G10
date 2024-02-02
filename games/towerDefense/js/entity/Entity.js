@@ -1,5 +1,6 @@
 import {GameObject} from "../GameObject.js";
-import {Global} from "../constants/Global.js";
+import {Engine} from "../constants/Engine.js";
+// import {Ghost} from "./impl/particle/Ghost.js";
 
 export class Entity extends GameObject{
     velocity = 20;
@@ -29,7 +30,7 @@ export class Entity extends GameObject{
         }
     }
 
-    hurt(amount){
+    hurt(amount,source){
         this.health -= amount;
         if(this.health<=0){
             this.health = 0;
@@ -39,16 +40,19 @@ export class Entity extends GameObject{
         this.isAlive = true;
     }
 
+
     onDeath(){
         // console.log(this.name+" is dead.");
-        Global.removeGameObject(this);
+        Engine.removeGameObject(this);
     }
 
     onClick(){
-        this.hurt(50);
+        this.hurt(50,null);
         if (this.isAlive){
-            Global.coinBalance += 1;
+            Engine.coinBalance += 1;
         }
     }
+
+
 
 }

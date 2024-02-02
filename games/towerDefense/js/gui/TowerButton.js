@@ -1,6 +1,6 @@
 import {Path} from "../constants/Path.js";
 import {Gui} from "./Gui.js";
-import {Global} from "../constants/Global.js";
+import {Engine} from "../constants/Engine.js";
 import {Canon} from "../entity/impl/tower/Canon.js";
 import {Constants} from "../constants/Constants.js";
 import {LightningTower} from "../entity/impl/tower/LightningTower.js";
@@ -8,6 +8,13 @@ import {Wall} from "../entity/impl/tower/Wall.js";
 import {GoldenTree} from "../entity/impl/tower/GoldenTree.js";
 import {Annihilator} from "../entity/impl/tower/Annihilator.js";
 import {FireCanon} from "../entity/impl/tower/FireCanon.js";
+import {BidirectionalSonar} from "../entity/impl/tower/BidirectionalSonar.js";
+import {Tower} from "../entity/Tower.js";
+import {LowWall} from "../entity/impl/tower/LowWall.js";
+import {Landmine} from "../entity/impl/tower/Landmine.js";
+import {MiniCanon} from "../entity/impl/tower/MiniCanon.js";
+import {DoubleCanon} from "../entity/impl/tower/DoubleCanon.js";
+import {Wind} from "../entity/impl/tower/Wind.js";
 // import {Constants} from "../constants/Constants.js";
 let isDragging = false;
 let draggedButton = null;
@@ -19,28 +26,33 @@ export class TowerButton{
     buttonID;
     domElement;
     price;
+    isSpecial;
 
 
-    constructor(element){
+    constructor(element,isSpacial){
         this.domElement = element;
         this.buttonID = element.id.substring(3);
+        this.isSpecial = isSpacial;
+
+
 
         // Add texture
         let imagePath = Path.BASE_PATH_TOWER + this.buttonID + ".png";
         this.domElement.querySelector("img").src = imagePath;
         this.price = element.querySelector(".cost").innerText;
+        console.log(this.price)
 
         // Add listeners
         // this.stopDrag = this.stopDrag.bind(this);
         // this.createTower = this.createTower.bind(this);
         // this.drag = this.drag.bind(this);
-        document.addEventListener("mousemove", this.drag);
+        document.addEventListener("mousemove", drag);
         // element.addEventListener("click", this.handleClick.bind(this));
         element.addEventListener("mousedown", (event) => {
            startDrag(event,this);
         });
         // element.addEventListener("mousedown",this.handleClick);
-        Global.canvas.addEventListener("mouseup", (event) => {
+        document.addEventListener("mouseup", (event) => {
             stopDrag(event,this);
         });
     }
@@ -55,25 +67,31 @@ export class TowerButton{
     createTower(){
         console.log("create : "+this.buttonID)
         switch (this.buttonID){ //todo put values in variables
+            case "mini_canon" : return new MiniCanon();
+            case "double_canon": return new DoubleCanon();
             case "canon": return new Canon();
+            case "fire_canon" : return new FireCanon();
             case "lightning_tower": return new LightningTower();
+            case "landmine": return new Landmine();
             case "wall" : return new Wall();
+            case "low_wall" : return new LowWall();
             case "golden_tree" : return new GoldenTree();
             case "annihilator": return new Annihilator();
-            case "fire_canon" : return new FireCanon();
+            case "bidirectional_sonar" : return new BidirectionalSonar();
+            case "spell_wind" : return new Wind();
             default : return new LightningTower();
         }
     }
 
     update(dt){ //todo could be set with listener instead of updating every frame !
-        this.domElement.disabled = this.price > Global.coinBalance;
+        this.domElement.disabled = this.price > Engine.coinBalance;
     }
 
 
 }
 
 function startDrag(event,towerButton) {
-    if (towerButton.price > Global.coinBalance){
+    if (towerButton.price > Engine.coinBalance){
         console.log("Not enough coins");
         return;
     }
@@ -84,16 +102,19 @@ function startDrag(event,towerButton) {
     const offsetY = event.clientY - draggedButton.getBoundingClientRect().top;
 
     draggedButton.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    console.log("start dragging "+towerButton.buttonID)
+    // console.log("start dragging "+towerButton.buttonID)
 }
 
 function drag(event) {
+    // console.log("drag")
     if (draggedButton) {
-        const x = event.clientX - draggedButton.offsetWidth / 2 - this.offsetX;
-        const y = event.clientY - draggedButton.offsetHeight / 2 - this.offsetY;
+        const mooseCoordinate = Gui.getCanvasMouseCoordinates();
 
-        // draggedButton.style.left = `${x}px`;
-        // draggedButton.style.top = `${y}px`;
+        // draggedButton.style.position = `absolute`;
+        // draggedButton.style.left = `${mooseCoordinate.x}px`;
+        // draggedButton.style.top = `${mooseCoordinate.y}px`;
+        // draggedButton.style.transform = `translate(${mooseCoordinate.x}px, ${mooseCoordinate.y}px)`;
+        // console.log(`translate(${mooseCoordinate.x}px, ${mooseCoordinate.y}px)`)
         // console.log("draging")
     }
 }
@@ -101,30 +122,34 @@ function drag(event) {
 function stopDrag(event) {
     if (draggedButton && draggingElement) {
         let towerButton = draggingElement;
-        if (towerButton.price > Global.coinBalance){
+        if (towerButton.price > Engine.coinBalance){
             console.log("Not enough coins");
             draggedButton = null;
             draggingElement = null;
             return;
         }
+
+        draggedButton.style.position = `static`;
         draggedButton.style.transform = "translate(0, 0)";
 
         const mouseCoordinates = Gui.getCanvasMouseCoordinates();
         if (mouseCoordinates.x>=0 && mouseCoordinates.x<=Constants.width //Check if mouse coordinates are within canvas bounds
             && mouseCoordinates.y>=0 && mouseCoordinates.y<=Constants.height){
-            console.log("stop drag : "+towerButton.buttonID)
+            // console.log("stop drag : "+towerButton.buttonID)
             let gameObject = towerButton.createTower();
             gameObject.x = mouseCoordinates.x;
             gameObject.y = mouseCoordinates.y;
             const col = gameObject.getColumn();
             const line = gameObject.getLine();
 
-            if (line < Constants.rows-1){ //Can't place to last tine
-                gameObject.x = col * Constants.TILE_SIZE_ZOOMED ;
-                gameObject.y = line * Constants.TILE_SIZE_ZOOMED;
+            //line < Constants.rows-1 &&
+            gameObject.x = col * Constants.TILE_SIZE_ZOOMED ;
+            gameObject.y = line * Constants.TILE_SIZE_ZOOMED;
+            if ( Engine.isTileFree(gameObject.x,gameObject.y)){ //Can't place to last tine
+
                 console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
-                Global.addGameObject(gameObject);
-                Global.coinBalance -= towerButton.price;
+                Engine.addGameObject(gameObject);
+                Engine.coinBalance -= towerButton.price;
             }
         }
         // console.log("End drag x:"+mouseCoordinates.x+" y:"+mouseCoordinates.y);
@@ -132,6 +157,8 @@ function stopDrag(event) {
         draggingElement = null;
     }
 }
+
+
 
 
 
