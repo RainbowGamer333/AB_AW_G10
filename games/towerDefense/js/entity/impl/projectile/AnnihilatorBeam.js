@@ -11,7 +11,7 @@ export class AnnihilatorBeam extends Projectile{
     constructor() {
         const name = "AnnihilatorBeam";
         const velocity = 200;
-        const damage = 100;
+        const damage = 150;
         super(name, 0, 0, velocity, damage, null,null);
 
         let image = new Image();
