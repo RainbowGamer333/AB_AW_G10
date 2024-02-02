@@ -12,6 +12,8 @@ import {BidirectionalSonar} from "../entity/impl/tower/BidirectionalSonar.js";
 import {Tower} from "../entity/Tower.js";
 import {LowWall} from "../entity/impl/tower/LowWall.js";
 import {Landmine} from "../entity/impl/tower/Landmine.js";
+import {MiniCanon} from "../entity/impl/tower/MiniCanon.js";
+import {DoubleCanon} from "../entity/impl/tower/DoubleCanon.js";
 // import {Constants} from "../constants/Constants.js";
 let isDragging = false;
 let draggedButton = null;
@@ -64,15 +66,17 @@ export class TowerButton{
     createTower(){
         console.log("create : "+this.buttonID)
         switch (this.buttonID){ //todo put values in variables
+            case "mini_canon" : return new MiniCanon();
+            case "double_canon": return new DoubleCanon();
             case "canon": return new Canon();
+            case "fire_canon" : return new FireCanon();
             case "lightning_tower": return new LightningTower();
             case "landmine": return new Landmine();
             case "wall" : return new Wall();
             case "low_wall" : return new LowWall();
             case "golden_tree" : return new GoldenTree();
             case "annihilator": return new Annihilator();
-            case "fire_canon" : return new FireCanon();
-            case"bidirectional_sonar" : return new BidirectionalSonar();
+            case "bidirectional_sonar" : return new BidirectionalSonar();
             default : return new LightningTower();
         }
     }
