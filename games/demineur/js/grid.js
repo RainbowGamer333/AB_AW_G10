@@ -70,9 +70,7 @@ export class Grid {
             this.gameOver(cell);
         }
         else if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
-            this.timer.stopTimer();
-            this.smiley.victory();
-            this.disableCells();
+            this.victory();
         }
     }
 
@@ -242,6 +240,13 @@ export class Grid {
         this.canDisplayAutour(row, col).forEach((coord) => this.afficherCellule(coord[0], coord[1]));
     }
 
+    victory() {
+        this.timer.stopTimer();
+        this.smiley.victory();
+        this.mettreFlags();
+        this.disableCells();
+    }
+
     gameOver(mineCliquee) {
         this.timer.stopTimer();
         this.smiley.defeat();
@@ -263,6 +268,18 @@ export class Grid {
                 } else if (!cell.isMine() && cell.flag) {
                     cell.valeur = -3;
                     cell.afficheCellule();
+                }
+            }
+        }
+    }
+
+    mettreFlags() {
+        // Ajoute la classe drapeau sur toutes les cases non cliquées
+        for (let i = 0; i < this.cells.length; i++) {
+            for (let j = 0; j < this.cells[i].length; j++) {
+                let cell = this.cells[i][j];
+                if (!cell.visible) {
+                    cell.addFlag();
                 }
             }
         }
