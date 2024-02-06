@@ -4,6 +4,7 @@ body, html {
     overflow: hidden;
 }
 
+
 #leftPanel {
     width: 33.33%;
     height: 100%;
@@ -32,7 +33,7 @@ body, html {
 }
 #clickButton {
     width: 80%;
-    height: 400px;
+    height: 15%;
     background-color: lightcoral;
     border-radius: 10%;
     border: 10px;
@@ -42,7 +43,7 @@ body, html {
     font-size: 30px;
     color: #fffbbb;
     text-align: center;
-    line-height: 100px;
+    line-height: 50px;
     padding: 10px;
     margin-left: 10%;
 }
@@ -85,4 +86,77 @@ body, html {
     75% {
         transform: translateY(-20px);
     }
+}
+/*je veux que le bouton soit en dessous du score, je veux qu'il fasse 80% de la largeur et 50 px de hauteur
+je veux que la taille de police ne soit adapté
+
+ */
+#autoClickButton {
+    width: 35%;
+    height: 15%;
+    background-color: blueviolet;
+    border-radius: 10%;
+    border: 10px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 15px;
+    color: #fffbbb;
+    text-align: center;
+    line-height: 25px;
+    padding: 10px;
+    margin-left: 10%;
+    margin-top: 10%;
+
+}
+
+/* Ajoutez cette règle CSS à votre fichier CSS existant */
+#clickPlus1 {
+    width: 35%;
+    height: 15%;
+    background-color: blueviolet;
+    border-radius: 10%;
+    border: 10px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 15px;
+    color: #fffbbb;
+    text-align: center;
+    line-height: 25px;
+    padding: 10px;
+    margin-left: 10%;
+    margin-top: 10%;
+
+}
+
+#clickPlus1:hover {
+    background-color: #4CAF50;
+}
+
+.hidden {
+    display: none;
+}
+
+/*
+partie image
+
+ */
+
+
+#imageDisplay {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+.pixel {
+    width: 1%;
+    padding-bottom: 1%;
+    background-color: black; /* Couleur du pixel visible */
+}
+
+.pixel.hidden {
+    background-color: transparent; /* Pixel invisible */
 }
