@@ -371,4 +371,8 @@ export class Grid {
             });
         });
     }
+
+    stop() {
+        this.timer.stopTimer();
+    }
 }

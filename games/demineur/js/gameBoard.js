@@ -13,7 +13,6 @@ export class GameBoard {
         this.tailleMargin = 60;
 
         this.grid = new Grid(this, nbRows, nbCols, nbMines);
-
         this.ajouterGrille();
         this.setStyle();
     }
@@ -23,10 +22,13 @@ export class GameBoard {
     }
 
     reinitialiserGrille(nbCols, nbRows, nbMines) {
+        this.grid.stop();
+        this.grille.innerHTML = "";
+
         this.nbCols = nbCols;
         this.nbRows = nbRows;
         this.nbMines = nbMines;
-        this.grille.innerHTML = "";
+
         this.grid = new Grid(this, nbRows, nbCols, nbMines);
         this.ajouterGrille();
         this.setStyle();
