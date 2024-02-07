@@ -63,13 +63,16 @@ export class Grid {
         cell.afficheCellule();
         this._nbCellulesRevelee += 1;
 
+        if (cell.isMine()) {
+            this.gameOver(cell);
+            return;
+        }
+
         if (cell.valeur === 0) {
             this.decouvrirZeros(row, col);
         }
-        else if (cell.isMine()) {
-            this.gameOver(cell);
-        }
-        else if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
+
+        if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
             this.victory();
         }
     }
