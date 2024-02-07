@@ -8,7 +8,7 @@ nav{
     top: 0;
 }
 
-nav>.container{
+nav .container{
     width: var(--mainWidth);
     height: 60px;
     margin: auto;
@@ -17,6 +17,6 @@ nav>.container{
     justify-content: space-between;
 }
 
-nav>.container>img{
+nav .container img{
     height: 60px;
 }
