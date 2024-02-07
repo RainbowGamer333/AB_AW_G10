@@ -1,19 +1,16 @@
 import { GameBoard } from "./gameBoard.js";
 
-let nbRows = 10;
-let nbCols = 11;
-let nbMines = 10;
-
-
+const gameBoard = new GameBoard(10, 10, 10);
 
 function onload() {
-    let gameBoard = new GameBoard(nbRows, nbCols, nbMines);
+    let form = document.getElementById("form");
+    form.addEventListener("submit", submitForm);
 }
 
 
-function submitForm() {
-    console.log("submitForm");
-    return true;
+function submitForm(event) {
+    event.preventDefault();
+    gameBoard.reinitialiserGrille(9, 5, 5);
 }
 
 

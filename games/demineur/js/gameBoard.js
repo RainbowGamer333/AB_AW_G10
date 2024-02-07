@@ -22,6 +22,16 @@ export class GameBoard {
         this.grille.appendChild(this.grid.miningGrid);
     }
 
+    reinitialiserGrille(nbCols, nbRows, nbMines) {
+        this.nbCols = nbCols;
+        this.nbRows = nbRows;
+        this.nbMines = nbMines;
+        this.grille.innerHTML = "";
+        this.grid = new Grid(this, nbRows, nbCols, nbMines);
+        this.ajouterGrille();
+        this.setStyle();
+    }
+
     setStyle() {
         this.setTailleCells();
         this.setTailleGrille();
