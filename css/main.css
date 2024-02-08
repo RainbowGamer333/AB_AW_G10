@@ -10,6 +10,10 @@
 html{
     background-color: var(--backgroundColor);
     font-family: 'robotoregular', sans-serif;
+    background-image: url(/asset/background.jpg);
+    background-attachment: fixed;
+    background-position-y: 0px;
+    background-size: cover;
 }
 
 body{
@@ -23,13 +27,18 @@ body{
 main{
     width: var(--mainWidth);
     height: 100vh;
-    background: #403a43;
+    background: #403a434d;
     box-shadow: var(--baseShadow);
     margin: 60px auto 0 auto;
+    backdrop-filter: blur(5px);
 }
 
 footer{
     height: 20vh;
     width: 100vw;
-    background-color: #221c25;
+    background-color: #1c1c1d;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
