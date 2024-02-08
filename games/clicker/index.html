@@ -16,15 +16,18 @@
         <button id="autoClickButton" class="hidden">Clic automatique</button>
         <p id="clickPlus1CostDisplay" class="hidden">Prochain achat de clic +1: 500</p>
         <p id="autoClickCostDisplay" class="hidden">Prochain achat d'autoclic: 100</p>
-
     </div>
 </div>
 <div id="rightPanel">
     <h1 id="zoneClicker">Image à découvrir</h1>
-    <img id="imageDisplay" src=" " alt="Image à découvrir"><img src="images/Michel-Buffa.png" height="512" width="512"/><img src="images/Michel-Buffa.png" height="512" width="512"/>
-
+    <div id="imageContainer">
+        <canvas id="revealedImage"></canvas>
+        <p id="pixelCounter">Pixels découverts: 0</p>
+        <p id="totalPixels">Total de pixels à découvrir: 0</p>
+    </div>
 </div>
 <script src="js/main.js"></script>
 </body>
 </html>
+
 

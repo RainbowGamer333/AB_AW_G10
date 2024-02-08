@@ -1,12 +1,14 @@
-/////////////////////////////partie clicker/////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', function () {
     var clickButton = document.getElementById('clickButton');
     var autoClickButton = document.getElementById('autoClickButton');
     var clickPlus1Button = document.getElementById('clickPlus1');
     var scoreDisplay = document.getElementById('score');
     var autoClickCostDisplay = document.getElementById('autoClickCostDisplay');
-    var clickPlus1CostDisplay = document.getElementById('clickPlus1CostDisplay'); // Correction ici
+    var clickPlus1CostDisplay = document.getElementById('clickPlus1CostDisplay');
     var coinsDisplay = document.getElementById('coinsDisplay');
+    var imageContainer = document.getElementById('imageContainer');
+    var pixelCounter = document.getElementById('pixelCounter'); // Compteur de pixels découverts
+    var totalPixels = document.getElementById('totalPixels'); // Total de pixels à découvrir
 
     var score = 0;
     var autoClicks = 0;
@@ -112,50 +114,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     updateButton();
-///////////////////partie image/////////////////////////////
+    updateScore();
 
-    var imageDisplay = document.getElementById('imageDisplay');
-    var imageSize = 512;
-    var pixelsVisibility = new Array(imageSize * imageSize).fill(false);
+    //////////////////////////////image//////////////
 
-    function updateImage() {
-        var imageHTML = '';
-
-        for (var i = 0; i < pixelsVisibility.length; i++) {
-            if (pixelsVisibility[i]) {
-                imageHTML += '<div class="pixel"></div>';
-            } else {
-                imageHTML += '<div class="pixel hidden"></div>';
-            }
-        }
-
-        imageDisplay.innerHTML = imageHTML;
-    }
-
-    function getRandomPixel() {
-        var randomIndex;
-        do {
-            randomIndex = Math.floor(Math.random() * (imageSize * imageSize));
-        } while (pixelsVisibility[randomIndex]);
-
-        return randomIndex;
-    }
-
-    function revealRandomPixel() {
-        var randomPixel = getRandomPixel();
-        pixelsVisibility[randomPixel] = true;
-        updateImage();
-    }
-
-    // Ajoutez cet événement de clic au bouton clickButton (ou à toute autre action de clic que vous utilisez)
-    clickButton.addEventListener('click', function () {
-        incrementScore(clickPlus1Multiplier);
-        incrementCoins(clickPlus1Multiplier);
-        revealRandomPixel();
-    });
-
-    updateImage();
 
 
 });
+
+
 
