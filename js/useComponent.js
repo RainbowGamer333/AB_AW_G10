@@ -13,6 +13,7 @@ function init(){
         replaceComponent("nav",text);
     });
 
+
 }
 
 function replaceComponent(elementTagName, newTagHtml){
@@ -25,6 +26,23 @@ function replaceComponent(elementTagName, newTagHtml){
         console.log("Node with the tag "+elementTagName+" not found.")
     }
 }
+
+let velocity =- 0.1;
+let parallaxElements = document.getElementsByClassName("parallaxBG");
+function update(){
+    let pos = window.scrollY;
+    for (let i = 0; i < parallaxElements.length;i++){
+        const element = parallaxElements[i];
+        let height = element.style.height-60;
+        // let value = Math.round((height - pos) * velocity);
+        let value = (height - pos) * velocity;
+
+        element.style.backgroundPositionY = value  +  'px';
+        // console.log(value)
+    }
+}
+
+window.addEventListener('scroll', update);
 
 window.addEventListener('load', function () {
     init();
