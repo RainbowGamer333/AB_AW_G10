@@ -10,22 +10,30 @@
     width: 200px;
     height: 240px;
     border-radius: var(--borderRadius);
-    background-color: var(--gameCardColor);
-    box-shadow:var(--baseShadow);
+    background-color: #0000006b;
+    box-shadow: var(--baseShadow);
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    color: black;
     margin: 5px;
+    backdrop-filter: blur(10px);
+    color: white;
+    transition: 0.1s ease-in-out all;
 }
-.gameCard>img{
+.gameCard .image_container{
     border-radius:  var(--borderRadius) var(--borderRadius) 0 0;
+    box-shadow: inset 4px 4px 8px -6px #00000070, inset -4px -4px 8px -6px #ffffff70;
     width: 200px;
     height: 200px;
-    background-color: black;
 }
 
-.gameCard>.gameTitle{
+.gameCard img{
+    border-radius:  var(--borderRadius) var(--borderRadius) 0 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gameCard .gameTitle{
     width: 100%;
     height: 40px;
     text-align: center;
@@ -35,4 +43,19 @@
     font-variant: all-petite-caps;
     letter-spacing: 2px;
     text-overflow: ellipsis;
+    background: radial-gradient(circle, rgb(125 123 237 / 10%) 0%, rgba(0,0,0,0) 70%);
+    transition: 1s ease-in-out all;
+    box-shadow: inset 4px 4px 8px -6px #ffffff70, inset -4px -4px 8px -6px #00000070;
+    border-radius: 0 0 var(--borderRadius) var(--borderRadius);
+}
+
+.gameCard:hover .gameTitle{
+    transition: 0.5s ease-in-out all;
+    background: radial-gradient(circle, rgb(125 123 237 / 40%) 0%, rgba(0,0,0,0) 70%);
+
+}
+
+.gameCard:hover{
+    transition: 0.2s ease-in-out all;
+    transform: translateY(-5px);
 }

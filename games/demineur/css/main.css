@@ -1,15 +1,42 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+    height: 15px;
+    text-align: center;
+}
+
+/*
+input[type="radio"] {
+    margin: 0;
+    padding: 0;
+    height: 15px;
+    text-align: center;
+}
+ */
+
+
 #gameBoard {
-    background-color: red;
+    border: 6px solid #c7c7c7;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    margin: 0;
+    padding: 0;
 }
 
 #gameBoardHeader {
-    background-color: lightgreen;
+    background-image: url("../assets/grille/unclicked.png");
+    background-size: 100% 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,17 +44,46 @@
 }
 
 
-#miningGrid {
-    border: 3px solid black;
+#gameBoardHeaderTime, #gameBoardHeaderMineCounter, #gameBoardHeaderSmiley {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
 }
+
+#gameBoardHeaderSmileyButton {
+    background-color: #c7c7c7;
+    background-image: url("../assets/grille/unclicked.png");
+    background-size: 100% 100%;
+    border: none;
+    width: 50px;
+    height: 50px;
+}
+
+#gameBoardHeaderSmileyButton.pressed {
+    background-image: none;
+    border: #d2d2d2 3px inset;
+}
+
+#smiley {
+    background-size: 100% 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border: none;
+}
+
+
+#grille {
+    border: 3px solid #adadad;
+    border-bottom: none;
+}
+
 
 #miningGrid > tr, td {
     background-color: #c7c7c7;
     border: 2px solid #adadad;
-    /*
-    width: var(--cell-size);
-    height: var(--cell-size);
-     */
 }
 
 #miningGrid {

@@ -4,11 +4,12 @@ nav{
     height: 60px;
     box-shadow: var(--navShadow);
     position: fixed;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(40px);
     top: 0;
+    z-index: 10;
 }
 
-nav>.container{
+nav .container{
     width: var(--mainWidth);
     height: 60px;
     margin: auto;
@@ -16,7 +17,24 @@ nav>.container{
     align-items: center;
     justify-content: space-between;
 }
-
-nav>.container>img{
+nav a {
+    padding: 0;
+    margin: 0;
     height: 60px;
+    color: white;
+}
+
+nav .container img{
+    height: 60px;
+}
+
+nav input{
+    backdrop-filter: blur(10px);
+    outline: none;
+    border-radius: var(--borderRadius);
+    border: none;
+    height: 25px;
+    background-color: rgb(4 4 4 / 1%);
+    color: var(--colMain);
+    letter-spacing: 1px;
 }

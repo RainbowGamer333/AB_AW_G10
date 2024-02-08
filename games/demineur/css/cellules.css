@@ -1,23 +1,26 @@
 :root {
-    --cell-size: 30px;
-    --url-unclicked: url("../asset/unclicked.png");
-    --url-flag: url("../asset/flag.png");
-    --url-mine: url("../asset/mine.png");
-    --url-fake-mine: url("../asset/fake-mine.png");
-    --url-0: url("../asset/0.png");
-    --url-1: url("../asset/1.png");
-    --url-2: url("../asset/2.png");
-    --url-3: url("../asset/3.png");
-    --url-4: url("../asset/4.png");
-    --url-5: url("../asset/5.png");
-    --url-6: url("../asset/6.png");
-    --url-7: url("../asset/7.png");
-    --url-8: url("../asset/8.png");
+    --url-unclicked: url("../assets/grille/unclicked.png");
+    --url-flag: url("../assets/grille/flag.png");
+    /*
+    TODO: REMPLACER LA MINE PAR LES SIMLEY ULTRA MOCHE
+     */
+    --url-mine: url("../assets/grille/mine.png");
+    --url-fake-mine: url("../assets/grille/fake-mine.png");
+    --url-0: url("../assets/grille/0.png");
+    --url-1: url("../assets/grille/1.png");
+    --url-2: url("../assets/grille/2.png");
+    --url-3: url("../assets/grille/3.png");
+    --url-4: url("../assets/grille/4.png");
+    --url-5: url("../assets/grille/5.png");
+    --url-6: url("../assets/grille/6.png");
+    --url-7: url("../assets/grille/7.png");
+    --url-8: url("../assets/grille/8.png");
 }
 
 .cell {
     background-image: none;
     background-size: cover;
+    background-position: center;
 }
 
 .cell.unclicked {
@@ -76,6 +79,7 @@
     background-image: var(--url-8);
 }
 
+/*
 td:active:not(.zero):not(.one):not(.two):not(.three):not(.four):not(.five):not(.six):not(.seven):not(.eight):not(.flag):not(.mine):not(.fake-mine) {
     background-color: #bfbfbf;
 }
@@ -83,3 +87,4 @@ td:active:not(.zero):not(.one):not(.two):not(.three):not(.four):not(.five):not(.
 td:hover:not(.zero):not(.one):not(.two):not(.three):not(.four):not(.five):not(.six):not(.seven):not(.eight):not(.flag):not(.mine):not(.fake-mine) {
     background-color: #d9d9d9;
 }
+ */

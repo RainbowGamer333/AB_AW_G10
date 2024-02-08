@@ -1,11 +1,24 @@
 import {Cell} from "./cell.js";
+import {Timer} from "./timer.js";
+import {MineCounter} from "./mineCounter.js";
+import {Smiley} from "./smiley.js";
 
 export class Grid {
     _firstClick = true;
+    _isClicked = false;
 
-    constructor(numberRows, numberColumns, numberMines) {
-        this._miningGrid =  document.createElement("table");
+
+    constructor(gameBoard, numberRows, numberColumns, numberMines) {
+        this._gameBoard = gameBoard;
+        this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
+        this._nbCellulesRevelee = 0;
+
+        this.timer = new Timer();
+        this.minesCounter = new MineCounter();
+        this.smiley = new Smiley();
+        this.smiley.initialiserListeners(this);
+
         this._numberMines = numberMines;
         this.cells = [];
         this.creerGrid(numberRows, numberColumns);
@@ -42,6 +55,29 @@ export class Grid {
         this._miningGrid.appendChild(tbody);
     }
 
+    afficherCellule(row, col) {
+        let cell = this.cells[row][col];
+
+        // N'affiche pas des cellules déjà visible
+        if (cell.visible) return;
+        cell.afficheCellule();
+        this._nbCellulesRevelee += 1;
+
+        if (cell.valeur === 0) {
+            this.decouvrirZeros(row, col);
+        }
+        else if (cell.isMine()) {
+            this.gameOver(cell);
+        }
+        else if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
+            this.timer.stopTimer();
+            this.smiley.victory();
+            this.disableCells();
+        }
+    }
+
+
+
     /**
      * Ajoute les listeners sur les cellules de la grille.
      * Le clique droit ajoute un drapeau, le clique gauche affiche la cellule,
@@ -58,44 +94,67 @@ export class Grid {
 
                     // Le clique droit ne marche pas sur une cellule désactivée ou déjà visible
                     if (cell.disabled || cell.visible) return;
-                    cell.toggleFlag();
+                    if (cell.flag) {
+                        cell.removeFlag();
+                        this.minesCounter.incrementMineCounter();
+                    } else {
+                        cell.addFlag();
+                        this.minesCounter.decrementMineCounter();
+                    }
                 });
 
                 cell.element.addEventListener("dblclick", (e) => {
                     e.preventDefault();
-                    if (cell.visible) this.cliqueMilieux(i, j);
+                    if (cell.visible) this.decouvrirAlentours(i, j);
                 });
 
-                // Afficher la cellule avec clique gauche
+                cell.element.addEventListener("mousedown", (e) => {
+                    e.preventDefault();
+                    if (e.button === 0 && !cell.visible && !cell.disabled && !cell.flag) {
+                        this._isClicked = true;
+                        cell.element.classList.remove("unclicked");
+                        this.smiley.shock();
+                    }
+                });
+
+                cell.element.addEventListener("mouseout", (e) => {
+                    e.preventDefault();
+                    if (e.button === 0) cell.element.classList.add("unclicked");
+                });
+
+                cell.element.addEventListener("mouseover", (e) => {
+                    e.preventDefault();
+                    if (e.button === 0 && this._isClicked) cell.element.classList.remove("unclicked");
+                });
+
                 cell.element.addEventListener("mouseup", (e) => {
                     e.preventDefault();
+                    this._isClicked = false;
 
                     // Clique du milieu uniquement sur une cellule visible
                     if (e.button === 1 && cell.visible) {
-                        this.cliqueMilieux(i, j);
+                        this.decouvrirAlentours(i, j);
                     }
 
+                    // Afficher la cellule avec clique gauche
                     else if (e.button === 0) {
+                        // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
+                        if (cell.disabled || cell.flag || cell.visible) return;
+                        this.smiley.normal();
+
                         // Au premier clique on initialise les mines et les valeurs
                         // Ceci permet de commencer une partie sans cliquer immédiatement sur une mine
                         if (this._firstClick) {
                             this._firstClick = false;
+
                             this.initialiserMines(this._numberMines, i, j);
                             this.initialiserValeurs();
+
+                            this.minesCounter.initialiseMineCounter(this._numberMines);
+                            this.timer.startTimer();
                         }
 
-                        // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
-                        if (cell.disabled || cell.flag) return;
-
-                        // Si la cellule est vide, on affiche récursivement toutes les cellules vides autour d'elle
-                        if (cell.valeur === 0) this.decouvrirZeros(i, j);
-
-                        // Cliquer sur une mine fait perdre la partie
-                        if (cell.isMine()) {
-                            this.gameOver(cell);
-                            return;
-                        }
-                        cell.afficheCellule();
+                        this.afficherCellule(i, j);
                     }
                 });
             }
@@ -107,7 +166,7 @@ export class Grid {
      * @param row la ligne de la cellule
      * @param col la colonne de la cellule
      */
-    cliqueMilieux(row, col) {
+    decouvrirAlentours(row, col) {
         if (this.compterFlags(row, col) !== this.cells[row][col].valeur) return;
         this.coordonneesAutour(row, col).forEach((coord) => {
             if (this.canDisplay(coord[0], coord[1])) this.cliqueCellule(coord[0], coord[1]);
@@ -180,14 +239,12 @@ export class Grid {
      * @param col la colonne de la cellule
      */
     decouvrirZeros(row, col) {
-        this.cells[row][col].afficheCellule();
-        this.canDisplayAutour(row, col).forEach((coord) => {
-            if (this.cells[coord[0]][coord[1]].valeur === 0) this.decouvrirZeros(coord[0], coord[1]);
-            else if (this.cells[coord[0]][coord[1]].valeur > 0) this.cells[coord[0]][coord[1]].afficheCellule();
-        });
+        this.canDisplayAutour(row, col).forEach((coord) => this.afficherCellule(coord[0], coord[1]));
     }
 
     gameOver(mineCliquee) {
+        this.timer.stopTimer();
+        this.smiley.defeat();
         this.afficherMines(mineCliquee);
         this.disableCells();
     }
@@ -203,8 +260,7 @@ export class Grid {
                 if (cell.isMine() && !cell.flag) {
                     if (cell === mineCliquee) cell.valeur = -2;
                     cell.afficheCellule();
-                }
-                else if (!cell.isMine() && cell.flag) {
+                } else if (!cell.isMine() && cell.flag) {
                     cell.valeur = -3;
                     cell.afficheCellule();
                 }
@@ -219,26 +275,26 @@ export class Grid {
      * @returns {*[]} les coordonnées autour de la cellule
      */
     coordonneesAutour(row, col) {
-        let nbRows = this.cells[0].length-1;
-        let nbCols = this.cells.length-1;
+        let nbCols = this.cells[0].length - 1;
+        let nbRows = this.cells.length - 1;
         let coordonnees = [];
 
         // Haut
         if (row > 0) {
-            if (col > 0) coordonnees.push([row-1, col-1]);
-            coordonnees.push([row-1, col]);
-            if (col < nbCols) coordonnees.push([row-1, col+1]);
+            if (col > 0) coordonnees.push([row - 1, col - 1]);
+            coordonnees.push([row - 1, col]);
+            if (col < nbCols) coordonnees.push([row - 1, col + 1]);
         }
 
         // Cotes
-        if (col > 0) coordonnees.push([row, col-1]);
-        if (col < nbCols) coordonnees.push([row, col+1]);
+        if (col > 0) coordonnees.push([row, col - 1]);
+        if (col < nbCols) coordonnees.push([row, col + 1]);
 
         // Bas
         if (row < nbRows) {
-            if (col > 0) coordonnees.push([row+1, col-1]);
-            coordonnees.push([row+1, col]);
-            if (col < nbCols) coordonnees.push([row+1, col+1]);
+            if (col > 0) coordonnees.push([row + 1, col - 1]);
+            coordonnees.push([row + 1, col]);
+            if (col < nbCols) coordonnees.push([row + 1, col + 1]);
         }
         return coordonnees;
     }
@@ -247,13 +303,17 @@ export class Grid {
      * Renvoie toutes les coordonnées autour de la cellule qui peuvent être affichées. Ne comprend pas les cellules sortant de la grille.
      * @param row la ligne de la cellule
      * @param col la colonne de la cellule
+     * @param cells la liste des cellules à révéler
      * @returns {*[]} les coordonnées autour de la cellule qui peuvent être affichées
      */
     canDisplayAutour(row, col) {
         let coordonnees = this.coordonneesAutour(row, col);
         let newCoordonnees = [];
         coordonnees.forEach((coord) => {
-            if (this.canDisplay(coord[0], coord[1])) newCoordonnees.push(coord);
+            if (this.canDisplay(coord[0], coord[1])) {
+                //console.log(coord);
+                newCoordonnees.push(coord);
+            }
         });
         return newCoordonnees;
     }
@@ -266,8 +326,9 @@ export class Grid {
         let cell = this.cells[row][col];
         if (cell.isMine()) this.gameOver(cell);
         else {
+            this.afficherCellule(row, col);
+            this._numberCasesRevealed += 1;
             if (cell.valeur === 0) this.decouvrirZeros(row, col);
-            else cell.afficheCellule();
         }
     }
 
@@ -280,18 +341,17 @@ export class Grid {
     }
 
     reinitialiserPartie() {
-        for (let i = 0; i < this.cells.length; i++) {
-            for (let j = 0; j < this.cells[i].length; j++) {
-                this.cells[i][j] = Cell.creerCellule();
-            }
-        }
-    }
+        this._firstClick = true;
+        this._nbCellulesRevelee = 0;
+        this.timer.stopTimer();
+        this.timer.initialiseTimer();
+        this.minesCounter.initialiseMineCounter(0);
 
-    debug_afficherToutesCellules() {
-        for (let i = 0; i < this.cells.length; i++) {
-            for (let j = 0; j < this.cells[i].length; j++) {
-                this.cells[i][j].afficheCellule();
-            }
-        }
+        // Reinitialiser toutes les cellules
+        this.cells.forEach((rows) => {
+            rows.forEach((cell) => {
+                cell.reinitialiserCellule();
+            });
+        });
     }
 }
