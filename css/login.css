@@ -1,0 +1,22 @@
+.login_container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 400px;
+    height: 600px;
+    background-color: #00000024;
+}
+
+.login_container h1{
+    color: white;
+}
+
+main{
+    min-height: 100vh;
+    backdrop-filter: none;
+    box-shadow: none;
+    background-color: rgba(0,0,0,0);
+}
