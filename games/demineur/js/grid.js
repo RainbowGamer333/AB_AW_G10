@@ -90,15 +90,12 @@ export class Grid {
             for (let j = 0; j < this.cells[i].length; j++) {
                 let cell = this.cells[i][j];
 
-                // Si la cellule est désactivé on ne peut pas intéragir avec
-                if (cell.disabled) continue;
-
                 // Ajouter un drapeau avec clique droit
                 cell.element.addEventListener("contextmenu", (e) => {
                     e.preventDefault();
+                    // Le clique droit ne marche pas sur une cellule désactivée ou déjà visible
+                    if (cell.visible || cell.disabled) return;
 
-                    // Le clique droit ne marche pas sur une cellule déjà visible
-                    if (cell.visible) return;
                     if (cell.flag) {
                         cell.removeFlag();
                         this.minesCounter.incrementMineCounter();
@@ -108,13 +105,16 @@ export class Grid {
                     }
                 });
 
+                // Le double clique effectue la meme action que le clique du milieu
                 cell.element.addEventListener("dblclick", (e) => {
                     e.preventDefault();
+                    if (cell.disabled) return;
                     if (cell.visible) this.decouvrirAlentours(i, j);
                 });
 
                 cell.element.addEventListener("mousedown", (e) => {
                     e.preventDefault();
+                    if (cell.disabled) return;
 
                     // Bouton gauche
                     if (e.button === 0 && !cell.visible && !cell.flag) {
@@ -124,7 +124,6 @@ export class Grid {
 
                     // Bouton milieu
                     else if (e.button === 1) {
-                        console.log("milieu mousedown")
                         this._middleClicked = true;
                         this.mouseDownMilieu(i, j);
                     }
@@ -135,11 +134,9 @@ export class Grid {
                 cell.element.addEventListener("mouseout", (e) => {
                     e.preventDefault();
                     if (this._isClicked) {
-                        console.log("left mouseout");
                         cell.element.classList.add("unclicked");
                     }
                     else if (this._middleClicked) {
-                        console.log("milieu mouseout");
                         this.mouseUpMilieu(i, j);
                     }
 
@@ -147,22 +144,22 @@ export class Grid {
 
                 cell.element.addEventListener("mouseover", (e) => {
                     e.preventDefault();
+                    if (cell.disabled) return;
                     if (this._isClicked) {
-                        console.log("left mouseover")
                         cell.element.classList.remove("unclicked");
                     }
                     else if (this._middleClicked) {
-                        console.log("milieu mouseover");
                         this.mouseDownMilieu(i, j);
                     }
                 });
 
                 cell.element.addEventListener("mouseup", (e) => {
                     e.preventDefault();
+                    if (cell.disabled) return;
+                    this.smiley.normal();
 
                     // Clique du milieu
                     if (this._middleClicked) {
-                        console.log("milieu mouseup");
                         this._middleClicked = false;
                         if (cell.visible) {
                             this.decouvrirAlentours(i, j);
@@ -173,6 +170,7 @@ export class Grid {
                     // Afficher la cellule avec clique gauche
                     else if (this._isClicked) {
                         this._isClicked = false;
+
                         // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
                         if (cell.flag || cell.visible) return;
 
@@ -191,8 +189,6 @@ export class Grid {
 
                         this.afficherCellule(i, j);
                     }
-
-                    this.smiley.normal();
                 });
             }
         }
@@ -382,7 +378,6 @@ export class Grid {
         let newCoordonnees = [];
         coordonnees.forEach((coord) => {
             if (this.canDisplay(coord[0], coord[1])) {
-                //console.log(coord);
                 newCoordonnees.push(coord);
             }
         });
@@ -404,6 +399,7 @@ export class Grid {
     }
 
     disableCells() {
+        console.log("disable");
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
                 this.cells[i][j].disable();
