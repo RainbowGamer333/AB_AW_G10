@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var autoClickCostDisplay = document.getElementById('autoClickCostDisplay');
     var clickPlus1CostDisplay = document.getElementById('clickPlus1CostDisplay');
     var coinsDisplay = document.getElementById('coinsDisplay');
-    var imageContainer = document.getElementById('imageContainer');
-    var pixelCounter = document.getElementById('pixelCounter'); // Compteur de pixels découverts
-    var totalPixels = document.getElementById('totalPixels'); // Total de pixels à découvrir
 
     var score = 0;
     var autoClicks = 0;
@@ -119,7 +116,19 @@ document.addEventListener('DOMContentLoaded', function () {
     //////////////////////////////image//////////////
 
 
+    var imageContainer = document.getElementById('imageContainer');
+    var canvas = document.createElement('canvas');
+    var context = canvas.getContext('2d');
 
+    var image = new Image();
+    image.onload = function() {
+        canvas.width = image.width;
+        canvas.height = image.height;
+        context.drawImage(image, 0, 0, image.width, image.height);
+    };
+    image.src = 'images/Michel-Buffa.png'; //
+
+    imageContainer.appendChild(canvas);
 });
 
 
