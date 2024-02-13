@@ -31,12 +31,12 @@
 
 .login_container input[type=password], .login_container input[type=text]{
     backdrop-filter: blur(10px);
-    background-color: #00000024;
+    background-color: #ffffff24;
     min-width: 300px;
     border: var(--greyBorder);
     padding: 0 10px;
     transition: 0.2s linear all;
-    box-shadow: inset -2px -2px 9px 0px #ffffff24, inset 5px 5px 9px 0px #00000024;
+    /*box-shadow: inset -2px -2px 9px 0px #ffffff24, inset 5px 5px 9px 0px #00000024;*/
     margin-top: 5px;
 }
 
@@ -46,7 +46,7 @@
 
 .login_container input[type=password]:focus, .login_container input[type=text]:focus{
     backdrop-filter: blur(50px);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.31);
     transition: 0.1s linear all;
 }
 
