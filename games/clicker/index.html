@@ -4,17 +4,8 @@
     <meta charset="UTF-8">
     <title>Pixel Clicker</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/navbar.css">
-    <link rel="stylesheet" href="../../css/scrollbar.css">
-    <link rel="stylesheet" href="../../css/var.css">
-    <link rel="stylesheet" href="../../css/home.css">
 </head>
 <body>
-<header>
-    <nav></nav>
-</header>
-<main>
 <div id="leftPanel">
     <h1 id="title">Pixel Clicker</h1>
     <button id="clickButton">Clique plus vite</button>
@@ -25,21 +16,14 @@
         <button id="autoClickButton" class="hidden">Clic automatique</button>
         <p id="clickPlus1CostDisplay" class="hidden">Prochain achat de clic +1: 500</p>
         <p id="autoClickCostDisplay" class="hidden">Prochain achat d'autoclic: 100</p>
-
     </div>
 </div>
 <div id="rightPanel">
     <h1 id="zoneClicker">Image à découvrir</h1>
-    <img id="imageDisplay" src=" " alt="Image à découvrir"><img src="images/Michel-Buffa.png" height="512" width="512"/><img src="images/Michel-Buffa.png" height="512" width="512"/>
-
+    <div id="imageContainer">
+        <!-- Canvas sera ajouté ici dynamiquement -->
     </div>
-</main>
-<footer>
-
-</footer>
-<script type="module" src="../../js/useComponent.js"></script>
+</div>
 <script src="js/main.js"></script>
-
 </body>
 </html>
-

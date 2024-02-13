@@ -12,6 +12,7 @@ html::-webkit-scrollbar {
 html::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color : var(--colMain);
+    filter:brightness(0.5);
 }
 
 html::-webkit-scrollbar-thumb:hover {
