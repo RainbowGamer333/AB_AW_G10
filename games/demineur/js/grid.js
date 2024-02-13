@@ -6,6 +6,7 @@ import {Smiley} from "./smiley.js";
 export class Grid {
     _firstClick = true;
     _isClicked = false;
+    _middleClicked = false;
 
 
     constructor(gameBoard, numberRows, numberColumns, numberMines) {
@@ -63,16 +64,17 @@ export class Grid {
         cell.afficheCellule();
         this._nbCellulesRevelee += 1;
 
+        if (cell.isMine()) {
+            this.gameOver(cell);
+            return;
+        }
+
         if (cell.valeur === 0) {
             this.decouvrirZeros(row, col);
         }
-        else if (cell.isMine()) {
-            this.gameOver(cell);
-        }
-        else if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
-            this.timer.stopTimer();
-            this.smiley.victory();
-            this.disableCells();
+
+        if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
+            this.victory();
         }
     }
 
@@ -91,9 +93,9 @@ export class Grid {
                 // Ajouter un drapeau avec clique droit
                 cell.element.addEventListener("contextmenu", (e) => {
                     e.preventDefault();
-
                     // Le clique droit ne marche pas sur une cellule désactivée ou déjà visible
-                    if (cell.disabled || cell.visible) return;
+                    if (cell.visible || cell.disabled) return;
+
                     if (cell.flag) {
                         cell.removeFlag();
                         this.minesCounter.incrementMineCounter();
@@ -103,44 +105,75 @@ export class Grid {
                     }
                 });
 
+                // Le double clique effectue la meme action que le clique du milieu
                 cell.element.addEventListener("dblclick", (e) => {
                     e.preventDefault();
+                    if (cell.disabled) return;
                     if (cell.visible) this.decouvrirAlentours(i, j);
                 });
 
                 cell.element.addEventListener("mousedown", (e) => {
                     e.preventDefault();
-                    if (e.button === 0 && !cell.visible && !cell.disabled && !cell.flag) {
+                    if (cell.disabled) return;
+
+                    // Bouton gauche
+                    if (e.button === 0 && !cell.visible && !cell.flag) {
                         this._isClicked = true;
                         cell.element.classList.remove("unclicked");
-                        this.smiley.shock();
                     }
+
+                    // Bouton milieu
+                    else if (e.button === 1) {
+                        this._middleClicked = true;
+                        this.mouseDownMilieu(i, j);
+                    }
+
+                    this.smiley.shock();
                 });
 
                 cell.element.addEventListener("mouseout", (e) => {
                     e.preventDefault();
-                    if (e.button === 0) cell.element.classList.add("unclicked");
+                    if (this._isClicked) {
+                        cell.element.classList.add("unclicked");
+                    }
+                    else if (this._middleClicked) {
+                        this.mouseUpMilieu(i, j);
+                    }
+
                 });
 
                 cell.element.addEventListener("mouseover", (e) => {
                     e.preventDefault();
-                    if (e.button === 0 && this._isClicked) cell.element.classList.remove("unclicked");
+                    if (cell.disabled) return;
+                    if (this._isClicked) {
+                        cell.element.classList.remove("unclicked");
+                    }
+                    else if (this._middleClicked) {
+                        this.mouseDownMilieu(i, j);
+                    }
                 });
 
                 cell.element.addEventListener("mouseup", (e) => {
                     e.preventDefault();
-                    this._isClicked = false;
+                    if (cell.disabled) return;
+                    this.smiley.normal();
 
-                    // Clique du milieu uniquement sur une cellule visible
-                    if (e.button === 1 && cell.visible) {
-                        this.decouvrirAlentours(i, j);
+                    // Clique du milieu
+                    if (this._middleClicked) {
+                        this._middleClicked = false;
+                        if (cell.visible) {
+                            this.decouvrirAlentours(i, j);
+                        }
+                        this.mouseUpMilieu(i, j);
                     }
 
                     // Afficher la cellule avec clique gauche
-                    else if (e.button === 0) {
+                    else if (this._isClicked) {
+                        this._isClicked = false;
+
                         // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
-                        if (cell.disabled || cell.flag || cell.visible) return;
-                        this.smiley.normal();
+                        if (cell.flag || cell.visible) return;
+
 
                         // Au premier clique on initialise les mines et les valeurs
                         // Ceci permet de commencer une partie sans cliquer immédiatement sur une mine
@@ -159,6 +192,21 @@ export class Grid {
                 });
             }
         }
+    }
+
+    mouseDownMilieu(i, j) {
+        if (!this.cells[i][j].visible) this.cells[i][j].element.classList.remove("unclicked");;
+        this.coordonneesAutour(i, j).forEach((coord) => {
+            this.cells[coord[0]][coord[1]].element.classList.remove("unclicked");
+        });
+
+    }
+
+    mouseUpMilieu(i, j) {
+        this.cells[i][j].element.classList.add("unclicked");
+        this.coordonneesAutour(i, j).forEach((coord) => {
+            this.cells[coord[0]][coord[1]].element.classList.add("unclicked");
+        });
     }
 
     /**
@@ -242,6 +290,13 @@ export class Grid {
         this.canDisplayAutour(row, col).forEach((coord) => this.afficherCellule(coord[0], coord[1]));
     }
 
+    victory() {
+        this.timer.stopTimer();
+        this.smiley.victory();
+        this.mettreFlags();
+        this.disableCells();
+    }
+
     gameOver(mineCliquee) {
         this.timer.stopTimer();
         this.smiley.defeat();
@@ -263,6 +318,18 @@ export class Grid {
                 } else if (!cell.isMine() && cell.flag) {
                     cell.valeur = -3;
                     cell.afficheCellule();
+                }
+            }
+        }
+    }
+
+    mettreFlags() {
+        // Ajoute la classe drapeau sur toutes les cases non cliquées
+        for (let i = 0; i < this.cells.length; i++) {
+            for (let j = 0; j < this.cells[i].length; j++) {
+                let cell = this.cells[i][j];
+                if (!cell.visible) {
+                    cell.addFlag();
                 }
             }
         }
@@ -300,7 +367,7 @@ export class Grid {
     }
 
     /**
-     * Renvoie toutes les coordonnées autour de la cellule qui peuvent être affichées. Ne comprend pas les cellules sortant de la grille.
+     * Retourne toutes les coordonnées autour de la cellule qui peuvent être affichées. Ne comprend pas les cellules sortant de la grille.
      * @param row la ligne de la cellule
      * @param col la colonne de la cellule
      * @param cells la liste des cellules à révéler
@@ -311,7 +378,6 @@ export class Grid {
         let newCoordonnees = [];
         coordonnees.forEach((coord) => {
             if (this.canDisplay(coord[0], coord[1])) {
-                //console.log(coord);
                 newCoordonnees.push(coord);
             }
         });
@@ -333,6 +399,7 @@ export class Grid {
     }
 
     disableCells() {
+        console.log("disable");
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
                 this.cells[i][j].disable();
@@ -353,5 +420,9 @@ export class Grid {
                 cell.reinitialiserCellule();
             });
         });
+    }
+
+    stop() {
+        this.timer.stopTimer();
     }
 }
