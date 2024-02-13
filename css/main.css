@@ -15,6 +15,7 @@ html{
     background-position-y: 0px;
     background-size: cover;
     transition: 0.15s cubic-bezier(0.13, 0.02, 0.58, 1.1) background;
+    scroll-behavior: smooth;
 }
 
 body{
