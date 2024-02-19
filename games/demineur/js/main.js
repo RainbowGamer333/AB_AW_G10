@@ -22,9 +22,10 @@ function setupForm(form) {
     });
 
     displayCustoms(custom.checked);
-    form.addEventListener("submit", function() {
-        overlay.display = "none";
-        popup.display = "none";
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        overlay.style.display = "none";
+        popup.style.display = "none";
         submitForm();
     });
 
@@ -43,9 +44,7 @@ function displayCustoms(checked) {
 }
 
 
-function submitForm(event) {
-    event.preventDefault();
-
+function submitForm() {
     let diff = document.querySelector('input[name="diff"]:checked').value;
     switch(diff) {
         case "facile":
