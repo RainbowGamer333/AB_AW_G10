@@ -1,5 +1,8 @@
 import { GameBoard } from "./gameBoard.js";
 
+const game = document.getElementById("game");
+const overlay = document.getElementById("overlay");
+const popup = document.getElementById("popup");
 const gameBoard = new GameBoard(9, 9, 10);
 const form = document.getElementById("form");
 const custom = document.getElementById("custom");
@@ -11,10 +14,19 @@ function onload() {
     setupForm(form);
 }
 
-
 function setupForm(form) {
+    game.addEventListener("click", function() {
+        console.log("click");
+        overlay.style.display = "block";
+        popup.style.display = "block";
+    });
+
     displayCustoms(custom.checked);
-    form.addEventListener("submit", submitForm);
+    form.addEventListener("submit", function() {
+        overlay.display = "none";
+        popup.display = "none";
+        submitForm();
+    });
 
     let diff = document.querySelectorAll('input[name="diff"]');
     diff.forEach((radio) => {
@@ -57,6 +69,8 @@ function submitForm(event) {
             break;
     }
 }
+
+
 
 
 
