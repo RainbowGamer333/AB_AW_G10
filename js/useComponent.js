@@ -11,7 +11,6 @@ function init(){
     //Create navbar
     Utils.readTextFile("/component/navbar.html", (text) =>{
         replaceComponent("nav",text);
-        updateProfileImage();
     });
 
 
@@ -29,15 +28,37 @@ function replaceComponent(elementTagName, newTagHtml){
 }
 
 // Fonction pour mettre à jour l'image de profil
-function updateProfileImage() {
-    const profileImageElement = document.getElementById("account");
+function updateProfileImageInNavbar(imageUrl) {
+    const profileImageElement = document.querySelector(".profile-image-container");
     if (profileImageElement) {
-        const randomImageIndex = Math.floor(Math.random() * 6) + 1; // Génère un nombre aléatoire entre 1 et 6
-        const randomImageUrl = `asset/imagesProfil/{randomImageIndex}.png`; // Remplacez ceci par le chemin réel de votre pool d'images
-        profileImageElement.style.backgroundImage = `url('${randomImageUrl}')`;
+        profileImageElement.style.backgroundImage = `../asset/imagesProfil/images${randomImageIndex}.png`;
     } else {
-        console.log("Element with id 'account' not found.");
+        console.log("Element with class 'profile-image-container' not found.");
     }
+}
+
+function updateProfileImageOnPage(imageUrl) {
+    const profileImageElement = document.getElementById("profileImage"); // Assurez-vous d'attribuer un ID à l'élément qui contiendra l'image de profil sur la page de profil
+    if (profileImageElement) {
+        profileImageElement.style.backgroundImage = `../asset/imagesProfil/images${randomImageIndex}.png`;
+    } else {
+        console.log("Element with id 'profileImage' not found.");
+    }
+}
+
+// Gestionnaire d'événements pour le bouton de génération aléatoire d'image de profil
+const randomizeProfileButton = document.getElementById("randomizeProfileButton");
+if (randomizeProfileButton) {
+    randomizeProfileButton.addEventListener("click", function() {
+        const randomImageIndex = Math.floor(Math.random() * 6) + 1; // Génère un nombre aléatoire entre 1 et 6
+        const randomImageUrl = `../asset/imagesProfil/images${randomImageIndex}.png`; // Remplacez ceci par le chemin réel de votre pool d'images
+
+        // Mettre à jour l'image de profil dans la barre de navigation
+        updateProfileImageInNavbar(randomImageUrl);
+
+        // Mettre à jour l'image de profil sur la page de profil
+        updateProfileImageOnPage(randomImageUrl);
+    });
 }
 
 let velocity = -0.2;
