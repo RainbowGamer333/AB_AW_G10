@@ -12,40 +12,46 @@
     <link rel="stylesheet" href="../../css/home.css">
 </head>
 <body>
-    <form id="form" method="post">
-        <label>
-            <input type="radio" id="facile" name="diff" value="facile" checked>
-            Facile
-        </label>
-        <label>
-            <input type="radio" id="moyen" name="diff" value="moyen">
-            Moyen
-        </label>
-        <label>
-            <input type="radio" id="difficile" name="diff" value="difficile">
-            Difficile
-        </label>
-        <label>
-            <input type="radio" id="custom" name="diff" value="custom">
-            Personnalisé
-        </label>
-        <label id="customW">
-            <input type="number" name="customW">
-            Largeur
-        </label>
-        <label id="customH">
-            <input type="number" name="customH">
-            Hauteur
-        </label>
-        <label id="customM">
-            <input type="number" name="customM">
-            Mines
-        </label>
-        <input id="submit" type="submit" value="submit">
-    </form>
-
+    <div id="overlay"></div>
+    <div id="popup">
+        <form id="form" method="post">
+            <label>
+                <input type="radio" id="facile" name="diff" value="facile" checked>
+                Facile
+            </label>
+            <label>
+                <input type="radio" id="moyen" name="diff" value="moyen">
+                Moyen
+            </label>
+            <label>
+                <input type="radio" id="difficile" name="diff" value="difficile">
+                Difficile
+            </label>
+            <label>
+                <input type="radio" id="custom" name="diff" value="custom">
+                Personnalisé
+            </label>
+            <label id="customW">
+                <input type="number" name="customW">
+                Largeur
+            </label>
+            <label id="customH">
+                <input type="number" name="customH">
+                Hauteur
+            </label>
+            <label id="customM">
+                <input type="number" name="customM">
+                Mines
+            </label>
+            <input id="submit" type="submit" value="submit">
+            <input id="cancel" type="button" value="cancel">
+        </form>
+    </div>
 
     <div id="gameBoard">
+        <div id="options">
+            <a href="#" id="game">Game</a>
+        </div>
         <div id="gameBoardHeader">
             <div id="gameBoardHeaderMineCounter">
                 <img id="mineH" src="assets/header/timer0.png" alt="h">
@@ -63,14 +69,15 @@
                 <img id="timerU" src="assets/header/timer0.png" alt="u">
             </div>
         </div>
+        <div id="grille"></div>
     </div>
-    </main>
+
     <footer>
 
     </footer>
-        <script type="module" src="../../js/useComponent.js"></script>
-    <script TYPE="module" src="js/main.js"></script>
 
+    <script type="module" src="../../js/useComponent.js"></script>
+    <script TYPE="module" src="js/main.js"></script>
 </body>
 <script TYPE="module" src="js/main.js"></script>
 </html>
