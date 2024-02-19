@@ -3,6 +3,7 @@ import { GameBoard } from "./gameBoard.js";
 const game = document.getElementById("game");
 const overlay = document.getElementById("overlay");
 const popup = document.getElementById("popup");
+const cancel = document.getElementById("cancel");
 const gameBoard = new GameBoard(9, 9, 10);
 const form = document.getElementById("form");
 const custom = document.getElementById("custom");
@@ -21,7 +22,11 @@ function setupForm(form) {
         popup.style.display = "block";
     });
 
-    displayCustoms(custom.checked);
+    cancel.addEventListener("click", function() {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         overlay.style.display = "none";
@@ -29,6 +34,8 @@ function setupForm(form) {
         submitForm();
     });
 
+
+    displayCustoms(custom.checked);
     let diff = document.querySelectorAll('input[name="diff"]');
     diff.forEach((radio) => {
         radio.addEventListener('change', function() {
