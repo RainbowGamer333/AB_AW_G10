@@ -54,6 +54,9 @@ export class Cell {
         this._disabled = true;
     }
 
+    /**
+     * Ajoute la classe correspondant à la valeur de la cellule. -3 pour les fausses mines, -2 pour les mines, -1 pour les mines non découvertes, 0 pour les cellules vides, et 1 à 8 pour les cellules avec un nombre de mines adjacentes.
+     */
     afficheCellule() {
         this._visible = true;
         switch(this._valeur) {
@@ -97,6 +100,9 @@ export class Cell {
         }
     }
 
+    /**
+     * Réinitialise la cellule à son état initial.
+     */
     reinitialiserCellule() {
         this.valeur = 0;
         this._visible = false;
@@ -119,6 +125,10 @@ export class Cell {
 
     }
 
+    /**
+     * Crée une nouvelle cellule.
+     * @returns {Cell} La cellule créée.
+     */
     static creerCellule() {
         let cell = new Cell();
         cell.element.classList.add("cell", "unclicked");
