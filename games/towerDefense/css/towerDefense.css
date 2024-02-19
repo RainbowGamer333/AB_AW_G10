@@ -15,6 +15,9 @@ canvas{
     background-color: var(--GuiBackgroundColor);
     width: max-content;
     border-radius: 10px;
+    background-image: url("../asset/background_wood.png");
+    background-size: 100px 100px;
+    image-rendering: pixelated;
 }
 
 
@@ -22,7 +25,7 @@ canvas{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: var(--GuiBackgroundColor);
+    /*background-color: var(--GuiBackgroundColor);*/
     min-height: 60px;
     flex-wrap: wrap;
     align-items: center;

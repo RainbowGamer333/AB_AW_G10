@@ -1,12 +1,5 @@
 [
   {
-    "name": "spell_heal",
-    "display_name": "Soin",
-    "price":75,
-    "cool_down": 1000,
-    "isSpecial": true
-  },
-  {
     "name": "spell_wind",
     "display_name": "Sort de Vent",
     "price":75,
@@ -17,6 +10,13 @@
     "name": "annihilator",
     "display_name": "Annihilateur",
     "price":1000,
+    "cool_down": 1000,
+    "isSpecial": true
+  },
+  {
+    "name": "spell_heal",
+    "display_name": "Soin",
+    "price":75,
     "cool_down": 1000,
     "isSpecial": true
   },
