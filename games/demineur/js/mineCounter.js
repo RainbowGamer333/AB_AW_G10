@@ -2,6 +2,7 @@ export class MineCounter {
 
     src = "./assets/header/timer";
     mines = 0;
+    minesOffset = 0;
 
     constructor() {
         this.mineCounterUnit = document.querySelector("#mineU");
@@ -23,7 +24,9 @@ export class MineCounter {
      * Incrémente le compteur de 1 tant qu'il est inférieur à 999.
      */
     incrementMineCounter() {
-        if (this.mines < 999) this.mines++;
+        if (this.minesOffset > 0) this.minesOffset--;
+        else if (this.mines < 999) this.mines++;
+
         this.displayMineCounter();
     }
 
@@ -32,6 +35,7 @@ export class MineCounter {
      */
     decrementMineCounter() {
         if (this.mines > 0) this.mines--;
+        else this.minesOffset++;
         this.displayMineCounter();
     }
 
