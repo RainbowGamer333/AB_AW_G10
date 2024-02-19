@@ -4,7 +4,7 @@ nav{
     height: 60px;
     box-shadow: var(--navShadow);
     position: fixed;
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px) saturate(180%);
     top: 0;
     z-index: 10;
 }
@@ -34,7 +34,7 @@ nav input{
     border-radius: var(--borderRadius);
     border: none;
     height: 25px;
-    background-color: rgb(4 4 4 / 1%);
+    background-color: rgb(255 255 255 / 11%);
     color: var(--colMain);
     letter-spacing: 1px;
 }
