@@ -11,6 +11,7 @@ function init(){
     //Create navbar
     Utils.readTextFile("/component/navbar.html", (text) =>{
         replaceComponent("nav",text);
+        updateProfileImage();
     });
 
 
@@ -24,6 +25,18 @@ function replaceComponent(elementTagName, newTagHtml){
         oldElement.replaceWith(newElement)
     }else{
         console.log("Node with the tag "+elementTagName+" not found.")
+    }
+}
+
+// Fonction pour mettre à jour l'image de profil
+function updateProfileImage() {
+    const profileImageElement = document.getElementById("account");
+    if (profileImageElement) {
+        const randomImageIndex = Math.floor(Math.random() * 6) + 1; // Génère un nombre aléatoire entre 1 et 6
+        const randomImageUrl = `asset/imagesProfil/{randomImageIndex}.png`; // Remplacez ceci par le chemin réel de votre pool d'images
+        profileImageElement.style.backgroundImage = `url('${randomImageUrl}')`;
+    } else {
+        console.log("Element with id 'account' not found.");
     }
 }
 
