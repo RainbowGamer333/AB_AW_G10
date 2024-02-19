@@ -12,24 +12,39 @@ export class Timer {
     }
 
 
+    /**
+     * Initialise le compteur à 0
+     */
     initialiseTimer() {
         this.time = 0;
         this.displayTimer();
     }
 
+    /**
+     * Met à jour le compteur toutes les secondes
+     */
     startTimer() {
         this.interval = setInterval(() => this.updateTimer(), 1000);
     }
 
+    /**
+     * Incrémente le compteur de 1 tant qu'il est inférieur à 999.
+     */
     updateTimer() {
         if (this.time < 999) this.time++;
         this.displayTimer();
     }
 
+    /**
+     * Arrête le compteur
+     */
     stopTimer() {
         clearInterval(this.interval);
     }
 
+    /**
+     * Affiche le compteur
+     */
     displayTimer() {
         let minesDisplay = String(this.time).padStart(3, "0");
 
