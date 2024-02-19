@@ -115,15 +115,13 @@
 
 
     #grille {
+        background-color: #c7c7c7;
         border: 10px none #a9a9a9;
         border-top-style: solid;
 
         #miningGrid {
             border-collapse: collapse;
-            background-color: #d9d9d9;
-
             & > tr, td {
-                background-color: #c7c7c7;
                 border: 2px solid #adadad;
             }
         }
