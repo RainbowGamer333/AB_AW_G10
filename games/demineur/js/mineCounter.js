@@ -10,21 +10,34 @@ export class MineCounter {
         this.initialiseMineCounter(0);
     }
 
+    /**
+     * Initialise le compteur au nombre de mines.
+     * @param nbMines Nombre de mines
+     */
     initialiseMineCounter(nbMines) {
         this.mines = nbMines;
         this.displayMineCounter();
     }
 
+    /**
+     * Incrémente le compteur de 1 tant qu'il est inférieur à 999.
+     */
     incrementMineCounter() {
         if (this.mines < 999) this.mines++;
         this.displayMineCounter();
     }
 
+    /**
+     * Décrémente le compteur de 1 tant qu'il est supérieur à 0.
+     */
     decrementMineCounter() {
         if (this.mines > 0) this.mines--;
         this.displayMineCounter();
     }
 
+    /**
+     * Affiche le compteur de mines.
+     */
     displayMineCounter() {
         let minesDisplay;
 
