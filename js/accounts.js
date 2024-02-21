@@ -1,4 +1,4 @@
-export let accounts = [
+let admin = [
     {
         username: "Rainbow",
         password: "test",
@@ -74,8 +74,11 @@ export let accounts = [
         }
     },
 ];
+localStorage.setItem("accounts", JSON.stringify(admin));
 
-function createAccount(username, password, mail) {
+export function createAccount(username, password, mail) {
+    console.log("Creating account");
+    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
     let account = {
         username: username,
         password: password,
@@ -88,7 +91,10 @@ function createAccount(username, password, mail) {
         clicker: initialiseClicker(),
         towerDefense: initialiseTowerDefense()
     }
+    console.log("Account created");
     accounts.push(account);
+    console.log(accounts);
+    localStorage.setItem("accounts", JSON.stringify(accounts))
 }
 
 
