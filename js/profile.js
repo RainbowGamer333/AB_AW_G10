@@ -12,8 +12,8 @@ function storeProfileImage(imageUrl) {
 
 // Fonction pour générer aléatoirement une image de profil
 function generateRandomProfileImage() {
-    const randomImageIndex = Math.floor(Math.random() * 5) + 1; // Génère un nombre aléatoire entre 1 et 6
-    return `../asset/imagesProfil/image${randomImageIndex}.png`; // Remplacez ceci par le chemin réel de votre pool d'images
+    const randomImageIndex = Math.floor(Math.random() * 5) + 1; // Génère un nombre aléatoire entre 1 et 5
+    return `../asset/imagesProfil/image${randomImageIndex}.jpg`; // Remplacez ceci par le chemin réel de votre pool d'images
 }
 
 // Fonction pour mettre à jour l'image de profil dans la barre de navigation
@@ -53,12 +53,17 @@ if (randomizeProfileButton) {
     randomizeProfileButton.addEventListener("click", function() {
         const imageUrl = generateRandomProfileImage();
         updateProfileImageInNavbar(imageUrl);
-        updateProfileImageOnProfilePage(imageUrl);
+        updateProfileImageOnProfilePage(imageUrl); // Ajout de cette ligne pour synchroniser les images
         storeProfileImage(imageUrl);
     });
 }
 
+// Mettre à jour l'image de profil dans la barre de navigation sur chaque page du site
+updateProfileImageInNavbar();
 
-
-// Mettre à jour l'image de profil dans la barre de navigation au chargement de la page
-generateProfileImageIfNotStored();
+// Mettre à jour l'image de profil sur la page de profil
+const imageDeProfilElement = document.getElementById("imageDeProfil");
+if (imageDeProfilElement) {
+    const imageUrl = imageDeProfilElement.src;
+    updateProfileImageOnProfilePage(imageUrl);
+}
