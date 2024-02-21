@@ -40,7 +40,7 @@ export class Enemy extends Entity{
             }
         }
         if(!isColliding){
-            this.y +=  this.velocity * dt;
+            this.y +=  (this.velocity+this.velocityMultiplier) * dt;
         }
 
         if (this.y >= Constants.height+Constants.TILE_SIZE_ZOOMED ){
@@ -50,7 +50,8 @@ export class Enemy extends Entity{
 
 
     onDeath() {
-        Engine.score+=this.score;
+        const multiplier = Engine.villageHealth/Engine.maxVillageHealth*9;
+        Engine.score+=this.score * multiplier;
         Engine.coinBalance+=this.coinDropped;
         this.spawnParticleGhost();
         super.onDeath();
