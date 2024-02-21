@@ -15,6 +15,7 @@ import {Landmine} from "../entity/impl/tower/Landmine.js";
 import {MiniCanon} from "../entity/impl/tower/MiniCanon.js";
 import {DoubleCanon} from "../entity/impl/tower/DoubleCanon.js";
 import {Wind} from "../entity/impl/tower/Wind.js";
+import {IceCanon} from "../entity/impl/tower/IceCanon.js";
 // import {Constants} from "../constants/Constants.js";
 let isDragging = false;
 let draggedButton = null;
@@ -79,7 +80,7 @@ export class TowerButton{
             case "low_wall" : return new LowWall();
             case "golden_tree" : return new GoldenTree();
             case "annihilator": return new Annihilator();
-            case "bidirectional_sonar" : return new BidirectionalSonar();
+            case "ice_canon" : return new IceCanon();
             case "spell_wind" : return new Wind();
             default : return new LightningTower();
         }
