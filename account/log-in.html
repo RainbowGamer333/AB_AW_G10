@@ -18,14 +18,15 @@
 <main>
     <div class="login_container">
         <h1>Connexion</h1>
-        <form>
+        <form id="loginForm">
+            <p id="alert"></p>
             <label>
                 Nom d'utilisateur
-                <input type="text">
+                <input type="text" id="username">
             </label>
             <label>
                 Mot de passe
-                <input type="password" class="hide_field">
+                <input type="password" id="password" class="hide_field">
 <!--                <div >-->
 
 <!--                    <button type="button" class="hide_field">HF</button>-->
@@ -45,4 +46,5 @@
 </footer>
 </body>
 <script type="module" src="../js/useComponent.js"></script>
+<script type="module" src="../js/accountHandler.js"></script>
 </html>

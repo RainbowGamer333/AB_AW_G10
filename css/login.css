@@ -19,6 +19,12 @@
         margin-bottom: 50px;
     }
 
+    #alert{
+        color: red;
+        font-size: 14px;
+        margin-top: 0;
+    }
+
     & input{
         border: none;
         outline: none;
