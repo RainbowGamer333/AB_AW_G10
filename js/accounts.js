@@ -1,8 +1,9 @@
-let accounts = [
+export let accounts = [
     {
         username: "Rainbow",
         password: "test",
         mail: "mike.litoris@gmail.com",
+        image: "",
         role: "admin",
 
         demineur: {
@@ -79,6 +80,8 @@ function createAccount(username, password, mail) {
         username: username,
         password: password,
         mail: mail,
+        //TODO: generer image aleatoire
+        image: "",
         role: "user",
 
         demineur: initialiseDemineur(),
