@@ -34,7 +34,7 @@
         letter-spacing: 1px;
     }
 
-    & input[type=password], & input[type=text] {
+    & input[type=password], & input[type=text], & input[type=email] {
         backdrop-filter: blur(10px);
         background-color: #ffffff24;
         min-width: 300px;
