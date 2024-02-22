@@ -77,7 +77,7 @@ export let accounts = [
     },
 ];
 
-function createAccount(username, password, mail) {
+export function createAccount(username, password, mail) {
     let account = {
         username: username,
         password: password,
