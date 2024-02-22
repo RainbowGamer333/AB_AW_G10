@@ -77,7 +77,7 @@ export let accounts = [
     },
 ];
 
-function createAccount(username, password, mail) {
+export function createAccount(username, password, mail) {
     let account = {
         username: username,
         password: password,
@@ -90,7 +90,15 @@ function createAccount(username, password, mail) {
         clicker: initialiseClicker(),
         towerDefense: initialiseTowerDefense()
     }
-    accounts.push(account);
+    return account;
+}
+
+/**
+ * Retire tous les comptes sauf le compte admin
+ */
+function clearAccounts() {
+    localStorage.removeItem("accounts");
+    localStorage.setItem("accounts", JSON.stringify(admin));
 }
 
 
