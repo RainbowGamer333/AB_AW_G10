@@ -11,22 +11,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <header>
-        <nav></nav>
-    </header>
-    <main>
+<header>
+    <nav>
+        <!-- Include the navbar content here -->
+        <script type="module" src="../js/navbar.js"></script>
+    </nav>
+</header>
+<main>
+    <div class="profile-image">
         <div class="profile-image">
-            <div class="profile-image">
-                <img id="imageDeProfil" src="../asset/imagesProfil/image1.jpg" alt="Profile Image">
-            </div>
-            <div class="container">
-                <button id="randomizeProfileButton">Générer une nouvelle image de profil</button>
-            </div>
+            <img id="imageDeProfil" src="../asset/imagesProfil/image1.jpg" alt="Profile Image">
         </div>
-    </main>
-    <footer>
-    </footer>
-</body>
+        <div class="container">
+            <button id="randomizeProfileButton">Générer une nouvelle image de profil</button>
+        </div>
+    </div>
+</main>
+<footer>
+</footer>
 <script type="module" src="../js/useComponent.js"></script>
 <script type="module" src="../js/profile.js"></script>
+</body>
 </html>

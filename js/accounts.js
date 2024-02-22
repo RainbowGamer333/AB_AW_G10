@@ -1,4 +1,6 @@
-let admin = [
+//account.js
+
+export let accounts = [
     {
         username: "Rainbow",
         password: "test",
@@ -75,9 +77,7 @@ let admin = [
     },
 ];
 
-export function createAccount(username, password, mail) {
-    console.log("Creating account");
-    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+function createAccount(username, password, mail) {
     let account = {
         username: username,
         password: password,
