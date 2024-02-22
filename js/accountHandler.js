@@ -1,7 +1,8 @@
-import { createAccount } from "./accounts.js";
+import { createAccount, clearAccounts } from "./accountInitialiser.js";
 
-console.log("Début de fichier");
-console.log(getAccounts());
+//Pour tester la création et suppression de compte décommenter la ligne suivante
+//clearAccounts();
+console.log(JSON.parse(localStorage.getItem("accounts")));
 
 document.querySelector("#form").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -12,15 +13,15 @@ document.querySelector("#form").addEventListener("submit", (e) => {
 function loginAccount() {
     let username = document.querySelector("#usernameLogin").value;
     let password = document.querySelector("#passwordLogin").value;
-    console.log(getAccounts());
 
-    let account = getUsername(username);
+    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+    let account = accounts.find(account => account.username === username);
 
     if (account === undefined) alertLogin("Invalid username or password");
     else if (account.password !== password) alertLogin("Invalid username or password");
 
     else {
-        //TODO: save account in session storage
+        loginSession(account);
         window.location.href = "../index.html";
     }
 }
@@ -32,16 +33,17 @@ function registerAccount() {
     let passwordConfirm = document.querySelector("#passwordRegisterConfirm");
     let mail = document.querySelector("#emailRegister");
 
-    let accounts = getAccounts();
+    let accounts = JSON.parse(localStorage.getItem("accounts"));
 
-    let account = getUsername(username.value);
-    let email = getMail(mail.value);
+    let account = accounts.find(account => account.username === username.value)
+    let email = accounts.find(account => account.mail === mail.value);
 
     if (password.value !== passwordConfirm.value) {
         alertLogin("Passwords do not match");
         password.value = "";
         passwordConfirm.value = "";
     }
+    else if (account !== undefined || email !== undefined) alertLogin("Username or email already exists");
     else {
         registerNewAccount(username.value, password.value, mail.value, accounts, (message) => {
             if (message !== undefined) alertLogin(message);
@@ -50,29 +52,23 @@ function registerAccount() {
     }
 }
 
-
-function getAccounts() {
-    return JSON.parse(localStorage.getItem("accounts")) || [];
-}
-
 function setAccounts(accounts) {
     localStorage.setItem("accounts", JSON.stringify(accounts));
 }
 
-function getUsername(username) {
-    return getAccounts().find(account => account.username === username);
-}
-
-function getMail(mail) {
-    return getAccounts().find(account => account.mail === mail);
-}
-
 function registerNewAccount(username, password, email, accounts, callback) {
-    if (username !== undefined || email !== undefined) callback("Username or email already taken");
     let account = createAccount(username, password, email);
     accounts.push(account);
     setAccounts(accounts);
     callback();
+}
+
+function loginSession(account) {
+    sessionStorage.setItem("account", JSON.stringify(account));
+}
+
+function disconnectSession() {
+    sessionStorage.removeItem("account");
 }
 
 
