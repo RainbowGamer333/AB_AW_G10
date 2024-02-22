@@ -1,7 +1,7 @@
 import { createAccount } from "./accounts.js";
 
-let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-console.log(accounts);
+console.log("Début de fichier");
+console.log(getAccounts());
 
 document.querySelector("#form").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -12,42 +12,67 @@ document.querySelector("#form").addEventListener("submit", (e) => {
 function loginAccount() {
     let username = document.querySelector("#usernameLogin").value;
     let password = document.querySelector("#passwordLogin").value;
+    console.log(getAccounts());
 
-    let account = accounts.find(account => account.username === username);
+    let account = getUsername(username);
 
     if (account === undefined) alertLogin("Invalid username or password");
     else if (account.password !== password) alertLogin("Invalid username or password");
 
     else {
-        //TODO: save account in local storage
+        //TODO: save account in session storage
         window.location.href = "../index.html";
     }
 }
 
 
 function registerAccount() {
-
     let username = document.querySelector("#usernameRegister");
     let password = document.querySelector("#passwordRegister");
     let passwordConfirm = document.querySelector("#passwordRegisterConfirm");
     let mail = document.querySelector("#emailRegister");
 
-    let account = accounts.find(account => account.username === username.value);
-    let email = accounts.find(account => account.mail === mail.value);
+    let accounts = getAccounts();
 
-    if (account !== undefined || email !== undefined) alertLogin("Username or email already taken");
-    else if (password.value !== passwordConfirm.value) {
+    let account = getUsername(username.value);
+    let email = getMail(mail.value);
+
+    if (password.value !== passwordConfirm.value) {
         alertLogin("Passwords do not match");
         password.value = "";
         passwordConfirm.value = "";
     }
     else {
-        createAccount(username.value, password.value, mail.value);
-        accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-        console.log("Fin creation compte");
-        console.log(accounts);
-        window.location.href = "log-in.html";
+        registerNewAccount(username.value, password.value, mail.value, accounts, (message) => {
+            if (message !== undefined) alertLogin(message);
+            else window.location.href = "log-in.html";
+        });
     }
+}
+
+
+function getAccounts() {
+    return JSON.parse(localStorage.getItem("accounts")) || [];
+}
+
+function setAccounts(accounts) {
+    localStorage.setItem("accounts", JSON.stringify(accounts));
+}
+
+function getUsername(username) {
+    return getAccounts().find(account => account.username === username);
+}
+
+function getMail(mail) {
+    return getAccounts().find(account => account.mail === mail);
+}
+
+function registerNewAccount(username, password, email, accounts, callback) {
+    if (username !== undefined || email !== undefined) callback("Username or email already taken");
+    let account = createAccount(username, password, email);
+    accounts.push(account);
+    setAccounts(accounts);
+    callback();
 }
 
 

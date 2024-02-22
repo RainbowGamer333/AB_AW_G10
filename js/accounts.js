@@ -74,7 +74,6 @@ let admin = [
         }
     },
 ];
-localStorage.setItem("accounts", JSON.stringify(admin));
 
 export function createAccount(username, password, mail) {
     console.log("Creating account");
@@ -91,10 +90,15 @@ export function createAccount(username, password, mail) {
         clicker: initialiseClicker(),
         towerDefense: initialiseTowerDefense()
     }
-    console.log("Account created");
-    accounts.push(account);
-    console.log(accounts);
-    localStorage.setItem("accounts", JSON.stringify(accounts))
+    return account;
+}
+
+/**
+ * Retire tous les comptes sauf le compte admin
+ */
+function clearAccounts() {
+    localStorage.removeItem("accounts");
+    localStorage.setItem("accounts", JSON.stringify(admin));
 }
 
 
