@@ -1,8 +1,11 @@
-.profile-picture {
-    width: 100px; /* ajustez la taille de l'image selon vos besoins */
-    height: 100px;
-    border-radius: 50%; /* pour rendre l'image ronde */
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto ;
     background-size: cover; /* pour ajuster la taille de l'image de manière à couvrir toute la zone */
     background-position: center; /* pour centrer l'image */
     background-repeat: no-repeat; /* pour éviter la répétition de l'image */
+    background-image: url("../asset/imagesProfil/image1.jpg");
 }
+
