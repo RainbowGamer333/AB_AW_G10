@@ -14,12 +14,14 @@
     margin-left: 47%;
     margin-top: 10px;
 
+
 }
 
 #randomizeProfileButton {
     background-color: rgb(255 255 255 / 1%);
     /*mettre le texte en blanc*/
     color: white;
+    border-radius: 8px;
 }
 
 .profile-table {
@@ -28,8 +30,12 @@
     width: 80%;
     margin-top: 20px;
     margin-left: 10%;
-
 }
+
+.profile-table :hover {
+    animation: rainbowAnimation 5s linear infinite;
+}
+
 
 .profile-table td {
     padding: 10px;
@@ -40,8 +46,12 @@
 .profileInfo {
     color: white;
     font-size: 18px;
-    margin-left: 25%;
+    margin-left: 28%;
     margin-top: 20px;
+
+}
+
+.profileInfo :hover {
     animation: rainbowAnimation 5s linear infinite;
 }
 
