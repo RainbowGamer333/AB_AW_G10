@@ -26,13 +26,14 @@ body{
     overflow-x:  hidden;
 }
 
-main{
+main {
     width: var(--mainWidth);
     height: 100vh;
     background: #403a434d;
     box-shadow: var(--baseShadow);
     margin: 60px auto 0 auto;
     backdrop-filter: blur(5px) saturate(180%);
+    /*overflow-y: auto; /* Permettre le défilement vertical si le contenu dépasse la hauteur de l'écran */
 }
 
 footer{

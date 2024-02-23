@@ -17,6 +17,7 @@
 
 }
 
+
 #randomizeProfileButton {
     background-color: rgb(255 255 255 / 1%);
     /*mettre le texte en blanc*/
@@ -25,7 +26,7 @@
 }
 
 .buttonRandom :hover {
-    animation: rainbowAnimation 5s linear infinite;
+    animation: rainbowAnimation 15s linear infinite;
 }
 
 .profile-table {
@@ -37,7 +38,7 @@
 }
 
 .profile-table :hover {
-    animation: rainbowAnimation 5s linear infinite;
+    animation: rainbowAnimation 15s linear infinite;
 }
 
 
@@ -56,7 +57,7 @@
 }
 
 .profileInfo :hover {
-    animation: rainbowAnimation 5s linear infinite;
+    animation: rainbowAnimation 15s linear infinite;
 }
 
 @keyframes rainbowAnimation {
@@ -68,4 +69,16 @@
     83.333% { color: indigo; }
     100% { color: violet; }
 }
+
+.Démineur {
+    background-color: rgb(255 255 255 / 15%);
+    color: white;
+    border-radius: 8px;
+    margin-left: 10%;
+    margin-top: 10px;
+    width: 80%;
+    height: 500px;
+}
+
+
 
