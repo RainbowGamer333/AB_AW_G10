@@ -1,6 +1,6 @@
 .profile-image {
-    width: 80px;
-    height: 80px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     margin: 0 auto ;
     background-size: cover; /* pour ajuster la taille de l'image de manière à couvrir toute la zone */
@@ -9,3 +9,15 @@
     background-image: url("../asset/imagesProfil/image1.jpg");
 }
 
+.buttonRandom  {
+    /* le bouton se trouve au centre de la page */
+    margin-left: 47%;
+    margin-top: 10px;
+
+}
+
+#randomizeProfileButton {
+    background-color: rgb(255 255 255 / 1%);
+    /*mettre le texte en blanc*/
+    color: white;
+}
