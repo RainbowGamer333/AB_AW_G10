@@ -3,7 +3,7 @@ let admin = [
         username: "Rainbow",
         password: "test",
         mail: "mike.litoris@gmail.com",
-        image: "",
+        image: "image2.jpg",
         role: "admin",
 
         demineur: {
@@ -80,8 +80,7 @@ export function createAccount(username, password, mail) {
         username: username,
         password: password,
         mail: mail,
-        //TODO: generer image aleatoire
-        image: "",
+        image: initialiseImageAleatoire(),
         role: "user",
 
         demineur: initialiseDemineur(),
@@ -89,6 +88,10 @@ export function createAccount(username, password, mail) {
         towerDefense: initialiseTowerDefense()
     }
     return account;
+}
+
+function initialiseImageAleatoire() {
+    return Math.floor(Math.random() * 4) + 1 + ".png";
 }
 
 function initialiseDemineur() {
