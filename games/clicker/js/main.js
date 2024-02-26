@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
         rectDiv.style.pointerEvents = 'none';
         imageContainer.appendChild(rectDiv);
     }
-    
+
 
     // Fonction pour supprimer les pixels aléatoirement
     function removePixel() {
