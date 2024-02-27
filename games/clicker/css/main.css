@@ -185,7 +185,7 @@ body, html {
 }
 
 .decompose-animation {
-    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition pour la transformation et l'opacité */
+    transition: transform 6s ease, opacity 6s ease; /* Transition pour la transformation et l'opacité */
     transform: scale(0.5); /* Réduire l'échelle du rectangle */
     opacity: 0; /* Rendre le rectangle transparent */
 }
@@ -202,7 +202,118 @@ body, html {
         background-color: #ffcc00; /* Nouvelle couleur de fond */
     }
 }
+#imageOne {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+#image2000 {
+    margin: 50px;
+    width: 100px;
+}
+#imageTwo {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+#image5000 {
+    margin: 50px;
+    width: 100px;
+}
+#imageThree {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+#image10000 {
+    margin: 50px;
+    width: 100px;
+}
+#imageFour {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+#image15000 {
+    margin: 50px;
+    width: 100px;
+}
+#imageFive {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+#image20000 {
+    margin: 50px;
+    width: 100px;
+}
+#imageSix {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+#image25000 {
+    margin: 50px;
+    width: 100px;
+}
+#imageSeven {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+#image30000 {
+    margin: 50px;
+    width: 100px;
+}
+#imageEight {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+#image35000 {
+    margin: 50px;
+    width: 100px;
+}
+#imageNine {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+#image40000 {
+    margin: 50px;
+    width: 100px;
+}
+#imageTen {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+#image45000 {
+    margin: 50px;
+    width: 100px;
+}
 
+#imagesContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 colonnes par ligne */
+    grid-gap: 10px; /* Espace entre les images */
+    justify-content: center; /* Centrer les images horizontalement */
+}
 
+.image-cell {
+    text-align: center; /* Centrer le contenu à l'intérieur de chaque cellule */
+}
 
+.image-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
 
+.rectangle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    z-index: 1;
+}

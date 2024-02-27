@@ -58,16 +58,79 @@ document.addEventListener('DOMContentLoaded', function () {
         updateButton();
 
         // Vérifiez si le score atteint le seuil pour chaque image et faites disparaître les rectangles correspondants
-        if (score >= 100) {
+        if (score >= 1000) {
             var rectangle = document.querySelector('#imageOne .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 500); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
-        if (score >= 150) {
-            document.querySelector('#imageTwo .rectangle').style.display = 'none';
+        if (score >= 5000) {
+            var rectangle = document.querySelector('#imageTwo .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
+        if (score >= 10000) {
+            var rectangle = document.querySelector('#imageThree .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+        }
+        if (score >= 15000) {
+            var rectangle = document.querySelector('#imageFour .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+        }
+        if (score >= 20000) {
+            var rectangle = document.querySelector('#imageFive .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+        }
+        if (score >= 25000) {
+            var rectangle = document.querySelector('#imageSix .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+        }
+        if (score >= 30000) {
+            var rectangle = document.querySelector('#imageSeven .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+        }
+        if (score >= 35000) {
+            var rectangle = document.querySelector('#imageEight .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+        }
+        if (score >= 40000) {
+            var rectangle = document.querySelector('#imageNine .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+        }
+        if (score >= 45000) {
+            var rectangle = document.querySelector('#imageTen .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+        }
+
+
+
 
         console.log('Score: ' + score);
 
@@ -243,6 +306,13 @@ document.addEventListener('DOMContentLoaded', function () {
         var randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('leftPanel').style.backgroundColor = randomColor;
+    });
+
+    document.getElementById('imageTwo').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('title').style.color = randomColor;
     });
 
 });
