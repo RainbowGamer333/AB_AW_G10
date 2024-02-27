@@ -13,13 +13,25 @@ export class GameBoard {
         this.tailleMargin = 60;
 
         this.grid = new Grid(this, nbRows, nbCols, nbMines);
-
         this.ajouterGrille();
         this.setStyle();
     }
 
     ajouterGrille() {
         this.grille.appendChild(this.grid.miningGrid);
+    }
+
+    reinitialiserGrille(nbCols, nbRows, nbMines) {
+        this.grid.stop();
+        this.grille.innerHTML = "";
+
+        this.nbCols = nbCols;
+        this.nbRows = nbRows;
+        this.nbMines = nbMines;
+
+        this.grid = new Grid(this, nbRows, nbCols, nbMines);
+        this.ajouterGrille();
+        this.setStyle();
     }
 
     setStyle() {

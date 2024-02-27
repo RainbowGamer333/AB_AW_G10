@@ -11,25 +11,38 @@ export class Smiley {
         return this._isClicked;
     }
 
-    set isClicked(value) {
+    setClicked(value) {
         this._isClicked = value;
     }
 
     initialiserListeners(grid) {
         this.button.addEventListener("click", (e) => {
             e.preventDefault();
-            grid.reinitialiserPartie();
             this.normal();
+            this.setClicked(false);
+            grid.reinitialiserPartie();
         });
 
         this.button.addEventListener("mousedown", (e) => {
             e.preventDefault();
             this.button.classList.add("pressed");
+            this.setClicked(true);
+        });
+
+        this.button.addEventListener("mouseup", (e) => {
+           e.preventDefault();
+              this.button.classList.remove("pressed");
+              this.setClicked(false)
         });
 
         this.button.addEventListener("mouseout", (e) => {
             e.preventDefault();
             this.button.classList.remove("pressed");
+        });
+
+        this.button.addEventListener("mouseover", (e) => {
+            e.preventDefault();
+            if(this.isClicked) this.button.classList.add("pressed");
         });
     }
 

@@ -12,40 +12,36 @@
     <link rel="stylesheet" href="../../css/home.css">
 </head>
 <body>
-    <header>
-        <nav></nav>
-    </header>
-    <main>
-    <form onsubmit="console.log('test')">
+    <form id="form" method="post">
         <label>
-            <input type="radio" id="easy" name="difficulty" value="easy" checked>
+            <input type="radio" id="facile" name="diff" value="facile" checked>
             Facile
         </label>
         <label>
-            <input type="radio" id="medium" name="difficulty" value="medium">
+            <input type="radio" id="moyen" name="diff" value="moyen">
             Moyen
         </label>
         <label>
-            <input type="radio" id="hard" name="difficulty" value="hard">
+            <input type="radio" id="difficile" name="diff" value="difficile">
             Difficile
         </label>
         <label>
-            <input type="radio" id="custom" name="difficulty" value="custom">
+            <input type="radio" id="custom" name="diff" value="custom">
             Personnalisé
         </label>
-        <label>
-            <input type="number" id="customWidth" name="customWidth" value="10" min="2">
+        <label id="customW">
+            <input type="number" name="customW">
             Largeur
         </label>
-        <label>
-            <input type="number" id="customHeight" name="customHeight" value="10" min="2">
+        <label id="customH">
+            <input type="number" name="customH">
             Hauteur
         </label>
-        <label>
-            <input type="number" id="customMines" name="customMines" value="10" min="10">
+        <label id="customM">
+            <input type="number" name="customM">
             Mines
         </label>
-        <input type="submit" value="Submit">
+        <input id="submit" type="submit" value="submit">
     </form>
 
 
@@ -76,4 +72,5 @@
     <script TYPE="module" src="js/main.js"></script>
 
 </body>
+<script TYPE="module" src="js/main.js"></script>
 </html>
