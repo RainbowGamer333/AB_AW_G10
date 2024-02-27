@@ -98,11 +98,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 setInterval(function () {
                     incrementScore(autoClicks);
                     incrementCoins(autoClicks);
+                    // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
+                    playAutoClickAnimation(autoClicks);
                 }, 750);
             }
             hasReachedButtonTwo = true;
         }
     }
+
 
     function toggleClickPlus1() {
         if (coins >= clickPlus1Cost) {
@@ -115,12 +118,17 @@ document.addEventListener('DOMContentLoaded', function () {
             hasReachedButtonOne = true;
         }
     }
-
+    //fonction pour le bouton
     clickButton.addEventListener('click', function () {
-        incrementScore(nextClickValue); // Utilise la prochaine valeur de clic pour incrémenter le score
+        // Utilise la prochaine valeur de clic pour incrémenter le score
+        incrementScore(nextClickValue);
+        // Utilise la prochaine valeur de clic pour incrémenter les pièces
         incrementCoins(nextClickValue);
         cps++;
         nextClickValueDisplay.textContent = 'ajout de :  ' + nextClickValue; // Met à jour l'affichage de la prochaine valeur de clic
+
+        // Jouer l'animation en fonction de l'augmentation du score
+        playClickAnimation(nextClickValue);
     });
 
     autoClickButton.addEventListener('click', function () {
@@ -140,6 +148,51 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 1000);
 
     //////////////////////////////image//////////////
+
+    function playClickAnimation(amount) {
+        const animationContainer = document.getElementById('animationContainer');
+        const plusOne = document.createElement('div');
+        plusOne.textContent = '+' + amount;
+        plusOne.classList.add('click-animation');
+        // Positionnement aléatoire
+        const randomX = Math.random() * (window.innerWidth - 100); // Largeur de la fenêtre moins la taille du div d'animation
+        const randomY = Math.random() * (window.innerHeight - 100); // Hauteur de la fenêtre moins la taille du div d'animation
+        plusOne.style.left = randomX + 'px';
+        plusOne.style.top = randomY + 'px';
+        animationContainer.appendChild(plusOne);
+        setTimeout(() => {
+            animationContainer.removeChild(plusOne);
+        }, 2000);
+    }
+
+    function playAutoClickAnimation(amount) {
+        const animationContainer = document.getElementById('animationContainer');
+        const autoClick = document.createElement('div');
+        autoClick.textContent = '+' + amount;
+        autoClick.classList.add('auto-click-animation'); // Classe CSS pour la couleur de l'animation automatique
+        // Positionnement aléatoire
+        const randomX = Math.random() * (window.innerWidth - 100); // Largeur de la fenêtre moins la taille du div d'animation
+        const randomY = Math.random() * (window.innerHeight - 100); // Hauteur de la fenêtre moins la taille du div d'animation
+        autoClick.style.left = randomX + 'px';
+        autoClick.style.top = randomY + 'px';
+        animationContainer.appendChild(autoClick);
+        setTimeout(() => {
+            animationContainer.removeChild(autoClick);
+        }, 2000);
+    }
+
+
+    // Écoute des touches du clavier
+    document.addEventListener('keydown', function(event) {
+        // Vérification de la séquence de touche pour le cheat
+        if (event.key === 'b' && event.ctrlKey) {
+            // Ajout de 1000 de score et de pièces
+            incrementScore(1000);
+            incrementCoins(1000);
+            // Mise à jour de l'affichage
+            updateScore();
+        }
+    });
 
 
 
