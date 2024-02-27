@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var cpsDisplay = document.getElementById('cpsDisplay');
     var nextClickValueDisplay = document.getElementById('nextClickValueDisplay'); // Ajout de l'affichage de la prochaine valeur de clic
 
+
     var score = 0;
     var autoClicks = 0;
     var clickPlus1Multiplier = 1;
@@ -20,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var hasReachedButtonOne = false;
     var hasReachedButtonTwo = false;
+
+
 
     function updateButton() {
         if (coins >= autoClickCost) {
@@ -53,12 +56,18 @@ document.addEventListener('DOMContentLoaded', function () {
         clickPlus1CostDisplay.textContent = 'Prochain achat de clic +1: ' + clickPlus1Cost;
         updateCoins();
         updateButton();
+
+        // Vérifiez si le score atteint le seuil pour chaque image et faites disparaître les rectangles correspondants
+        if (score >= 100) {
+            document.querySelector('#imageOne .rectangle').style.display = 'none';
+        }
+        if (score >= 150) {
+            document.querySelector('#imageTwo .rectangle').style.display = 'none';
+        }
+
         console.log('Score: ' + score);
 
-        if (score >= 100 && rectDiv) {
-            imageContainer.removeChild(rectDiv); // Supprime le rectangle lorsque le score atteint 100
-            rectDiv = null;
-        }
+
     }
 
     function updateCoins() {
@@ -132,35 +141,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //////////////////////////////image//////////////
 
-    // Variables de référence
-    var imageContainer = document.getElementById('imageContainer');
-    var image = document.getElementById('images');
-    var pixelsRemoved = 0;
-
-    // Fonction pour calculer la taille de l'image et mettre en place le rectangle
-    function setupRectangle() {
-        var image = document.getElementById('images');
-        var rect = image.getBoundingClientRect();
-        rectDiv = document.createElement('div');
-        rectDiv.style.position = 'absolute';
-        rectDiv.style.top = rect.top + 'px';
-        rectDiv.style.left = rect.left + 'px';
-        rectDiv.style.width = rect.width + 'px';
-        rectDiv.style.height = rect.height + 'px';
-        rectDiv.style.backgroundColor = 'black';
-        rectDiv.style.opacity = '1';
-        rectDiv.style.pointerEvents = 'none';
-        imageContainer.appendChild(rectDiv);
-    }
 
 
-    // Fonction pour supprimer les pixels aléatoirement
-    function removePixel() {
-        incrementScore(1); // Incrémente le score lorsque des pixels sont supprimés
-        pixelsRemoved++;
-        scoreDisplay.textContent = 'Score: ' + score; // Met à jour l'affichage du score
-    }
-
-    // Initialisation
-    setupRectangle();
 });

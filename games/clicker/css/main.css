@@ -143,6 +143,15 @@ body, html {
     bottom: 20%;
 }
 
+.rectangle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    z-index: 1;
+}
+
+
 
 
 
