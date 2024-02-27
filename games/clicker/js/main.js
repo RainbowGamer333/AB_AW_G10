@@ -59,7 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Vérifiez si le score atteint le seuil pour chaque image et faites disparaître les rectangles correspondants
         if (score >= 100) {
-            document.querySelector('#imageOne .rectangle').style.display = 'none';
+            var rectangle = document.querySelector('#imageOne .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 500); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
         if (score >= 150) {
             document.querySelector('#imageTwo .rectangle').style.display = 'none';
@@ -102,6 +106,34 @@ document.addEventListener('DOMContentLoaded', function () {
                     playAutoClickAnimation(autoClicks);
                 }, 750);
             }
+
+            if (autoClicks >= 5) {
+                setInterval(function () {
+                    incrementScore(autoClicks);
+                    incrementCoins(autoClicks);
+                    // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
+                    playAutoClickAnimation(autoClicks);
+                }, 500);
+            }
+
+            if (autoClicks >= 10) {
+                setInterval(function () {
+                    incrementScore(autoClicks);
+                    incrementCoins(autoClicks);
+                    // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
+                    playAutoClickAnimation(autoClicks);
+                }, 250);
+            }
+
+            if (autoClicks >= 15) {
+                setInterval(function () {
+                    incrementScore(autoClicks);
+                    incrementCoins(autoClicks);
+                    // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
+                    playAutoClickAnimation(autoClicks);
+                }, 100);
+            }
+
             hasReachedButtonTwo = true;
         }
     }
@@ -194,6 +226,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+//////////////////////////////image//////////////////////////
+    // Fonction pour générer une couleur aléatoire au format hexadecimal
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
 
+// Ajoutez un gestionnaire d'événements à l'image
+    document.getElementById('imageOne').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('leftPanel').style.backgroundColor = randomColor;
+    });
 
 });

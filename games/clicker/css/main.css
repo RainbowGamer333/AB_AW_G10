@@ -155,19 +155,20 @@ body, html {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 80%;
+    top: 100%;
     font-size: 24px;
     color: green;
     animation: moveUp 2s ease;
+
 }
 
 @keyframes moveUp {
     0% {
-        top: 80%;
+        top: 100%;
         opacity: 1;
     }
     100% {
-        top: 60%;
+        top: 80%;
         opacity: 0;
     }
 }
@@ -176,11 +177,32 @@ body, html {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 80%;
+    top: 100%;
     font-size: 24px;
     color: blue;
     animation: moveUp 2s ease;
+
 }
+
+.decompose-animation {
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition pour la transformation et l'opacité */
+    transform: scale(0.5); /* Réduire l'échelle du rectangle */
+    opacity: 0; /* Rendre le rectangle transparent */
+}
+
+.background-color-change {
+    animation: changeBackgroundColor 1s ease;
+}
+
+@keyframes changeBackgroundColor {
+    from {
+        background-color: #f2f2f2; /* Couleur de fond initiale */
+    }
+    to {
+        background-color: #ffcc00; /* Nouvelle couleur de fond */
+    }
+}
+
 
 
 
