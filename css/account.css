@@ -22,7 +22,6 @@
 
 #randomizeProfileButton {
     background-color: rgb(255 255 255 / 1%);
-    /*mettre le texte en blanc*/
     color: white;
     border-radius: 8px;
 }
@@ -42,6 +41,13 @@
         padding: 10px;
         border: 2px solid rgb(255 255 255 / 20%);
         width: 50%;
+    }
+
+    #changePasswordButton {
+        background-color: rgb(255 255 255 / 1%);
+        color: white;
+        border-radius: 8px;
+        margin-top: 5px;
     }
 }
 

@@ -8,6 +8,7 @@ const profileInformationTable = document.getElementById("profileTable");
 
 window.addEventListener("load", function() {
     updateProfileImageBackground();
+    updateProfileInformationTable();
 });
 
 randomizeProfileButton.addEventListener("click", function() {
@@ -33,5 +34,10 @@ function updateSessionImage(image) {
 }
 
 function updateProfileInformationTable() {
-    
+    let pseudo = document.getElementById("pseudo");
+    let email = document.getElementById("email");
+
+    // Get 2nd <td> element from pseudo
+    pseudo.children[1].innerHTML = account.username;
+    email.children[1].innerHTML = account.mail;
 }
