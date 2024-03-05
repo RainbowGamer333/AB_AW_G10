@@ -1,6 +1,5 @@
 export function updateNavbar() {
     if (sessionActive()) {
-        console.log("session active");
         updateProfileImageNavbar();
     } else {
         defaultProfileImageNavbar();
