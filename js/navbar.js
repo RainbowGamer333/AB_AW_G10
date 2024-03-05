@@ -1,10 +1,7 @@
 // Fonction pour mettre à jour l'image de profil dans la barre de navigation
 
-console.log("navbar.js");
-
 document.addEventListener("DOMContentLoaded", function () {
-    let all = document.querySelectorAll("*");
-    console.log(all);
+    console.log("navbar loaded");
     updateProfileImageNavbar();
 });
 
@@ -26,11 +23,5 @@ function updateProfileImageNavbar() {
     account.style.backgroundImage = `url('${link}')`;
 }
 
-/*
-function checkSession() {
-    if (storedAccount) console.log("Session active");
-    else console.log("Session inactive");
-}
- */
 
 //updateProfileImageNavbar();
