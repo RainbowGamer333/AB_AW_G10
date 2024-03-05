@@ -19,4 +19,5 @@ canvas{
     flex-direction: row;
     margin: auto;
     border-radius: 10px 10px 0 0;
+    width: 100%;
 }

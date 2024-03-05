@@ -22,7 +22,7 @@
 }
 
 canvas{
-    width: 400px;
+    width: 100%;
     background-color: transparent;
     image-rendering: pixelated;
     border: 2px solid #00000069;
@@ -37,6 +37,16 @@ canvas{
     background-size: 100px 100px;
     image-rendering: pixelated;
     font-family: "ModernDOS9x14", sans-serif;
+}
+
+.fullscreen {
+    & .canvas_container {
+        width: 600px;
+    }
+
+    .towerButton{
+        width: 100px;
+    }
 }
 
 .canvas_container{
@@ -132,6 +142,7 @@ canvas{
     font-family: "ModernDOS9x14", sans-serif;
     filter: brightness(1.0);
     transition: 0.1s filter ease;
+    aspect-ratio: 80/146;
     /*background-image: url("asset/tower_background.png");*/
 }
 
