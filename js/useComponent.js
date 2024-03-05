@@ -1,5 +1,6 @@
 import {Utils} from "../games/towerDefense/js/utils/Utils.js";
 import {Path} from "../games/towerDefense/js/constants/Path.js";
+import {updateNavbar} from "./navbar.js";
 
 
 function init(){
@@ -11,6 +12,7 @@ function init(){
     //Create navbar
     Utils.readTextFile("/component/navbar.html", (text) =>{
         replaceComponent("nav",text);
+        updateNavbar();
     });
 
 
