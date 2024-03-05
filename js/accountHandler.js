@@ -2,6 +2,12 @@ import { createAccount, clearAccounts } from "./accountInitialiser.js";
 
 //Pour tester la création et suppression de compte décommenter la ligne suivante
 //clearAccounts();
+
+// S'il y a aucun compte dans le local storage, on initialise avec le compte admin
+if (JSON.parse(localStorage.getItem("accounts")) === null) {
+    clearAccounts();
+}
+
 console.log(JSON.parse(localStorage.getItem("accounts")));
 
 document.querySelector("#form").addEventListener("submit", (e) => {

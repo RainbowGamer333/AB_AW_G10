@@ -1,5 +1,4 @@
 export function updateNavbar() {
-    console.log("navbar loaded");
     if (sessionActive()) {
         console.log("session active");
         updateProfileImageNavbar();
@@ -22,7 +21,6 @@ function updateProfileImageNavbar() {
 
 function defaultProfileImageNavbar() {
     let account = document.getElementById("account");
-    console.log("default image");
     account.style.backgroundImage = "url('../asset/icons/user.png')";
 }
 
