@@ -40,6 +40,13 @@ main {
     }
 }
 
+.game_settings{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.56);
+    height: 60px;
+    border-radius: 0 0 10px 10px;
+}
+
 footer{
     width: 100vw;
     background-color: #1c1c1d;

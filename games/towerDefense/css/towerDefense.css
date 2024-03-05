@@ -11,7 +11,7 @@ canvas{
     width: 400px;
 }
 
-.gameContainer{
+#gameContainer{
     background-color: var(--GuiBackgroundColor);
     width: max-content;
     border-radius: 10px;
