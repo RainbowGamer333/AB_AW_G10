@@ -299,7 +299,7 @@ body, html {
 
 #imagesContainer {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 colonnes par ligne */
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes par ligne */
     grid-gap: 10px; /* Espace entre les images */
     justify-content: center; /* Centrer les images horizontalement */
 }
@@ -320,4 +320,10 @@ body, html {
     height: 100px;
     background-color: black;
     z-index: 1;
+}
+
+.gameContainer {
+    display: flex;
+    justify-content: center;
+    height: 1500px;
 }
