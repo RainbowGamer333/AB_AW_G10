@@ -40,7 +40,7 @@ nav{
     }
 
     #account {
-        background-image: url(../asset/icons/user.png);
+        /*background-image: url(../asset/icons/user.png);*/
         width: 30px;
         height: 30px;
         background-size: cover;

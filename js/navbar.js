@@ -1,27 +1,31 @@
-// Fonction pour mettre à jour l'image de profil dans la barre de navigation
-
-document.addEventListener("DOMContentLoaded", function () {
+export function updateNavbar() {
     console.log("navbar loaded");
-    updateProfileImageNavbar();
-});
-
-function updateProfileImageNavbar() {
-    console.log("updateProfileImageNavbar");
-    let storedAccount = sessionStorage.getItem("account");
-    let account = document.getElementById("connexion");
-
-
-    let link = "";
-    let img;
-    if (storedAccount) {
-        console.log("Account stored");
-        img = JSON.parse(storedAccount).image;
-        link = "asset/imagesProfil/" + img;
+    if (sessionActive()) {
+        console.log("session active");
+        updateProfileImageNavbar();
     } else {
-        link = "asset/icons/user.png";
+        defaultProfileImageNavbar();
     }
-    account.style.backgroundImage = `url('${link}')`;
+
 }
 
+function updateProfileImageNavbar() {
+    let storedAccount = JSON.parse(sessionStorage.getItem("account"));
+    let account = document.getElementById("account");
 
-//updateProfileImageNavbar();
+    let link = "";
+    if (storedAccount) link = "../asset/imagesProfil/" + storedAccount.image;
+    else link = "../asset/icons/user.png";
+
+    account.style.backgroundImage = "url('" + link + "')";
+}
+
+function defaultProfileImageNavbar() {
+    let account = document.getElementById("account");
+    console.log("default image");
+    account.style.backgroundImage = "url('../asset/icons/user.png')";
+}
+
+function sessionActive() {
+    return JSON.parse(sessionStorage.getItem("account"));
+}
