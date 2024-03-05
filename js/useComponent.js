@@ -15,6 +15,20 @@ function init(){
         updateNavbar();
     });
 
+    //Enable fullscreen
+    const fullscreenElement = document.getElementById("toggle_fullscreen");
+    fullscreenElement.addEventListener('click', function(){
+        // if already full screen; exit
+        // else go fullscreen
+        console.log("KOKOKO")
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            const gameContainerElement = document.getElementById("gameContainer");
+            gameContainerElement.requestFullscreen();
+        }
+    });
+
 
 }
 

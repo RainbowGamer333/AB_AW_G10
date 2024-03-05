@@ -15,9 +15,12 @@ import {Landmine} from "../entity/impl/tower/Landmine.js";
 import {MiniCanon} from "../entity/impl/tower/MiniCanon.js";
 import {DoubleCanon} from "../entity/impl/tower/DoubleCanon.js";
 import {Wind} from "../entity/impl/tower/Wind.js";
+import {IceCanon} from "../entity/impl/tower/IceCanon.js";
 // import {Constants} from "../constants/Constants.js";
 let isDragging = false;
 let draggedButton = null;
+let draggedButtonX = 0;
+let draggedButtonY = 0;
 let draggingElement = null;
 let offsetX;
 let offsetY;
@@ -77,7 +80,7 @@ export class TowerButton{
             case "low_wall" : return new LowWall();
             case "golden_tree" : return new GoldenTree();
             case "annihilator": return new Annihilator();
-            case "bidirectional_sonar" : return new BidirectionalSonar();
+            case "ice_canon" : return new IceCanon();
             case "spell_wind" : return new Wind();
             default : return new LightningTower();
         }
@@ -98,24 +101,17 @@ function startDrag(event,towerButton) {
 
     draggedButton = towerButton.domElement;
     draggingElement = towerButton;
-    const offsetX = event.clientX - draggedButton.getBoundingClientRect().left;
-    const offsetY = event.clientY - draggedButton.getBoundingClientRect().top;
-
-    draggedButton.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    // console.log("start dragging "+towerButton.buttonID)
+    draggedButtonX =  draggedButton.getBoundingClientRect().left;
+    draggedButtonY =  draggedButton.getBoundingClientRect().top;
+    // console.log("TOP:"+draggedButton.getBoundingClientRect().top, "LEFT:"+draggedButton.getBoundingClientRect().left);
+    draggedButton.style.transform = `translate(${0}px, ${0}px)`;
 }
 
 function drag(event) {
     // console.log("drag")
     if (draggedButton) {
-        const mooseCoordinate = Gui.getCanvasMouseCoordinates();
-
-        // draggedButton.style.position = `absolute`;
-        // draggedButton.style.left = `${mooseCoordinate.x}px`;
-        // draggedButton.style.top = `${mooseCoordinate.y}px`;
-        // draggedButton.style.transform = `translate(${mooseCoordinate.x}px, ${mooseCoordinate.y}px)`;
-        // console.log(`translate(${mooseCoordinate.x}px, ${mooseCoordinate.y}px)`)
-        // console.log("draging")
+        const mooseCoordinate = Gui.getMouseCoordinates();
+        draggedButton.style.transform = `translate(${mooseCoordinate.x-draggedButtonX}px, ${mooseCoordinate.y-draggedButtonY}px)`;
     }
 }
 

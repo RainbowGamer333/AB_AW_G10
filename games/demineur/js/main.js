@@ -1,5 +1,9 @@
 import { GameBoard } from "./gameBoard.js";
 
+const game = document.getElementById("game");
+const overlay = document.getElementById("overlay");
+const popup = document.getElementById("popup");
+const cancel = document.getElementById("cancel");
 const gameBoard = new GameBoard(9, 9, 10);
 const form = document.getElementById("form");
 const custom = document.getElementById("custom");
@@ -11,11 +15,27 @@ function onload() {
     setupForm(form);
 }
 
-
 function setupForm(form) {
-    displayCustoms(custom.checked);
-    form.addEventListener("submit", submitForm);
+    game.addEventListener("click", function() {
+        console.log("click");
+        overlay.style.display = "block";
+        popup.style.display = "block";
+    });
 
+    cancel.addEventListener("click", function() {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        overlay.style.display = "none";
+        popup.style.display = "none";
+        submitForm();
+    });
+
+
+    displayCustoms(custom.checked);
     let diff = document.querySelectorAll('input[name="diff"]');
     diff.forEach((radio) => {
         radio.addEventListener('change', function() {
@@ -31,9 +51,7 @@ function displayCustoms(checked) {
 }
 
 
-function submitForm(event) {
-    event.preventDefault();
-
+function submitForm() {
     let diff = document.querySelector('input[name="diff"]:checked').value;
     switch(diff) {
         case "facile":
@@ -57,6 +75,8 @@ function submitForm(event) {
             break;
     }
 }
+
+
 
 
 

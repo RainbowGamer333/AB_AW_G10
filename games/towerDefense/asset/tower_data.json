@@ -1,12 +1,5 @@
 [
   {
-    "name": "spell_heal",
-    "display_name": "Soin",
-    "price":75,
-    "cool_down": 1000,
-    "isSpecial": true
-  },
-  {
     "name": "spell_wind",
     "display_name": "Sort de Vent",
     "price":75,
@@ -15,8 +8,15 @@
   },
   {
     "name": "annihilator",
-    "display_name": "Annihilateur",
+    "display_name": "Rayon mortel",
     "price":1000,
+    "cool_down": 1000,
+    "isSpecial": true
+  },
+  {
+    "name": "spell_heal",
+    "display_name": "Soin",
+    "price":75,
     "cool_down": 1000,
     "isSpecial": true
   },
@@ -42,8 +42,8 @@
     "isSpecial": false
   },
   {
-    "name": "triple_canon",
-    "display_name": "Triple canon",
+    "name": "ice_canon",
+    "display_name": "Canon glacé",
     "price":400,
     "cool_down": 1000,
     "isSpecial": false
