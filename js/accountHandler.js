@@ -94,10 +94,6 @@ function loginSession(account) {
     sessionStorage.setItem("account", JSON.stringify(account));
 }
 
-function disconnectSession() {
-    sessionStorage.removeItem("account");
-}
-
 
 function alertLogin(message) {
     document.getElementById("alert").innerText = message;

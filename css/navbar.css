@@ -51,7 +51,7 @@ nav{
         }
     }
 
-    #connexion{
+    .connexion_deconnexion {
         background-color: var(--colMain);
         border-radius: 10px;
         display: flex;
