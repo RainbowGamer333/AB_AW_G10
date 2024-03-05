@@ -21,7 +21,6 @@
         <a href="../..">accueil</a>
         <div id="gameContainer">
             <div class="gui left-container" id="left-container">
-
             </div>
             <div class="middle-container">
                 <div class="gui gui-top">
@@ -42,8 +41,15 @@
                         <span class="guiCard-value" id="coin_card_value">10</span>
                     </div>
                 </div>
-
-                <canvas id="gameCanvas" width="0" height="0"></canvas>
+                <div class="canvas_container">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="left"></div>
+                        <canvas id="gameCanvas" width="0" height="0"></canvas>
+                        <div class="right"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
 
             </div>
             <div class="gui right-container" id="right-container">
@@ -74,6 +80,9 @@
                     </li>
                     <li>
                         Le <b>Canon de feu</b> tire des gros boulets enflammés capable de traverser le premier ennemi qu'il touche
+                    </li>
+                    <li>
+                        Le score augmente lorsqu'un ennemi est tué, le nombre de point obtenu dépend du nombre de maison débout.
                     </li>
                 </ul>
             </div>

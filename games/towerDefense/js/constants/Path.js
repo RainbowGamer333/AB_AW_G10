@@ -8,9 +8,6 @@ export class Path {
     //TOWERS
     static TOWERS_DATA = Path.BASE_PATH +"tower_data.json"
     static BASE_PATH_TOWER = Path.BASE_PATH + "/tower/";
-    static CATAPULT = Path.BASE_PATH_TOWER+"catapult.png";
-    static TOWER = Path.BASE_PATH_TOWER+"tesla.png";
-    static TRIPLE_CROSSBOW = Path.BASE_PATH_TOWER+"triple_crossbow.png";
     static CANON = Path.BASE_PATH_TOWER+"canon.png";
     static MINI_CANON = Path.BASE_PATH_TOWER+"mini_canon.png";
     static DOUBLE_CANON = Path.BASE_PATH_TOWER+"double_canon.png";
@@ -18,16 +15,16 @@ export class Path {
     static WALL = Path.BASE_PATH_TOWER+"wall.png";
     static LOW_WALL = Path.BASE_PATH_TOWER+"low_wall.png";
     static LANDMINE = Path.BASE_PATH_TOWER+"landmine.png";
-    static ANNIHILATOR = Path.BASE_PATH_TOWER+"annihilator.png";
     static GOLDEN_TREE = Path.BASE_PATH_TOWER+"golden_tree.png";
-    static COIN_HARVESTER = Path.BASE_PATH_TOWER+"coin_harvester.png";
     static FIRE_CANON = Path.BASE_PATH_TOWER+"fire_canon.png";
+    static ICE_CANON = Path.BASE_PATH_TOWER+"ice_canon.png";
     static BIDIRECTIONAL_SONAR = Path.BASE_PATH_TOWER+"bidirectional_sonar.png";
     // static CATAPULT = Path.BASE_PATH+"/tower/catapult.png";
 
     //Projectiles
     static BASE_PATH_PROJECTILE = Path.BASE_PATH + "projectile/";
     static FIREBALL = Path.BASE_PATH_PROJECTILE+"fireball.png";
+    static FROSTSHARD = Path.BASE_PATH_PROJECTILE+"frostshard.png";
     static FIREBALL_SMALL = Path.BASE_PATH_PROJECTILE+"fireball_small.png";
     static CANON_BALL = Path.BASE_PATH_PROJECTILE+"canon_ball.png";
     static LIGHTNING = Path.BASE_PATH_PROJECTILE+"lightning.png";

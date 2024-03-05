@@ -27,7 +27,7 @@ export class Wind extends Tower{
         this.accumulatedTime+=dt;
         if (this.accumulatedTime>=this.attackRate){
             this.spawnVacuum();
-            this.hurt(20,this);
+            this.hurt(40,this);
             this.accumulatedTime = 0;
         }
         super.updateComponents(dt);
@@ -41,7 +41,7 @@ export class Wind extends Tower{
         projectile.y = Constants.height;
         projectile.x = this.x;
         projectile.damage = this.damage;
-        projectile.deadzone = -32 ;
+        projectile.deadzone = 0 ;
         Engine.addGameObject(projectile);
     }
 }

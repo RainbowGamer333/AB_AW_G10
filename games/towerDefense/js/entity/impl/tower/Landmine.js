@@ -10,7 +10,7 @@ import {Explosion} from "../particle/Explosion.js";
 export class Landmine extends Tower{
     constructor() {
         const health = 10;
-        const damage = 200;
+        const damage = 2000;
         const attackRate = 2;
 
         let image = new Image();
