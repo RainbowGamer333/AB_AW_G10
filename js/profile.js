@@ -1,37 +1,33 @@
-// Fonction pour générer aléatoirement une image de profil
+import {updateNavbar} from "./navbar.js";
+
+const account = JSON.parse(sessionStorage.getItem("account"));
+
+const randomizeProfileButton = document.getElementById("randomizeProfileButton");
+const profileImageElement = document.getElementById("imageDeProfil");
+
+window.addEventListener("load", function() {
+    updateProfileImageBackground();
+});
+
+randomizeProfileButton.addEventListener("click", function() {
+    let imageUrl = generateRandomProfileImage();
+    updateSessionImage(imageUrl);
+    updateNavbar();
+    updateProfileImageBackground();
+});
+
+
 function generateRandomProfileImage() {
     const randomImageIndex = Math.floor(Math.random() * 5) + 1; // Génère un nombre aléatoire entre 1 et 5
-    return `../asset/imagesProfil/image${randomImageIndex}.jpg`; // Remplacez ceci par le chemin réel de votre pool d'images
+    return `image${randomImageIndex}.jpg`;
 }
 
-// Fonction pour mettre à jour le background de la div avec l'image générée aléatoirement
-function updateProfileImageBackground(imageUrl) {
-    const profileImageElement = document.getElementById("imageDeProfil");
-    if (profileImageElement) {
-        profileImageElement.style.backgroundImage = `url('${imageUrl}')`;
-    } else {
-        console.log("Element with id 'imageDeProfil' not found.");
-    }
+function updateProfileImageBackground() {
+    profileImageElement.style.backgroundImage = `url('../asset/imagesProfil/${account.image}')`;
 }
 
-// Gestionnaire d'événements pour le bouton de génération aléatoire d'image de profil
-const randomizeProfileButton = document.getElementById("randomizeProfileButton");
-if (randomizeProfileButton) {
-    randomizeProfileButton.addEventListener("click", function() {
-        const imageUrl = generateRandomProfileImage();
-        updateProfileImageBackground(imageUrl);
-        // Mettre à jour l'image de profil dans la navbar également
-        updateProfileImageInNavbar(imageUrl);
-    });
+function updateSessionImage(image) {
+    account.image = image;
+    sessionStorage.setItem("account", JSON.stringify(account));
 }
-// Fonction pour mettre à jour l'image de profil dans la barre de navigation
-function updateProfileImageInNavbar(imageUrl) {
-    const profileImageElement = document.getElementById("account");
-    if (profileImageElement) {
-        profileImageElement.style.backgroundImage = `url('${imageUrl}')`;
-    } else {
-        console.log("Element with id 'account' not found.");
-    }
-}
-
 
