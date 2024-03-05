@@ -28,7 +28,7 @@ body{
 
 main {
     width: var(--mainWidth);
-    height: 100vh;
+    min-height: 100vh;
     background: #403a434d;
     box-shadow: var(--baseShadow);
     margin: 60px auto 0 auto;
