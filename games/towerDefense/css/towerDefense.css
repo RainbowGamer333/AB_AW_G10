@@ -131,7 +131,7 @@ canvas{
 .towerButton{
     min-height: var(--towerButtonSize);
     height: fit-content;
-    width:  var(--towerButtonSize);
+    width: var(--towerButtonSize);
     background-size: cover;
     image-rendering: pixelated;
     padding: 0;
@@ -142,12 +142,15 @@ canvas{
     font-family: "ModernDOS9x14", sans-serif;
     filter: brightness(1.0);
     transition: 0.1s filter ease;
-    aspect-ratio: 80/146;
-    /*background-image: url("asset/tower_background.png");*/
+    aspect-ratio: 80 / 165;
+    /* background-image: url(asset/tower_background.png); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .towerButton>img{
-    height:  var(--towerButtonSize);
+    height: auto;
     width: 100%;
 }
 
@@ -158,6 +161,8 @@ canvas{
     font-weight: bold;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
 }
 
 .towerButton>.cost::after{
