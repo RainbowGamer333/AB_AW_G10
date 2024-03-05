@@ -4,30 +4,55 @@ import {updateNavbar} from "./navbar.js";
 
 
 function init(){
-    //Create footer
+    //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Utils.readTextFile("/component/footer.html", (text) =>{
         replaceComponent("footer",text);
     });
 
-    //Create navbar
+    //Create navbar - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Utils.readTextFile("/component/navbar.html", (text) =>{
         replaceComponent("nav",text);
         updateNavbar();
     });
 
-    //Enable fullscreen
+    //Enable fullscreen - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const fullscreenElement = document.getElementById("toggle_fullscreen");
-    fullscreenElement.addEventListener('click', function(){
-        // if already full screen; exit
-        // else go fullscreen
-        console.log("KOKOKO")
-        if (document.fullscreenElement) {
-            document.exitFullscreen();
-        } else {
+    if (fullscreenElement){
+        fullscreenElement.addEventListener('click', function(){
+            // if already full screen; exit
+            // else go fullscreen
             const gameContainerElement = document.getElementById("gameContainer");
-            gameContainerElement.requestFullscreen();
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+                gameContainerElement.classList.remove("fullscreen");
+            } else {
+                gameContainerElement.classList.add("fullscreen");
+                gameContainerElement.requestFullscreen();
+            }
+        });
+
+        document.addEventListener('fullscreenchange', exitHandler);
+        document.addEventListener('webkitfullscreenchange', exitHandler);
+        document.addEventListener('mozfullscreenchange', exitHandler);
+        document.addEventListener('MSFullscreenChange', exitHandler);
+
+        function exitHandler() {
+            if (!document.fullscreenElement
+                && !document.webkitIsFullScreen
+                && !document.mozFullScreen
+                && !document.msFullscreenElement) {
+                ///fire your event
+                console.log("KIKOKOK")
+                const gameContainerElement = document.getElementById("gameContainer");
+                gameContainerElement.classList.remove("fullscreen");
+            }
         }
-    });
+
+    }
+
+
+    // Achievements popup - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    const achievementSpawner = document.getElementById("achievement_spawner");
 
 
 }
@@ -59,6 +84,8 @@ function update(){
         // console.log(value)
     }
 }
+
+
 
 window.addEventListener('scroll', update);
 
