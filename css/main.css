@@ -38,22 +38,37 @@ main {
     & p, & li, & h2 {
         color: rgba(255, 255, 255, 0.94);
     }
+
+    & h2{
+        text-align: center;
+        margin: 80px auto 60px auto;
+        background-image: linear-gradient(90deg, transparent 10%, #00000082, transparent 90%);
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 5px;
+        border-radius: 20px;
+        box-shadow: 0px 20px 17px -24px var(--colMain);
+        width: 80%;
+    }
 }
 
 .game_settings{
     width: 100%;
     background-color: rgb(136 132 205 / 14%);
-    height: 60px;
+    height: 30px;
     border-radius: 0 0 10px 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 0 10px;
+    padding: 10px 0;
+    box-shadow: 1px 1px 8px -4px black;
 
 
     #toggle_fullscreen{
-        width: 50px;
-        height: 50px;
+        width: 26px;
+        height: 26px;
         background-image: url("../asset/icons/fullscreen.png");
         background-color: transparent;
         background-size: cover;
