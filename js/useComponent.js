@@ -27,6 +27,8 @@ function replaceComponent(elementTagName, newTagHtml){
     }
 }
 
+
+
 let velocity = -0.2;
 let parallaxElements = document.getElementsByClassName("parallaxBG");
 function update(){

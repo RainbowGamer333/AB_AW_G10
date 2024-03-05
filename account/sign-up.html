@@ -18,29 +18,26 @@
 <main>
     <div class="login_container">
         <h1>Inscription</h1>
-        <form>
+        <form id="form">
+            <p id="alert"></p>
             <label>
                 Nom d'utilisateur
-                <input type="text">
+                <input type="text" id="usernameRegister">
+            </label>
+            <label>
+                Adresse email
+                <input type="email" id="emailRegister">
             </label>
             <label>
                 Mot de passe
-                <input type="password" class="hide_field">
-                <!--                <div >-->
-
-                <!--                    <button type="button" class="hide_field">HF</button>-->
-                <!--                </div>-->
+                <input type="password" class="hide_field" id="passwordRegister">
             </label>
             <label>
                 Confirmer le mot de passe
-                <input type="password" class="hide_field">
-                <!--                <div >-->
-
-                <!--                    <button type="button" class="hide_field">HF</button>-->
-                <!--                </div>-->
+                <input type="password" class="hide_field" id="passwordRegisterConfirm">
             </label>
             <div class="bottom_container">
-                <a href="http://localhost:63342/AB_AW_G10/account/sign-up.html">Connexion</a>
+                <a href="/AB_AW_G10/account/log-in.html">Connexion</a>
                 <label>
                     <input type="submit" value="S'inscrire">
 
@@ -53,4 +50,5 @@
 </footer>
 </body>
 <script type="module" src="../js/useComponent.js"></script>
+<script type="module" src="../js/accountHandler.js"></script>
 </html>

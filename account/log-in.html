@@ -18,21 +18,22 @@
 <main>
     <div class="login_container">
         <h1>Connexion</h1>
-        <form>
+        <form id="form">
+            <p id="alert"></p>
             <label>
                 Nom d'utilisateur
-                <input type="text">
+                <input type="text" id="usernameLogin">
             </label>
             <label>
                 Mot de passe
-                <input type="password" class="hide_field">
+                <input type="password" id="passwordLogin" class="hide_field">
 <!--                <div >-->
 
 <!--                    <button type="button" class="hide_field">HF</button>-->
 <!--                </div>-->
             </label>
             <div class="bottom_container">
-                <a href="http://localhost:63342/AB_AW_G10/account/sign-up.html">S'inscrire</a>
+                <a href="/AB_AW_G10/account/sign-up.html">S'inscrire</a>
                 <label>
                     <input type="submit" value="Se connecter">
 
@@ -45,4 +46,5 @@
 </footer>
 </body>
 <script type="module" src="../js/useComponent.js"></script>
+<script type="module" src="../js/accountHandler.js"></script>
 </html>

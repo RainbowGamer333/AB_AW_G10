@@ -19,6 +19,12 @@
         margin-bottom: 50px;
     }
 
+    #alert{
+        color: red;
+        font-size: 14px;
+        margin-top: 0;
+    }
+
     & input{
         border: none;
         outline: none;
@@ -28,7 +34,7 @@
         letter-spacing: 1px;
     }
 
-    & input[type=password], & input[type=text] {
+    & input[type=password], & input[type=text], & input[type=email] {
         backdrop-filter: blur(10px);
         background-color: #ffffff24;
         min-width: 300px;
@@ -94,7 +100,7 @@
         text-decoration: none;
         color: rgba(255, 255, 255, 0.69);
 
-        :hover{
+        &:hover{
             text-decoration: none;
             color: white;
         }

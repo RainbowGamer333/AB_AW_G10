@@ -26,13 +26,18 @@ body{
     overflow-x:  hidden;
 }
 
-main{
+main {
     width: var(--mainWidth);
-    height: 100vh;
+    min-height: 100vh;
     background: #403a434d;
     box-shadow: var(--baseShadow);
     margin: 60px auto 0 auto;
-    backdrop-filter: blur(5px) saturate(180%);
+    backdrop-filter: blur(10px) saturate(180%);
+    /*overflow-y: auto; /* Permettre le défilement vertical si le contenu dépasse la hauteur de l'écran */
+
+    & p, & li, & h2 {
+        color: rgba(255, 255, 255, 0.94);
+    }
 }
 
 footer{
@@ -62,6 +67,9 @@ footer li {
 footer li a {
     color: #d9d6d6;
     text-decoration: none;
+    &:hover{
+        color: #ffffff;
+    }
 }
 
 .legacy_container{
