@@ -59,5 +59,15 @@ export class Utils{
         return result;
     }
 
-
+    static replaceComponent(elementTagName, newTagHtml){
+        let oldElement = document.getElementsByTagName(elementTagName)[0];
+        if (!oldElement) oldElement =  document.getElementById(elementTagName);
+        const newElement = document.createElement(elementTagName);
+        newElement.innerHTML = newTagHtml;
+        if (oldElement){
+            oldElement.replaceWith(newElement)
+        }else{
+            console.log("Node with the tag "+elementTagName+" not found.")
+        }
+    }
 }

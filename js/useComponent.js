@@ -6,12 +6,12 @@ import {updateNavbar} from "./navbar.js";
 function init(){
     //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Utils.readTextFile("/component/footer.html", (text) =>{
-        replaceComponent("footer",text);
+        Utils.replaceComponent("footer",text);
     });
 
     //Create navbar - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Utils.readTextFile("/component/navbar.html", (text) =>{
-        replaceComponent("nav",text);
+        Utils.replaceComponent("nav",text);
         updateNavbar();
     });
 
@@ -55,16 +55,7 @@ function init(){
     const achievementSpawner = document.getElementById("achievement_spawner");
 }
 
-function replaceComponent(elementTagName, newTagHtml){
-    const oldElement = document.getElementsByTagName(elementTagName)[0];
-    const newElement = document.createElement(elementTagName);
-    newElement.innerHTML = newTagHtml;
-    if (oldElement){
-        oldElement.replaceWith(newElement)
-    }else{
-        console.log("Node with the tag "+elementTagName+" not found.")
-    }
-}
+
 
 
 
