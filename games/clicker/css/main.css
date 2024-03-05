@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
     margin: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 #leftPanel {
@@ -46,6 +46,10 @@ body, html {
     line-height: 50px;
     padding: 10px;
     margin-left: 10%;
+}
+
+#zoneBonus  {
+    display: flex;
 }
 
 #clickButton:hover {
