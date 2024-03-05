@@ -50,7 +50,7 @@ export class Enemy extends Entity{
 
 
     onDeath() {
-        const multiplier = Engine.villageHealth/Engine.maxVillageHealth*9;
+        const multiplier = Math.floor(Engine.villageHealth/Engine.maxVillageHealth*9);
         Engine.score+=this.score * multiplier;
         Engine.coinBalance+=this.coinDropped;
         this.spawnParticleGhost();
