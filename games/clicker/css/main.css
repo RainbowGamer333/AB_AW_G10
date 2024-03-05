@@ -168,11 +168,11 @@ body, html {
 
 @keyframes moveUp {
     0% {
-        top: 100%;
+        top: 80%;
         opacity: 1;
     }
     100% {
-        top: 80%;
+        top: 50%;
         opacity: 0;
     }
 }
@@ -211,91 +211,114 @@ body, html {
     width: 100px;
     height: 100px;
 }
-#image2000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageTwo {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image5000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageThree {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image10000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageFour {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image15000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageFive {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image20000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageSix {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image25000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageSeven {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image30000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageEight {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image35000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageNine {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image40000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageTen {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image45000 {
+
+#imageEleven {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+#imageTwelve {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+#image2000 {
     margin: 50px;
     width: 100px;
 }
+#image5000 {
+    margin: 50px;
+    width: 100px;
+}
+#image25000 {
+    margin: 50px;
+    width: 100px;
+}
+#image50000 {
+    margin: 50px;
+    width: 100px;
+}
+#image100000 {
+    margin: 50px;
+    width: 100px;
+}
+#image250000 {
+    margin: 50px;
+    width: 100px;
+}
+#image500000 {
+    margin: 50px;
+    width: 100px;
+}
+#image1000000 {
+    margin: 50px;
+    width: 100px;
+}
+#image5000000 {
+    margin: 50px;
+    width: 100px;
+}
+#image10000000 {
+    margin: 50px;
+    width: 100px;
+}
+
 
 #imagesContainer {
     display: grid;
