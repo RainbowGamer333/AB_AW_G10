@@ -41,9 +41,17 @@ function displayDeconnexion() {
     deconnexion.style.display = "flex";
 
     deconnexion.addEventListener("click", function () {
+        updateLocalStorage(JSON.parse(sessionStorage.getItem("account")));
         sessionStorage.removeItem("account");
         window.location.href = "../log-in.html";
     });
+}
+
+function updateLocalStorage(account) {
+    let accounts = JSON.parse(localStorage.getItem("accounts"));
+    let index = accounts.findIndex(acc => acc.username === account.username);
+    accounts[index] = account;
+    localStorage.setItem("accounts", JSON.stringify(accounts));
 }
 
 function sessionActive() {
