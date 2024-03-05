@@ -4,7 +4,9 @@ const account = JSON.parse(sessionStorage.getItem("account"));
 
 const randomizeProfileButton = document.getElementById("randomizeProfileButton");
 const profileImageElement = document.getElementById("imageDeProfil");
-const profileInformationTable = document.getElementById("profileTable");
+const changerPasswordButton = document.getElementById("changerPasswordButton");
+
+console.log(account);
 
 window.addEventListener("load", function() {
     updateProfileImageBackground();
@@ -16,6 +18,11 @@ randomizeProfileButton.addEventListener("click", function() {
     updateSessionImage(imageUrl);
     updateNavbar();
     updateProfileImageBackground();
+});
+
+changerPasswordButton.addEventListener("click", function() {
+    console.log("click");
+    window.location.href = "password.html";
 });
 
 
