@@ -53,8 +53,6 @@ function init(){
 
     // Achievements popup - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const achievementSpawner = document.getElementById("achievement_spawner");
-
-
 }
 
 function replaceComponent(elementTagName, newTagHtml){

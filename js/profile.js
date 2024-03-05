@@ -4,6 +4,7 @@ const account = JSON.parse(sessionStorage.getItem("account"));
 
 const randomizeProfileButton = document.getElementById("randomizeProfileButton");
 const profileImageElement = document.getElementById("imageDeProfil");
+const profileInformationTable = document.getElementById("profileTable");
 
 window.addEventListener("load", function() {
     updateProfileImageBackground();
@@ -31,3 +32,6 @@ function updateSessionImage(image) {
     sessionStorage.setItem("account", JSON.stringify(account));
 }
 
+function updateProfileInformationTable() {
+    
+}
