@@ -65,7 +65,7 @@ export class MapUtils {
         image.src = Path.HOUSE_BLUE;
         const y = Constants.height-(Constants.TILE_SIZE_ZOOMED*2);
         // for (let i=0;i<Constants.colums;i++){
-        //     let towerChoice = Utils.randomIntFromInterval(0,5);
+        //     let towerChoice = AB_Utils.randomIntFromInterval(0,5);
         //     let tower = new Canon();
         //     tower.x = i*Constants.TILE_SIZE_ZOOMED;
         //     tower.y = y;

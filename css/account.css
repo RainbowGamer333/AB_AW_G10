@@ -1,0 +1,86 @@
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto ;
+    background-size: cover; /* pour ajuster la taille de l'image de manière à couvrir toute la zone */
+    background-position: center; /* pour centrer l'image */
+    background-repeat: no-repeat; /* pour éviter la répétition de l'image */
+    background-image: url("../asset/imagesProfil/image1.jpg");
+}
+
+.buttonRandom  {
+    /* le bouton se trouve au centre de la page */
+    margin-left: 47%;
+    margin-top: 10px;
+
+    & :hover {
+        animation: rainbowAnimation 15s linear infinite;
+    }
+}
+
+
+#randomizeProfileButton {
+    background-color: rgb(255 255 255 / 1%);
+    color: white;
+    border-radius: 8px;
+}
+
+#profileTable {
+    color: white;
+    border-collapse: collapse;
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 10%;
+
+    & :hover {
+        animation: rainbowAnimation 15s linear infinite;
+    }
+
+    & td {
+        padding: 10px;
+        border: 2px solid rgb(255 255 255 / 20%);
+        width: 50%;
+    }
+
+    #changerPasswordButton {
+        background-color: rgb(255 255 255 / 1%);
+        color: white;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+}
+
+.profileInfo {
+    color: white;
+    font-size: 18px;
+    margin-left: 28%;
+    margin-top: 20px;
+
+    & :hover {
+        animation: rainbowAnimation 15s linear infinite;
+    }
+}
+
+@keyframes rainbowAnimation {
+    0% { color: red; }
+    16.666% { color: orange; }
+    33.333% { color: yellow; }
+    50% { color: green; }
+    66.666% { color: blue; }
+    83.333% { color: indigo; }
+    100% { color: violet; }
+}
+
+.Démineur {
+    background-color: rgb(255 255 255 / 15%);
+    color: white;
+    border-radius: 8px;
+    margin-left: 10%;
+    margin-top: 10px;
+    width: 80%;
+    height: 500px;
+}
+
+
+

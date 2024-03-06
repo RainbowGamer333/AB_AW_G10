@@ -10,6 +10,8 @@ export class Entity extends GameObject{
     attackRate = 1;
     isAlive = true;
 
+    velocityMultiplier = 1;
+
     constructor(name, x, y, velocity, health, maxHealth, damage,attackRate) {
         super(name, x, y);
         this.velocity = velocity;

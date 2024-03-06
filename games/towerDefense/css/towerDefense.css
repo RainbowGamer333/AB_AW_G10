@@ -3,18 +3,81 @@
     --GuiBackgroundColor : #5c6370;
 }
 
+@font-face {
+    font-family: 'ModernDOS9x14';
+    src:url('../font/ModernDOS9x14.woff') format('woff'),
+    url('../font/ModernDOS9x14.woff2') format('woff2'),
+    url('../font/ModernDOS9x14.svg#ModernDOS9x14') format('svg'),
+    url('../font/ModernDOS9x14.eot'),
+    url('../font/ModernDOS9x14.eot?#iefix') format('embedded-opentype'),
+    url('../font/ModernDOS9x14.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 .gui-top{
     flex-direction: row-reverse;
 }
 
 canvas{
-    width: 400px;
+    width: 100%;
+    background-color: transparent;
+    image-rendering: pixelated;
+    border: 2px solid #00000069;
+    border-radius: 100px 100px 0 0;
 }
 
-.gameContainer{
+#gameContainer{
     background-color: var(--GuiBackgroundColor);
     width: max-content;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
+    background-image: url("../asset/background_wall.png");
+    background-size: 100px 100px;
+    image-rendering: pixelated;
+    font-family: "ModernDOS9x14", sans-serif;
+}
+
+.fullscreen {
+    & .canvas_container {
+        width: 600px;
+    }
+
+    .towerButton{
+        width: 100px;
+    }
+}
+
+.canvas_container{
+    /*padding: 10px 4px;*/
+
+    image-rendering: pixelated;
+
+    box-shadow: 0px 1px 13px 0px black;
+
+    .top, .bottom  {
+        height: 40px;
+        background-image: url("../asset/pillar_top.png");
+        background-size: contain;
+        background-repeat: round;
+    }
+    .top {
+        box-shadow: 0px 12px 12px -6px #00000061;
+    }
+
+    .left, .right {
+        width: 20px;
+        background-image: url("../asset/pilar.png");
+        background-size: contain;
+        background-repeat: round;
+    }
+
+    .middle{
+        display: flex;
+        flex-direction: row;
+    }
+
 }
 
 
@@ -22,7 +85,7 @@ canvas{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: var(--GuiBackgroundColor);
+    /*background-color: var(--GuiBackgroundColor);*/
     min-height: 60px;
     flex-wrap: wrap;
     align-items: center;
@@ -76,9 +139,10 @@ canvas{
     border-radius: 10px;
     margin: 2px;
     background: radial-gradient(circle, rgba(251, 206, 63, 0.6327323165594363) 0%, rgba(121, 58, 58, 255) 100%) center;
-
+    font-family: "ModernDOS9x14", sans-serif;
     filter: brightness(1.0);
     transition: 0.1s filter ease;
+    aspect-ratio: 80/146;
     /*background-image: url("asset/tower_background.png");*/
 }
 
@@ -118,7 +182,8 @@ canvas{
     align-items: center;
     justify-content: center;
     padding: 5px 0;
-    border-radius: 10px 10px 0 0;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0px 2px 9px -2px black;
 }
 
 .towerButton:not(:disabled):hover{

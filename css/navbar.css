@@ -4,37 +4,71 @@ nav{
     height: 60px;
     box-shadow: var(--navShadow);
     position: fixed;
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px) saturate(180%);
     top: 0;
     z-index: 10;
-}
 
-nav .container{
-    width: var(--mainWidth);
-    height: 60px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-nav a {
-    padding: 0;
-    margin: 0;
-    height: 60px;
-    color: white;
-}
+    .container{
+        width: var(--mainWidth);
+        height: 60px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-nav .container img{
-    height: 60px;
-}
+    & a {
+        padding: 0;
+        margin: 0;
+        height: 60px;
+        color: white;
+    }
 
-nav input{
-    backdrop-filter: blur(10px);
-    outline: none;
-    border-radius: var(--borderRadius);
-    border: none;
-    height: 25px;
-    background-color: rgb(4 4 4 / 1%);
-    color: var(--colMain);
-    letter-spacing: 1px;
+    .container img{
+        height: 60px;
+    }
+
+    & input{
+        backdrop-filter: blur(10px);
+        outline: none;
+        border-radius: var(--borderRadius);
+        border: none;
+        height: 25px;
+        background-color: rgb(255 255 255 / 11%);
+        color: var(--colMain);
+        letter-spacing: 1px;
+    }
+
+    #account {
+        width: 45px;
+        height: 45px;
+        background-size: cover;
+        filter: opacity(0.8);
+        border-radius: 180px;
+
+        &:hover{
+            filter: opacity(1.0);
+        }
+    }
+
+    .connexion_deconnexion {
+        background-color: var(--colMain);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        text-align: center;
+        text-decoration: none;
+        height: 40px;
+        letter-spacing: 1px;
+
+        &:hover{
+            transition: 0.2s linear all;
+            filter: brightness(1.2);
+        }
+        &:active{
+            transition: 0.2s linear all;
+            filter: brightness(0.8);
+        }
+    }
 }

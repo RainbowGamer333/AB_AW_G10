@@ -12,97 +12,96 @@
     <link rel="stylesheet" href="../../css/home.css">
 </head>
 <body>
-<header>
-    <nav>
-    </nav>
-</header>
-<main>
-    <div id="gameContainer">
-        <div id="overlay"></div>
-        <div id="popup">
-            <form id="form" method="post">
-                <label>
-                    <input type="radio" id="facile" name="diff" value="facile" checked>
-                    Facile
-                </label>
-                <label>
-                    <input type="radio" id="moyen" name="diff" value="moyen">
-                    Moyen
-                </label>
-                <label>
-                    <input type="radio" id="difficile" name="diff" value="difficile">
-                    Difficile
-                </label>
-                <label>
-                    <input type="radio" id="custom" name="diff" value="custom">
-                    Personnalisé
-                </label>
-                <label id="customW">
-                    <input type="number" name="customW">
-                    Largeur
-                </label>
-                <label id="customH">
-                    <input type="number" name="customH">
-                    Hauteur
-                </label>
-                <label id="customM">
-                    <input type="number" name="customM">
-                    Mines
-                </label>
-                <input id="submit" type="submit" value="submit">
-                <input id="cancel" type="button" value="cancel">
-            </form>
-        </div>
-
-        <div id="gameBoard">
-            <div id="options">
-                <a href="#" id="game">Game</a>
+    <header>
+        <nav>
+        </nav>
+    </header>
+    <main>
+        <div id="gameContainer">
+            <div id="overlay"></div>
+            <div id="popup">
+                <form id="form" method="post">
+                    <label>
+                        <input type="radio" id="facile" name="diff" value="facile" checked>
+                        Facile
+                    </label>
+                    <label>
+                        <input type="radio" id="moyen" name="diff" value="moyen">
+                        Moyen
+                    </label>
+                    <label>
+                        <input type="radio" id="difficile" name="diff" value="difficile">
+                        Difficile
+                    </label>
+                    <label>
+                        <input type="radio" id="custom" name="diff" value="custom">
+                        Personnalisé
+                    </label>
+                    <label id="customW">
+                        <input type="number" name="customW">
+                        Largeur
+                    </label>
+                    <label id="customH">
+                        <input type="number" name="customH">
+                        Hauteur
+                    </label>
+                    <label id="customM">
+                        <input type="number" name="customM">
+                        Mines
+                    </label>
+                    <input id="submit" type="submit" value="submit">
+                    <input id="cancel" type="button" value="cancel">
+                </form>
             </div>
-            <div id="gameBoardHeader">
-                <div id="gameBoardHeaderMineCounter">
-                    <img id="mineH" src="assets/header/timer0.png" alt="h">
-                    <img id="mineT" src="assets/header/timer0.png" alt="t">
-                    <img id="mineU" src="assets/header/timer0.png" alt="u">
+
+            <div id="gameBoard">
+                <div id="options">
+                    <a href="#" id="game">Difficulté</a>
                 </div>
-                <div id="gameBoardHeaderSmiley">
-                    <button id="gameBoardHeaderSmileyButton">
-                        <img id="smiley" src="assets/header/normal.png" alt="smile">
-                    </button>
+                <div id="gameBoardHeader">
+                    <div id="gameBoardHeaderMineCounter">
+                        <img id="mineH" src="assets/header/timer0.png" alt="h">
+                        <img id="mineT" src="assets/header/timer0.png" alt="t">
+                        <img id="mineU" src="assets/header/timer0.png" alt="u">
+                    </div>
+                    <div id="gameBoardHeaderSmiley">
+                        <button id="gameBoardHeaderSmileyButton">
+                            <img id="smiley" src="assets/header/normal.png" alt="smile">
+                        </button>
+                    </div>
+                    <div id="gameBoardHeaderTime">
+                        <img id="timerH" src="assets/header/timer0.png" alt="h">
+                        <img id="timerT" src="assets/header/timer0.png" alt="t">
+                        <img id="timerU" src="assets/header/timer0.png" alt="u">
+                    </div>
                 </div>
-                <div id="gameBoardHeaderTime">
-                    <img id="timerH" src="assets/header/timer0.png" alt="h">
-                    <img id="timerT" src="assets/header/timer0.png" alt="t">
-                    <img id="timerU" src="assets/header/timer0.png" alt="u">
-                </div>
+                <div id="grille"></div>
             </div>
-            <div id="grille"></div>
         </div>
-    </div>
-    <div class="game_settings">
-        <button id="toggle_fullscreen"></button>
-    </div>
-    <section>
-        <h2>Règles</h2>
-        <div class="idea">
-            <ul>
-                <li>Le but du jeu est de découvrir toutes les cases libres sans faire exploser les mines.</li>
-                <li>Les chiffres indiquent le nombre de mines autour de la case.</li>
-                <li>Un clic droit permet de placer un drapeau sur une case.</li>
-                <li>Un clic gauche permet de découvrir une case.</li>
-                <li>Le jeu est perdu si une mine est découverte.</li>
-                <li>Le jeu est gagné si toutes les cases libres sont découvertes.</li>
-            </ul>
+        <div class="game_settings">
+            <button id="toggle_fullscreen"></button>
         </div>
-        <div id="scoreboard">
+        <section>
+            <h2>Règles</h2>
+            <div class="idea">
+                <ul>
+                    <li>Le but du jeu est de découvrir toutes les cases libres sans faire exploser les mines.</li>
+                    <li>Les chiffres indiquent le nombre de mines autour de la case.</li>
+                    <li>Un clic droit permet de placer un drapeau sur une case.</li>
+                    <li>Un clic gauche permet de découvrir une case.</li>
+                    <li>Le jeu est perdu si une mine est découverte.</li>
+                    <li>Le jeu est gagné si toutes les cases libres sont découvertes.</li>
+                </ul>
+            </div>
+            <div id="scoreboard">
 
-        </div>
-    </section>
+            </div>
+        </section>
+    </main>
+    <div id="achievement_spawner"></div>
+    <footer>
 
-</main>
-<div id="achievement_spawner"></div>
-<footer>
-
-</footer>
+    </footer>
 </body>
 <script type="module" src="../../js/useComponent.js"></script>
 <script TYPE="module" src="js/main.js"></script>
