@@ -1,0 +1,74 @@
+.scoreboardContainer{
+    & .scoreboard {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        width: 80%;
+        max-width: 600px;
+        min-width: 300px;
+        margin: auto;
+        border-radius: 20px;
+
+        & .line{
+            height: 40px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+            padding:0 10px;
+            letter-spacing: 1px;
+            font-variant: all-petite-caps;
+            font-size: x-large;
+            z-index: 5;
+
+            &:hover{
+                box-shadow: 0px 0px 10px -1px black;
+                z-index: 10;
+                border-radius: 5px;
+            }
+
+
+
+            &:nth-child(2n+1){
+                background-image: linear-gradient(90deg, transparent, rgba(203, 203, 203, 0.8), transparent);
+            }
+            &:nth-child(2n){
+                background-image: linear-gradient(90deg, transparent, #e0e0e0cc, transparent);
+            }
+            &:first-child{
+                border-radius: 20px 20px 0px 0px;
+                box-shadow: 0px 5px 10px -9px black;
+                height: 50px;
+                background-image: linear-gradient(90deg, transparent, #f6f6f6, transparent);
+                z-index: 11;
+            }
+            &:nth-child(2){
+                background-image: linear-gradient(90deg, transparent, #FEE101, transparent);
+            }
+            &:nth-child(3){
+                background-image: linear-gradient(90deg, transparent, #D7D7D7, transparent);
+            }
+            &:nth-child(4){
+                background-image: linear-gradient(90deg, transparent, #824A01, transparent);
+
+            }
+            &:last-child{
+                border-radius:0 0 20px 20px;
+            }
+
+
+            & .rank{
+
+            }
+            & .name{
+
+            }
+            & .score{
+                text-shadow: 0px 0px 26px #ecbc7a;
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-export class Utils {
+export class AB_Utils {
     static readTextFile(file, callback) {
         let rawFile = new XMLHttpRequest();
         rawFile.overrideMimeType("application/json");
@@ -30,6 +30,18 @@ export class Utils {
         // based on whether the input HTML had one or more roots.
         if (result.length === 1) return result[0];
         return result;
+    }
+
+    static replaceComponent(elementTagName, newTagHtml){
+        let oldElement = document.getElementsByTagName(elementTagName)[0];
+        if (!oldElement) oldElement =  document.getElementById(elementTagName);
+        const newElement = document.createElement(elementTagName);
+        newElement.innerHTML = newTagHtml;
+        if (oldElement){
+            oldElement.replaceWith(newElement)
+        }else{
+            console.log("Node with the tag "+elementTagName+" not found.")
+        }
     }
 }
 

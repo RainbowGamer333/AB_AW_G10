@@ -12,10 +12,13 @@ const customH = document.getElementById("customH");
 const customM = document.getElementById("customM");
 
 function onload() {
-    setupForm(form);
+    setupForm();
 }
 
-function setupForm(form) {
+/**
+ * Initialise les événements du formulaire.
+ */
+function setupForm() {
     game.addEventListener("click", function() {
         console.log("click");
         overlay.style.display = "block";
@@ -44,6 +47,10 @@ function setupForm(form) {
     });
 }
 
+/**
+ * Affiche les champs de personnalisation si la case est cochée.
+ * @param checked Si la case est cochée
+ */
 function displayCustoms(checked) {
     customW.hidden = !checked;
     customH.hidden = !checked;
@@ -51,6 +58,9 @@ function displayCustoms(checked) {
 }
 
 
+/**
+ * Soumet le formulaire.
+ */
 function submitForm() {
     let diff = document.querySelector('input[name="diff"]:checked').value;
     switch(diff) {
@@ -75,9 +85,6 @@ function submitForm() {
             break;
     }
 }
-
-
-
 
 
 window.addEventListener("load", onload);
