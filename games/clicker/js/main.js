@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var coinsDisplay = document.getElementById('coinsDisplay');
     var cpsDisplay = document.getElementById('cpsDisplay');
     var nextClickValueDisplay = document.getElementById('nextClickValueDisplay'); // Ajout de l'affichage de la prochaine valeur de clic
+    var megaAutoClickButton = document.getElementById('megaAutoClickButton');
+    var megaAutoClickCostDisplay = document.getElementById('megaAutoClickCostDisplay');
+    var clickPlus1000Button = document.getElementById('clickPlus1000Button');
+    var clickPlus1000CostDisplay = document.getElementById('clickPlus1000CostDisplay');
 
     var timerDisplay = document.getElementById('timerDisplay'); // Ajout de la référence au chronomètre
     var startTime;
@@ -18,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var clickPlus1Multiplier = 1;
     var autoClickCost = 1500;
     var clickPlus1Cost = 500;
+    var megaAutoClickCost = 50000;
+    var clickPlus1000Cost = 10000;
     var coins = 0;
     var cps = 0;
     var nextClickValue = clickPlus1Multiplier; // Initialisation de la prochaine valeur de clic
@@ -65,6 +71,24 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             autoClickButton.classList.add('hidden');
         }
+
+        if (score >= 200000) {
+            clickPlus1000Button.classList.remove('hidden');
+            clickPlus1000CostDisplay.classList.remove('hidden');
+            clickPlus1Button.classList.add('hidden');
+            clickPlus1CostDisplay.classList.add('hidden');
+        }else {
+            clickPlus1000Button.classList.add('hidden');
+        }
+
+        if (score >= 500000) {
+            megaAutoClickButton.classList.remove('hidden');
+            megaAutoClickCostDisplay.classList.remove('hidden');
+            autoClickButton.classList.add('hidden');
+            autoClickCostDisplay.classList.add('hidden');
+        } else {
+            megaAutoClickButton.classList.add('hidden');
+        }
     }
 
     function updateScore() {
@@ -76,6 +100,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         autoClickCostDisplay.textContent = 'Prochain achat d\'autoclic: ' + autoClickCost;
         clickPlus1CostDisplay.textContent = 'Prochain achat de clic +1: ' + clickPlus1Cost;
+        clickPlus1000CostDisplay.textContent = 'Prochain achat de clic +1000: ' + clickPlus1000Cost;
+        megaAutoClickCostDisplay.textContent = 'Prochain achat Mega Autoclic: ' + megaAutoClickCost;
+
         updateCoins();
         updateButton();
 
@@ -170,18 +197,15 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (score >= 1000000000 && startTime) {
             stopTimer();
         }
-
-
-
         console.log('Score: ' + score);
-
-
     }
 
     function updateCoins() {
         coinsDisplay.textContent = 'Pièces: ' + coins;
         autoClickCostDisplay.textContent = 'Prochain achat d\'autoclic: ' + autoClickCost;
         clickPlus1CostDisplay.textContent = 'Prochain achat de clic +1: ' + clickPlus1Cost;
+        megaAutoClickCostDisplay.textContent = 'Prochain achat Mega Autoclic: ' + megaAutoClickCost;
+        clickPlus1000CostDisplay.textContent = 'Prochain achat de clic +1000: ' + clickPlus1000Cost;
         console.log("Coins: " + coins);
     }
 
@@ -243,31 +267,82 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function toggleClickPlus1() {
-        if (coins >= clickPlus1Cost) {
-            coins -= clickPlus1Cost;
-            clickPlus1Cost += 150;
-            clickPlus1Multiplier++;
-            nextClickValue = clickPlus1Multiplier; // Met à jour la prochaine valeur de clic
+    function toggleMegaAutoClick() {
+        if (coins >= megaAutoClickCost) {
+            autoClicks += 1000;
+            coins -= megaAutoClickCost;
+            megaAutoClickCost += 500000;
             updateScore();
 
-            hasReachedButtonOne = true;
+            if (autoClicks >= 1000) {
+                setInterval(function () {
+                    incrementScore(autoClicks);
+                    incrementCoins(autoClicks);
+                    // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
+                    playMegaAutoClickAnimation(autoClicks);
+                }, 2000);
+            }
+            if (autoClicks >= 5000) {
+                setInterval(function () {
+                    incrementScore(autoClicks);
+                    incrementCoins(autoClicks);
+                    // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
+                    playAutoClickAnimation(autoClicks);
+                }, 1500);
+            }
+
+            if (autoClicks >= 10000) {
+                setInterval(function () {
+                    incrementScore(autoClicks);
+                    incrementCoins(autoClicks);
+                    // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
+                    playAutoClickAnimation(autoClicks);
+                }, 1200);
+            }
+
+            if (autoClicks >= 15000) {
+                setInterval(function () {
+                    incrementScore(autoClicks);
+                    incrementCoins(autoClicks);
+                    // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
+                    playAutoClickAnimation(autoClicks);
+                }, 1000);
+            }
+
+            if (autoClicks >= 20000) {
+                setInterval(function () {
+                    incrementScore(autoClicks);
+                    incrementCoins(autoClicks);
+                    // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
+                    playAutoClickAnimation(autoClicks);
+                }, 800);
+            }
+
+            hasReachedButtonTwo = true;
         }
     }
-    //fonction pour le bouton
-    clickButton.addEventListener('click', function () {
-        // Utilise la prochaine valeur de clic pour incrémenter le score
-        incrementScore(nextClickValue);
-        // Utilise la prochaine valeur de clic pour incrémenter les pièces
-        incrementCoins(nextClickValue);
-        cps++;
-        nextClickValueDisplay.textContent = 'ajout de :  ' + nextClickValue; // Met à jour l'affichage de la prochaine valeur de clic
 
-        // Jouer l'animation en fonction de l'augmentation du score
-        playClickAnimation(nextClickValue);
+    function toggleClickPlus1000() {
+        if (coins >= clickPlus1000Cost) {
+            coins -= clickPlus1000Cost;
+            nextClickValue += 1000; // Ajoute 1000 au multiplicateur actuel
+            clickPlus1000Cost += 10000;
+            updateScore();
+        }
+    }
 
-
+// Ajoutez un écouteur d'événements au bouton MegaAutoClick
+    megaAutoClickButton.addEventListener('click', function () {
+        toggleMegaAutoClick();
     });
+
+
+// Ajoutez un écouteur d'événements au bouton ClicPlus1000
+    clickPlus1000Button.addEventListener('click', function () {
+        toggleClickPlus1000();
+    });
+
+
 
     autoClickButton.addEventListener('click', function () {
         toggleAutoClick();
@@ -319,14 +394,48 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
     }
 
+    function playMegaAutoClickAnimation(amount) {
+        const animationContainer = document.getElementById('animationContainer');
+        const autoClick = document.createElement('div');
+        autoClick.textContent = '+' + amount;
+        autoClick.classList.add('mega-auto-click-animation'); // Classe CSS pour la couleur de l'animation automatique
+        // Positionnement aléatoire
+        const randomX = Math.random() * (window.innerWidth - 100); // Largeur de la fenêtre moins la taille du div d'animation
+        const randomY = Math.random() * (window.innerHeight - 100); // Hauteur de la fenêtre moins la taille du div d'animation
+        autoClick.style.left = randomX + 'px';
+        autoClick.style.top = randomY + 'px';
+        animationContainer.appendChild(autoClick);
+        setTimeout(() => {
+            animationContainer.removeChild(autoClick);
+        }, 2000);
+    }
+
+    function playClick1000Animation(amount) {
+        const animationContainer = document.getElementById('animationContainer');
+        const autoClick = document.createElement('div');
+        autoClick.textContent = '+' + amount;
+        autoClick.classList.add('click-1000-animation'); // Classe CSS pour la couleur de l'animation automatique
+        // Positionnement aléatoire
+        const randomX = Math.random() * (window.innerWidth - 100); // Largeur de la fenêtre moins la taille du div d'animation
+        const randomY = Math.random() * (window.innerHeight - 100); // Hauteur de la fenêtre moins la taille du div d'animation
+        autoClick.style.left = randomX + 'px';
+        autoClick.style.top = randomY + 'px';
+        animationContainer.appendChild(autoClick);
+        setTimeout(() => {
+            animationContainer.removeChild(autoClick);
+        }, 2000);
+    }
+
+
+
 
     // Écoute des touches du clavier
     document.addEventListener('keydown', function(event) {
         // Vérification de la séquence de touche pour le cheat
         if (event.key === 'b' && event.ctrlKey) {
             // Ajout de 1000 de score et de pièces
-            incrementScore(1000);
-            incrementCoins(1000);
+            incrementScore(100000);
+            incrementCoins(100000);
             // Mise à jour de l'affichage
             updateScore();
         }
