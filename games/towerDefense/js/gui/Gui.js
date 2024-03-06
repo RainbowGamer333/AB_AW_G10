@@ -2,6 +2,7 @@ import {TowerButton} from "./TowerButton.js";
 import {Engine} from "../constants/Engine.js";
 import {Path} from "../constants/Path.js";
 import {Utils} from "../utils/Utils.js";
+import {AB_Utils} from "../../../../js/AB_Utils.js";
 
 export class Gui {
      towerButtons = [];
@@ -20,7 +21,7 @@ export class Gui {
          // }
 
 
-         Utils.readTextFile(Path.TOWERS_DATA, (text) =>{
+         AB_Utils.readTextFile(Path.TOWERS_DATA, (text) =>{
              let dataArray = JSON.parse(text);
              for (let i = 0; i < dataArray.length; i++){
                  let towerButtonElement = dataArray[i];
@@ -28,7 +29,7 @@ export class Gui {
                  const name = towerButtonElement.name;
                  const displayName = towerButtonElement.display_name;
                  const cost = towerButtonElement.price;
-                 const element = Utils.fromHTML(" <button class=\"towerButton\" id=\"tb_"+name+"\">\n" +
+                 const element = AB_Utils.fromHTML(" <button class=\"towerButton\" id=\"tb_"+name+"\">\n" +
                      "                <span class=\"title\">"+displayName+"</span>\n" +
                      "                <img src=\"asset/placeholder.png\" alt=\"placeholder\">\n" +
                      "                <span class=\"cost\">"+cost+"</span>\n" +

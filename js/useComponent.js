@@ -1,17 +1,17 @@
-import {Utils} from "../games/towerDefense/js/utils/Utils.js";
 import {Path} from "../games/towerDefense/js/constants/Path.js";
 import {updateNavbar} from "./navbar.js";
+import {AB_Utils} from "./AB_Utils.js";
 
 
 function init(){
     //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    Utils.readTextFile("/component/footer.html", (text) =>{
-        Utils.replaceComponent("footer",text);
+    AB_Utils.readTextFile("/component/footer.html", (text) =>{
+        AB_Utils.replaceComponent("footer",text);
     });
 
     //Create navbar - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    Utils.readTextFile("/component/navbar.html", (text) =>{
-        Utils.replaceComponent("nav",text);
+    AB_Utils.readTextFile("/component/navbar.html", (text) =>{
+        AB_Utils.replaceComponent("nav",text);
         updateNavbar();
     });
 
