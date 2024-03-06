@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
     margin: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 #leftPanel {
@@ -31,6 +31,16 @@ body, html {
     text-align: center;
 }
 
+#timerDisplay {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin: auto;
+    display: flex;
+    justify-content : center;
+}
+
+
 #clickButton {
     width: 80%;
     height: 15%;
@@ -46,19 +56,47 @@ body, html {
     line-height: 50px;
     padding: 10px;
     margin-left: 10%;
+    margin-top: 10%;
 }
 
-#clickButton:hover {
-    background-color: #f77222;
-    color: #221c25;
+#valueGame {
+    display: flex;
+}
+
+#coinsDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
+}
+
+#cpsDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
+}
+
+#nextClickValueDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
+}
+
+
+#clickButton :hover {
+    animation: rainbowAnimation 15s linear infinite;
 }
 
 #score {
     font-family: "Arial Black", Gadget, sans-serif;
     font-size: 30px;
     text-align: center;
-    margin-top: 10px;
-    margin-left: 30%;
+    margin: auto;
+    display: flex;
+    justify-content : center;
+    top: 20px;
 }
 
 .trembling-text {
@@ -89,8 +127,8 @@ body, html {
 }
 
 #autoClickButton {
-    width: 35%;
-    height: 15%;
+    width: 75%;
+    height: 50%;
     background-color: blueviolet;
     border-radius: 10%;
     border: 10px;
@@ -106,9 +144,16 @@ body, html {
     margin-top: 10%;
 }
 
+#autoClickCostDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
+}
+
 #clickPlus1 {
-    width: 35%;
-    height: 15%;
+    width: 75%;
+    height: 50%;
     background-color: blueviolet;
     border-radius: 10%;
     border: 10px;
@@ -122,6 +167,13 @@ body, html {
     padding: 10px;
     margin-left: 10%;
     margin-top: 10%;
+}
+
+#clickPlus1CostDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
 }
 
 #clickPlus1:hover {
@@ -164,11 +216,11 @@ body, html {
 
 @keyframes moveUp {
     0% {
-        top: 100%;
+        top: 80%;
         opacity: 1;
     }
     100% {
-        top: 80%;
+        top: 50%;
         opacity: 0;
     }
 }
@@ -207,95 +259,126 @@ body, html {
     width: 100px;
     height: 100px;
 }
-#image2000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageTwo {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image5000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageThree {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image10000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageFour {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image15000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageFive {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image20000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageSix {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image25000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageSeven {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image30000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageEight {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image35000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageNine {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image40000 {
-    margin: 50px;
-    width: 100px;
-}
+
 #imageTen {
     margin: 50px;
     width: 100px;
     height: 100px;
 }
-#image45000 {
+
+#imageEleven {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+#imageTwelve {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+#image2000 {
+    margin: 50px;
+    width: 100px;
+}
+#image5000 {
+    margin: 50px;
+    width: 100px;
+}
+#image25000 {
+    margin: 50px;
+    width: 100px;
+}
+#image50000 {
+    margin: 50px;
+    width: 100px;
+}
+#image100000 {
+    margin: 50px;
+    width: 100px;
+}
+#image250000 {
+    margin: 50px;
+    width: 100px;
+}
+#image500000 {
+    margin: 50px;
+    width: 100px;
+}
+#image1000000 {
+    margin: 50px;
+    width: 100px;
+}
+#image5000000 {
+    margin: 50px;
+    width: 100px;
+}
+#image100000000 {
+    margin: 50px;
+    width: 100px;
+}
+#image500000000 {
+    margin: 50px;
+    width: 100px;
+}
+#image1000000000 {
     margin: 50px;
     width: 100px;
 }
 
+
 #imagesContainer {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 colonnes par ligne */
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes par ligne */
     grid-gap: 10px; /* Espace entre les images */
     justify-content: center; /* Centrer les images horizontalement */
 }
@@ -317,3 +400,23 @@ body, html {
     background-color: black;
     z-index: 1;
 }
+
+.gameContainer {
+    display: flex;
+    justify-content: center;
+    height: 1500px;
+}
+
+
+
+@keyframes rainbowAnimation {
+    0% { color: red; }
+    16.666% { color: orange; }
+    33.333% { color: yellow; }
+    50% { color: green; }
+    66.666% { color: blue; }
+    83.333% { color: indigo; }
+    100% { color: violet; }
+}
+
+
