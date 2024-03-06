@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Démineur</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/cellules.css">
     <link rel="stylesheet" href="css/varDemineur.css">
@@ -12,6 +11,7 @@
     <link rel="stylesheet" href="../../css/var.css">
     <link rel="stylesheet" href="../../css/home.css">
     <link rel="stylesheet" href="../../css/scoreboard.css">
+    <title>Démineur</title>
 </head>
 <body>
     <header>
@@ -89,7 +89,9 @@
             <button id="toggle_fullscreen"></button>
         </div>
         <section>
-            <h2>Règles</h2>
+            <div id="scoreboard">
+            </div>
+            <h2 id="rules">Règles</h2>
             <div class="idea">
                 <ul>
                     <li>Le but du jeu est de découvrir toutes les cases libres sans faire exploser les mines.</li>
@@ -100,9 +102,7 @@
                     <li>Le jeu est gagné si toutes les cases libres sont découvertes.</li>
                 </ul>
             </div>
-            <div id="scoreboard">
 
-            </div>
         </section>
     </main>
     <div id="achievement_spawner"></div>
