@@ -1,9 +1,6 @@
 :root {
     --url-unclicked: url("../assets/grille/unclicked.png");
     --url-flag: url("../assets/grille/flag.png");
-    /*
-    TODO: REMPLACER LA MINE PAR LES SIMLEY ULTRA MOCHE
-     */
     --url-mine: url("../assets/grille/mine.png");
     --url-fake-mine: url("../assets/grille/fake-mine.png");
     --url-0: url("../assets/grille/0.png");
