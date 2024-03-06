@@ -40,9 +40,8 @@ nav{
     }
 
     #account {
-        background-image: url(../asset/icons/user.png);
-        width: 30px;
-        height: 30px;
+        width: 45px;
+        height: 45px;
         background-size: cover;
         filter: opacity(0.8);
         border-radius: 180px;
@@ -52,7 +51,7 @@ nav{
         }
     }
 
-    #connexion{
+    .connexion_deconnexion {
         background-color: var(--colMain);
         border-radius: 10px;
         display: flex;

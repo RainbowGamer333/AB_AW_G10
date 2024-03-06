@@ -85,4 +85,11 @@ export class Gui {
             y: adjustedMouseY
         };
     }
+
+    static getMouseCoordinates(){
+         return {
+             x: event.clientX,
+             y: event.clientY
+         }
+    }
 }

@@ -22,21 +22,31 @@
 }
 
 canvas{
-    width: 400px;
+    width: 100%;
     background-color: transparent;
     image-rendering: pixelated;
     border: 2px solid #00000069;
     border-radius: 100px 100px 0 0;
 }
 
-.gameContainer{
+#gameContainer{
     background-color: var(--GuiBackgroundColor);
     width: max-content;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     background-image: url("../asset/background_wall.png");
     background-size: 100px 100px;
     image-rendering: pixelated;
     font-family: "ModernDOS9x14", sans-serif;
+}
+
+.fullscreen {
+    & .canvas_container {
+        width: 600px;
+    }
+
+    .towerButton{
+        width: 100px;
+    }
 }
 
 .canvas_container{
@@ -67,6 +77,7 @@ canvas{
         display: flex;
         flex-direction: row;
     }
+
 }
 
 
@@ -120,7 +131,7 @@ canvas{
 .towerButton{
     min-height: var(--towerButtonSize);
     height: fit-content;
-    width:  var(--towerButtonSize);
+    width: var(--towerButtonSize);
     background-size: cover;
     image-rendering: pixelated;
     padding: 0;
@@ -131,11 +142,15 @@ canvas{
     font-family: "ModernDOS9x14", sans-serif;
     filter: brightness(1.0);
     transition: 0.1s filter ease;
-    /*background-image: url("asset/tower_background.png");*/
+    aspect-ratio: 80 / 165;
+    /* background-image: url(asset/tower_background.png); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .towerButton>img{
-    height:  var(--towerButtonSize);
+    height: auto;
     width: 100%;
 }
 
@@ -146,6 +161,8 @@ canvas{
     font-weight: bold;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
 }
 
 .towerButton>.cost::after{

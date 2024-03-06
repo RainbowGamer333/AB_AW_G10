@@ -40,6 +40,33 @@ main {
     }
 }
 
+.game_settings{
+    width: 100%;
+    background-color: rgb(136 132 205 / 14%);
+    height: 60px;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 10px;
+
+
+    #toggle_fullscreen{
+        width: 50px;
+        height: 50px;
+        background-image: url("../asset/icons/fullscreen.png");
+        background-color: transparent;
+        background-size: cover;
+        border : none;
+        filter: brightness(0.8);
+
+        &:hover{
+            cursor: pointer;
+            filter: brightness(1);
+        }
+    }
+}
+
 footer{
     width: 100vw;
     background-color: #1c1c1d;

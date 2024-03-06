@@ -6,8 +6,8 @@ export class Goliath extends Enemy{
     constructor() {
         const health = 3000;
         const velocity = 3;
-        const damage = 2;
-        const attackRate = 9;
+        const damage = 40;
+        const attackRate = 6;
 
         let image = new Image();
         image.src = Path.GOLIATH;

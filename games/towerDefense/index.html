@@ -18,7 +18,7 @@
         </nav>
     </header>
     <main>
-        <div class="gameContainer">
+        <div id="gameContainer">
             <div class="gui left-container" id="left-container">
             </div>
             <div class="middle-container">
@@ -55,6 +55,9 @@
 
             </div>
         </div>
+        <div class="game_settings">
+            <button id="toggle_fullscreen"></button>
+        </div>
         <section>
             <h2>Règles</h2>
             <div class="idea">
@@ -77,10 +80,14 @@
                     <li>
                         Le <b>Canon de feu</b> tire des gros boulets enflammés capable de traverser le premier ennemi qu'il touche
                     </li>
+                    <li>
+                        Le score augmente lorsqu'un ennemi est tué, le nombre de point obtenu dépend du nombre de maison débout.
+                    </li>
                 </ul>
             </div>
         </section>
     </main>
+    <div id="achievement_spawner"></div>
     <footer>
 
     </footer>
