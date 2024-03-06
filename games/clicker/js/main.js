@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var cpsDisplay = document.getElementById('cpsDisplay');
     var nextClickValueDisplay = document.getElementById('nextClickValueDisplay'); // Ajout de l'affichage de la prochaine valeur de clic
 
+    var timerDisplay = document.getElementById('timerDisplay'); // Ajout de la référence au chronomètre
+    var startTime;
+    var timerInterval;
 
     var score = 0;
     var autoClicks = 0;
@@ -22,7 +25,26 @@ document.addEventListener('DOMContentLoaded', function () {
     var hasReachedButtonOne = false;
     var hasReachedButtonTwo = false;
 
+    function startTimer() {
+        startTime = Date.now();
+        timerInterval = setInterval(updateTimer, 1000);
+    }
 
+    function stopTimer() {
+        clearInterval(timerInterval);
+    }
+
+    function updateTimer() {
+        var elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        displayTime(elapsedTime); // Mettre à jour l'affichage du chronomètre
+    }
+
+    function displayTime(time) {
+        var seconds = time % 60;
+        var minutes = Math.floor(time / 60) % 60;
+        var hours = Math.floor(time / 3600);
+        timerDisplay.textContent = 'Temps écoulé: ' + hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+    }
 
     function updateButton() {
         if (coins >= autoClickCost) {
@@ -72,63 +94,82 @@ document.addEventListener('DOMContentLoaded', function () {
                 rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
             }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
-        if (score >= 10000) {
+        if (score >= 25000) {
             var rectangle = document.querySelector('#imageThree .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
             }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
-        if (score >= 15000) {
+        if (score >= 50000) {
             var rectangle = document.querySelector('#imageFour .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
             }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
-        if (score >= 20000) {
+        if (score >= 100000) {
             var rectangle = document.querySelector('#imageFive .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
             }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
-        if (score >= 25000) {
+        if (score >= 250000) {
             var rectangle = document.querySelector('#imageSix .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
             }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
-        if (score >= 30000) {
+        if (score >= 500000) {
             var rectangle = document.querySelector('#imageSeven .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
             }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
-        if (score >= 35000) {
+        if (score >= 1000000) {
             var rectangle = document.querySelector('#imageEight .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
             }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
-        if (score >= 40000) {
+        if (score >= 5000000) {
             var rectangle = document.querySelector('#imageNine .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
             }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
-        if (score >= 45000) {
+        if (score >= 100000000) {
             var rectangle = document.querySelector('#imageTen .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
             }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
         }
+        if (score >= 500000000) {
+            var rectangle = document.querySelector('#imageEleven .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+        }
+        if (score >= 1000000000) {
+            var rectangle = document.querySelector('#imageTwelve .rectangle');
+            rectangle.classList.add('decompose-animation');
+            setTimeout(() => {
+                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
+            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+        }
 
+        if (score >= 1 && !startTime) {
+            startTimer();
+        } else if (score >= 1000000000 && startTime) {
+            stopTimer();
+        }
 
 
 
@@ -167,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     incrementCoins(autoClicks);
                     // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
                     playAutoClickAnimation(autoClicks);
-                }, 750);
+                }, 1500);
             }
 
             if (autoClicks >= 5) {
@@ -176,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     incrementCoins(autoClicks);
                     // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
                     playAutoClickAnimation(autoClicks);
-                }, 500);
+                }, 1200);
             }
 
             if (autoClicks >= 10) {
@@ -185,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     incrementCoins(autoClicks);
                     // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
                     playAutoClickAnimation(autoClicks);
-                }, 250);
+                }, 1000);
             }
 
             if (autoClicks >= 15) {
@@ -194,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     incrementCoins(autoClicks);
                     // Appel de la fonction pour l'animation du clic automatique avec la valeur appropriée
                     playAutoClickAnimation(autoClicks);
-                }, 100);
+                }, 800);
             }
 
             hasReachedButtonTwo = true;
@@ -224,6 +265,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Jouer l'animation en fonction de l'augmentation du score
         playClickAnimation(nextClickValue);
+
+
     });
 
     autoClickButton.addEventListener('click', function () {
@@ -314,5 +357,86 @@ document.addEventListener('DOMContentLoaded', function () {
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('title').style.color = randomColor;
     });
+
+    document.getElementById('imageThree').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('timerDisplay').style.color = randomColor;
+    });
+
+    document.getElementById('imageFour').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('score').style.color = randomColor;
+    });
+
+    document.getElementById('imageFive').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('coinsDisplay').style.color = randomColor;
+    });
+
+    document.getElementById('imageSix').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('cpsDisplay').style.color = randomColor;
+    });
+
+    document.getElementById('imageSeven').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('nextClickValueDisplay').style.color = randomColor;
+    });
+
+    document.getElementById('imageEight').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('valueGame').style.backgroundColor = randomColor;
+    });
+
+    document.getElementById('imageNine').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('rightPanel').style.backgroundColor = randomColor;
+    });
+
+    document.getElementById('imageTen').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('zoneClicker').style.color = randomColor;
+    });
+
+    document.getElementById('imageEleven').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('').style.backgroundColor = randomColor;
+    });
+
+    document.getElementById('imageTwelve').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('').style.color = randomColor;
+    });
+
+    document.getElementById('clickButton').addEventListener('click', function () {
+        // Génère une couleur aléatoire
+        var randomColor = getRandomColor();
+        // Applique la couleur aléatoire à la div leftPanel
+        document.getElementById('clickButton').style.backgroundColor = randomColor;
+    });
+
+
+
+
 
 });
