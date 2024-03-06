@@ -1,3 +1,12 @@
+#gameContainer{
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+}
+
 #overlay {
     position: fixed;
     display: none;
@@ -67,11 +76,12 @@
     align-items: center;
     justify-content: center;
 
+    padding: 0;
+    margin: auto;
+
     background-color: #c7c7c7;
     border: 10px solid #a9a9a9;
     border-radius: 1em;
-
-    padding: 0;
 
 
     #gameBoardHeader {
@@ -127,10 +137,3 @@
         }
     }
 }
-
-
-
-
-
-
-
