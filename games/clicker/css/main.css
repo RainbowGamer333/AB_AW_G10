@@ -31,6 +31,14 @@ body, html {
     text-align: center;
 }
 
+#timerDisplay {
+    font-size: 20px;
+    margin-left: 20%;
+    font-weight: bold;
+    color: black;
+}
+
+
 #clickButton {
     width: 80%;
     height: 15%;
@@ -46,11 +54,34 @@ body, html {
     line-height: 50px;
     padding: 10px;
     margin-left: 10%;
+    margin-top: 10%;
 }
 
-#zoneBonus  {
+#valueGame {
     display: flex;
 }
+
+#coinsDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
+}
+
+#cpsDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
+}
+
+#nextClickValueDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
+}
+
 
 #clickButton:hover {
     background-color: #f77222;
@@ -62,7 +93,7 @@ body, html {
     font-size: 30px;
     text-align: center;
     margin-top: 10px;
-    margin-left: 30%;
+    margin-left: 22%;
 }
 
 .trembling-text {
@@ -93,8 +124,8 @@ body, html {
 }
 
 #autoClickButton {
-    width: 35%;
-    height: 15%;
+    width: 75%;
+    height: 50%;
     background-color: blueviolet;
     border-radius: 10%;
     border: 10px;
@@ -110,9 +141,16 @@ body, html {
     margin-top: 10%;
 }
 
+#autoClickCostDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
+}
+
 #clickPlus1 {
-    width: 35%;
-    height: 15%;
+    width: 75%;
+    height: 50%;
     background-color: blueviolet;
     border-radius: 10%;
     border: 10px;
@@ -126,6 +164,13 @@ body, html {
     padding: 10px;
     margin-left: 10%;
     margin-top: 10%;
+}
+
+#clickPlus1CostDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
 }
 
 #clickPlus1:hover {
@@ -314,7 +359,15 @@ body, html {
     margin: 50px;
     width: 100px;
 }
-#image10000000 {
+#image100000000 {
+    margin: 50px;
+    width: 100px;
+}
+#image500000000 {
+    margin: 50px;
+    width: 100px;
+}
+#image1000000000 {
     margin: 50px;
     width: 100px;
 }
@@ -350,3 +403,5 @@ body, html {
     justify-content: center;
     height: 1500px;
 }
+
+
