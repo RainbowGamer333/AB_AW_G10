@@ -2,6 +2,7 @@ import {Cell} from "./cell.js";
 import {Timer} from "./timer.js";
 import {MineCounter} from "./mineCounter.js";
 import {Smiley} from "./smiley.js";
+import {Scoreboard} from "../../../js/Scoreboard.js";
 
 /**
  * La grille de jeu. Contient toutes les fonctionnalités du jeu.
@@ -14,6 +15,7 @@ export class Grid {
 
     constructor(gameBoard, numberRows, numberColumns, numberMines) {
         this._gameBoard = gameBoard;
+        this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
         this._nbCellulesRevelee = 0;
@@ -63,6 +65,7 @@ export class Grid {
      * Affiche la cellule à la position (row, col). Effectue la gestion des mines et des cases vides
      * @param row la ligne de la cellule à afficher
      * @param col la colonne de la cellule à afficher
+     * @param callback le callback à appeler si la partie est gagnée
      */
     afficherCellule(row, col) {
         let cell = this.cells[row][col];
@@ -82,7 +85,7 @@ export class Grid {
         }
 
         if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
-            this.victory();
+            if (!this._victory) this.victory();
         }
     }
 
@@ -312,10 +315,12 @@ export class Grid {
      * Affiche toutes les mines. Désactive toutes les cellules.
      */
     victory() {
+        this._victory = true;
         this.timer.stopTimer();
         this.smiley.victory();
         this.mettreFlags();
         this.disableCells();
+        Scoreboard.updateScore("test", 1111);
     }
 
     /**
@@ -453,6 +458,7 @@ export class Grid {
      */
     reinitialiserPartie() {
         this._firstClick = true;
+        this._victory = false;
         this._nbCellulesRevelee = 0;
         this.timer.stopTimer();
         this.timer.initialiseTimer();
