@@ -321,6 +321,15 @@ document.addEventListener('DOMContentLoaded', function () {
             hasReachedButtonTwo = true;
         }
     }
+    function toggleClickPlus1() {
+        if (coins >= clickPlus1Cost) {
+            coins -= clickPlus1Cost;
+            clickPlus1Multiplier += 1; // Ajoute 1 au multiplicateur actuel
+            clickPlus1Cost += 500;
+            updateScore();
+            hasReachedButtonOne = true;
+        }
+    }
 
     function toggleClickPlus1000() {
         if (coins >= clickPlus1000Cost) {
@@ -429,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    // Écoute des touches du clavier
+    // cheat code ^^
     document.addEventListener('keydown', function(event) {
         // Vérification de la séquence de touche pour le cheat
         if (event.key === 'b' && event.ctrlKey) {
@@ -538,11 +547,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('clickButton').addEventListener('click', function () {
-        // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
-        // Applique la couleur aléatoire à la div leftPanel
-        document.getElementById('clickButton').style.backgroundColor = randomColor;
+        // Incrémente le score et les pièces à chaque clic
+        incrementScore(nextClickValue); // Utilisez la valeur nextClickValue pour le score
+        incrementCoins(nextClickValue); // Utilisez la valeur nextClickValue pour les pièces
+        // Appel de la fonction pour l'animation de clic
+        playClickAnimation(nextClickValue); // Utilisez la valeur nextClickValue pour l'animation
     });
+
 
 
 
