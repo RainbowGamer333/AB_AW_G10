@@ -51,20 +51,60 @@ main {
         border-radius: 20px;
         box-shadow: 0px 20px 17px -24px var(--colMain);
         width: 80%;
+
+
+        &:after, &:before {
+            margin: 0 30px;
+            content:"";
+            width: 40px;
+            height: 40px;
+            /*background-color: #7c2b86;*/
+            background-size: cover;
+            filter: opacity(0.5);
+        }
+
+        &#rules{
+            &:after, &:before {
+                background-image: url("/asset/icons/rules.png");
+            }
+        }
+
+        &#scoreboard{
+            &:after, &:before {
+                background-image: url("/asset/icons/trophy.png");
+            }
+        }
     }
 }
 
 .game_settings{
-    width: 100%;
+    width: auto;
     background-color: rgb(136 132 205 / 14%);
     height: 30px;
     border-radius: 0 0 10px 10px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 10px 0;
+    justify-content: space-between;
+    padding: 10px 20px;
     box-shadow: 1px 1px 8px -4px black;
 
+    .jumpButtonContainer{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    & a {
+      background-color: var(--colMain);
+        border-radius: 10px;
+        height: 35px;
+        padding: 0 10px;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-content: center;
+        align-items: center;
+    }
 
     #toggle_fullscreen{
         width: 26px;
@@ -74,12 +114,37 @@ main {
         background-size: cover;
         border : none;
         filter: brightness(0.8);
-
         &:hover{
             cursor: pointer;
-            filter: brightness(1);
+            filter: brightness(1.0);
+        }
+        &:active{
+            filter: brightness(0.7);
         }
     }
+
+
+    #resetGame{
+        width: 30px;
+        height: 30px;
+        background-image: url("../asset/icons/reset.png");
+        background-color: var(--colMain);
+        background-size: cover;
+        border: none;
+        border-radius: 10px;
+    }
+
+    & a, & button{
+        &:hover{
+            cursor: pointer;
+            filter: brightness(1.1);
+        }
+        &:active{
+            filter: brightness(0.7);
+        }
+    }
+
+
 }
 
 footer{
@@ -98,7 +163,7 @@ footer .container{
 footer ul {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 footer li {

@@ -57,10 +57,17 @@
             </div>
         </div>
         <div class="game_settings">
+            <div class="jumpButtonContainer">
+                <a href="#rules">Règles du jeu</a>
+                <button id="resetGame"></button>
+                <a href="#scoreboard">Tableau des scores</a>
+            </div>
             <button id="toggle_fullscreen"></button>
         </div>
         <section>
-            <h2>Règles</h2>
+            <div id="scoreboard">
+            </div>
+            <h2 id="rules" >Règles</h2>
             <div class="idea">
                 <ul>
                     <li>
@@ -85,9 +92,6 @@
                         Le score augmente lorsqu'un ennemi est tué, le nombre de point obtenu dépend du nombre de maison débout.
                     </li>
                 </ul>
-            </div>
-            <div id="scoreboard">
-
             </div>
         </section>
     </main>

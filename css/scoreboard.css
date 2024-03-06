@@ -5,6 +5,8 @@
         align-items: stretch;
         justify-content: center;
         width: 80%;
+        max-width: 600px;
+        min-width: 300px;
         margin: auto;
         border-radius: 20px;
 
