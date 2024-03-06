@@ -1,5 +1,8 @@
 import { Grid } from "./grid.js";
 
+/**
+ * Le plateau de jeu. Contient toutes les méthodes pour gérer les éléments en dehors de la grille.
+ */
 export class GameBoard {
     constructor(nbRows, nbCols, nbMines) {
         this.gameBoard = document.getElementById("gameBoard");
@@ -17,10 +20,19 @@ export class GameBoard {
         this.setStyle();
     }
 
+    /**
+     * Ajoute la grille de jeu à la page.
+     */
     ajouterGrille() {
         this.grille.appendChild(this.grid.miningGrid);
     }
 
+    /**
+     * Réinitialise la grille de jeu avec de nouvelles dimensions et un nouveau nombre de mines.
+     * @param nbCols Nombre de colonnes
+     * @param nbRows Nombre de lignes
+     * @param nbMines Nombre de mines
+     */
     reinitialiserGrille(nbCols, nbRows, nbMines) {
         this.grid.stop();
         this.grille.innerHTML = "";
@@ -34,19 +46,13 @@ export class GameBoard {
         this.setStyle();
     }
 
+    /**
+     * Met à jour le style de la grille de jeu.
+     */
     setStyle() {
-        this.setTailleCells();
-        this.setTailleGrille();
-    }
-
-    setTailleGrille() {
-        let grille = document.getElementById("grille");
         let gameBoard = document.getElementById("gameBoard");
-        let width = (this.nbCols * this.tailleCells) + "px";
-        gameBoard.style.width = width;
-    }
+        gameBoard.style.width = (this.nbCols * this.tailleCells) + "px";
 
-    setTailleCells() {
         let cells = document.getElementsByClassName("cell");
         for (let i = 0; i < cells.length; i++) {
             cells[i].style.width = this.tailleCells + "px";

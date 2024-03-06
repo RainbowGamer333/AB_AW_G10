@@ -1,6 +1,5 @@
 export class Smiley {
 
-
     constructor() {
         this.button = document.querySelector("#gameBoardHeaderSmileyButton");
         this.smiley = document.querySelector("#smiley");
@@ -15,6 +14,10 @@ export class Smiley {
         this._isClicked = value;
     }
 
+    /**
+     * Initialise les listeners du bouton smiley.
+     * @param grid La grille de jeu
+     */
     initialiserListeners(grid) {
         this.button.addEventListener("click", (e) => {
             e.preventDefault();
@@ -45,6 +48,7 @@ export class Smiley {
             if(this.isClicked) this.button.classList.add("pressed");
         });
     }
+
 
     normal() {
         this.smiley.src = "assets/header/normal.png";
