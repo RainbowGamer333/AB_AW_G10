@@ -27,7 +27,7 @@ changerPasswordButton.addEventListener("click", function() {
 
 
 function generateRandomProfileImage() {
-    const randomImageIndex = Math.floor(Math.random() * 5) + 1; // Génère un nombre aléatoire entre 1 et 5
+    const randomImageIndex = Math.floor(Math.random() * 12) + 1; // Génère un nombre aléatoire entre 1 et 5
     return `image${randomImageIndex}.jpg`;
 }
 

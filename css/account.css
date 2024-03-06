@@ -1,3 +1,7 @@
+.profile{
+    padding-top: 80px;
+}
+
 .profile-image {
     width: 180px;
     height: 180px;
@@ -7,12 +11,17 @@
     background-position: center; /* pour centrer l'image */
     background-repeat: no-repeat; /* pour éviter la répétition de l'image */
     background-image: url("../asset/imagesProfil/image1.jpg");
+    box-shadow: 1px 1px 11px -1px black;
 }
 
 .buttonRandom  {
     /* le bouton se trouve au centre de la page */
-    margin-left: 47%;
-    margin-top: 10px;
+    margin:10px auto 0 auto;
+    display: flex;
+
+    & button{
+        margin: auto;
+    }
 
     & :hover {
         animation: rainbowAnimation 15s linear infinite;
