@@ -21,12 +21,12 @@
 #popup {
     display: none;
     position: fixed;
-    top: 50%;
+    top: 200px;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #c7c7c7;
+    background-color: var(--demineurBackgroundColor);
     padding: 20px;
-    border: 8px solid #a9a9a9;
+    border: 8px solid var(--demineurBorderColor);
     border-radius: 1em;
     z-index: 3;
 
@@ -71,6 +71,8 @@
 }
 
 #gameBoard {
+    image-rendering: pixelated;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,12 +81,12 @@
     padding: 0;
     margin: auto;
 
-    background-color: #c7c7c7;
-    border: 10px solid #a9a9a9;
+    background-color: var(--demineurBackgroundColor);
+    border: 10px solid var(--demineurBorderColor);
     border-radius: 1em;
 
     #gameBoardHeader {
-        background-color: #c7c7c7;
+        background-color: var(--demineurBackgroundColor);
         background-repeat: repeat;
         display: flex;
         flex-direction: row;
@@ -101,7 +103,7 @@
         }
 
         #gameBoardHeaderSmileyButton {
-            background-color: #c7c7c7;
+            background-color: var(--demineurBackgroundColor);
             background-image: url("../assets/grille/unclicked.png");
             background-size: 100% 100%;
             border: none;
@@ -124,8 +126,8 @@
 
 
     #grille {
-        background-color: #c7c7c7;
-        border: 10px none #a9a9a9;
+        background-color: var(--demineurBackgroundColor);
+        border: 10px none var(--demineurBorderColor);
         border-top-style: solid;
 
         #miningGrid {
