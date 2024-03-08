@@ -1,32 +1,21 @@
 export class Scoreboard {
-    static updateScore(username, score) {
-        console.log("updating score");
-        const scores = document.querySelectorAll(".line");
-        console.log(scores);
+    static displayScore() {
+        let scores = JSON.parse(localStorage.getItem("scoreDemineur"));
+        let scoreLines = document.querySelector(".line");
 
-        let numLine = 1;
-        while (numLine < scores.length && (scores[numLine].children[1].innerText < score || scores[numLine].children[1].innerText !== "(...)")) {
-            numLine++;
-        }
-
-        if (numLine < scores.length) {
-            replaceScore(numLine, username, score);
+        for (let i = 0; i < scoreLines.length - 1; i++) {
+            scoreLines[i+1].children[1].innerText = scores[i].score;
+            scoreLines[i+1].children[2].innerText = scores[i].nom;
         }
     }
-}
 
-
-function replaceScore(numLine, username, score) {
-    debugger;
-    if (numLine === 11) return;
-    if (username === "(...)") return;
-
-    let line = document.querySelectorAll(".line")[numLine];
-    let tempScore = line.children[1].innerHTML;
-    let tempUsername = line.children[2].innerHTML;
-
-    line.children[2].innerHTML = username;
-    line.children[1].innerHTML = score;
-
-    replaceScore(numLine+1, tempUsername, tempScore);
+    static updateScore(username, score) {
+        let scores = JSON.parse(localStorage.getItem("scoreDemineur"));
+        scores.push({
+            nom: username,
+            score: score
+        });
+        scores.sort((a, b) => b.score - a.score);
+        localStorage.setItem("scoreDemineur", JSON.stringify(scores));
+    }
 }
