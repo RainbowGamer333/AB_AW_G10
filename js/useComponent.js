@@ -16,9 +16,12 @@ function init(){
     });
 
     //Create scoreboard - - - - - - - - - - - - - - - - - - - - - - - - - -
-    AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
-        AB_Utils.replaceComponent("scoreboard",text);
-    });
+    const scoreboardElement = document.getElementById("scoreboard");
+    if (scoreboardElement){
+        AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
+            AB_Utils.replaceComponent("scoreboard",text);
+        });
+    }
 
     //Enable fullscreen - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const fullscreenElement = document.getElementById("toggle_fullscreen");
