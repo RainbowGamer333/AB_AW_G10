@@ -1,11 +1,11 @@
 export class Scoreboard {
     static displayScore() {
         let scores = JSON.parse(localStorage.getItem("scoreDemineur"));
-        let scoreLines = document.querySelector(".line");
+        let scoreLines = document.querySelectorAll(".line");
 
         for (let i = 0; i < scoreLines.length - 1; i++) {
-            scoreLines[i+1].children[1].innerText = scores[i].score;
-            scoreLines[i+1].children[2].innerText = scores[i].nom;
+            scoreLines[i+1].querySelector(".score").innerText = scores[i].score;
+            scoreLines[i+1].querySelector(".name").innerText = scores[i].nom;
         }
     }
 

@@ -1,6 +1,7 @@
 import {Path} from "../games/towerDefense/js/constants/Path.js";
 import {updateNavbar} from "./navbar.js";
 import {AB_Utils} from "./AB_Utils.js";
+import {Scoreboard} from "./Scoreboard.js";
 
 
 function init(){
@@ -19,7 +20,11 @@ function init(){
     const scoreboardElement = document.getElementById("scoreboard");
     if (scoreboardElement){
         AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
-            AB_Utils.replaceComponent("scoreboard",text);
+            AB_Utils.replaceComponent("scoreboard",text, function (completed) {
+                if (completed){
+                    Scoreboard.displayScore();
+                }
+            });
         });
     }
 
