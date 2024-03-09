@@ -151,6 +151,33 @@ body, html {
     color: black;
 }
 
+#megaAutoClickButton {
+    width: 75%;
+    height: 50%;
+    background-color: blueviolet;
+    border-radius: 10%;
+    border: 10px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 15px;
+    color: #fffbbb;
+    text-align: center;
+    line-height: 25px;
+    padding: 10px;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+#megaAutoClickCostDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
+}
+
+
+
 #clickPlus1 {
     width: 75%;
     height: 50%;
@@ -169,6 +196,7 @@ body, html {
     margin-top: 10%;
 }
 
+
 #clickPlus1CostDisplay {
     font-size: 20px;
     margin-left: 10%;
@@ -176,7 +204,35 @@ body, html {
     color: black;
 }
 
+#clickPlus1000Button {
+    width: 75%;
+    height: 50%;
+    background-color: blueviolet;
+    border-radius: 10%;
+    border: 10px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 15px;
+    color: #fffbbb;
+    text-align: center;
+    line-height: 25px;
+    padding: 10px;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+#clickPlus1000CostDisplay {
+    font-size: 20px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: black;
+}
+
 #clickPlus1:hover {
+    background-color: #4CAF50;
+}
+
+#clickPlus1000:hover {
     background-color: #4CAF50;
 }
 
@@ -213,6 +269,16 @@ body, html {
     animation: moveUp 2s ease;
 
 }
+.click-1000-animation {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    font-size: 24px;
+    color: green;
+    animation: moveUp 2s ease;
+
+}
 
 @keyframes moveUp {
     0% {
@@ -226,6 +292,17 @@ body, html {
 }
 
 .auto-click-animation {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    font-size: 24px;
+    color: blue;
+    animation: moveUp 2s ease;
+
+}
+
+.mega-auto-click-animation {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -418,5 +495,6 @@ body, html {
     83.333% { color: indigo; }
     100% { color: violet; }
 }
+
 
 
