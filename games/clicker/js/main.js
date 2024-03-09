@@ -22,12 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var nextClickValue = clickPlus1Multiplier;
     var hasReachedButtonOne = false;
     var hasReachedButtonTwo = false;
-
+    var cpsCounter = 0;
     // Initialisation du jeu
     initializeGame();
 
-    // Gestionnaire d'événements pour le bouton de clic
-    clickButton.addEventListener('click', handleButtonClick);
 
     // Gestionnaire d'événements pour le bouton d'achat d'autoclic
     autoClickButton.addEventListener('click', function () {
@@ -117,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function incrementScore(amount) {
         score += amount;
         updateScore();
+        checkEndGame(); // Vérifie si le score atteint 1 000 000 000
     }
 
     // Fonction pour incrémenter les pièces
@@ -144,6 +143,12 @@ document.addEventListener('DOMContentLoaded', function () {
             startTimer();
         } else if (score >= 1000000000 && startTime) {
             stopTimer();
+        }
+
+        // Vérifier si le score atteint 1 000 000 000
+        if (score >= 1000000000) {
+            // Appeler la fonction endGame
+            endGame();
         }
     }
 
@@ -174,15 +179,9 @@ document.addEventListener('DOMContentLoaded', function () {
         timerDisplay.textContent = 'Temps écoulé: ' + formatTime(hours) + ':' + formatTime(minutes) + ':' + formatTime(seconds);
     }
 
-// Fonction pour formater le temps avec deux chiffres (ajoute un zéro devant si nécessaire)
+    // Fonction pour formater le temps avec deux chiffres (ajoute un zéro devant si nécessaire)
     function formatTime(time) {
         return time < 10 ? '0' + time : time;
-    }
-
-
-    // Fonction pour jouer l'animation de clic
-    function playClickAnimation(amount) {
-        // Logique pour l'animation
     }
 
     // Fonction pour basculer l'autoclic
@@ -244,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Cheat code pour gagner 1 million de score et de pièces
     function cheatCode() {
-        score += 1000000;
+        score += 999999999;
         coins += 1000000;
         updateScore();
         updateCoins();
@@ -341,4 +340,91 @@ document.addEventListener('DOMContentLoaded', function () {
         checkAndHideRectangle(500000000, 'imageEleven');
         checkAndHideRectangle(1000000000, 'imageTwelve');
     }, 1000);
+
+    setInterval(function () {
+        cpsDisplay.textContent = 'Clics par seconde: ' + cpsCounter;
+        cpsCounter = 0;
+    }, 1000);
+
+    // Au clic sur le bouton, incrémente le score et le compteur de clics
+    clickButton.addEventListener('click', function () {
+        incrementScore(nextClickValue);
+        incrementCoins(nextClickValue);
+        cpsCounter++; // Incrémente le compteur de clics par seconde
+        nextClickValueDisplay.textContent = 'Ajout de: ' + nextClickValue;
+        playClickAnimation(nextClickValue);
+    });
+
+
+    // Vérifie si le score atteint 1 000 000 000 et déclenche l'animation de fin de jeu
+    function checkEndGame() {
+        if (score >= 1000000000) {
+            setInterval(changeColors, 2000);
+        }
+    }
+
+    function endGame() {
+        // Supprimer tous les éléments du jeu
+        var gameContainer = document.querySelector('.gameContainer');
+        gameContainer.innerHTML = '';
+
+        // Calculer le temps écoulé
+        var elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        var hours = Math.floor(elapsedTime / 3600);
+        var minutes = Math.floor((elapsedTime % 3600) / 60);
+        var seconds = elapsedTime % 60;
+
+        // Créer un conteneur pour le texte de félicitations et le bouton
+        var endGameContainer = document.createElement('div');
+        endGameContainer.style.textAlign = 'center';
+        endGameContainer.style.marginTop = '250px';
+        endGameContainer.style.display = 'flex';
+        endGameContainer.style.flexDirection = 'column';
+        endGameContainer.style.alignItems = 'center';
+
+        // Créer un élément de texte pour afficher le message de félicitations
+        var congratulationsText = document.createElement('div');
+        congratulationsText.textContent = 'Félicitations ! Vous avez terminé le jeu en ' + hours + ' heures, ' + minutes + ' minutes et ' + seconds + ' secondes. Merci beaucoup d\'avoir joué ! Ne clique surtout pas sur le bouton !!!';
+        congratulationsText.style.fontSize = '30px';
+        congratulationsText.style.fontWeight = 'bold';
+        congratulationsText.style.color = getRandomColor();
+
+        // Créer un bouton pour mettre une image en fond de gameContainer
+        var imageButton = document.createElement('button');
+        imageButton.textContent = 'Ne pas appuyer dessus !!!!!!!!!';
+        imageButton.style.marginTop = '20px'; // Modifier la marge supérieure selon vos besoins
+        imageButton.addEventListener('click', function() {
+            imageButton.addEventListener('click', function() {
+                var images = [
+                    'Alexis.jpg',
+                    'buffaa.gif',
+                    'Elyan.jpg',
+                    'florian.jpg',
+                    'laure.jpg',
+                    'logann.jpg',
+                    'Michel-Buffa.png',
+                    'Quere.jpg',
+                    'Romain.jpg',
+                    'sachaH.jpg',
+                    'samy.jpg',
+                    'theoS.jpg',
+                    'titouan.jpg',
+                ];
+                var randomIndex = Math.floor(Math.random() * images.length);
+                var randomImage = images[randomIndex];
+                gameContainer.style.backgroundImage = 'url("images/' + randomImage + '")';
+                congratulationsText.style.color = getRandomColor();
+            });
+        });
+
+        // Ajouter le texte de félicitations et le bouton au conteneur
+        endGameContainer.appendChild(congratulationsText);
+        endGameContainer.appendChild(imageButton);
+
+        // Ajouter le conteneur à gameContainer
+        gameContainer.appendChild(endGameContainer);
+    }
+
+
+
 });
