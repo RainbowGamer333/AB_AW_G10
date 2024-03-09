@@ -10,6 +10,7 @@ export class Scoreboard {
     }
 
     static updateScore(username, score) {
+        console.log("updating score");
         let scores = JSON.parse(localStorage.getItem("scoreDemineur"));
         scores.push({
             nom: username,
@@ -17,5 +18,6 @@ export class Scoreboard {
         });
         scores.sort((a, b) => b.score - a.score);
         localStorage.setItem("scoreDemineur", JSON.stringify(scores));
+        this.displayScore();
     }
 }

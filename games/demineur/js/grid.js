@@ -320,7 +320,7 @@ export class Grid {
         this.smiley.victory();
         this.mettreFlags();
         this.disableCells();
-        Scoreboard.updateScore("test", 1111);
+        Scoreboard.updateScore("test", 9898);
     }
 
     /**
