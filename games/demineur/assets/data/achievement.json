@@ -1,12 +1,30 @@
 [
   {
-    "name" : "TODO",
-    "imageURL": "../TODO/todo.png",
-    "desc": "to describe"
+    "name" : "Premier jeu",
+    "imageURL": "/games/demineur/asset/premier_jeu.png",
+    "desc": "Completer votre premier jeu"
   },
   {
-    "name" : "TODO2",
-    "imageURL": "../TODO/todo2.png",
-    "desc": "to describe2"
+    "name" : "Débutant",
+    "imageURL": "games/demineur/asset/debutant.png",
+    "desc": "Completer un jeu en mode débutant"
+  },
+  {
+    "name" : "Confirmé",
+    "imageURL": "games/demineur/asset/intermediaire.png",
+    "desc": "Completer un jeu en mode intermédiaire"
+  },
+  {
+    "name" : "Expert",
+    "imageURL": "games/demineur/asset/expert.png",
+    "desc": "Completer un jeu en mode expert"
+  },
+  {
+    "name" : "Stratège",
+    "imageURL": "games/demineur/asset/stratege.png",
+    "desc": "Completer un jeu sans utiliser de drapeaux"
+  },
+  {
+
   }
 ]
