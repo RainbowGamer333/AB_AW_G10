@@ -1,4 +1,4 @@
-import { createAccount, clearAccounts } from "./accountInitialiser.js";
+import { createAccount, clearAccounts } from "./localStorageInitialiser/accountInitialiser.js";
 
 const accounts = JSON.parse(localStorage.getItem("accounts"));
 

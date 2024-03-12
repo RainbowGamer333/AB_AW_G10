@@ -1,6 +1,7 @@
 import {Path} from "../games/towerDefense/js/constants/Path.js";
 import {updateNavbar} from "./navbar.js";
 import {AB_Utils} from "./AB_Utils.js";
+import {Scoreboard} from "./Scoreboard.js";
 
 
 function init(){
@@ -14,6 +15,18 @@ function init(){
         AB_Utils.replaceComponent("nav",text);
         updateNavbar();
     });
+
+    //Create scoreboard - - - - - - - - - - - - - - - - - - - - - - - - - -
+    const scoreboardElement = document.getElementById("scoreboard");
+    if (scoreboardElement){
+        AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
+            AB_Utils.replaceComponent("scoreboard",text, function (completed) {
+                if (completed){
+                    Scoreboard.displayScore();
+                }
+            });
+        });
+    }
 
     //Enable fullscreen - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const fullscreenElement = document.getElementById("toggle_fullscreen");
