@@ -2,7 +2,7 @@ import {Enemy} from "../../Enemy.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import TDAchievements from "../../../achievement/TDAchievements.js";
-import AchievementConstant from "../../../achievement/AchievementConstant.js";
+import TDAchievementConstant from "../../../achievement/TDAchievementConstant.js";
 
 export class Goliath extends Enemy{
     constructor() {
@@ -22,7 +22,7 @@ export class Goliath extends Enemy{
 
 
     onDeath() {
-        TDAchievements.increaseCounterAndTryUnlock(AchievementConstant.KILL_GOLEM,1);
+        TDAchievements.increaseCounterAndTryUnlock(TDAchievementConstant.KILL_GOLEM,1);
         super.onDeath();
     }
 }

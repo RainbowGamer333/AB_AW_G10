@@ -17,7 +17,7 @@ import {DoubleCanon} from "../entity/impl/tower/DoubleCanon.js";
 import {Wind} from "../entity/impl/tower/Wind.js";
 import {IceCanon} from "../entity/impl/tower/IceCanon.js";
 import TDAchievements from "../achievement/TDAchievements.js";
-import AchievementConstant from "../achievement/AchievementConstant.js";
+import TDAchievementConstant from "../achievement/TDAchievementConstant.js";
 // import {Constants} from "../constants/Constants.js";
 
 let draggedButton = null;
@@ -147,7 +147,7 @@ function stopDrag(event) {
                 console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
                 Engine.addGameObject(gameObject);
                 Engine.coinBalance -= towerButton.price;
-                TDAchievements.increaseCounterAndTryUnlock(AchievementConstant.SPEND_MONEY,towerButton.price);
+                TDAchievements.increaseCounterAndTryUnlock(TDAchievementConstant.SPEND_MONEY,towerButton.price);
             }
         }
         // console.log("End drag x:"+mouseCoordinates.x+" y:"+mouseCoordinates.y);

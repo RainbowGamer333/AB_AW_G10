@@ -17,7 +17,8 @@ export default class TDAchievements {
             TDAchievements.jsonData = json;
             for (let i = 0; i < TDAchievements.jsonData.length; i++){
                 console.log(TDAchievements.jsonData[i].name)
-                TDAchievements.achievementsValues.push({
+                TDAchievements.achievementsValues.push(
+                    {
                     value : 0,
                     unlocked : false
                 });

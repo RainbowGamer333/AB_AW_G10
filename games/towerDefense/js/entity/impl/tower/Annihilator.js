@@ -8,7 +8,7 @@ import {Constants} from "../../../constants/Constants.js";
 import {AnnihilatorVacuum} from "../projectile/AnnihilatorVacuum.js";
 import {Hitmarker} from "../particle/Hitmarker.js";
 import TDAchievements from "../../../achievement/TDAchievements.js";
-import AchievementConstant from "../../../achievement/AchievementConstant.js";
+import TDAchievementConstant from "../../../achievement/TDAchievementConstant.js";
 
 export class Annihilator extends Tower{
 
@@ -23,7 +23,7 @@ export class Annihilator extends Tower{
         super("Annihilator", 0, 0,0, health, health, damage,attackRate);
         // this.addComponent(spriteRenderer)
         this.startFire = false;
-        TDAchievements.increaseCounterAndTryUnlock(AchievementConstant.USE_DEATH_BEAM,1);
+        TDAchievements.increaseCounterAndTryUnlock(TDAchievementConstant.USE_DEATH_BEAM,1);
     }
 
 

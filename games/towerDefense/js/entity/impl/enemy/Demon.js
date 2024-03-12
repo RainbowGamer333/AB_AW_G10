@@ -4,7 +4,7 @@ import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";
 import TDAchievements from "../../../achievement/TDAchievements.js";
-import AchievementConstant from "../../../achievement/AchievementConstant.js";
+import TDAchievementConstant from "../../../achievement/TDAchievementConstant.js";
 
 export class Demon extends Enemy {
     teleportInterval = 10;
@@ -43,7 +43,7 @@ export class Demon extends Enemy {
     }
 
     onDeath() {
-        TDAchievements.increaseCounterAndTryUnlock(AchievementConstant.KILL_DEMONS,1);
+        TDAchievements.increaseCounterAndTryUnlock(TDAchievementConstant.KILL_DEMONS,1);
         super.onDeath();
     }
 }

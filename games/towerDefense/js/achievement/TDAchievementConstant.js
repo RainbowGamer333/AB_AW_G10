@@ -1,4 +1,4 @@
-export default class AchievementConstant{
+export default class TDAchievementConstant {
     //     NAME                  = Achievement ID
     static KILL_DEMONS   = 0 ;
     static KILL_SKELETONS = 1 ;
