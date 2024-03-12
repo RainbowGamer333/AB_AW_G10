@@ -11,6 +11,8 @@ import {Path} from "./constants/Path.js";
 import {MonsterSpawner} from "./entity/impl/generic/MonsterSpawner.js";
 import {Engine} from "./constants/Engine.js";
 import {MapUtils} from "./utils/MapUtils.js";
+import {Utils} from "./utils/Utils.js";
+import {AB_Utils} from "../../../js/AB_Utils.js";
 
 
 Engine.canvas = document.getElementById("gameCanvas");
@@ -48,6 +50,10 @@ function init(){
     })
 
     console.log("Successfully initialized");
+
+    AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
+        AB_Utils.replaceComponent("scoreboard",text);
+    });
 }
 
 

@@ -12,27 +12,34 @@
 ---
 
 ## J1 - Démineur
-Jeu sur plateau
-Modes de jeu :
+
+
+#### Règles :
+Le but du jeu est de découvrir toutes les cases vides sans cliquer sur une mine. Si une mine est découverte, la partie est perdue. Si toutes les cases vides sont découvertes sans avoir révélé de mines, la partie est gagnée.
+
+Le joueur peut utiliser des drapeaux pour marquer les cases où il pense qu'une mine est présente. Si toutes les mines sont marquées, et que toutes les cases vides sont découvertes, la partie est gagnée.
+
+
+#### Modes de jeu :
+
 - Facile - 9 x 9 + 10 mines
 - Moyen - 16 x 16 + 40 mines
 - Difficile - 16 x 30 + 99 mines
 - Custom
 
-Fonctionnalités :
+#### Fonctionnalités :
+- Effectuer un clique droit pose un drapeau. Un deuxième clique droit l'enlève
+- Effectuer un clique gauche révèle la case
+  - Si la case cliquée est vide, alors toutes les cases vides autour sont révélées, ainsi que les cases non vides adjacentes
+  - Si la case est une mine, alors la partie est perdue. Toutes les mines sont révélées, et les cases contenant un drapeau mal placé sont barrées
+- Effectuer un clique milieu révèle toutes les cases autour de la case cliquée si le nombre de drapeaux autour correspond à la valeur de la case cliquée
 - Bouton pour réinitialiser la partie
-- Timer augmentant
-- Compteur de mines restantes
-- Clique gauche pour révéler une case
-- Révéler automatiquement tous les 0s autour de la case
-  - Continue à révéler les cases jusqu’aux nombres adjacents aux 0s
-  - Si clique une mine
-    - Révèle toutes les mines
-    - Case cliquée est surligné en rouge
-    - Met une croix sur les drapeaux ne contenant pas de mines
-- Clique droit pour poser un drapeau
-- Clique droit+gauche pour révéler toutes les cases autour d’une case.
-  - Révèle les mines aussi mais pas les drapeaux
+- Timer qui augmente à chaque seconde
+- Compteur de mines pas encore identifiés par un drapeau
+
+
+
+
 
 ## J2 - Clicker
 Jeu de clic qui dévoile des images et bien d'autres...

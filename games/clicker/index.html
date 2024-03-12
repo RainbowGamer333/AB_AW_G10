@@ -3,100 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <title>Pixel Clicker</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/scrollbar.css">
+    <link rel="stylesheet" href="../../css/var.css">
+    <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="../../css/scoreboard.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 </head>
+
 <body>
-<div id="leftPanel">
-    <h1 id="title">Pixel Clicker</h1>
-    <button id="clickButton">Clique plus vite</button>
-    <p class="trembling-text" id="score">Score: 0</p>
-    <p id="coinsDisplay">Pièces: 0</p>
-    <div id="cpsDisplay">Clics par seconde: 0</div>
-    <div id="nextClickValueDisplay">ajout de : 1</div>
-    <div id="zoneBonus">
-        <button id="clickPlus1" class="hidden">Clic + 1</button>
-        <button id="autoClickButton" class="hidden">Clic automatique</button>
-        <p id="clickPlus1CostDisplay" class="hidden">Prochain achat de clic +1: 500</p>
-        <p id="autoClickCostDisplay" class="hidden">Prochain achat d'autoclic: 100</p>
-    </div>
-</div>
-<div id="rightPanel">
-    <h1 id="zoneClicker">Images à découvrir</h1>
-    <div id="imagesContainer">
-        <div class="image-cell">
-            <h4 id="image2000">2000 de score</h4>
-            <div id="imageOne" class="image-container">
-                <div class="rectangle"></div>
-                <img src="images/Michel-Buffa.png" alt="Image cachée">
-            </div>
-        </div>
-        <div class="image-cell">
-            <h4 id="image5000">5000 de score</h4>
-            <div id="imageTwo" class="image-container">
-                <div class="rectangle"></div>
-                <img src="images/Michel-Buffa.png" alt="Image cachée">
-            </div>
-        </div>
-        <div class="image-cell">
-            <div id="animationContainer"></div>
-            <h4 id="image10000">10000 de score</h4>
-            <div id="imageThree" class="image-container">
-                <div class="rectangle"></div>
-                <img src="images/Michel-Buffa.png" alt="Image cachée">
-            </div>
-        </div>
-        <div class="image-cell">
-            <h4 id="image15000">15000 de score</h4>
-            <div id="imageFour" class="image-container">
-                <div class="rectangle"></div>
-                <img src="images/Michel-Buffa.png" alt="Image cachée">
-            </div>
-        </div>
-        <div class="image-cell">
-            <h4 id="image20000">20000 de score</h4>
-            <div id="imageFive" class="image-container">
-                <div class="rectangle"></div>
-                <img src="images/Michel-Buffa.png" alt="Image cachée">
-            </div>
-        </div>
-        <div class="image-cell">
-            <h4 id="image25000">25000 de score</h4>
-            <div id="imageSix" class="image-container">
-                <div class="rectangle"></div>
-                <img src="images/Michel-Buffa.png" alt="Image cachée">
-            </div>
-        </div>
-        <div class="image-cell">
-            <h4 id="image30000">30000 de score</h4>
-            <div id="imageSeven" class="image-container">
-                <div class="rectangle"></div>
-                <img src="images/Michel-Buffa.png" alt="Image cachée">
-            </div>
-        </div>
-        <div class="image-cell">
-            <h4 id="image35000">35000 de score</h4>
-            <div id="imageEight" class="image-container">
-                <div class="rectangle"></div>
-                <img src="images/Michel-Buffa.png" alt="Image cachée">
-            </div>
-        </div>
-        <div class="image-cell">
-            <h4 id="image40000">40000 de score</h4>
-            <div id="imageNine" class="image-container">
-                <div class="rectangle"></div>
-                <img src="images/Michel-Buffa.png" alt="Image cachée">
-            </div>
-        </div>
-        <div class="image-cell">
-            <h4 id="image45000">45000 de score</h4>
-            <div id="imageTen" class="image-container">
-                <div class="rectangle"></div>
-                <img src="images/Michel-Buffa.png" alt="Image cachée">
+<header>
+    <nav>
+    </nav>
+</header>
+<main>
+    <div class="gameContainer">
+        <div id="leftPanel">
+            <h1 id="title">Pixel Clicker</h1>
+            <p id="timerDisplay">Chronomètre: 00:00:00</p>
+            <button id="clickButton">Clique plus vite</button>
+            <p class="trembling-text" id="score">Score: 0</p>
+            <div id="zoneBonus">
+                <div id="divClickPlusUn">
+                    <button id="clickPlus1" class="hidden">Clic + 1</button>
+                    <p id="clickPlus1CostDisplay" class="hidden">Prochain achat de clic +1: 500</p>
+                </div>
+                <div id="divAutoClick">
+                    <button id="autoClickButton" class="hidden">Clic automatique</button>
+                    <p id="autoClickCostDisplay" class="hidden">Prochain achat d'autoclic: 100</p>
+                </div>
+                <div id="divClickPlusMille">
+                    <button id="clickPlus1000Button" class="hidden">Clic + 1000</button>
+                    <p id="clickPlus1000CostDisplay" class="hidden">Prochain achat de clic +1000: 30000</p>
+                </div>
+                <div id="divMegaAutoClick">
+                    <button id="megaAutoClickButton" class="hidden">Mega Clic automatique</button>
+                    <p id="megaAutoClickCostDisplay" class="hidden">Prochain achat d'autoclic: 20000</p>
+                </div>
+
+
             </div>
         </div>
 
+        <div id="rightPanel">
+            <h1 id="zoneClicker">Images à découvrir</h1>
+            <div id="valueGame">
+                <p id="coinsDisplay">Pièces: 0</p>
+                <p id="cpsDisplay">Clics par seconde: 0</p>
+                <p id="nextClickValueDisplay">ajout de : 1</p>
+            </div>
+
+            <div id="imagesContainer">
+                <div class="image-cell">
+                    <h4 id="image2000">2000 de score</h4>
+                    <div id="imageOne" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/Alexis.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <h4 id="image5000">5000 de score</h4>
+                    <div id="imageTwo" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/florian.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <div id="animationContainer"></div>
+                    <h4 id="image25000">25000 de score</h4>
+                    <div id="imageThree" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/titouan.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <h4 id="image50000">50000 de score</h4>
+                    <div id="imageFour" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/samy.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <h4 id="image100000">100000 de score</h4>
+                    <div id="imageFive" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/logann.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <h4 id="image250000">250000 de score</h4>
+                    <div id="imageSix" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/sachaH.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <h4 id="image500000">500000 de score</h4>
+                    <div id="imageSeven" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/Romain.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <h4 id="image1000000">1000000 de score</h4>
+                    <div id="imageEight" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/theoS.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <h4 id="image5000000">5000000 de score</h4>
+                    <div id="imageNine" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/laure.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <h4 id="image100000000">100000000 de score</h4>
+                    <div id="imageTen" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/Elyan.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <h4 id="image500000000">500000000 de score</h4>
+                    <div id="imageEleven" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/Quere.jpg" alt="Image cachée">
+                    </div>
+                </div>
+                <div class="image-cell">
+                    <h4 id="image1000000000">1000000000 de score</h4>
+                    <div id="imageTwelve" class="image-container">
+                        <div class="rectangle"></div>
+                        <img src="images/Michel-Buffa.png" alt="Image cachée">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
     </div>
-</div>
-<script src="js/main.js"></script>
+    <div class="game_settings">
+        <div class="jumpButtonContainer">
+            <a href="#rules">Règles du jeu</a>
+            <button id="resetGame"></button>
+            <a href="#scoreboard">Tableau des scores</a>
+        </div>
+        <button id="toggle_fullscreen"></button>
+    </div>
+    <section>
+        <div id="scoreboard">
+        </div>
+    </section> <!-- Ajout de la balise de fin de section -->
+    <section>
+        <h2>Règles</h2>
+        <div class="idea">
+            <ul>
+                <li>
+                    <b>But : </b> Protéger le village des monstre, la partie est finie lorsque l'état du village tombe à 0%.
+                </li>
+                <li>
+                    Difficulté : des monstres de plus en plus puissant et nombreux apparaissent, sur les colonnes ou des maisons sont présente.
+                </li>
+                <li>
+                    Tuer des monstres donne des pièces et augmente le score.
+                </li>
+                <li>
+                    Gros projectile qui peut toucher trois ennemis, deviens de plus en plus rapide et petit a chaque touche, fait aussi de moins en moins de dégât
+                </li>
+                <li>
+                    Chaque arbre doré produit <b>10</b> pièces toutes les 10 secondes, chaque arbre multiplie par 2 le nombre de gobelin.
+                </li>
+                <li>
+                    Le <b>Canon de feu</b> tire des gros boulets enflammés capable de traverser le premier ennemi qu'il touche
+                </li>
+            </ul>
+        </div>
+    </section>
+</main>
+<footer>
+</footer>
+
+
 </body>
+<script src="js/main.js"></script>
+<script type="module" src="../../js/useComponent.js"></script>
 </html>

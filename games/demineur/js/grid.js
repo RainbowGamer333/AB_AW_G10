@@ -2,7 +2,11 @@ import {Cell} from "./cell.js";
 import {Timer} from "./timer.js";
 import {MineCounter} from "./mineCounter.js";
 import {Smiley} from "./smiley.js";
+import {Scoreboard} from "../../../js/Scoreboard.js";
 
+/**
+ * La grille de jeu. Contient toutes les fonctionnalités du jeu.
+ */
 export class Grid {
     _firstClick = true;
     _isClicked = false;
@@ -11,6 +15,7 @@ export class Grid {
 
     constructor(gameBoard, numberRows, numberColumns, numberMines) {
         this._gameBoard = gameBoard;
+        this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
         this._nbCellulesRevelee = 0;
@@ -56,6 +61,12 @@ export class Grid {
         this._miningGrid.appendChild(tbody);
     }
 
+    /**
+     * Affiche la cellule à la position (row, col). Effectue la gestion des mines et des cases vides
+     * @param row la ligne de la cellule à afficher
+     * @param col la colonne de la cellule à afficher
+     * @param callback le callback à appeler si la partie est gagnée
+     */
     afficherCellule(row, col) {
         let cell = this.cells[row][col];
 
@@ -74,7 +85,7 @@ export class Grid {
         }
 
         if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
-            this.victory();
+            if (!this._victory) this.victory();
         }
     }
 
@@ -125,7 +136,7 @@ export class Grid {
                     // Bouton milieu
                     else if (e.button === 1) {
                         this._middleClicked = true;
-                        this.mouseDownMilieu(i, j);
+                        this.previewCasesAutour(i, j);
                     }
 
                     this.smiley.shock();
@@ -137,7 +148,7 @@ export class Grid {
                         cell.element.classList.add("unclicked");
                     }
                     else if (this._middleClicked) {
-                        this.mouseUpMilieu(i, j);
+                        this.unPreviewCasesAutour(i, j);
                     }
 
                 });
@@ -149,7 +160,7 @@ export class Grid {
                         cell.element.classList.remove("unclicked");
                     }
                     else if (this._middleClicked) {
-                        this.mouseDownMilieu(i, j);
+                        this.previewCasesAutour(i, j);
                     }
                 });
 
@@ -164,7 +175,7 @@ export class Grid {
                         if (cell.visible) {
                             this.decouvrirAlentours(i, j);
                         }
-                        this.mouseUpMilieu(i, j);
+                        this.unPreviewCasesAutour(i, j);
                     }
 
                     // Afficher la cellule avec clique gauche
@@ -194,7 +205,12 @@ export class Grid {
         }
     }
 
-    mouseDownMilieu(i, j) {
+    /**
+     * Effectue un "preview" des cellules autour de la cellule
+     * @param i la ligne de la cellule
+     * @param j la colonne de la cellule
+     */
+    previewCasesAutour(i, j) {
         if (!this.cells[i][j].visible) this.cells[i][j].element.classList.remove("unclicked");;
         this.coordonneesAutour(i, j).forEach((coord) => {
             this.cells[coord[0]][coord[1]].element.classList.remove("unclicked");
@@ -202,7 +218,12 @@ export class Grid {
 
     }
 
-    mouseUpMilieu(i, j) {
+    /**
+     * Retire le "preview" des cellules autour de la cellule
+     * @param i la ligne de la cellule
+     * @param j la colonne de la cellule
+     */
+    unPreviewCasesAutour(i, j) {
         this.cells[i][j].element.classList.add("unclicked");
         this.coordonneesAutour(i, j).forEach((coord) => {
             this.cells[coord[0]][coord[1]].element.classList.add("unclicked");
@@ -290,13 +311,22 @@ export class Grid {
         this.canDisplayAutour(row, col).forEach((coord) => this.afficherCellule(coord[0], coord[1]));
     }
 
+    /**
+     * Affiche toutes les mines. Désactive toutes les cellules.
+     */
     victory() {
+        this._victory = true;
         this.timer.stopTimer();
         this.smiley.victory();
         this.mettreFlags();
         this.disableCells();
+        Scoreboard.updateScore("test", 9898);
     }
 
+    /**
+     * Affiche toutes les mines et les drapeaux mals placés. Désactive toutes les cellules. Affiche la mine cliquée en rouge.
+     * @param mineCliquee
+     */
     gameOver(mineCliquee) {
         this.timer.stopTimer();
         this.smiley.defeat();
@@ -323,8 +353,10 @@ export class Grid {
         }
     }
 
+    /**
+     * Ajoute un drapeau sur toutes les cellules non cliquées.
+     */
     mettreFlags() {
-        // Ajoute la classe drapeau sur toutes les cases non cliquées
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
                 let cell = this.cells[i][j];
@@ -384,10 +416,21 @@ export class Grid {
         return newCoordonnees;
     }
 
+    /**
+     * Renvoie si la cellule à la position (row, col) peut être affichée.
+     * @param row la ligne de la cellule
+     * @param col la colonne de la cellule
+     * @returns {boolean} si la cellule peut être affichée
+     */
     canDisplay(row, col) {
         return (!this.cells[row][col].visible && !this.cells[row][col].flag);
     }
 
+    /**
+     * Renvoie si la cellule à la position (row, col) est une mine.
+     * @param row la ligne de la cellule
+     * @param col la colonne de la cellule
+     */
     cliqueCellule(row, col) {
         let cell = this.cells[row][col];
         if (cell.isMine()) this.gameOver(cell);
@@ -398,6 +441,9 @@ export class Grid {
         }
     }
 
+    /**
+     * Désactive toutes les cellules de la grille.
+     */
     disableCells() {
         console.log("disable");
         for (let i = 0; i < this.cells.length; i++) {
@@ -407,8 +453,12 @@ export class Grid {
         }
     }
 
+    /**
+     * Réinitialise la partie. Réinitialise le timer, le compteur de mines, et toutes les cellules.
+     */
     reinitialiserPartie() {
         this._firstClick = true;
+        this._victory = false;
         this._nbCellulesRevelee = 0;
         this.timer.stopTimer();
         this.timer.initialiseTimer();
@@ -422,6 +472,9 @@ export class Grid {
         });
     }
 
+    /**
+     * Arrête le timer.
+     */
     stop() {
         this.timer.stopTimer();
     }

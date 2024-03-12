@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../../css/scrollbar.css">
     <link rel="stylesheet" href="../../css/var.css">
     <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="../../css/scoreboard.css">
+    <link rel="stylesheet" href="../../css/achievement.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tower Defense</title>
 </head>
@@ -56,10 +58,17 @@
             </div>
         </div>
         <div class="game_settings">
+            <div class="jumpButtonContainer">
+                <a href="#rules">Règles du jeu</a>
+                <button id="resetGame"></button>
+                <a href="#scoreboard">Tableau des scores</a>
+            </div>
             <button id="toggle_fullscreen"></button>
         </div>
         <section>
-            <h2>Règles</h2>
+            <div id="scoreboard">
+            </div>
+            <h2 id="rules" >Règles</h2>
             <div class="idea">
                 <ul>
                     <li>

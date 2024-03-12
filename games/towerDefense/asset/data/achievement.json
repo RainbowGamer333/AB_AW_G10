@@ -1,0 +1,12 @@
+[
+  {
+    "name" : "TEST",
+    "imageURL": "/games/towerDefense/asset/background_wall.png",
+    "desc": "to describe"
+  },
+  {
+    "name" : "TODO2",
+    "imageURL": "../TODO/todo2.png",
+    "desc": "to describe2"
+  }
+]

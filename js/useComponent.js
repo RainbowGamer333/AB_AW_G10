@@ -1,19 +1,33 @@
-import {Utils} from "../games/towerDefense/js/utils/Utils.js";
 import {Path} from "../games/towerDefense/js/constants/Path.js";
 import {updateNavbar} from "./navbar.js";
+import {AB_Utils} from "./AB_Utils.js";
+import {Scoreboard} from "./Scoreboard.js";
+import AchievementUtils from "./AchievementUtils.js";
 
 
 function init(){
     //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    Utils.readTextFile("/component/footer.html", (text) =>{
-        replaceComponent("footer",text);
+    AB_Utils.readTextFile("/component/footer.html", (text) =>{
+        AB_Utils.replaceComponent("footer",text);
     });
 
     //Create navbar - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    Utils.readTextFile("/component/navbar.html", (text) =>{
-        replaceComponent("nav",text);
+    AB_Utils.readTextFile("/component/navbar.html", (text) =>{
+        AB_Utils.replaceComponent("nav",text);
         updateNavbar();
     });
+
+    //Create scoreboard - - - - - - - - - - - - - - - - - - - - - - - - - -
+    const scoreboardElement = document.getElementById("scoreboard");
+    if (scoreboardElement){
+        AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
+            AB_Utils.replaceComponent("scoreboard",text, function (completed) {
+                if (completed){
+                    Scoreboard.displayScore();
+                }
+            });
+        });
+    }
 
     //Enable fullscreen - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const fullscreenElement = document.getElementById("toggle_fullscreen");
@@ -52,19 +66,13 @@ function init(){
 
 
     // Achievements popup - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    const achievementSpawner = document.getElementById("achievement_spawner");
+    // const achievementSpawner = document.getElementById("achievement_spawner");
+    document.addEventListener("click", function () {
+        AchievementUtils.unlock("userName","towerDefense",0);
+    });
 }
 
-function replaceComponent(elementTagName, newTagHtml){
-    const oldElement = document.getElementsByTagName(elementTagName)[0];
-    const newElement = document.createElement(elementTagName);
-    newElement.innerHTML = newTagHtml;
-    if (oldElement){
-        oldElement.replaceWith(newElement)
-    }else{
-        console.log("Node with the tag "+elementTagName+" not found.")
-    }
-}
+
 
 
 

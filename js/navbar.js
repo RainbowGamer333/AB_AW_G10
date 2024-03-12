@@ -7,6 +7,16 @@ export function updateNavbar() {
         displayConnexion();
         defaultProfileImageNavbar();
     }
+
+    let account = document.getElementById("account");
+    account.addEventListener("click", function () {
+        if (sessionActive()) {
+            window.location.href = "/AB_AW_G10/account/account.html";
+        } else {
+            window.location.href = "/AB_AW_G10/account/log-in.html";
+        }
+    });
+
 }
 
 function updateProfileImageNavbar() {
@@ -14,15 +24,15 @@ function updateProfileImageNavbar() {
     let account = document.getElementById("account");
 
     let link = "";
-    if (storedAccount) link = "../asset/imagesProfil/" + storedAccount.image;
-    else link = "../asset/icons/user.png";
+    if (storedAccount) link = "/AB_AW_G10/asset/imagesProfil/" + storedAccount.image;
+    else link = "/AB_AW_G10/asset/icons/user.png";
 
     account.style.backgroundImage = "url('" + link + "')";
 }
 
 function defaultProfileImageNavbar() {
     let account = document.getElementById("account");
-    account.style.backgroundImage = "url('../asset/icons/user.png')";
+    account.style.backgroundImage = "url('/AB_AW_G10/asset/icons/user.png')";
 }
 
 function displayConnexion() {
@@ -31,6 +41,8 @@ function displayConnexion() {
 
     connexion.style.display = "flex";
     deconnexion.style.display = "none";
+
+    deconnexion.removeEventListener("click", deconnecter);
 }
 
 function displayDeconnexion() {
@@ -40,18 +52,22 @@ function displayDeconnexion() {
     connexion.style.display = "none";
     deconnexion.style.display = "flex";
 
-    deconnexion.addEventListener("click", function () {
-        updateLocalStorage(JSON.parse(sessionStorage.getItem("account")));
-        sessionStorage.removeItem("account");
-        window.location.href = "../log-in.html";
-    });
+    deconnexion.addEventListener("click", deconnecter);
 }
 
-function updateLocalStorage(account) {
+function updateLocalStorage(account, callback) {
     let accounts = JSON.parse(localStorage.getItem("accounts"));
     let index = accounts.findIndex(acc => acc.username === account.username);
     accounts[index] = account;
     localStorage.setItem("accounts", JSON.stringify(accounts));
+    callback();
+}
+
+function deconnecter() {
+    updateLocalStorage(JSON.parse(sessionStorage.getItem("account")), () => {
+        sessionStorage.removeItem("account");
+        window.location.href = "/AB_AW_G10/index.html";
+    });
 }
 
 function sessionActive() {
