@@ -3,6 +3,7 @@ import {Timer} from "./timer.js";
 import {MineCounter} from "./mineCounter.js";
 import {Smiley} from "./smiley.js";
 import { initialiserScoresDemineur } from "../../../js/localStorageInitialiser/scoreInitialiser.js";
+import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
 
 /**
  * La grille de jeu. Contient toutes les fonctionnalités du jeu.
@@ -11,9 +12,11 @@ export class Grid {
     _firstClick = true;
     _isClicked = false;
     _middleClicked = false;
+    _difficulty = "facile";
 
 
     constructor(gameBoard, numberRows, numberColumns, numberMines) {
+        //initialiserScoresDemineur();
         this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
@@ -28,11 +31,18 @@ export class Grid {
         this.cells = [];
         this.creerGrid(numberRows, numberColumns);
         this.ajouterListeners();
-        //initialiserScoresDemineur();
     }
 
     get miningGrid() {
         return this._miningGrid;
+    }
+
+    get difficulty() {
+        return this._difficulty;
+    }
+
+    set difficulty(difficulty) {
+        this._difficulty = difficulty;
     }
 
     /**
@@ -320,7 +330,7 @@ export class Grid {
         this.smiley.victory();
         this.mettreFlags();
         this.disableCells();
-        Scoreboard.updateScore("test", 9898);
+        this.updateScore("test", 9898);
     }
 
     /**
@@ -450,6 +460,20 @@ export class Grid {
             for (let j = 0; j < this.cells[i].length; j++) {
                 this.cells[i][j].disable();
             }
+        }
+    }
+
+    updateScore(nom, score) {
+        switch (this.difficulty) {
+            case "facile":
+                ScoreboardDemineur.updateFacile(nom, score);
+                break;
+            case "moyen":
+                ScoreboardDemineur.updateMoyen(nom, score);
+                break;
+            case "difficile":
+                ScoreboardDemineur.updateDifficile(nom, score);
+                break;
         }
     }
 
