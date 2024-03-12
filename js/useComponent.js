@@ -25,12 +25,12 @@ function init(){
                 if (completed){
                     switch(window.location.pathname.split("/")[3]) {
                         case "demineur":
-                            ScoreboardDemineur.displayScore();
+                            ScoreboardDemineur.displayFacile();
                             break;
                         case "clicker":
                             ScoreboardClicker.displayScore();
                             break;
-                        default:
+                        case "towerDefense":
                             ScoreboardTowerDefense.displayScore();
                             break;
                     }
