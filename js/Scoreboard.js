@@ -1,5 +1,5 @@
 class Scoreboard {
-    static displayScore(gameName) {
+    static displayScoreboard(gameName) {
         let scores = JSON.parse(localStorage.getItem(gameName));
         let scoreLines = document.querySelectorAll(".line");
 
@@ -14,62 +14,64 @@ class Scoreboard {
 
     }
 
-    static updateScore(game, username, score) {
+    static updateScoreboard(gameName, username, score, ascending = false) {
         console.log("updating score");
-        let gameName = this.getStorageGameName(game);
         let scores = JSON.parse(localStorage.getItem(gameName));
         scores.push({
             nom: username,
             score: score
         });
-        scores.sort((a, b) => b.score - a.score);
+
+        if (ascending) scores.sort((a, b) => a.score - b.score);
+        else scores.sort((a, b) => b.score - a.score);
+
         localStorage.setItem(gameName, JSON.stringify(scores));
-        this.displayScore(game);
+        this.displayScoreboard(gameName);
     }
 }
 
 export class ScoreboardDemineur extends Scoreboard {
     static displayFacile() {
-        super.displayScore("scoreDemineurFacile");
+        super.displayScoreboard("scoreDemineurFacile");
     }
 
     static updateFacile(username, score) {
-        super.updateScore("scoreDemineurFacile", username, score);
+        super.updateScoreboard("scoreDemineurFacile", username, score, false);
     }
 
     static displayMoyen() {
-        super.displayScore("scoreDemineurMoyen");
+        super.displayScoreboard("scoreDemineurMoyen");
     }
 
     static updateMoyen(username, score) {
-        super.updateScore("scoreDemineurMoyen", username, score);
+        super.updateScoreboard("scoreDemineurMoyen", username, score, false);
     }
 
     static displayDifficile() {
-        super.displayScore("scoreDemineurDifficile");
+        super.displayScoreboard("scoreDemineurDifficile");
     }
 
     static updateDifficile(username, score) {
-        super.updateScore("scoreDemineurDifficile", username, score);
+        super.updateScoreboard("scoreDemineurDifficile", username, score, false);
     }
 }
 
 export class ScoreboardClicker extends Scoreboard {
     static displayScore() {
-        super.displayScore("scoreClicker");
+        super.displayScoreboard("scoreClicker");
     }
 
     static updateScore(username, score) {
-        super.updateScore("scoreClicker", username, score);
+        super.updateScoreboard("scoreClicker", username, score, false);
     }
 }
 
 export class ScoreboardTowerDefense extends Scoreboard {
     static displayScore() {
-        super.displayScore("scoreTowerDefense");
+        super.displayScoreboard("scoreTowerDefense");
     }
 
     static updateScore(username, score) {
-        super.updateScore("scoreTowerDefense", username, score);
+        super.updateScoreboard("scoreTowerDefense", username, score, true);
     }
 }

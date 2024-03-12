@@ -1,5 +1,6 @@
 let admin = [
     {
+        userId: 0,
         username: "Rainbow",
         password: "test",
         mail: "mike.litoris@gmail.com",
