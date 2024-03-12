@@ -509,11 +509,11 @@ body, html {
 
 @keyframes moveUp {
     0% {
-        top: 80%;
+        top: 50%;
         opacity: 1;
     }
     100% {
-        top: 50%;
+        top: 20%;
         opacity: 0;
     }
 }

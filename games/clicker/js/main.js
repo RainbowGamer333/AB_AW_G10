@@ -75,8 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (score >= 200000) {
             clickPlus1000Button.classList.remove('hidden');
             clickPlus1000CostDisplay.classList.remove('hidden');
-            clickPlus1Button.classList.add('hidden');
-            clickPlus1CostDisplay.classList.add('hidden');
         }else {
             clickPlus1000Button.classList.add('hidden');
         }
@@ -98,6 +96,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Utilise la prochaine valeur de clic pour incrémenter les pièces
         incrementCoins(nextClickValue);
         cps++;
+        playClickAnimation(nextClickValue);
+        playClick1000Animation(nextClickValue);
 
     })
 
@@ -224,6 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function incrementScore(amount) {
         score += amount;
         updateScore();
+        checkEndGame();
     }
 
     function incrementCoins(amount) {
@@ -338,8 +339,9 @@ document.addEventListener('DOMContentLoaded', function () {
             coins -= clickPlus1Cost;
             nextClickValue += 1; // Augmente la valeur pour le prochain achat
             clickPlus1Cost += 500; // Augmente le coût pour le prochain achat
-            updateScore();
+            updateScore(); // Mettre à jour l'affichage du score, y compris nextClickValueDisplay
             hasReachedButtonOne = true;
+            playClickAnimation(nextClickValue); // Utiliser nextClickValue au lieu de amount
         }
     }
 
@@ -351,8 +353,15 @@ document.addEventListener('DOMContentLoaded', function () {
             nextClickValue += 1000; // Ajoute 1000 au multiplicateur actuel
             clickPlus1000Cost += 10000;
             updateScore();
+            playClick1000Animation(amount);
         }
     }
+
+
+
+    setInterval(function () {
+        nextClickValueDisplay.textContent = 'Ajout de : ' + nextClickValue;
+    }, 10);
 
 // Ajoutez un écouteur d'événements au bouton MegaAutoClick
     megaAutoClickButton.addEventListener('click', function () {
@@ -457,8 +466,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Vérification de la séquence de touche pour le cheat
         if (event.key === 'b' && event.ctrlKey) {
             // Ajout de 1000 de score et de pièces
-            incrementScore(100000);
-            incrementCoins(100000);
+            incrementScore(100000000);
+            incrementCoins(100000000);
             // Mise à jour de l'affichage
             updateScore();
         }
@@ -569,5 +578,76 @@ document.addEventListener('DOMContentLoaded', function () {
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('clickButton').style.backgroundColor = randomColor;
     });
+
+
+
+    function checkEndGame() {
+        if (score >= 1100000000) {
+            endGame(); // Appel à endGame() lorsque le score atteint 1 milliard
+        }
+    }
+
+
+    function endGame() {
+        // Supprimer tous les éléments du jeu
+        var gameContainer = document.querySelector('.gameContainer');
+        gameContainer.innerHTML = '';
+
+        // Calculer le temps écoulé
+        var elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        var hours = Math.floor(elapsedTime / 3600);
+        var minutes = Math.floor((elapsedTime % 3600) / 60);
+        var seconds = elapsedTime % 60;
+
+        // Créer un conteneur pour le texte de félicitations et le bouton
+        var endGameContainer = document.createElement('div');
+        endGameContainer.style.textAlign = 'center';
+        endGameContainer.style.marginTop = '250px';
+        endGameContainer.style.display = 'flex';
+        endGameContainer.style.flexDirection = 'column';
+        endGameContainer.style.alignItems = 'center';
+
+        // Créer un élément de texte pour afficher le message de félicitations
+        var congratulationsText = document.createElement('div');
+        congratulationsText.textContent = 'Félicitations ! Vous avez terminé le jeu en ' + hours + ' heures, ' + minutes + ' minutes et ' + seconds + ' secondes. Merci beaucoup d\'avoir joué ! Ne clique surtout pas sur le bouton !!!';
+        congratulationsText.style.fontSize = '30px';
+        congratulationsText.style.fontWeight = 'bold';
+        congratulationsText.style.color = getRandomColor();
+
+        // Créer un bouton pour mettre une image en fond de gameContainer
+        var imageButton = document.createElement('button');
+        imageButton.textContent = 'Ne pas appuyer dessus !!!!!!!!!';
+        imageButton.style.marginTop = '20px'; // Modifier la marge supérieure selon vos besoins
+        imageButton.addEventListener('click', function() {
+            imageButton.addEventListener('click', function() {
+                var images = [
+                    'Alexis.jpg',
+                    'buffaa.gif',
+                    'Elyan.jpg',
+                    'florian.jpg',
+                    'laure.jpg',
+                    'logann.jpg',
+                    'Michel-Buffa.png',
+                    'Quere.jpg',
+                    'Romain.jpg',
+                    'sachaH.jpg',
+                    'samy.jpg',
+                    'theoS.jpg',
+                    'titouan.jpg',
+                ];
+                var randomIndex = Math.floor(Math.random() * images.length);
+                var randomImage = images[randomIndex];
+                gameContainer.style.backgroundImage = 'url("images/' + randomImage + '")';
+                congratulationsText.style.color = getRandomColor();
+            });
+        });
+
+        // Ajouter le texte de félicitations et le bouton au conteneur
+        endGameContainer.appendChild(congratulationsText);
+        endGameContainer.appendChild(imageButton);
+
+        // Ajouter le conteneur à gameContainer
+        gameContainer.appendChild(endGameContainer);
+    }
 
 });
