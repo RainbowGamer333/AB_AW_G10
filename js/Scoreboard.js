@@ -1,14 +1,17 @@
 class Scoreboard {
     static displayScore(gameName) {
-        let scoreName = this.getStorageGameName(gameName);
-
-        let scores = JSON.parse(localStorage.getItem(scoreName));
+        let scores = JSON.parse(localStorage.getItem(gameName));
         let scoreLines = document.querySelectorAll(".line");
 
-        for (let i = 0; i < scoreLines.length - 1; i++) {
-            scoreLines[i+1].querySelector(".score").innerText = scores[i].score;
-            scoreLines[i+1].querySelector(".name").innerText = scores[i].nom;
+        try {
+            for (let i = 0; i < scoreLines.length - 1; i++) {
+                scoreLines[i+1].querySelector(".score").innerText = scores[i].score;
+                scoreLines[i+1].querySelector(".name").innerText = scores[i].nom;
+            }
+        } catch (e) {
+            console.error(gameName + " n'est pas un type de score valide");
         }
+
     }
 
     static updateScore(game, username, score) {
@@ -23,45 +26,50 @@ class Scoreboard {
         localStorage.setItem(gameName, JSON.stringify(scores));
         this.displayScore(game);
     }
-
-    static getStorageGameName(gameName) {
-        switch (gameName) {
-            case "demineur":
-                return "scoreDemineur";
-            case "clicker":
-                return "scoreClicker";
-            default:
-                return "scoreTowerDefense";
-        }
-    }
 }
 
 export class ScoreboardDemineur extends Scoreboard {
-    static displayScore() {
-        super.displayScore("demineur");
+    static displayFacile() {
+        super.displayScore("scoreDemineurFacile");
     }
 
-    static updateScore(username, score) {
-        super.updateScore("demineur", username, score);
+    static updateFacile(username, score) {
+        super.updateScore("scoreDemineurFacile", username, score);
+    }
+
+    static displayMoyen() {
+        super.displayScore("scoreDemineurMoyen");
+    }
+
+    static updateMoyen(username, score) {
+        super.updateScore("scoreDemineurMoyen", username, score);
+    }
+
+    static displayDifficile() {
+        super.displayScore("scoreDemineurDifficile");
+    }
+
+    static updateDifficile(username, score) {
+        super.updateScore("scoreDemineurDifficile", username, score);
     }
 }
 
 export class ScoreboardClicker extends Scoreboard {
     static displayScore() {
-        super.displayScore("clicker");
+        super.displayScore("scoreClicker");
     }
 
     static updateScore(username, score) {
-        super.updateScore("clicker", username, score);
+        super.updateScore("scoreClicker", username, score);
     }
 }
 
 export class ScoreboardTowerDefense extends Scoreboard {
     static displayScore() {
-        super.displayScore("towerDefense");
+        super.displayScore("scoreTowerDefense");
     }
 
     static updateScore(username, score) {
-        super.updateScore("towerDefense", username, score);
+        super.updateScore("scoreTowerDefense", username, score);
     }
 }
