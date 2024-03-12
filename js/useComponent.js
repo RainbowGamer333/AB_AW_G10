@@ -67,9 +67,9 @@ function init(){
 
     // Achievements popup - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // const achievementSpawner = document.getElementById("achievement_spawner");
-    document.addEventListener("click", function () {
-        AchievementUtils.unlock("userName","towerDefense",0);
-    });
+    // document.addEventListener("click", function () {
+    //     AchievementUtils.unlock("userName","towerDefense",0);
+    // });
 }
 
 
