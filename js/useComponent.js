@@ -2,6 +2,7 @@ import {Path} from "../games/towerDefense/js/constants/Path.js";
 import {updateNavbar} from "./navbar.js";
 import {AB_Utils} from "./AB_Utils.js";
 import {Scoreboard} from "./Scoreboard.js";
+import AchievementUtils from "./AchievementUtils.js";
 
 
 function init(){
@@ -65,7 +66,10 @@ function init(){
 
 
     // Achievements popup - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    const achievementSpawner = document.getElementById("achievement_spawner");
+    // const achievementSpawner = document.getElementById("achievement_spawner");
+    document.addEventListener("click", function () {
+        AchievementUtils.unlock("userName","towerDefense",0);
+    });
 }
 
 
