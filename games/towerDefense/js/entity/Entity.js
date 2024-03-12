@@ -49,7 +49,7 @@ export class Entity extends GameObject{
     }
 
     onClick(){
-        this.hurt(50,null);
+        this.hurt(1,null);
         if (this.isAlive){
             Engine.coinBalance += 1;
         }

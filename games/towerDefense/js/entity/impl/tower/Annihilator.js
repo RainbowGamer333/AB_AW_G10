@@ -6,6 +6,7 @@ import {Engine} from "../../../constants/Engine.js";
 import {AnnihilatorBeam} from "../projectile/AnnihilatorBeam.js";
 import {Constants} from "../../../constants/Constants.js";
 import {AnnihilatorVacuum} from "../projectile/AnnihilatorVacuum.js";
+import {Hitmarker} from "../particle/Hitmarker.js";
 
 export class Annihilator extends Tower{
 
