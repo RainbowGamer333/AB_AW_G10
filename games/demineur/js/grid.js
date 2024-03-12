@@ -2,7 +2,7 @@ import {Cell} from "./cell.js";
 import {Timer} from "./timer.js";
 import {MineCounter} from "./mineCounter.js";
 import {Smiley} from "./smiley.js";
-import {Scoreboard} from "../../../js/Scoreboard.js";
+import { initialiserScoresDemineur } from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 
 /**
  * La grille de jeu. Contient toutes les fonctionnalités du jeu.
@@ -14,7 +14,6 @@ export class Grid {
 
 
     constructor(gameBoard, numberRows, numberColumns, numberMines) {
-        this._gameBoard = gameBoard;
         this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
@@ -29,6 +28,7 @@ export class Grid {
         this.cells = [];
         this.creerGrid(numberRows, numberColumns);
         this.ajouterListeners();
+        //initialiserScoresDemineur();
     }
 
     get miningGrid() {

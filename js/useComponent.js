@@ -1,7 +1,7 @@
 import {Path} from "../games/towerDefense/js/constants/Path.js";
 import {updateNavbar} from "./navbar.js";
 import {AB_Utils} from "./AB_Utils.js";
-import {Scoreboard} from "./Scoreboard.js";
+import {ScoreboardClicker, ScoreboardDemineur, ScoreboardTowerDefense} from "./Scoreboard.js";
 import AchievementUtils from "./AchievementUtils.js";
 
 
@@ -23,7 +23,17 @@ function init(){
         AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
             AB_Utils.replaceComponent("scoreboard",text, function (completed) {
                 if (completed){
-                    Scoreboard.displayScore();
+                    switch(window.location.pathname.split("/")[3]) {
+                        case "demineur":
+                            ScoreboardDemineur.displayScore();
+                            break;
+                        case "clicker":
+                            ScoreboardClicker.displayScore();
+                            break;
+                        default:
+                            ScoreboardTowerDefense.displayScore();
+                            break;
+                    }
                 }
             });
         });
