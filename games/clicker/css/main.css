@@ -483,6 +483,51 @@ body, html {
     justify-content: center;
     height: 1500px;
 }
+/* Animation pour l'autoclic */
+@keyframes auto-click {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.click-animation {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    font-size: 24px;
+    color: green;
+    animation: moveUp 2s ease;
+
+}
+
+@keyframes moveUp {
+    0% {
+        top: 80%;
+        opacity: 1;
+    }
+    100% {
+        top: 50%;
+        opacity: 0;
+    }
+}
+
+.auto-click-animation {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    font-size: 24px;
+    color: blue;
+    animation: moveUp 2s ease;
+
+}
 
 
 
