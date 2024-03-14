@@ -25,6 +25,23 @@
     "desc": "Completer un jeu sans utiliser de drapeaux"
   },
   {
-
+    "name" : "Rapide",
+    "imageURL": "games/demineur/asset/rapide.png",
+    "desc": "Completer un jeu en moins de 100 secondes"
+  },
+  {
+    "name" : "Fast and Furious",
+    "imageURL": "games/demineur/asset/eclair.png",
+    "desc": "Completer un jeu en moins de 50 secondes"
+  },
+  {
+    "name" : "Champion",
+    "imageURL": "games/demineur/asset/rapide_et_furieux.png",
+    "desc": "Completer un jeu en moins de 30 secondes"
+  },
+  {
+    "name" : "Légendaire",
+    "imageURL": "games/demineur/asset/champion.png",
+    "desc": "Completer un jeu en moins de 15 secondes"
   }
 ]
