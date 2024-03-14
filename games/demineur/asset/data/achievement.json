@@ -44,7 +44,7 @@
   {
     "name" : "Expert",
     "imageURL": "games/demineur/asset/expert.png",
-    "desc": "Completer un jeu en mode expert",
+    "desc": "Completer un jeu en mode difficile",
     "value" : 1
   },
   {
