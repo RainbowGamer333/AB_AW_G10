@@ -3,6 +3,8 @@ import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";
+import TDAchievements from "../../../achievement/TDAchievements.js";
+import TDAchievementConstant from "../../../achievement/TDAchievementConstant.js";
 
 export class Demon extends Enemy {
     teleportInterval = 10;
@@ -38,5 +40,10 @@ export class Demon extends Enemy {
         const columnChoice = Utils.randomIntFromInterval(1,Constants.colums);
         this.x = columnChoice * Constants.TILE_SIZE_ZOOMED;
 
+    }
+
+    onDeath() {
+        TDAchievements.increaseCounterAndTryUnlock(TDAchievementConstant.KILL_DEMONS,1);
+        super.onDeath();
     }
 }
