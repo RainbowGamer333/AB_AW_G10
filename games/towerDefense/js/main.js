@@ -13,7 +13,7 @@ import {Engine} from "./constants/Engine.js";
 import {MapUtils} from "./utils/MapUtils.js";
 import {Utils} from "./utils/Utils.js";
 import {AB_Utils} from "../../../js/AB_Utils.js";
-import TDAchievements from "./achievement/TDAchievements.js";
+import AchievementUtils from "../../../js/AchievementUtils.js";
 
 
 Engine.canvas = document.getElementById("gameCanvas");
@@ -34,7 +34,7 @@ function init(){
 
 
     const achievementPATH = "/games/towerDefense/asset/data/achievement.json";
-    TDAchievements.init("UserID", achievementPATH);
+    AchievementUtils.init("UserID", achievementPATH);
 
     MapUtils.createGround();
     MapUtils.createVillage();
