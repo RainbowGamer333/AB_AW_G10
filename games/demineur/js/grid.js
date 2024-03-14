@@ -4,6 +4,9 @@ import {MineCounter} from "./mineCounter.js";
 import {Smiley} from "./smiley.js";
 import { initialiserScoresDemineur } from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
+import AchievementUtils from "../../../js/AchievementUtils.js";
+
+const account = JSON.parse(sessionStorage.getItem("account"));
 
 /**
  * La grille de jeu. Contient toutes les fonctionnalités du jeu.
@@ -330,7 +333,22 @@ export class Grid {
         this.smiley.victory();
         this.mettreFlags();
         this.disableCells();
-        this.updateScore("test", 9898);
+        AchievementUtils.increaseCounterAndTryUnlock(0, 1);
+
+
+        // Verification des achievements
+        /*
+        if (account !== null) {
+            AchievementUtils.increaseCounterAndTryUnlock(1, 1);
+            AchievementUtils.increaseCounterAndTryUnlock(2, 1);
+            AchievementUtils.increaseCounterAndTryUnlock(3, 1);
+            AchievementUtils.increaseCounterAndTryUnlock(4, 1);
+
+
+        }
+         */
+
+        //this.updateScore(account.username, this.timer.time);
     }
 
     /**

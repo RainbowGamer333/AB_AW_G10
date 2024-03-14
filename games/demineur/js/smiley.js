@@ -51,18 +51,18 @@ export class Smiley {
 
 
     normal() {
-        this.smiley.src = "assets/header/normal.png";
+        this.smiley.src = "asset/header/normal.png";
     }
 
     shock() {
-        this.smiley.src = "assets/header/shock.png";
+        this.smiley.src = "asset/header/shock.png";
     }
 
     defeat() {
-        this.smiley.src = "assets/header/defeat.png";
+        this.smiley.src = "asset/header/defeat.png";
     }
 
     victory() {
-        this.smiley.src = "assets/header/victory.png";
+        this.smiley.src = "asset/header/victory.png";
     }
 }

@@ -104,7 +104,7 @@
 
         #gameBoardHeaderSmileyButton {
             background-color: var(--demineurBackgroundColor);
-            background-image: url("../assets/grille/unclicked.png");
+            background-image: url("../asset/grille/unclicked.png");
             background-size: 100% 100%;
             border: none;
             width: 50px;

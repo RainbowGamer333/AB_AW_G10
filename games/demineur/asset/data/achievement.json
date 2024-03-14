@@ -1,0 +1,80 @@
+[
+  {
+    "name" : "Bienvenue au démineur",
+    "imageURL": "/games/demineur/asset/grille/1.png",
+    "desc": "Completer votre premier jeu",
+    "value" : 1
+  },
+  {
+    "name" : "Bon début",
+    "imageURL": "games/demineur/asset/bon_debut.png",
+    "desc": "Completer 10 jeux",
+    "value" : 10
+  },
+  {
+    "name" : "Ca commence à faire pas mal non ?",
+    "imageURL": "games/demineur/asset/ca_commence_a_faire_pas_mal_non.png",
+    "desc": "Completer 100 jeux",
+    "value" : 100
+  },
+  {
+    "name" : "Passe à autre chose",
+    "imageURL": "games/demineur/asset/passe_a_autre_chose.png",
+    "desc": "Completer 1000 jeux",
+    "value" : 1000
+  },
+  {
+    "name" : "Je me demande bien s'il y a une limite au nombre de caractères que tu peux mettre dans ce champ d'achievements, ca serait drole si ca cassait toute l'interface",
+    "imageURL": "games/demineur/asset/limite_au_nombre_de_caracteres.png",
+    "desc": "Completer 10000 jeux",
+    "value" : 10000
+  },
+  {
+    "name" : "Débutant",
+    "imageURL": "games/demineur/asset/debutant.png",
+    "desc": "Completer un jeu en mode débutant",
+    "value" : 1
+  },
+  {
+    "name" : "Confirmé",
+    "imageURL": "games/demineur/asset/intermediaire.png",
+    "desc": "Completer un jeu en mode intermédiaire",
+    "value" : 1
+  },
+  {
+    "name" : "Expert",
+    "imageURL": "games/demineur/asset/expert.png",
+    "desc": "Completer un jeu en mode expert",
+    "value" : 1
+  },
+  {
+    "name" : "Stratège",
+    "imageURL": "games/demineur/asset/stratege.png",
+    "desc": "Completer un jeu sans utiliser de drapeaux",
+    "value" : 1
+  },
+  {
+    "name" : "Rapide",
+    "imageURL": "games/demineur/asset/rapide.png",
+    "desc": "Completer un jeu en moins de 100 secondes",
+    "value" : 1
+  },
+  {
+    "name" : "Fast and Furious",
+    "imageURL": "games/demineur/asset/fast_and_furious.png",
+    "desc": "Completer un jeu en moins de 50 secondes",
+    "value" : 1
+  },
+  {
+    "name" : "Champion",
+    "imageURL": "games/demineur/asset/champion.png",
+    "desc": "Completer un jeu en moins de 30 secondes",
+    "value" : 1
+  },
+  {
+    "name" : "Légendaire",
+    "imageURL": "games/demineur/asset/legendaire.png",
+    "desc": "Completer un jeu en moins de 15 secondes",
+    "value" : 1
+  }
+]
