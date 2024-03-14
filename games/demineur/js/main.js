@@ -2,6 +2,7 @@ import { GameBoard } from "./gameBoard.js";
 import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
 
+const account = JSON.parse(sessionStorage.getItem("account"));
 const game = document.getElementById("game");
 const overlay = document.getElementById("overlay");
 const popup = document.getElementById("popup");
@@ -15,7 +16,7 @@ const customM = document.getElementById("customM");
 
 function onload() {
     setupForm();
-    AchievementUtils.init("", "demineur", "./asset/data/achievement.json");
+    AchievementUtils.init(account.username, "demineur", "./asset/data/achievement.json");
 }
 
 /**

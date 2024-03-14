@@ -5,8 +5,9 @@ export default class AchievementUtils {
     static achievementsValues = [];
     static jsonData ;
     static userID;
+    static gameID;
 
-    static init (userID,achievementPATH){
+    static init (userID, gameID, achievementPATH){
         AB_Utils.readTextFile(achievementPATH, (achievement) => {
             let json = JSON.parse(achievement);
             if (!json) {
@@ -14,6 +15,8 @@ export default class AchievementUtils {
                 return;
             }
             AchievementUtils.jsonData = json;
+            AchievementUtils.userID = userID;
+            AchievementUtils.gameID = gameID;
             for (let i = 0; i < AchievementUtils.jsonData.length; i++){
                 console.log(AchievementUtils.jsonData[i].name)
                 AchievementUtils.achievementsValues.push(
@@ -36,7 +39,7 @@ export default class AchievementUtils {
         if (AchievementUtils.increaseCount(achievementID,amount) >= AchievementUtils.jsonData[achievementID].value &&
             !AchievementUtils.achievementsValues[achievementID].unlocked){
             AchievementUtils.achievementsValues[achievementID].unlocked = true;
-            AchievementUtils.unlock(AchievementUtils.userID,"towerDefense",achievementID);
+            AchievementUtils.unlock(AchievementUtils.userID,AchievementUtils.gameID,achievementID);
             return true;
         }
         return false;
