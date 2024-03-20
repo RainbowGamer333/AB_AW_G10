@@ -1,6 +1,8 @@
 import { GameBoard } from "./gameBoard.js";
 import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
+import AchievementUtils from "../../../js/AchievementUtils.js";
 
+const account = JSON.parse(sessionStorage.getItem("account"));
 const game = document.getElementById("game");
 const overlay = document.getElementById("overlay");
 const popup = document.getElementById("popup");
@@ -14,6 +16,7 @@ const customM = document.getElementById("customM");
 
 function onload() {
     setupForm();
+    AchievementUtils.init(account.username, "demineur", "./asset/data/achievement.json");
 }
 
 /**
@@ -67,15 +70,15 @@ function submitForm() {
     switch(diff) {
         case "facile":
             gameBoard.reinitialiserGrille(9, 9, 10);
-            ScoreboardDemineur.displayFacile();
+            //ScoreboardDemineur.displayFacile();
             break;
         case "moyen":
             gameBoard.reinitialiserGrille(16, 16, 40);
-            ScoreboardDemineur.displayMoyen();
+            //ScoreboardDemineur.displayMoyen();
             break;
         case "difficile":
             gameBoard.reinitialiserGrille(30, 16, 99);
-            ScoreboardDemineur.displayDifficile();
+            //ScoreboardDemineur.displayDifficile();
             break;
         case "custom":
             let nbCols = document.querySelector('input[name="customW"]').value;
