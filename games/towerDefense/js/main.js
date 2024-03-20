@@ -34,7 +34,7 @@ function init(){
 
 
     const achievementPATH = "/games/towerDefense/asset/data/achievement.json";
-    AchievementUtils.init("UserID", achievementPATH);
+    AchievementUtils.init("UserID","towerDefense", achievementPATH);
 
     MapUtils.createGround();
     MapUtils.createVillage();
