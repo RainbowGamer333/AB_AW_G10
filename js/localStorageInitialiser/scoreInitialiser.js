@@ -1,18 +1,28 @@
 export function initialiserScoresDemineur() {
     clearScoresDemineur();
+    initialiserScoresDemineurFacile();
+
+}
+
+function initialiserScoresDemineurFacile() {
     let scores = [];
-    for (let i = 0; i < 10; i++) {
-        scores.push({
-            nom: "AAA" + i,
-            score: 9999 - (1111 * i)
-        });
-    }
-    localStorage.setItem("scoreDemineur", JSON.stringify(scores));
+    scores.push({nom: "Rainbow", score: 13});
+    scores.push({nom: "Rainbow", score: 17});
+    scores.push({nom: "Rainbow", score: 24});
+    scores.push({nom: "Rainbow", score: 30});
+    scores.push({nom: "Rainbow", score: 35});
+    scores.push({nom: "Rainbow", score: 42});
+    scores.push({nom: "Rainbow", score: 50});
+    scores.push({nom: "Rainbow", score: 60});
+    scores.push({nom: "Rainbow", score: 70});
+    scores.push({nom: "Rainbow", score: 80});
+    localStorage.setItem("scoreDemineurFacile", JSON.stringify(scores));
 }
 
 function clearScoresDemineur() {
-    localStorage.removeItem("scoreDemineur");
-    localStorage.setItem("scoreDemineur", JSON.stringify([]));
+    localStorage.removeItem("scoreDemineurFacile");
+    localStorage.removeItem("scoreDemineurMoyen");
+    localStorage.removeItem("scoreDemineurDifficile");
 }
 
 

@@ -24,7 +24,6 @@ function onload() {
  */
 function setupForm() {
     game.addEventListener("click", function() {
-        console.log("click");
         overlay.style.display = "block";
         popup.style.display = "block";
     });

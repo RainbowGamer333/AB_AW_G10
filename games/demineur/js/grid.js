@@ -79,7 +79,6 @@ export class Grid {
      * Affiche la cellule à la position (row, col). Effectue la gestion des mines et des cases vides
      * @param row la ligne de la cellule à afficher
      * @param col la colonne de la cellule à afficher
-     * @param callback le callback à appeler si la partie est gagnée
      */
     afficherCellule(row, col) {
         let cell = this.cells[row][col];
@@ -367,7 +366,7 @@ export class Grid {
         if (this.timer.time <= 30) AchievementUtils.increaseCounterAndTryUnlock(11, 1);
         if (this.timer.time <= 15) AchievementUtils.increaseCounterAndTryUnlock(12, 1);
 
-        //this.updateScore(account.username, this.timer.time);
+        this.updateScore(account.username, this.timer.time);
     }
 
     /**
