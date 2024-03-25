@@ -4,7 +4,7 @@ import { Grid } from "./grid.js";
  * Le plateau de jeu. Contient toutes les méthodes pour gérer les éléments en dehors de la grille.
  */
 export class GameBoard {
-    constructor(nbRows, nbCols, nbMines) {
+    constructor(nbRows, nbCols, nbMines, difficulty) {
         this.gameBoard = document.getElementById("gameBoard");
         this.grille = document.getElementById("grille");
 
@@ -15,7 +15,7 @@ export class GameBoard {
         this.tailleCells = 30;
         this.tailleMargin = 60;
 
-        this.grid = new Grid(this, nbRows, nbCols, nbMines);
+        this.grid = new Grid(this, nbRows, nbCols, nbMines, difficulty);
         this.ajouterGrille();
         this.setStyle();
     }

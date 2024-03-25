@@ -20,7 +20,7 @@ export class Grid {
 
 
     constructor(gameBoard, numberRows, numberColumns, numberMines, difficulty) {
-        initialiserScoresDemineur();
+        //initialiserScoresDemineur();
         this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
@@ -346,28 +346,30 @@ export class Grid {
             AchievementUtils.increaseCounterAndTryUnlock(2, 1);
             AchievementUtils.increaseCounterAndTryUnlock(3, 1);
             AchievementUtils.increaseCounterAndTryUnlock(4, 1);
+
+            switch (this.difficulty) {
+                case "facile":
+                    AchievementUtils.increaseCounterAndTryUnlock(5, 1);
+                    break;
+                case "moyen":
+                    AchievementUtils.increaseCounterAndTryUnlock(6, 1);
+                    break;
+                case "difficile":
+                    AchievementUtils.increaseCounterAndTryUnlock(7, 1);
+                    break;
+            }
+
+            if (this._noFlags) AchievementUtils.increaseCounterAndTryUnlock(8, 1);
+
+            if (this.timer.time <= 100) AchievementUtils.increaseCounterAndTryUnlock(9, 1);
+            if (this.timer.time <= 50) AchievementUtils.increaseCounterAndTryUnlock(10, 1);
+            if (this.timer.time <= 30) AchievementUtils.increaseCounterAndTryUnlock(11, 1);
+            if (this.timer.time <= 15) AchievementUtils.increaseCounterAndTryUnlock(12, 1);
+
+            this.updateScore(account.username, this.timer.time);
         }
 
-        switch (this.difficulty) {
-            case "facile":
-                AchievementUtils.increaseCounterAndTryUnlock(5, 1);
-                break;
-            case "moyen":
-                AchievementUtils.increaseCounterAndTryUnlock(6, 1);
-                break;
-            case "difficile":
-                AchievementUtils.increaseCounterAndTryUnlock(7, 1);
-                break;
-        }
 
-        if (this._noFlags) AchievementUtils.increaseCounterAndTryUnlock(8, 1);
-
-        if (this.timer.time <= 100) AchievementUtils.increaseCounterAndTryUnlock(9, 1);
-        if (this.timer.time <= 50) AchievementUtils.increaseCounterAndTryUnlock(10, 1);
-        if (this.timer.time <= 30) AchievementUtils.increaseCounterAndTryUnlock(11, 1);
-        if (this.timer.time <= 15) AchievementUtils.increaseCounterAndTryUnlock(12, 1);
-
-        this.updateScore(account.username, this.timer.time);
     }
 
     /**
@@ -500,8 +502,11 @@ export class Grid {
     }
 
     updateScore(nom, score) {
+        console.log("updating score");
+        console.log(this.difficulty);
         switch (this.difficulty) {
             case "facile":
+                console.log("facile");
                 ScoreboardDemineur.updateFacile(nom, score);
                 break;
             case "moyen":
