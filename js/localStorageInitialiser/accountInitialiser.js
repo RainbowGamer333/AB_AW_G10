@@ -67,7 +67,9 @@ function initialiserAchievementsGame(gameName) {
         json.forEach((json) => {
             achievements.push({
                 name: json.name,
-                achieved: false
+                valueNeed: json.value,
+                valueCurrent: 0,
+                unlocked: false
             });
         });
         return achievements;

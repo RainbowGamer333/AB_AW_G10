@@ -16,7 +16,7 @@ const customM = document.getElementById("customM");
 
 function onload() {
     setupForm();
-    AchievementUtils.init(account.username, "demineur", "./asset/data/achievement.json");
+    AchievementUtils.init("demineur");
 }
 
 /**

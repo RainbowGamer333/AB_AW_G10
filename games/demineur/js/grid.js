@@ -20,7 +20,7 @@ export class Grid {
 
 
     constructor(gameBoard, numberRows, numberColumns, numberMines) {
-        //initialiserScoresDemineur();
+        initialiserScoresDemineur();
         this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";

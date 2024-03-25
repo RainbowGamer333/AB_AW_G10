@@ -2,80 +2,51 @@ import {AB_Utils} from "./AB_Utils.js";
 
 export default class AchievementUtils {
     static SEQUENCE = 0;
-    static achievementsValues = [];
-    static jsonData ;
-    static userID;
-    static gameID;
+    static account = JSON.parse(sessionStorage.getItem("account"));
+    static gameName;
+    static achievements;
 
-    static init (userID, gameID, achievementPATH){
-        AB_Utils.readTextFile(achievementPATH, (achievement) => {
-            let json = JSON.parse(achievement);
-            if (!json) {
-                console.error("JSON reading error");
-                return;
-            }
-            AchievementUtils.jsonData = json;
-            AchievementUtils.userID = userID;
-            AchievementUtils.gameID = gameID;
-            for (let i = 0; i < AchievementUtils.jsonData.length; i++){
-                AchievementUtils.achievementsValues.push(
-                    {
-                        value : 0,
-                        unlocked : false
-                    });
-            }
-            //TODO HANDLE ERRORS
-        });
-    }
-    static increaseCount(achievementID,amount){
-        // let oldAmount =;
-        // oldAmount += amount;
-        // TDAchievements.counter[achievementID] = oldAmount;
-        return AchievementUtils.achievementsValues[achievementID].value += amount;
-    }
-
-    static increaseCounterAndTryUnlock(achievementID,amount){
-        if (sessionStorage.getItem("account") === null) return false;
-        if (AchievementUtils.increaseCount(achievementID,amount) >= AchievementUtils.jsonData[achievementID].value &&
-            !AchievementUtils.achievementsValues[achievementID].unlocked){
-            AchievementUtils.achievementsValues[achievementID].unlocked = true;
-            AchievementUtils.unlock(AchievementUtils.userID,AchievementUtils.gameID,achievementID);
-            return true;
-        }
-        return false;
-    }
-
-    static unlock(userID,gameName,achievementID){
-        console.log("unlocking achievement");
-        let account = JSON.parse(sessionStorage.getItem("account"));
-        let achievementsList;
+    static init (gameName){
+        AchievementUtils.gameName = gameName;
         switch (gameName) {
             case "demineur":
-                achievementsList = account.demineur.achievements;
+                AchievementUtils.achievements = AchievementUtils.account.demineur.achievements;
                 break;
             case "clicker":
-                achievementsList = account.clicker.achievements;
+                AchievementUtils.achievements = AchievementUtils.account.clicker.achievements;
                 break;
             case "towerDefense":
-                achievementsList = account.towerDefense.achievements;
+                AchievementUtils.achievements = AchievementUtils.account.towerDefense.achievements;
                 break;
             default:
                 console.error("Game not found");
                 return;
         }
-        let achievement = achievementsList[achievementID];
-        achievement.achieved = true;
-        console.log(achievement);
-
-
-
-
-        this.displayAchievement(gameName,achievementID);
+    }
+    static increaseCount(achievementID,amount){
+        return AchievementUtils.achievements[achievementID].valueCurrent += amount;
     }
 
-    static displayAchievement(gameName, achievementID) {
-        console.log("achievement_spawner clicked");
-        const achievementPATH = "/games/" + gameName + "/asset/data/achievement.json";
+    static increaseCounterAndTryUnlock(achievementID,amount){
+        if (AchievementUtils.increaseCount(achievementID,amount) >= AchievementUtils.achievements[achievementID].valueNeed &&
+            !AchievementUtils.achievements[achievementID].unlocked) {
+            AchievementUtils.unlock(achievementID);
+            return true;
+        }
+        return false;
+    }
+
+    static unlock(achievementID){
+        console.log("unlocking achievement");
+
+        AchievementUtils.achievements[achievementID].unlocked = true;
+        sessionStorage.setItem("account",JSON.stringify(AchievementUtils.account));
+
+        this.displayAchievement(achievementID);
+    }
+
+    static displayAchievement(achievementID) {
+        const achievementPATH = "/games/" + AchievementUtils.gameName + "/asset/data/achievement.json";
         AB_Utils.readTextFile(achievementPATH, (achievement) => {
             let json = JSON.parse(achievement);
             if (!json) {
@@ -113,6 +84,13 @@ export default class AchievementUtils {
                 }
             });
 
+        });
+    }
+
+    static resetAchievements() {
+        AchievementUtils.achievements.forEach((achievement) => {
+            achievement.valueCurrent = 0;
+            achievement.unlocked = false;
         });
     }
 
