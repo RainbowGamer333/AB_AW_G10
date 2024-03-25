@@ -4,7 +4,6 @@ import {AB_Utils} from "./AB_Utils.js";
 import {ScoreboardClicker, ScoreboardDemineur, ScoreboardTowerDefense} from "./Scoreboard.js";
 import AchievementUtils from "./AchievementUtils.js";
 
-
 function init(){
     //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     AB_Utils.readTextFile("/component/footer.html", (text) =>{
@@ -73,14 +72,21 @@ function init(){
         }
 
     }
-
-
-    // Achievements popup - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // const achievementSpawner = document.getElementById("achievement_spawner");
-    // document.addEventListener("click", function () {
-    //     AchievementUtils.unlock("userName","towerDefense",0);
-    // });
 }
+
+const gameCards = document.querySelectorAll(".gameCard");
+gameCards.forEach(gameCard => {
+    gameCard.addEventListener("click", function (e) {
+        e.preventDefault();
+        let href = gameCard.getAttribute("href");
+        if (JSON.parse(sessionStorage.getItem("account"))) window.location.href = href;
+        else window.location.href = "/AB_AW_G10/account/log-in.html";
+    });
+
+    gameCard.addEventListener("mouseover", function () {
+        gameCard.style.cursor = "pointer";
+    });
+});
 
 
 

@@ -16,6 +16,9 @@ export function updateNavbar() {
             window.location.href = "/AB_AW_G10/account/log-in.html";
         }
     });
+    account.addEventListener("mouseover", function () {
+        account.style.cursor = "pointer";
+    });
 
 }
 
