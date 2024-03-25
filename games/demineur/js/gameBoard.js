@@ -32,8 +32,9 @@ export class GameBoard {
      * @param nbCols Nombre de colonnes
      * @param nbRows Nombre de lignes
      * @param nbMines Nombre de mines
+     * @param difficulty Difficulté de la grille
      */
-    reinitialiserGrille(nbCols, nbRows, nbMines) {
+    reinitialiserGrille(nbCols, nbRows, nbMines, difficulty) {
         this.grid.stop();
         this.grille.innerHTML = "";
 
@@ -41,7 +42,7 @@ export class GameBoard {
         this.nbRows = nbRows;
         this.nbMines = nbMines;
 
-        this.grid = new Grid(this, nbRows, nbCols, nbMines);
+        this.grid = new Grid(this, nbRows, nbCols, nbMines, difficulty);
         this.ajouterGrille();
         this.setStyle();
     }

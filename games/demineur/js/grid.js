@@ -19,11 +19,12 @@ export class Grid {
     _noFlags = true;
 
 
-    constructor(gameBoard, numberRows, numberColumns, numberMines) {
+    constructor(gameBoard, numberRows, numberColumns, numberMines, difficulty) {
         initialiserScoresDemineur();
         this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
+        this.difficulty = difficulty;
         this._nbCellulesRevelee = 0;
 
         this.timer = new Timer();

@@ -68,15 +68,15 @@ function submitForm() {
     let diff = document.querySelector('input[name="diff"]:checked').value;
     switch(diff) {
         case "facile":
-            gameBoard.reinitialiserGrille(9, 9, 10);
+            gameBoard.reinitialiserGrille(9, 9, 10, "facile");
             ScoreboardDemineur.displayFacile();
             break;
         case "moyen":
-            gameBoard.reinitialiserGrille(16, 16, 40);
+            gameBoard.reinitialiserGrille(16, 16, 40, "moyen");
             ScoreboardDemineur.displayMoyen();
             break;
         case "difficile":
-            gameBoard.reinitialiserGrille(30, 16, 99);
+            gameBoard.reinitialiserGrille(30, 16, 99, "difficile");
             ScoreboardDemineur.displayDifficile();
             break;
         case "custom":
@@ -87,7 +87,7 @@ function submitForm() {
             nbCols = nbCols < 9 ? 9 : nbCols;
             nbMines = nbMines < 1 ? 1 : nbMines;
 
-            gameBoard.reinitialiserGrille(nbCols, nbRows, nbMines);
+            gameBoard.reinitialiserGrille(nbCols, nbRows, nbMines, "custom");
             break;
     }
 }
