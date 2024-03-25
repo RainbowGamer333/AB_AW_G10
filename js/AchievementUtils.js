@@ -11,14 +11,13 @@ export default class AchievementUtils {
         AB_Utils.readTextFile(achievementPATH, (achievement) => {
             let json = JSON.parse(achievement);
             if (!json) {
-                console.log("JSON reading error");
+                console.error("JSON reading error");
                 return;
             }
             AchievementUtils.jsonData = json;
             AchievementUtils.userID = userID;
             AchievementUtils.gameID = gameID;
             for (let i = 0; i < AchievementUtils.jsonData.length; i++){
-                console.log(AchievementUtils.jsonData[i].name)
                 AchievementUtils.achievementsValues.push(
                     {
                         value : 0,
@@ -36,6 +35,7 @@ export default class AchievementUtils {
     }
 
     static increaseCounterAndTryUnlock(achievementID,amount){
+        if (sessionStorage.getItem("account") === null) return false;
         if (AchievementUtils.increaseCount(achievementID,amount) >= AchievementUtils.jsonData[achievementID].value &&
             !AchievementUtils.achievementsValues[achievementID].unlocked){
             AchievementUtils.achievementsValues[achievementID].unlocked = true;
@@ -45,9 +45,32 @@ export default class AchievementUtils {
         return false;
     }
 
-    static unlock(userID,gameID,achievementID){
-        //TODO DO THE BACKEND CODE
-        this.displayAchievement(gameID,achievementID);
+    static unlock(userID,gameName,achievementID){
+        console.log("unlocking achievement");
+        let account = JSON.parse(sessionStorage.getItem("account"));
+        let achievementsList;
+        switch (gameName) {
+            case "demineur":
+                achievementsList = account.demineur.achievements;
+                break;
+            case "clicker":
+                achievementsList = account.clicker.achievements;
+                break;
+            case "towerDefense":
+                achievementsList = account.towerDefense.achievements;
+                break;
+            default:
+                console.error("Game not found");
+                return;
+        }
+        let achievement = achievementsList[achievementID];
+        achievement.achieved = true;
+        console.log(achievement);
+
+
+
+
+        this.displayAchievement(gameName,achievementID);
     }
 
     static displayAchievement(gameName, achievementID) {
