@@ -1,7 +1,7 @@
 import {Tower} from "../entity/Tower.js";
 import {gState} from "../main.js";
 
-export class Engine { //TODO RENAME TO GameEngine
+export class Engine {
     static lastGameObjectID = 0;
     static context;
     static gameObjects;

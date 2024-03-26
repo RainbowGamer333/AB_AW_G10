@@ -204,6 +204,65 @@ canvas{
     cursor: pointer;
 }
 
+
+#gameContainer{
+    background-color: #000000a8;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 720px;
+
+    #gameState_InGame{
+
+    }
+    #gameState_HomeScreen{
+        height: 100%;
+        display: flex;
+        & button{
+            display: flex;
+            margin: auto;
+            min-height: 50px;
+            align-items: center;
+            justify-content: center;
+
+            background-color: wheat;
+            padding: 5px 10px;
+            font-size: 40px;
+            border-radius: 10px;
+            border: 4px solid #d6c29e;
+            box-shadow: 0px 7px 0px 2px #9b8d74;
+            font-family: "ModernDOS9x14", sans-serif;
+            transition: all 0.1s;
+
+            &:hover{
+
+                box-shadow: 0px 15px 0px 2px #9b8d74;
+                transform: translateY(-12px) scale(102%);
+                transition: all 0.1s;
+            }
+
+            &:active{
+                box-shadow:0px 0px 0px 2px #9b8d74;
+            /*, 0px 4px 11px 2px #0000008a inset, 1px 0px 15px 0px white*/
+                transition: all 0.05s;
+                transform: translateY(0px) scale(100%);
+            }
+        }
+    }
+    #gameState_EndScreen{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        & span {
+            background-color: wheat;
+            padding: 5px 10px;
+            font-size: 60px;
+            border-radius: 10px;
+            border: 4px solid #d6c29e;
+        }
+    }
+}
 /*.towerButton .glow {*/
 /*    position: absolute;*/
 /*    width: 100%;*/

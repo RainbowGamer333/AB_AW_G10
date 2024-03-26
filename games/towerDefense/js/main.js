@@ -30,33 +30,27 @@ export const gState = {
 
 function init(){
     Engine.context.imageSmoothingEnabled = false;
-    Engine.gameState = gState.GAME;
+    Engine.gameState = gState.MENU;
+    displayHomeScreen();
 
 
     const achievementPATH = "/games/towerDefense/asset/data/achievement.json";
     AchievementUtils.init("UserID","towerDefense", achievementPATH);
 
-    MapUtils.createGround();
-    MapUtils.createVillage();
-    //MapUtils.createTestTowers();
-    MapUtils.createSpawner();
 
-
-    //Apply canvas size
-    canvas.width = Constants.width;
-    canvas.height = Constants.height;
-    console.log("width: "+canvas.width + " height:"+canvas.height);
-
-
-    canvas.addEventListener('mousedown', function(e) {
-        Gui.getCanvasMouseCoordinates(canvas, e)
-    })
-
-    console.log("Successfully initialized");
 
     AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
         AB_Utils.replaceComponent("scoreboard",text);
     });
+
+
+    const homeElement = document.getElementById("gameState_HomeScreen");
+    homeElement.querySelector("#startGame");
+    homeElement.addEventListener( "click",() => {
+        setTimeout(displayGame,50);
+        // displayGame();
+    })
+
 }
 
 
@@ -100,8 +94,13 @@ function gameLoop(timestamp) {
         updateGame(dt);
     }else if (Engine.gameState === gState.MENU){
         console.log("MENU STATE")
+        displayHomeScreen();
+        return;
     }else if (Engine.gameState === gState.END){
         renderGame();
+
+        displayEndScreen();
+        return;
         //TODO
         // console.log("END STATEEE")
     }
@@ -110,8 +109,59 @@ function gameLoop(timestamp) {
     requestAnimationFrame(gameLoop);
 }
 
+function displayHomeScreen(){
+    Engine.gameState = gState.MENU;
+    const inGameElement = document.getElementById("gameState_InGame");
+    const endGameElement = document.getElementById("gameState_EndScreen");
+    const homeElement = document.getElementById("gameState_HomeScreen");
+    inGameElement.style.display = "none";
+    endGameElement.style.display = "none";
+    homeElement.style.display = "flex";
+}
+
+function displayEndScreen(){
+    Engine.gameState = gState.END;
+    const inGameElement = document.getElementById("gameState_InGame");
+    const endGameElement = document.getElementById("gameState_EndScreen");
+    inGameElement.style.display = "none";
+    endGameElement.style.display = "flex";
+
+    const scoreElement = endGameElement.querySelector("span.scoreMessage")[0];
+    scoreElement.innerText = "Score: " + Engine.score;
+}
+
+function displayGame(){
+    Engine.gameState = gState.GAME;
+    const inGameElement = document.getElementById("gameState_InGame");
+    const endGameElement = document.getElementById("gameState_EndScreen");
+    const homeElement = document.getElementById("gameState_HomeScreen");
+    endGameElement.style.display = "none";
+    homeElement.style.display = "none";
+    inGameElement.style.display = "flex";
+
+    MapUtils.createGround();
+    MapUtils.createVillage();
+    //MapUtils.createTestTowers();
+    MapUtils.createSpawner();
+
+
+    //Apply canvas size
+    canvas.width = Constants.width;
+    canvas.height = Constants.height;
+    console.log("width: "+canvas.width + " height:"+canvas.height);
+
+
+    canvas.addEventListener('mousedown', function(e) {
+        Gui.getCanvasMouseCoordinates(canvas, e)
+    })
+
+    console.log("Successfully initialized");
+
+    requestAnimationFrame(gameLoop);
+
+}
+
 
 
 init();
 // gameLoop();
-requestAnimationFrame(gameLoop);
