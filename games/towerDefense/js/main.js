@@ -126,7 +126,7 @@ function displayEndScreen(){
     inGameElement.style.display = "none";
     endGameElement.style.display = "flex";
 
-    const scoreElement = endGameElement.querySelector("span.scoreMessage")[0];
+    const scoreElement = endGameElement.querySelector("span.scoreMessage");
     scoreElement.innerText = "Score: " + Engine.score;
 }
 
