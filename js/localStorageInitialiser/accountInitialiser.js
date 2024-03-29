@@ -23,7 +23,8 @@ function createAdmin() {
 }
 
 function initialiseImageAleatoire() {
-    return Math.floor(Math.random() * 4) + 1 + ".png";
+    let number = Math.floor(Math.random() * 12) + 1;
+    return "image" + number + ".jpg";
 }
 
 function initialiseDemineur() {
