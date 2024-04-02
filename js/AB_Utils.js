@@ -2,7 +2,7 @@ export class AB_Utils {
     static readTextFile(file, callback) {
         let rawFile = new XMLHttpRequest();
         rawFile.overrideMimeType("application/json");
-        rawFile.open("GET", file, true);
+        rawFile.open("GET", file, false);
         rawFile.onreadystatechange = function() {
             if (rawFile.readyState === 4 && rawFile.status == "200") {
                 callback(rawFile.responseText);
@@ -32,7 +32,7 @@ export class AB_Utils {
         return result;
     }
 
-    static replaceComponent(elementTagName, newTagHtml){
+    static replaceComponent(elementTagName, newTagHtml, callback = null){
         let oldElement = document.getElementsByTagName(elementTagName)[0];
         if (!oldElement) oldElement =  document.getElementById(elementTagName);
         const newElement = document.createElement(elementTagName);
@@ -41,6 +41,9 @@ export class AB_Utils {
             oldElement.replaceWith(newElement)
         }else{
             console.log("Node with the tag "+elementTagName+" not found.")
+        }
+        if (callback) {
+            callback(true);
         }
     }
 }

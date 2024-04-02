@@ -1,10 +1,13 @@
 import { GameBoard } from "./gameBoard.js";
+import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
+import AchievementUtils from "../../../js/AchievementUtils.js";
 
+const account = JSON.parse(sessionStorage.getItem("account"));
 const game = document.getElementById("game");
 const overlay = document.getElementById("overlay");
 const popup = document.getElementById("popup");
 const cancel = document.getElementById("cancel");
-const gameBoard = new GameBoard(9, 9, 10);
+const gameBoard = new GameBoard(9, 9, 10, "facile");
 const form = document.getElementById("form");
 const custom = document.getElementById("custom");
 const customW = document.getElementById("customW");
@@ -13,6 +16,7 @@ const customM = document.getElementById("customM");
 
 function onload() {
     setupForm();
+    AchievementUtils.init("demineur");
 }
 
 /**
@@ -20,7 +24,6 @@ function onload() {
  */
 function setupForm() {
     game.addEventListener("click", function() {
-        console.log("click");
         overlay.style.display = "block";
         popup.style.display = "block";
     });
@@ -65,13 +68,16 @@ function submitForm() {
     let diff = document.querySelector('input[name="diff"]:checked').value;
     switch(diff) {
         case "facile":
-            gameBoard.reinitialiserGrille(9, 9, 10);
+            gameBoard.reinitialiserGrille(9, 9, 10, "facile");
+            ScoreboardDemineur.displayFacile();
             break;
         case "moyen":
-            gameBoard.reinitialiserGrille(16, 16, 40);
+            gameBoard.reinitialiserGrille(16, 16, 40, "moyen");
+            ScoreboardDemineur.displayMoyen();
             break;
         case "difficile":
-            gameBoard.reinitialiserGrille(30, 16, 99);
+            gameBoard.reinitialiserGrille(30, 16, 99, "difficile");
+            ScoreboardDemineur.displayDifficile();
             break;
         case "custom":
             let nbCols = document.querySelector('input[name="customW"]').value;
@@ -81,7 +87,7 @@ function submitForm() {
             nbCols = nbCols < 9 ? 9 : nbCols;
             nbMines = nbMines < 1 ? 1 : nbMines;
 
-            gameBoard.reinitialiserGrille(nbCols, nbRows, nbMines);
+            gameBoard.reinitialiserGrille(nbCols, nbRows, nbMines, "custom");
             break;
     }
 }

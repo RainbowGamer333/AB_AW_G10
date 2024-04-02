@@ -2,7 +2,11 @@ import {Cell} from "./cell.js";
 import {Timer} from "./timer.js";
 import {MineCounter} from "./mineCounter.js";
 import {Smiley} from "./smiley.js";
-import {Scoreboard} from "../../../js/Scoreboard.js";
+import { initialiserScoresDemineur } from "../../../js/localStorageInitialiser/scoreInitialiser.js";
+import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
+import AchievementUtils from "../../../js/AchievementUtils.js";
+
+const account = JSON.parse(sessionStorage.getItem("account"));
 
 /**
  * La grille de jeu. Contient toutes les fonctionnalités du jeu.
@@ -11,14 +15,24 @@ export class Grid {
     _firstClick = true;
     _isClicked = false;
     _middleClicked = false;
+    _difficulty = "facile";
+    _noFlags = true;
 
 
-    constructor(gameBoard, numberRows, numberColumns, numberMines) {
-        this._gameBoard = gameBoard;
+    constructor(gameBoard, numberRows, numberColumns, numberMines, difficulty) {
+        //initialiserScoresDemineur();
         this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
+        this.difficulty = difficulty;
         this._nbCellulesRevelee = 0;
+
+        this.clickAudio = new Audio("asset/sons/click.mp3");
+        this.zeroAudio = new Audio("asset/sons/zero.mp3");
+        this.placeFlagAudio = new Audio("asset/sons/flag_place.mp3");
+        this.removeFlagAudio = new Audio("asset/sons/flag_remove.mp3");
+        this.gameOverAudio = new Audio("asset/sons/game_over.mp3");
+        this.victoryAudio = new Audio("asset/sons/victory.mp3");
 
         this.timer = new Timer();
         this.minesCounter = new MineCounter();
@@ -27,12 +41,21 @@ export class Grid {
 
         this._numberMines = numberMines;
         this.cells = [];
+
         this.creerGrid(numberRows, numberColumns);
         this.ajouterListeners();
     }
 
     get miningGrid() {
         return this._miningGrid;
+    }
+
+    get difficulty() {
+        return this._difficulty;
+    }
+
+    set difficulty(difficulty) {
+        this._difficulty = difficulty;
     }
 
     /**
@@ -65,7 +88,6 @@ export class Grid {
      * Affiche la cellule à la position (row, col). Effectue la gestion des mines et des cases vides
      * @param row la ligne de la cellule à afficher
      * @param col la colonne de la cellule à afficher
-     * @param callback le callback à appeler si la partie est gagnée
      */
     afficherCellule(row, col) {
         let cell = this.cells[row][col];
@@ -80,12 +102,14 @@ export class Grid {
             return;
         }
 
-        if (cell.valeur === 0) {
-            this.decouvrirZeros(row, col);
-        }
-
         if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
             if (!this._victory) this.victory();
+        }
+
+        if (cell.valeur === 0) {
+            this.zeroAudio.play().then(r => this.decouvrirZeros(row, col));
+        } else {
+            this.clickAudio.play();
         }
     }
 
@@ -106,11 +130,14 @@ export class Grid {
                     e.preventDefault();
                     // Le clique droit ne marche pas sur une cellule désactivée ou déjà visible
                     if (cell.visible || cell.disabled) return;
+                    this._noFlags = false;
 
                     if (cell.flag) {
+                        this.removeFlagAudio.play();
                         cell.removeFlag();
                         this.minesCounter.incrementMineCounter();
                     } else {
+                        this.placeFlagAudio.play();
                         cell.addFlag();
                         this.minesCounter.decrementMineCounter();
                     }
@@ -198,7 +225,8 @@ export class Grid {
                             this.timer.startTimer();
                         }
 
-                        this.afficherCellule(i, j);
+                        this.afficherCellule(i, j)
+
                     }
                 });
             }
@@ -317,10 +345,45 @@ export class Grid {
     victory() {
         this._victory = true;
         this.timer.stopTimer();
+        this.victoryAudio.play();
         this.smiley.victory();
         this.mettreFlags();
         this.disableCells();
-        Scoreboard.updateScore("test", 1111);
+
+        console.log("Timer : " + this.timer.time);
+
+        // Verification des achievements
+
+        if (account !== null) {
+            AchievementUtils.increaseCounterAndTryUnlock(0, 1);
+            AchievementUtils.increaseCounterAndTryUnlock(1, 1);
+            AchievementUtils.increaseCounterAndTryUnlock(2, 1);
+            AchievementUtils.increaseCounterAndTryUnlock(3, 1);
+            AchievementUtils.increaseCounterAndTryUnlock(4, 1);
+
+            switch (this.difficulty) {
+                case "facile":
+                    AchievementUtils.increaseCounterAndTryUnlock(5, 1);
+                    break;
+                case "moyen":
+                    AchievementUtils.increaseCounterAndTryUnlock(6, 1);
+                    break;
+                case "difficile":
+                    AchievementUtils.increaseCounterAndTryUnlock(7, 1);
+                    break;
+            }
+
+            if (this._noFlags) AchievementUtils.increaseCounterAndTryUnlock(8, 1);
+
+            if (this.timer.time <= 100) AchievementUtils.increaseCounterAndTryUnlock(9, 1);
+            if (this.timer.time <= 50) AchievementUtils.increaseCounterAndTryUnlock(10, 1);
+            if (this.timer.time <= 30) AchievementUtils.increaseCounterAndTryUnlock(11, 1);
+            if (this.timer.time <= 15) AchievementUtils.increaseCounterAndTryUnlock(12, 1);
+
+            this.updateScore(account.username, this.timer.time);
+        }
+
+
     }
 
     /**
@@ -329,9 +392,11 @@ export class Grid {
      */
     gameOver(mineCliquee) {
         this.timer.stopTimer();
-        this.smiley.defeat();
-        this.afficherMines(mineCliquee);
-        this.disableCells();
+        this.gameOverAudio.play().then(() => {
+            this.smiley.defeat();
+            this.afficherMines(mineCliquee);
+            this.disableCells();
+        });
     }
 
     /**
@@ -445,11 +510,27 @@ export class Grid {
      * Désactive toutes les cellules de la grille.
      */
     disableCells() {
-        console.log("disable");
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
                 this.cells[i][j].disable();
             }
+        }
+    }
+
+    updateScore(nom, score) {
+        console.log("updating score");
+        console.log(this.difficulty);
+        switch (this.difficulty) {
+            case "facile":
+                console.log("facile");
+                ScoreboardDemineur.updateFacile(nom, score);
+                break;
+            case "moyen":
+                ScoreboardDemineur.updateMoyen(nom, score);
+                break;
+            case "difficile":
+                ScoreboardDemineur.updateDifficile(nom, score);
+                break;
         }
     }
 
