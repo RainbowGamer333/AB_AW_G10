@@ -213,7 +213,9 @@ export class Grid {
                             this.timer.startTimer();
                         }
 
-                        this.afficherCellule(i, j);
+                        let audio = new Audio("asset/sons/click.mp3");
+
+                        audio.play().then(() => this.afficherCellule(i, j)).catch(e => e);
                     }
                 });
             }
