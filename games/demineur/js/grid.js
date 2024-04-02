@@ -32,6 +32,7 @@ export class Grid {
         this.placeFlagAudio = new Audio("asset/sons/flag_place.mp3");
         this.removeFlagAudio = new Audio("asset/sons/flag_remove.mp3");
         this.gameOverAudio = new Audio("asset/sons/game_over.mp3");
+        this.victoryAudio = new Audio("asset/sons/victory.mp3");
 
         this.timer = new Timer();
         this.minesCounter = new MineCounter();
@@ -344,6 +345,7 @@ export class Grid {
     victory() {
         this._victory = true;
         this.timer.stopTimer();
+        this.victoryAudio.play();
         this.smiley.victory();
         this.mettreFlags();
         this.disableCells();
