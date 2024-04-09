@@ -5,6 +5,7 @@ import {Smiley} from "./smiley.js";
 import { initialiserScoresDemineur } from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
+import {VolumeDemineur} from "../../../js/Volume.js";
 
 const account = JSON.parse(sessionStorage.getItem("account"));
 
@@ -27,12 +28,7 @@ export class Grid {
         this.difficulty = difficulty;
         this._nbCellulesRevelee = 0;
 
-        this.clickAudio = new Audio("asset/sons/click.mp3");
-        this.zeroAudio = new Audio("asset/sons/zero.mp3");
-        this.placeFlagAudio = new Audio("asset/sons/flag_place.mp3");
-        this.removeFlagAudio = new Audio("asset/sons/flag_remove.mp3");
-        this.gameOverAudio = new Audio("asset/sons/game_over.mp3");
-        this.victoryAudio = new Audio("asset/sons/victory.mp3");
+        VolumeDemineur.init();
 
         this.timer = new Timer();
         this.minesCounter = new MineCounter();
@@ -107,9 +103,10 @@ export class Grid {
         }
 
         if (cell.valeur === 0) {
-            this.zeroAudio.play().then(r => this.decouvrirZeros(row, col));
+            VolumeDemineur.playZero();
+            this.decouvrirZeros(row, col)
         } else {
-            this.clickAudio.play();
+            VolumeDemineur.playClick();
         }
     }
 
@@ -133,11 +130,11 @@ export class Grid {
                     this._noFlags = false;
 
                     if (cell.flag) {
-                        this.removeFlagAudio.play();
+                        VolumeDemineur.playRemoveFlag();
                         cell.removeFlag();
                         this.minesCounter.incrementMineCounter();
                     } else {
-                        this.placeFlagAudio.play();
+                        VolumeDemineur.playPlaceFlag();
                         cell.addFlag();
                         this.minesCounter.decrementMineCounter();
                     }
@@ -345,7 +342,7 @@ export class Grid {
     victory() {
         this._victory = true;
         this.timer.stopTimer();
-        this.victoryAudio.play();
+        VolumeDemineur.playVictory();
         this.smiley.victory();
         this.mettreFlags();
         this.disableCells();
@@ -392,11 +389,10 @@ export class Grid {
      */
     gameOver(mineCliquee) {
         this.timer.stopTimer();
-        this.gameOverAudio.play().then(() => {
-            this.smiley.defeat();
-            this.afficherMines(mineCliquee);
-            this.disableCells();
-        });
+        VolumeDemineur.playGameOver();
+        this.smiley.defeat();
+        this.afficherMines(mineCliquee);
+        this.disableCells();
     }
 
     /**
