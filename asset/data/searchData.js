@@ -12,7 +12,7 @@ export const searchData = [
     {
         link : "/AB_AW_G10/games/towerDefense/index.html",
         display_name : "tower defense",
-        display_name_aliases : ["tw"]
+        display_name_aliases : ["tw","village defense"]
     },
     {
         link : "/AB_AW_G10/games/demineur/index.html",
