@@ -108,10 +108,10 @@ main {
         align-items: center;
     }
 
-    #toggle_fullscreen{
+    #toggle_fullscreen, #toggle_volume{
         width: 26px;
         height: 26px;
-        background-image: url("../asset/icons/fullscreen.png");
+
         background-color: transparent;
         background-size: cover;
         border : none;
@@ -123,6 +123,14 @@ main {
         &:active{
             filter: brightness(0.7);
         }
+    }
+
+    #toggle_fullscreen{
+        background-image: url("../asset/icons/fullscreen.png");
+    }
+
+    #toggle_volume{
+        background-image: url("../asset/icons/volume.png");
     }
 
 
