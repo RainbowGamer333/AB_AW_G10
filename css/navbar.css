@@ -77,10 +77,10 @@ nav{
 
     }
 
-     .search_results_container {
+     #search_results_container {
         position: absolute;
         height: fit-content;
-        min-height: 60px;
+        /*min-height: 60px;*/
         width: 90%;
         /*box-shadow: 0px 0px 12px 4px black;*/
         z-index: 11;
@@ -102,6 +102,7 @@ nav{
             background-color: #424242b5;
             display: flex;
             flex-direction: column;
+             text-decoration: none;
 
 
 
@@ -109,6 +110,10 @@ nav{
                 color: var(--colMain);
                 cursor: pointer;
             }
+
+             &.no_hover:hover{
+                cursor: auto;
+             }
 
             &:last-of-type{
                 border-radius: 0px 0 10px 10px;

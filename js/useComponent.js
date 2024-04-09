@@ -4,6 +4,7 @@ import {AB_Utils} from "./AB_Utils.js";
 import {ScoreboardClicker, ScoreboardDemineur, ScoreboardTowerDefense} from "./Scoreboard.js";
 import AchievementUtils from "./AchievementUtils.js";
 import {VolumeDemineur} from "./Volume.js";
+import SearchUtils from "./SearchUtils.js";
 
 function init(){
     //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -54,6 +55,31 @@ function init(){
     }
 
 
+    //Enable searchBar
+    const searchInputElement = document.getElementById("search_input");
+    const searchResultElement = document.getElementById("search_results_container")
+    if (searchInputElement && searchResultElement){
+        searchInputElement.addEventListener("input", function(){
+           const value  = searchInputElement.value;
+           searchResultElement.innerHTML = '';
+           if(value.length > 0) {
+               const results = SearchUtils.searchGames(value);
+               for (let i = 0; i < results.length; i++){
+                   const resultElement = document.createElement("a");
+                   resultElement.classList.add("search_result");
+                   resultElement.innerHTML = results[i].display_name;
+                   resultElement.href = results[i].link;
+                   searchResultElement.appendChild(resultElement)
+               }
+               if (results.length === 0){
+                   const resultElement = document.createElement("p");
+                   resultElement.classList.add("search_result");
+                   resultElement.innerHTML = "Aucun élement";
+                   searchResultElement.appendChild(resultElement)
+               }
+           }
+        })
+    }
 
     //Enable fullscreen - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const fullscreenElement = document.getElementById("toggle_fullscreen");
