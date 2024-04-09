@@ -236,7 +236,7 @@ export class Grid {
      * @param j la colonne de la cellule
      */
     previewCasesAutour(i, j) {
-        if (!this.cells[i][j].visible) this.cells[i][j].element.classList.remove("unclicked");;
+        if (!this.cells[i][j].visible) this.cells[i][j].element.classList.remove("unclicked");
         this.coordonneesAutour(i, j).forEach((coord) => {
             this.cells[coord[0]][coord[1]].element.classList.remove("unclicked");
         });
@@ -463,7 +463,6 @@ export class Grid {
      * Retourne toutes les coordonnées autour de la cellule qui peuvent être affichées. Ne comprend pas les cellules sortant de la grille.
      * @param row la ligne de la cellule
      * @param col la colonne de la cellule
-     * @param cells la liste des cellules à révéler
      * @returns {*[]} les coordonnées autour de la cellule qui peuvent être affichées
      */
     canDisplayAutour(row, col) {
@@ -497,7 +496,6 @@ export class Grid {
         if (cell.isMine()) this.gameOver(cell);
         else {
             this.afficherCellule(row, col);
-            this._numberCasesRevealed += 1;
             if (cell.valeur === 0) this.decouvrirZeros(row, col);
         }
     }
