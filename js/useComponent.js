@@ -44,15 +44,25 @@ function init(){
     const volumeElement = document.getElementById("volume_range");
     if (volumeElement){
         volumeElement.addEventListener('input', function(){
-            const volume = volumeElement.value;
-
+            const volume = volumeElement.value/100;
             switch(window.location.pathname.split("/")[3]) {
                 case "demineur":
-                    VolumeDemineur.updateVolume(volume/100);
+                    VolumeDemineur.updateVolume(volume);
             }
         });
     }
 
+    //Create mute button - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    let mute = false;
+    const volumeToggle = document.getElementById("toggle_volume");
+    if (volumeToggle) {
+        volumeToggle.addEventListener('click', function(){
+            switch(window.location.pathname.split("/")[3]) {
+                case "demineur":
+                    VolumeDemineur.mute();
+            }
+        });
+    }
 
 
     //Enable fullscreen - - - - - - - - - - - - - - - - - - - - - - - - - - - -
