@@ -14,12 +14,12 @@ export class VolumeDemineur extends Volume {
     }
 
     static updateVolume(value) {
-        VolumeDemineur.clickAudio.volume = value/100;
-        VolumeDemineur.zeroAudio.volume = value/100;
-        VolumeDemineur.placeFlagAudio.volume = value/100;
-        VolumeDemineur.removeFlagAudio.volume = value/100;
-        VolumeDemineur.gameOverAudio.volume = value/100;
-        VolumeDemineur.victoryAudio.volume = value/100;
+        VolumeDemineur.clickAudio.volume = value;
+        VolumeDemineur.zeroAudio.volume = value;
+        VolumeDemineur.placeFlagAudio.volume = value;
+        VolumeDemineur.removeFlagAudio.volume = value;
+        VolumeDemineur.gameOverAudio.volume = value;
+        VolumeDemineur.victoryAudio.volume = value;
     }
 
     static playClick() {
