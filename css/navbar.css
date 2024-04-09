@@ -63,7 +63,7 @@ nav{
     }
 
     & #search_container{
-        backdrop-filter: blur(10px);
+        /*backdrop-filter: blur(10px);*/
         /*outline: none;*/
         border-radius: var(--borderRadius);
         border: none;
@@ -77,25 +77,33 @@ nav{
 
     }
 
-    & .search_results_container {
+     .search_results_container {
         position: absolute;
         height: fit-content;
         min-height: 60px;
         width: 90%;
+        /*box-shadow: 0px 0px 12px 4px black;*/
+        z-index: 11;
+        border-radius: 0 0 15px 15px;
+        /*backdrop-filter: invert();*/
+         background-color: #373737e0;
+
         > div{
 
-            background-color: rgb(255 255 255 / 11%);
-            backdrop-filter: blur(10px);
+            /*background-color: rgb(255 255 255 / 11%);*/
+
             /*transform: translateY(25px);*/
         }
 
-        & .search_result{
+         .search_result{
             height: 20px;
             padding: 1px 10px;
             margin: 0;
-            background-color: #7b7b7b30;
+            background-color: #424242b5;
             display: flex;
             flex-direction: column;
+
+
 
             &:hover {
                 color: var(--colMain);
