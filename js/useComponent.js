@@ -45,7 +45,7 @@ function init(){
     if (volumeElement){
         volumeElement.addEventListener('input', function(){
             const volume = volumeElement.value;
-            
+
             switch(window.location.pathname.split("/")[3]) {
                 case "demineur":
                     VolumeDemineur.updateVolume(volume/100);
