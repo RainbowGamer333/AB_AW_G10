@@ -16,14 +16,15 @@ import {MiniCanon} from "../entity/impl/tower/MiniCanon.js";
 import {DoubleCanon} from "../entity/impl/tower/DoubleCanon.js";
 import {Wind} from "../entity/impl/tower/Wind.js";
 import {IceCanon} from "../entity/impl/tower/IceCanon.js";
+import TDAchievementConstant from "../achievement/TDAchievementConstant.js";
+import AchievementUtils from "../../../../js/AchievementUtils.js";
 // import {Constants} from "../constants/Constants.js";
-let isDragging = false;
+
 let draggedButton = null;
 let draggedButtonX = 0;
 let draggedButtonY = 0;
 let draggingElement = null;
-let offsetX;
-let offsetY;
+
 
 export class TowerButton{
     buttonID;
@@ -146,6 +147,7 @@ function stopDrag(event) {
                 console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
                 Engine.addGameObject(gameObject);
                 Engine.coinBalance -= towerButton.price;
+                AchievementUtils.increaseCounterAndTryUnlock(TDAchievementConstant.SPEND_MONEY,towerButton.price);
             }
         }
         // console.log("End drag x:"+mouseCoordinates.x+" y:"+mouseCoordinates.y);

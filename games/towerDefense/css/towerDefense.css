@@ -1,5 +1,5 @@
 :root{
-    --towerButtonSize : 80px;
+    --towerButtonSize : 90px;
     --GuiBackgroundColor : #5c6370;
 }
 
@@ -142,7 +142,7 @@ canvas{
     font-family: "ModernDOS9x14", sans-serif;
     filter: brightness(1.0);
     transition: 0.1s filter ease;
-    aspect-ratio: 80 / 165;
+    aspect-ratio: 80 / 140;
     /* background-image: url(asset/tower_background.png); */
     display: flex;
     flex-direction: column;

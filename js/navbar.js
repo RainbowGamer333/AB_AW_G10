@@ -16,6 +16,9 @@ export function updateNavbar() {
             window.location.href = "/AB_AW_G10/account/log-in.html";
         }
     });
+    account.addEventListener("mouseover", function () {
+        account.style.cursor = "pointer";
+    });
 
 }
 
@@ -41,6 +44,8 @@ function displayConnexion() {
 
     connexion.style.display = "flex";
     deconnexion.style.display = "none";
+
+    deconnexion.removeEventListener("click", deconnecter);
 }
 
 function displayDeconnexion() {
@@ -50,12 +55,7 @@ function displayDeconnexion() {
     connexion.style.display = "none";
     deconnexion.style.display = "flex";
 
-    deconnexion.addEventListener("click", function () {
-        updateLocalStorage(JSON.parse(sessionStorage.getItem("account")), () => {
-            sessionStorage.removeItem("account");
-            window.location.href = "/AB_AW_G10/index.html";
-        });
-    });
+    deconnexion.addEventListener("click", deconnecter);
 }
 
 function updateLocalStorage(account, callback) {
@@ -64,6 +64,13 @@ function updateLocalStorage(account, callback) {
     accounts[index] = account;
     localStorage.setItem("accounts", JSON.stringify(accounts));
     callback();
+}
+
+function deconnecter() {
+    updateLocalStorage(JSON.parse(sessionStorage.getItem("account")), () => {
+        sessionStorage.removeItem("account");
+        window.location.href = "/AB_AW_G10/index.html";
+    });
 }
 
 function sessionActive() {

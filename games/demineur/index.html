@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../css/var.css">
     <link rel="stylesheet" href="../../css/home.css">
     <link rel="stylesheet" href="../../css/scoreboard.css">
+    <link rel="stylesheet" href="../../css/achievement.css">
     <title>Démineur</title>
 </head>
 <body>
@@ -62,25 +63,26 @@
                 </div>
                 <div id="gameBoardHeader">
                     <div id="gameBoardHeaderMineCounter">
-                        <img id="mineH" src="assets/header/timer0.png" alt="h">
-                        <img id="mineT" src="assets/header/timer0.png" alt="t">
-                        <img id="mineU" src="assets/header/timer0.png" alt="u">
+                        <img id="mineH" src="asset/header/timer0.png" alt="h">
+                        <img id="mineT" src="asset/header/timer0.png" alt="t">
+                        <img id="mineU" src="asset/header/timer0.png" alt="u">
                     </div>
                     <div id="gameBoardHeaderSmiley">
                         <button id="gameBoardHeaderSmileyButton">
-                            <img id="smiley" src="assets/header/normal.png" alt="smile">
+                            <img id="smiley" src="asset/header/normal.png" alt="smile">
                         </button>
                     </div>
                     <div id="gameBoardHeaderTime">
-                        <img id="timerH" src="assets/header/timer0.png" alt="h">
-                        <img id="timerT" src="assets/header/timer0.png" alt="t">
-                        <img id="timerU" src="assets/header/timer0.png" alt="u">
+                        <img id="timerH" src="asset/header/timer0.png" alt="h">
+                        <img id="timerT" src="asset/header/timer0.png" alt="t">
+                        <img id="timerU" src="asset/header/timer0.png" alt="u">
                     </div>
                 </div>
                 <div id="grille"></div>
             </div>
         </div>
         <div class="game_settings">
+            <input type="range" min="0" max="100" value="50" id="volume_range">
             <div class="jumpButtonContainer">
                 <a href="#rules">Règles du jeu</a>
                 <button id="resetGame"></button>

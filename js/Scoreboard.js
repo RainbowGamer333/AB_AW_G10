@@ -1,32 +1,77 @@
-export class Scoreboard {
-    static updateScore(username, score) {
+class Scoreboard {
+    static displayScoreboard(gameName) {
+        let scores = JSON.parse(localStorage.getItem(gameName));
+        let scoreLines = document.querySelectorAll(".line");
+
+        try {
+            for (let i = 0; i < scoreLines.length - 1; i++) {
+                scoreLines[i+1].querySelector(".score").innerText = scores[i].score;
+                scoreLines[i+1].querySelector(".name").innerText = scores[i].nom;
+            }
+        } catch (e) {
+            console.error(gameName + " n'est pas un type de score valide");
+        }
+
+    }
+
+    static updateScoreboard(gameName, username, score, ascending = false) {
         console.log("updating score");
-        const scores = document.querySelectorAll(".line");
-        console.log(scores);
+        let scores = JSON.parse(localStorage.getItem(gameName));
+        scores.push({
+            nom: username,
+            score: score
+        });
 
-        let numLine = 1;
-        while (numLine < scores.length && (scores[numLine].children[1].innerText < score || scores[numLine].children[1].innerText !== "(...)")) {
-            numLine++;
-        }
+        if (!ascending) scores.sort((a, b) => a.score - b.score);
+        else scores.sort((a, b) => b.score - a.score);
 
-        if (numLine < scores.length) {
-            replaceScore(numLine, username, score);
-        }
+        localStorage.setItem(gameName, JSON.stringify(scores));
+        this.displayScoreboard(gameName);
     }
 }
 
+export class ScoreboardDemineur extends Scoreboard {
+    static displayFacile() {
+        super.displayScoreboard("scoreDemineurFacile");
+    }
 
-function replaceScore(numLine, username, score) {
-    debugger;
-    if (numLine === 11) return;
-    if (username === "(...)") return;
+    static updateFacile(username, score) {
+        super.updateScoreboard("scoreDemineurFacile", username, score, false);
+    }
 
-    let line = document.querySelectorAll(".line")[numLine];
-    let tempScore = line.children[1].innerHTML;
-    let tempUsername = line.children[2].innerHTML;
+    static displayMoyen() {
+        super.displayScoreboard("scoreDemineurMoyen");
+    }
 
-    line.children[2].innerHTML = username;
-    line.children[1].innerHTML = score;
+    static updateMoyen(username, score) {
+        super.updateScoreboard("scoreDemineurMoyen", username, score, false);
+    }
 
-    replaceScore(numLine+1, tempUsername, tempScore);
+    static displayDifficile() {
+        super.displayScoreboard("scoreDemineurDifficile");
+    }
+
+    static updateDifficile(username, score) {
+        super.updateScoreboard("scoreDemineurDifficile", username, score, false);
+    }
+}
+
+export class ScoreboardClicker extends Scoreboard {
+    static displayScore() {
+        super.displayScoreboard("scoreClicker");
+    }
+
+    static updateScore(username, score) {
+        super.updateScoreboard("scoreClicker", username, score, false);
+    }
+}
+
+export class ScoreboardTowerDefense extends Scoreboard {
+    static displayScore() {
+        super.displayScoreboard("scoreTowerDefense");
+    }
+
+    static updateScore(username, score) {
+        super.updateScoreboard("scoreTowerDefense", username, score, true);
+    }
 }

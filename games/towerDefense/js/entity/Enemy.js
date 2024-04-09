@@ -4,6 +4,7 @@ import {Engine} from "../constants/Engine.js";
 import {Tower} from "./Tower.js";
 import {Ghost} from "./impl/particle/Ghost.js";
 import {Hitmarker} from "./impl/particle/Hitmarker.js";
+import {Clickable} from "../component/Clickable.js";
 
 
 export class Enemy extends Entity{
@@ -16,6 +17,7 @@ export class Enemy extends Entity{
         this.score = 0;
         this.coinDropped = 0;
         this.attackRate = 1;
+        // this.addComponent(new Clickable());
     }
 
     update(dt) {

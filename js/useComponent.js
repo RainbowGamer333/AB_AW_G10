@@ -1,7 +1,9 @@
 import {Path} from "../games/towerDefense/js/constants/Path.js";
 import {updateNavbar} from "./navbar.js";
 import {AB_Utils} from "./AB_Utils.js";
-
+import {ScoreboardClicker, ScoreboardDemineur, ScoreboardTowerDefense} from "./Scoreboard.js";
+import AchievementUtils from "./AchievementUtils.js";
+import {VolumeDemineur} from "./Volume.js";
 
 function init(){
     //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -16,9 +18,42 @@ function init(){
     });
 
     //Create scoreboard - - - - - - - - - - - - - - - - - - - - - - - - - -
-    AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
-        AB_Utils.replaceComponent("scoreboard",text);
-    });
+    const scoreboardElement = document.getElementById("scoreboard");
+    if (scoreboardElement){
+        AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
+            AB_Utils.replaceComponent("scoreboard",text, function (completed) {
+                if (completed){
+                    switch(window.location.pathname.split("/")[3]) {
+                        case "demineur":
+                            ScoreboardDemineur.displayFacile();
+                            break;
+                        case "clicker":
+                            ScoreboardClicker.displayScoreboard();
+                            break;
+                        case "towerDefense":
+                            ScoreboardTowerDefense.displayScoreboard();
+                            break;
+                    }
+                }
+            });
+        });
+    }
+
+
+    //Create volume bar - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    const volumeElement = document.getElementById("volume_range");
+    if (volumeElement){
+        volumeElement.addEventListener('input', function(){
+            const volume = volumeElement.value;
+            console.log(volume);
+            switch(window.location.pathname.split("/")[3]) {
+                case "demineur":
+                    VolumeDemineur.updateVolume(volume/100);
+            }
+        });
+    }
+
+
 
     //Enable fullscreen - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const fullscreenElement = document.getElementById("toggle_fullscreen");
@@ -54,11 +89,21 @@ function init(){
         }
 
     }
-
-
-    // Achievements popup - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    const achievementSpawner = document.getElementById("achievement_spawner");
 }
+
+const gameCards = document.querySelectorAll(".gameCard");
+gameCards.forEach(gameCard => {
+    gameCard.addEventListener("click", function (e) {
+        e.preventDefault();
+        let href = gameCard.getAttribute("href");
+        if (JSON.parse(sessionStorage.getItem("account"))) window.location.href = href;
+        else window.location.href = "/AB_AW_G10/account/log-in.html";
+    });
+
+    gameCard.addEventListener("mouseover", function () {
+        gameCard.style.cursor = "pointer";
+    });
+});
 
 
 

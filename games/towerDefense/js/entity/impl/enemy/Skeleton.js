@@ -1,6 +1,8 @@
 import {Enemy} from "../../Enemy.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
+import TDAchievementConstant from "../../../achievement/TDAchievementConstant.js";
+import AchievementUtils from "../../../../../../js/AchievementUtils.js";
 
 export class Skeleton extends Enemy{
     constructor(x,y) {
@@ -16,5 +18,10 @@ export class Skeleton extends Enemy{
         this.addComponent(spriteRenderer)
         this.score = 2;
         this.coinDropped = 1;
+    }
+
+    onDeath() {
+        AchievementUtils.increaseCounterAndTryUnlock(TDAchievementConstant.KILL_SKELETONS,1);
+        super.onDeath();
     }
 }

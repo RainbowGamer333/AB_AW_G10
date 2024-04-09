@@ -1,6 +1,6 @@
 export class MineCounter {
 
-    src = "./assets/header/timer";
+    src = "./asset/header/timer";
     mines = 0;
     minesOffset = 0;
 

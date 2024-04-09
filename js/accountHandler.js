@@ -7,6 +7,8 @@ if (accounts === null || accounts === []) {
     clearAccounts();
 }
 
+//clearAccounts();
+//console.log(accounts);
 
 document.querySelector("#form").addEventListener("submit", (e) => {
     e.preventDefault();

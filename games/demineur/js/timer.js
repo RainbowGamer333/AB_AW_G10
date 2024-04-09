@@ -2,7 +2,7 @@ export class Timer {
 
     interval;
     time;
-    src = "./assets/header/timer";
+    src = "./asset/header/timer";
 
     constructor() {
         this.timerUnit = document.querySelector("#timerU");

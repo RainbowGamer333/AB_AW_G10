@@ -5,6 +5,8 @@ import {Engine} from "../../../constants/Engine.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";
 import {Goblin} from "../enemy/Goblin.js";
+import TDAchievementConstant from "../../../achievement/TDAchievementConstant.js";
+import AchievementUtils from "../../../../../../js/AchievementUtils.js";
 
 export class GoldenTree extends Tower{
     productionAmount;
@@ -20,6 +22,7 @@ export class GoldenTree extends Tower{
         this.addComponent(spriteRenderer)
         this.productionAmount = 10;
         this.attackRate = 3;
+        AchievementUtils.increaseCounterAndTryUnlock(TDAchievementConstant.PLACE_TREES,1);
     }
 
 

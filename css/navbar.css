@@ -28,16 +28,6 @@ nav{
         height: 60px;
     }
 
-    & input{
-        backdrop-filter: blur(10px);
-        outline: none;
-        border-radius: var(--borderRadius);
-        border: none;
-        height: 25px;
-        background-color: rgb(255 255 255 / 11%);
-        color: var(--colMain);
-        letter-spacing: 1px;
-    }
 
     #account {
         width: 45px;
@@ -70,5 +60,64 @@ nav{
             transition: 0.2s linear all;
             filter: brightness(0.8);
         }
+    }
+
+    & #search_container{
+        backdrop-filter: blur(10px);
+        /*outline: none;*/
+        border-radius: var(--borderRadius);
+        border: none;
+        height: 25px;
+        background-color: rgb(255 255 255 / 11%);
+        color: var(--colMain);
+        letter-spacing: 1px;
+        padding: 0 10px;
+        position: relative;
+
+
+    }
+
+    & .search_results_container {
+        position: absolute;
+        height: fit-content;
+        min-height: 60px;
+        width: 90%;
+        > div{
+
+            background-color: rgb(255 255 255 / 11%);
+            backdrop-filter: blur(10px);
+            /*transform: translateY(25px);*/
+        }
+
+        & .search_result{
+            height: 20px;
+            padding: 1px 10px;
+            margin: 0;
+            background-color: #7b7b7b30;
+            display: flex;
+            flex-direction: column;
+
+            &:hover {
+                color: var(--colMain);
+                cursor: pointer;
+            }
+
+            &:last-of-type{
+                border-radius: 0px 0 10px 10px;
+                padding: 1px 10px 5px 10px;
+            }
+        }
+    }
+
+    & input{
+        /*backdrop-filter: blur(10px);*/
+        outline: none;
+        border-radius: var(--borderRadius);
+        border: none;
+        height: 25px;
+        background-color: transparent;
+        color: var(--colMain);
+        letter-spacing: 1px;
+        padding: 0;
     }
 }
