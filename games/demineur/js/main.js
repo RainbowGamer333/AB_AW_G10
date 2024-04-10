@@ -95,6 +95,7 @@ function submitForm() {
 
 export function resetDemineur() {
     gameBoard.stop();
+    gameBoard.grid.smiley.normal();
     document.getElementById("grille").innerHTML = "";
     gameBoard = new GameBoard(9, 9, 10, "facile");
 }
