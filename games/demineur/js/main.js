@@ -15,6 +15,7 @@ const customH = document.getElementById("customH");
 const customM = document.getElementById("customM");
 
 function onload() {
+    if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
     setupForm();
     AchievementUtils.init("demineur");
 }
