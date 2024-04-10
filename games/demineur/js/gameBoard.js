@@ -61,7 +61,7 @@ export class GameBoard {
         }
     }
 
-    stop() {
-        this.grid.stop();
+    resetGame() {
+        this.reinitialiserGrille(9, 9, 10, "facile");
     }
 }

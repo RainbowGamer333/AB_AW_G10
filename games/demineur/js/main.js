@@ -7,15 +7,16 @@ const game = document.getElementById("game");
 const overlay = document.getElementById("overlay");
 const popup = document.getElementById("popup");
 const cancel = document.getElementById("cancel");
-let gameBoard = new GameBoard(9, 9, 10, "facile");
 const form = document.getElementById("form");
 const custom = document.getElementById("custom");
 const customW = document.getElementById("customW");
 const customH = document.getElementById("customH");
 const customM = document.getElementById("customM");
+let gameBoard;
 
 function onload() {
     if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
+    gameBoard = new GameBoard(9, 9, 10, "facile");
     setupForm();
     AchievementUtils.init("demineur");
 }
@@ -94,11 +95,11 @@ function submitForm() {
 }
 
 export function resetDemineur() {
-    gameBoard.stop();
-    gameBoard.grid.smiley.normal();
-    document.getElementById("grille").innerHTML = "";
-    gameBoard = new GameBoard(9, 9, 10, "facile");
+    gameBoard.resetGame();
 }
 
 
-window.addEventListener("load", onload);
+window.addEventListener("DOMContentLoaded", () => {
+    console.log("loaded");
+    if (window.location.href.includes("demineur")) onload();
+});

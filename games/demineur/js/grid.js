@@ -552,5 +552,6 @@ export class Grid {
      */
     stop() {
         this.timer.stopTimer();
+        this.smiley.normal();
     }
 }

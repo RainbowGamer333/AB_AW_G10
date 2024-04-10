@@ -3,7 +3,7 @@ import {AB_Utils} from "./AB_Utils.js";
 import {ScoreboardClicker, ScoreboardDemineur, ScoreboardTowerDefense} from "./Scoreboard.js";
 import {VolumeDemineur} from "./Volume.js";
 import SearchUtils from "./SearchUtils.js";
-import {resetDemineur} from "../games/demineur/js/main.js";
+import { resetDemineur } from "../games/demineur/js/main.js";
 
 function init(){
     //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -64,7 +64,9 @@ function init(){
         });
     }
 
+
     //Create reset button - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     const resetButton = document.getElementById("resetGame");
     if (resetButton) {
         resetButton.addEventListener('click', function() {
@@ -75,6 +77,7 @@ function init(){
             }
         });
     }
+
 
 
     //Enable searchBar - - - - - - - - - - - - - - - - - - - - - - - - - - - -
