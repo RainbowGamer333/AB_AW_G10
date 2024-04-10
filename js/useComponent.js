@@ -1,8 +1,6 @@
-import {Path} from "../games/towerDefense/js/constants/Path.js";
 import {updateNavbar} from "./navbar.js";
 import {AB_Utils} from "./AB_Utils.js";
 import {ScoreboardClicker, ScoreboardDemineur, ScoreboardTowerDefense} from "./Scoreboard.js";
-import AchievementUtils from "./AchievementUtils.js";
 import {VolumeDemineur} from "./Volume.js";
 import SearchUtils from "./SearchUtils.js";
 
@@ -65,7 +63,7 @@ function init(){
         });
     }
 
-    //Enable searchBar
+    //Enable searchBar - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const searchInputElement = document.getElementById("search_input");
     const searchResultElement = document.getElementById("search_results_container")
     if (searchInputElement && searchResultElement){
@@ -79,16 +77,16 @@ function init(){
                    resultElement.classList.add("search_result");
                    resultElement.innerHTML = results[i].display_name;
                    resultElement.href = results[i].link;
-                   searchResultElement.appendChild(resultElement)
+                   searchResultElement.appendChild(resultElement);
                }
                if (results.length === 0){
                    const resultElement = document.createElement("p");
                    resultElement.classList.add("search_result");
                    resultElement.innerHTML = "Aucun élement";
-                   searchResultElement.appendChild(resultElement)
+                   searchResultElement.appendChild(resultElement);
                }
            }
-        })
+        });
     }
 
     //Enable fullscreen - - - - - - - - - - - - - - - - - - - - - - - - - - - -

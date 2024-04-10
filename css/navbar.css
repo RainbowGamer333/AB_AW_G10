@@ -108,6 +108,7 @@ nav{
 
             &:hover {
                 color: var(--colMain);
+                background-color: rgba(80, 80, 80, 0.71);
                 cursor: pointer;
             }
 
