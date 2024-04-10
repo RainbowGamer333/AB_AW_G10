@@ -17,7 +17,7 @@ export const searchData = [
     {
         link : "/AB_AW_G10/games/demineur/index.html",
         display_name : "demineur",
-        display_name_aliases : ["démineur,mine swiper"]
+        display_name_aliases : ["démineur", "minesweeper"]
     }
 ]
 

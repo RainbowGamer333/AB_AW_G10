@@ -60,4 +60,8 @@ export class GameBoard {
             cells[i].style.height = this.tailleCells + "px";
         }
     }
+
+    stop() {
+        this.grid.stop();
+    }
 }

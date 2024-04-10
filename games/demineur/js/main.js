@@ -7,7 +7,7 @@ const game = document.getElementById("game");
 const overlay = document.getElementById("overlay");
 const popup = document.getElementById("popup");
 const cancel = document.getElementById("cancel");
-const gameBoard = new GameBoard(9, 9, 10, "facile");
+let gameBoard = new GameBoard(9, 9, 10, "facile");
 const form = document.getElementById("form");
 const custom = document.getElementById("custom");
 const customW = document.getElementById("customW");
@@ -91,6 +91,12 @@ function submitForm() {
             gameBoard.reinitialiserGrille(nbCols, nbRows, nbMines, "custom");
             break;
     }
+}
+
+export function resetDemineur() {
+    gameBoard.stop();
+    document.getElementById("grille").innerHTML = "";
+    gameBoard = new GameBoard(9, 9, 10, "facile");
 }
 
 
