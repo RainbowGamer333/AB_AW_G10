@@ -2,7 +2,7 @@ export const searchData = [
     {
         link : "/AB_AW_G10/games/clicker/index.html",
         display_name : "clicker",
-        display_name_aliases : []
+        display_name_aliases : ["pixel clicker"]
     },
     {
         link : "https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event",
