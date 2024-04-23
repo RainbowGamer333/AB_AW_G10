@@ -20,20 +20,18 @@
         <h1>Connexion</h1>
         <form id="form">
             <p id="alert"></p>
-            <label>
-                Nom d'utilisateur
-                <input type="text" id="usernameLogin">
-            </label>
-            <label>
-                Mot de passe
+            <label for="usernameLogin">Nom d'utilisateur</label>
+            <input type="text" id="usernameLogin">
+
+            <label for="passwordLogin">Mot de passe</label>
+            <div class="password_container">
                 <input type="password" id="passwordLogin" class="hide_field">
-            </label>
+                <img src="../asset/icons/view_closed.png" alt="closed" id="eye">
+            </div>
+
             <div class="bottom_container">
                 <a href="/AB_AW_G10/account/sign-up.html">S'inscrire</a>
-                <label>
-                    <input type="submit" value="Se connecter">
-
-                </label>
+                <input type="submit" id="submit" value="Se connecter">
             </div>
         </form>
     </div>
