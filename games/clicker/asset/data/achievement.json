@@ -1,8 +1,9 @@
 [
   {
-    "name" : "TODO",
+    "name" : "Apprenti cliqueur",
     "imageURL": "../TODO/todo.png",
-    "desc": "to describe"
+    "desc": "découvre la première image",
+    "value": 1
   },
   {
     "name" : "TODO2",
