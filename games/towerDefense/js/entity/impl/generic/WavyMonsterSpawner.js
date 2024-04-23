@@ -24,7 +24,7 @@ export class WavyMonsterSpawner extends GameObject{
         // SpawnRate : lent
         // Ogre x20
         // Gobelin x2
-        this.waves.push(new EnemyWave(4,
+        this.waves.push(new EnemyWave(5,
             {
                 ogre : {
                     amount : 15,

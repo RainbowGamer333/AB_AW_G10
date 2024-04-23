@@ -5,7 +5,7 @@ import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
 export class Goblin extends Enemy{
 
     constructor() {
-        const health = 20;
+        const health = 55;
         const velocity = 40;
 
         let image = new Image();
