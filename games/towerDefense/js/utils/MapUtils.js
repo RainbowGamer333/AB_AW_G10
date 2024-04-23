@@ -79,7 +79,9 @@ export class MapUtils {
     }
 
     static createSpawner(){
-        Engine.gameObjects.push(new WavyMonsterSpawner("MonsterSpawner",0,0));
+        const spawner = new WavyMonsterSpawner("MonsterSpawner",0,0);
+        spawner.init();
+        Engine.gameObjects.push(spawner);
     }
 
 }

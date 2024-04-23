@@ -42,6 +42,10 @@ export class Entity extends GameObject{
         this.isAlive = true;
     }
 
+    kill(){
+        this.hurt(this.health);
+    }
+
 
     onDeath(){
         // console.log(this.name+" is dead.");

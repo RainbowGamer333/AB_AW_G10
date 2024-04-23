@@ -48,7 +48,7 @@ export class Enemy extends Entity{
         }
 
         if (this.y >= Constants.height+Constants.TILE_SIZE_ZOOMED ){
-            Engine.removeGameObject(this);
+            this.kill();
         }
     }
 

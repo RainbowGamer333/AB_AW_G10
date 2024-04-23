@@ -8,60 +8,98 @@ import {Goliath} from "../enemy/Goliath.js";
 import {Necromancer} from "../enemy/Necromancer.js";
 import {Demon} from "../enemy/Demon.js";
 import {Ogre} from "../enemy/Ogre.js";
+import EnemyWave from "../generic/EnemyWave.js";
+import {Skeleton} from "../enemy/Skeleton.js";
 
 const spawnInterval = 2;
 let accumulatedTime = 0.0; // Temps accumulé depuis le dernier spawn
 let counter = 0;
 export class WavyMonsterSpawner extends GameObject{
-    waveID = 0;
+    currentWaveIndex = 0;
+    waves = [];
+
+    init(){
+        // 0 ----------------------------
+        // SpawnRate : lent
+        // Ogre x20
+        // Gobelin x2
+        let ew0 = new EnemyWave(1,
+            {
+            goblin : {
+                amount : 5,
+                spawnFunc : () => new Goblin()
+            },
+            ogre : {
+                amount : 15,
+                spawnFunc : () => new Ogre()
+            }
+        });
+        this.waves.push(ew0);
+
+        // 1 ----------------------------
+        // SpawnRate : moyen
+        // Ogre x 5
+        // Goblin x 5
+        // skeleton x 3
+        let ew1 = new EnemyWave(0.1,
+            {
+                goblin : {
+                    amount : 15,
+                    spawnFunc : () => new Goblin()
+                },
+                skeleton : {
+                    amount : 100,
+                    spawnFunc : () => new Skeleton()
+                },
+                ogre : {
+                    amount : 25,
+                    spawnFunc : () => new Ogre()
+                }
+            });
+        this.waves.push(ew1);
+
+        // let ewInfinite = new EnemyWave(3,{
+        //
+        // })
+        // this.waves.push(ewInfinite);
+    }
     update(dt) {
         accumulatedTime += dt;
 
+        let wave = this.waves[this.currentWaveIndex];
+        if (wave.isFinished()){
+            console.log("NEW WAVE")
+            this.currentWaveIndex++;
+            wave = this.waves[this.currentWaveIndex];
+        }
 
-        if (accumulatedTime >= spawnInterval) {
+
+        if (accumulatedTime >= wave.spawnInterval) {
 
             //Spawning enemy
             // console.log("Spawning monsters");
             let entity = null;
-            const enemyType = Utils.randomIntFromInterval(0,4);
-            // L'interval peut augmenter, au début il est limité au petit ogre et gobelin et progressivement il arrive aux demons
-            switch (enemyType) {
-                case 0 : {
-                    // entity = EntityFactory.create_monster();
-                    entity = new Goblin();
-                    break;
-                }
-                case 1 : {
-                    entity = new Ogre();
-                    break;
-                }
-                case 2 : {
-                    entity = new Demon();
-                    break;
-                }
-                case 3 : {
-                    entity = new Necromancer();
-                    break;
-                }
-                case 4 : {
-                    entity = new Goliath();
-                    break;
-                }
-                default : {
-                    entity = new Goblin();
-                }
+
+
+
+            entity = wave.spawnNextEnemy();
+            if (entity){
+                console.log(entity)
+
+
+
+                let col = Utils.randomIndexFromTrueBooleans(Engine.villageHousesAlive);
+
+                col *= Constants.TILE_SIZE_ZOOMED;
+                entity.x = col;
+                entity.y = -32;
+                entity.name += "_"+ counter++;
+                entity.addDeathListener(this);
+
+                Engine.gameObjects.push(entity);
+
+
             }
-
-            let col = Utils.randomIndexFromTrueBooleans(Engine.villageHousesAlive);
-
-            col *= Constants.TILE_SIZE_ZOOMED;
-            entity.x = col;
-            entity.y = -32;
-            entity.name += "_"+ counter++;
-            entity.addDeathListener(this);
-
-            Engine.gameObjects.push(entity);
-
             accumulatedTime = 0;
         }
 
