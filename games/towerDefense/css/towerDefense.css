@@ -265,6 +265,11 @@ canvas{
                 transform: translateY(0px) scale(100%);
             }
         }
+
+        & #newGame{
+            background-color: #703636;
+            color: #d5c6b0;
+        }
     }
 }
 /*.towerButton .glow {*/
