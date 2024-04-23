@@ -64,6 +64,9 @@ function init(){
 
 function resetGame() {
     Engine.gameObjects = [];
+    Engine.villageHousesAlive = [];
+    Engine.villageHealth = 0;
+    Engine.maxVillageHealth = 0;
     // gui = new Gui();
     init();
 }
@@ -102,10 +105,10 @@ function gameLoop(timestamp) {
     lastTimestamp = timestamp;
 
     if (Engine.gameState === gState.GAME){
-        // Rendre le jeu
+        // Rendre le jeu (le dessiner -> côté front)
         renderGame();
 
-        updateGame(dt);
+        updateGame(dt); //mettre a jour le jeu (coté back)
     }else if (Engine.gameState === gState.MENU){
         console.log("MENU STATE")
         displayHomeScreen();
