@@ -212,6 +212,7 @@ canvas{
     align-items: center;
     justify-content: center;
     height: 720px;
+    user-select: none;
 
     #gameState_InGame{
 
@@ -219,6 +220,21 @@ canvas{
     #gameState_HomeScreen{
         height: 100%;
         display: flex;
+    }
+    #gameState_EndScreen{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        & span {
+            background-color: wheat;
+            padding: 5px 10px;
+            font-size: 60px;
+            border-radius: 10px;
+            border: 4px solid #d6c29e;
+        }
+    }
+
+    #gameState_HomeScreen, #gameState_EndScreen{
         & button{
             display: flex;
             margin: auto;
@@ -244,22 +260,10 @@ canvas{
 
             &:active{
                 box-shadow:0px 0px 0px 2px #9b8d74;
-            /*, 0px 4px 11px 2px #0000008a inset, 1px 0px 15px 0px white*/
+                /*, 0px 4px 11px 2px #0000008a inset, 1px 0px 15px 0px white*/
                 transition: all 0.05s;
                 transform: translateY(0px) scale(100%);
             }
-        }
-    }
-    #gameState_EndScreen{
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        & span {
-            background-color: wheat;
-            padding: 5px 10px;
-            font-size: 60px;
-            border-radius: 10px;
-            border: 4px solid #d6c29e;
         }
     }
 }

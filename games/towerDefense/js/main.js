@@ -54,21 +54,26 @@ function init(){
         // displayGame();
     })
 
-    //Enable reset button
+    //Enable reset buttons
     const resetButtonElement = document.getElementById("resetGame");
+    const newGameButtonElement = document.getElementById("newGame");
     resetButtonElement.addEventListener( "click",() => {
+        resetGame();
+    })
+    newGameButtonElement.addEventListener( "click",() => {
         resetGame();
     })
 
 }
 
 function resetGame() {
-    Engine.gameObjects = [];
-    Engine.villageHousesAlive = [];
-    Engine.villageHealth = 0;
-    Engine.maxVillageHealth = 0;
-    // gui = new Gui();
-    init();
+    location.reload();
+    // Engine.gameObjects = [];
+    // Engine.villageHousesAlive = [];
+    // Engine.villageHealth = 0;
+    // Engine.maxVillageHealth = 0;
+    // // gui = new Gui();
+    // init();
 }
 
 
