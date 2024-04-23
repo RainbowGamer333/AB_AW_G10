@@ -10,6 +10,7 @@ import {Demon} from "../enemy/Demon.js";
 import {Ogre} from "../enemy/Ogre.js";
 import EnemyWave from "../generic/EnemyWave.js";
 import {Skeleton} from "../enemy/Skeleton.js";
+import EnemyWaveInfinite from "./EnemyWaveInfinite.js";
 
 const spawnInterval = 2;
 let accumulatedTime = 0.0; // Temps accumulé depuis le dernier spawn
@@ -58,10 +59,10 @@ export class WavyMonsterSpawner extends GameObject{
             });
         this.waves.push(ew1);
 
-        // let ewInfinite = new EnemyWave(3,{
-        //
-        // })
-        // this.waves.push(ewInfinite);
+
+        //End wave (infinite)
+        let ewInfinite = new EnemyWaveInfinite(3);
+        this.waves.push(ewInfinite);
     }
     update(dt) {
         accumulatedTime += dt;
@@ -106,6 +107,7 @@ export class WavyMonsterSpawner extends GameObject{
     }
 
     notifyDeath(entity){
-        console.log("A mob is dead")
+        // console.log("A mob is dead")
+        this.waves[this.currentWaveIndex].notifyDeath();
     }
 }

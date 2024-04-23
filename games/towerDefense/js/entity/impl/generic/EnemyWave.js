@@ -4,6 +4,7 @@ export default class EnemyWave {
     spawnInterval;
     enemyList = [];
     currentSpawnIndex = 0;
+    deadEnemyCount = 0;
 
     constructor(spawnInterval,waveParameters) {
         // console.log("creating enemy wave")
@@ -38,7 +39,7 @@ export default class EnemyWave {
     }
 
     isFinished (){
-        return this.enemyList[this.enemyList.length-1] && this.enemyList[this.enemyList.length-1].isDead();
+        return this.enemyList.length === this.deadEnemyCount;
     }
 
     shuffle(array) {
@@ -55,6 +56,10 @@ export default class EnemyWave {
         }
 
         return array;
+    }
+
+    notifyDeath(){
+        this.deadEnemyCount++;
     }
 
 
