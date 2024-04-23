@@ -20,7 +20,7 @@ Engine.canvas = document.getElementById("gameCanvas");
 const canvas = Engine.canvas;
 Engine.context = Engine.canvas.getContext("2d");
 Engine.gameObjects = [];
-const gui = new Gui();
+let gui = new Gui();
 
 export const gState = {
     MENU : 1,
@@ -29,6 +29,9 @@ export const gState = {
 }
 
 function init(){
+    const account = JSON.parse(sessionStorage.getItem("account"));
+    if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
+
     Engine.context.imageSmoothingEnabled = false;
     Engine.gameState = gState.MENU;
     displayHomeScreen();
@@ -51,8 +54,19 @@ function init(){
         // displayGame();
     })
 
+    //Enable reset button
+    const resetButtonElement = document.getElementById("resetGame");
+    resetButtonElement.addEventListener( "click",() => {
+        resetGame();
+    })
+
 }
 
+function resetGame() {
+    Engine.gameObjects = [];
+    // gui = new Gui();
+    init();
+}
 
 
 // Définir la fonction de mise à jour du jeu
