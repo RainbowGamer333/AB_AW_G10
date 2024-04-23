@@ -6,7 +6,7 @@ export class Engine {
     static context;
     static gameObjects;
     static canvas;
-    static coinBalance = 20000;//150
+    static coinBalance = 150;//150
     static score = 0;
     static villageHealth = 0;
     static maxVillageHealth = 0;

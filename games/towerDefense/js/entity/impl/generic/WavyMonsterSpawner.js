@@ -20,47 +20,90 @@ export class WavyMonsterSpawner extends GameObject{
     waves = [];
 
     init(){
-        // 0 ----------------------------
+        // -------------------------------------------- V 1
         // SpawnRate : lent
         // Ogre x20
         // Gobelin x2
-        let ew0 = new EnemyWave(1,
+        this.waves.push(new EnemyWave(3,
             {
-            goblin : {
-                amount : 5,
-                spawnFunc : () => new Goblin()
-            },
-            ogre : {
-                amount : 15,
-                spawnFunc : () => new Ogre()
-            }
-        });
-        this.waves.push(ew0);
+                goblin : {
+                    amount : 5,
+                    spawnFunc : () => new Goblin()
+                },
+                ogre : {
+                    amount : 15,
+                    spawnFunc : () => new Ogre()
+                }
+            }));
 
-        // 1 ----------------------------
+        // -------------------------------------------- V 2
         // SpawnRate : moyen
         // Ogre x 5
         // Goblin x 5
         // skeleton x 3
-        let ew1 = new EnemyWave(0.1,
+        this.waves.push(new EnemyWave(3,
             {
                 goblin : {
                     amount : 15,
                     spawnFunc : () => new Goblin()
                 },
                 skeleton : {
-                    amount : 100,
+                    amount : 10,
                     spawnFunc : () => new Skeleton()
                 },
                 ogre : {
-                    amount : 25,
+                    amount : 5,
                     spawnFunc : () => new Ogre()
                 }
-            });
-        this.waves.push(ew1);
+            }));
 
+        // -------------------------------------------- V 3
+        this.waves.push(new EnemyWave(3,
+            {
+                goblin : {
+                    amount : 10,
+                    spawnFunc : () => new Goblin()
+                },
+                ogre : {
+                    amount : 10,
+                    spawnFunc : () => new Ogre()
+                },
+                necromancer : {
+                    amount : 10,
+                    spawnFunc : () => new Necromancer()
+                }
+            }));
 
-        //End wave (infinite)
+        // -------------------------------------------- V 4
+        this.waves.push(new EnemyWave(0.2,
+            {
+                skeleton : {
+                    amount : 100,
+                    spawnFunc : () => new Skeleton()
+                }
+            }));
+        // -------------------------------------------- V 5
+        this.waves.push(new EnemyWave(5,
+            {
+                skeleton : {
+                    amount : 20,
+                    spawnFunc : () => new Skeleton()
+                },
+                Goliath : {
+                    amount : 3,
+                    spawnFunc : () => new Goliath()
+                },
+                goblin : {
+                    amount : 10,
+                    spawnFunc : () => new Goblin()
+                }
+            }));
+        // -------------------------------------------- V 6
+        // -------------------------------------------- V 7
+        // -------------------------------------------- V 8
+        // -------------------------------------------- V 9
+
+        //----------------------------------------------------End wave (infinite)
         let ewInfinite = new EnemyWaveInfinite(3);
         this.waves.push(ewInfinite);
     }
@@ -69,7 +112,7 @@ export class WavyMonsterSpawner extends GameObject{
 
         let wave = this.waves[this.currentWaveIndex];
         if (wave.isFinished()){
-            console.log("NEW WAVE")
+            console.log(" ---- NEW WAVE -> "+ this.currentWaveIndex);
             this.currentWaveIndex++;
             wave = this.waves[this.currentWaveIndex];
         }
@@ -85,7 +128,7 @@ export class WavyMonsterSpawner extends GameObject{
 
             entity = wave.spawnNextEnemy();
             if (entity){
-                console.log(entity)
+                // console.log(entity)
 
 
 
