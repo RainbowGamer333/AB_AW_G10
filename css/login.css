@@ -63,7 +63,7 @@
             }
         }
 
-        & #eye {
+        & .eye {
             position: relative;
             height: 20px;
             width: 20px;
