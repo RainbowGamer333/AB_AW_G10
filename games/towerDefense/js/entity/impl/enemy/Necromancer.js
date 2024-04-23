@@ -10,7 +10,7 @@ export class Necromancer extends Enemy {
      spawnInterval = 1;
      accumulatedTime = 0.0;
     constructor() {
-        const health = 300;
+        const health = 400;
         const velocity = 6;
         const damage = 50;
         const attackRate = 10;
@@ -39,7 +39,7 @@ export class Necromancer extends Enemy {
     }
 
     spawnSkeleton(){
-        const choice = Utils.randomIntFromInterval(0,10);
+        const choice = Utils.randomIntFromInterval(0,7);
         // const choice = 3;
         switch (choice) {
             case 0: { // Spawn at the same position

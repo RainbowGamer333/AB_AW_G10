@@ -6,7 +6,7 @@ import AchievementUtils from "../../../../../../js/AchievementUtils.js";
 
 export class Skeleton extends Enemy{
     constructor(x,y) {
-        const health = 1;
+        const health = 26;
         const velocity = 50;
         const damage = 5;
         const attackRate = 4;

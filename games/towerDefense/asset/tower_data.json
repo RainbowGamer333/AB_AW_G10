@@ -2,7 +2,7 @@
   {
     "name": "spell_wind",
     "display_name": "Sort de Vent",
-    "price":75,
+    "price":265,
     "cool_down": 1000,
     "isSpecial": true
   },
@@ -30,14 +30,14 @@
   {
     "name": "mini_canon",
     "display_name": "Mini canon",
-    "price":30,
+    "price":35,
     "cool_down": 1000,
     "isSpecial": false
   },
   {
     "name": "double_canon",
     "display_name": "Double canon",
-    "price":60,
+    "price":100,
     "cool_down": 1000,
     "isSpecial": false
   },
@@ -86,7 +86,7 @@
   {
     "name": "wall",
     "display_name": "Rempart",
-    "price":250,
+    "price":400,
     "cool_down": 1000,
     "isSpecial": false
   },
