@@ -15,6 +15,6 @@ export class Ogre extends Enemy {
         super("ogre", 0, 0, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
         this.score = 100;
-        this.coinDropped = 50;
+        this.coinDropped = 60;
     }
 }

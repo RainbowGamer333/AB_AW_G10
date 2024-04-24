@@ -83,7 +83,7 @@ export class WavyMonsterSpawner extends GameObject{
                 }
             }));
         // -------------------------------------------- V 5
-        this.waves.push(new EnemyWave(3,
+        this.waves.push(new EnemyWave(2.2,
             {
                 skeleton : {
                     amount : 20,
@@ -99,9 +99,89 @@ export class WavyMonsterSpawner extends GameObject{
                 }
             }));
         // -------------------------------------------- V 6
+        this.waves.push(new EnemyWave(3.5,
+            {
+                necromancer : {
+                    amount : 10,
+                    spawnFunc : () => new Necromancer()
+                },
+                Goliath : {
+                    amount : 3,
+                    spawnFunc : () => new Goliath()
+                },
+                goblin : {
+                    amount : 5,
+                    spawnFunc : () => new Goblin()
+                },
+                demon : {
+                    amount : 2,
+                    spawnFunc : () => new Demon()
+                }
+            }));
         // -------------------------------------------- V 7
+        this.waves.push(new EnemyWave(3,
+            {
+                necromancer : {
+                    amount : 3,
+                    spawnFunc : () => new Necromancer()
+                },
+                Goliath : {
+                    amount : 1,
+                    spawnFunc : () => new Goliath()
+                },
+                goblin : {
+                    amount : 5,
+                    spawnFunc : () => new Goblin()
+                },
+                ogre : {
+                    amount : 30,
+                    spawnFunc : () => new Ogre()
+                }
+            }));
         // -------------------------------------------- V 8
+        this.waves.push(new EnemyWave(3.5,
+            {
+                Goliath : {
+                    amount : 3,
+                    spawnFunc : () => new Goliath()
+                },
+                demon : {
+                    amount : 3,
+                    spawnFunc : () => new Demon()
+                },
+                necromancer : {
+                    amount : 5,
+                    spawnFunc : () => new Necromancer()
+                }
+            }));
         // -------------------------------------------- V 9
+        this.waves.push(new EnemyWave(2,
+            {
+                Goliath : {
+                    amount : 3,
+                    spawnFunc : () => new Goliath()
+                },
+                demon : {
+                    amount : 2,
+                    spawnFunc : () => new Demon()
+                },
+                necromancer : {
+                    amount : 15,
+                    spawnFunc : () => new Necromancer()
+                },
+                ogre : {
+                    amount : 15,
+                    spawnFunc : () => new Ogre()
+                },
+                goblin : {
+                    amount : 10,
+                    spawnFunc : () => new Goblin()
+                },
+                skeleton : {
+                    amount : 30,
+                    spawnFunc : () => new Skeleton()
+                }
+            }));
 
         //----------------------------------------------------End wave (infinite)
         let ewInfinite = new EnemyWaveInfinite(3);

@@ -11,8 +11,8 @@ export class IceCanon extends Tower{
 
     constructor() {
         const health = 300;
-        const damage = 5;
-        const attackRate = 1.5;
+        const damage = 10;
+        const attackRate = 3.5;
 
         let image = new Image();
         image.src = Path.ICE_CANON;

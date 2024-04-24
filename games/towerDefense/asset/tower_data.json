@@ -2,7 +2,7 @@
   {
     "name": "spell_wind",
     "display_name": "SORT DE VENT",
-    "price":265,
+    "price":300,
     "cool_down": 1000,
     "isSpecial": true
   },
@@ -72,7 +72,7 @@
   {
     "name": "landmine",
     "display_name": "MINE",
-    "price":145,
+    "price":275,
     "cool_down": 1000,
     "isSpecial": false
   },

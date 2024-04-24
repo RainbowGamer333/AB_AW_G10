@@ -10,7 +10,7 @@ export class FireCanon extends Tower{
     constructor() {
         const health = 300;
         const damage = 100;
-        const attackRate = 3;
+        const attackRate = 4.5;
 
         let image = new Image();
         image.src = Path.FIRE_CANON;
