@@ -10,6 +10,27 @@ if (accounts === null || accounts === []) {
 //clearAccounts();
 //console.log(accounts);
 
+
+const eyes = document.querySelectorAll(".eye");
+eyes.forEach(eye => {
+    eye.addEventListener("click", (e) => {
+        e.preventDefault();
+        let passwordField = eye.previousElementSibling;
+        console.log(passwordField);
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eye.src = "../asset/icons/view.png";
+        }
+        else if (passwordField.type === "text") {
+            passwordField.type = "password";
+            eye.src = "../asset/icons/view_closed.png";
+        }
+    });
+});
+
+
+
 document.querySelector("#form").addEventListener("submit", (e) => {
     e.preventDefault();
     if (window.location.pathname === "/AB_AW_G10/account/sign-up.html") registerAccount();
