@@ -18,7 +18,7 @@
     z-index: 2;
 }
 
-#popup {
+#popupDifficulte, #popupTheme {
     display: none;
     position: fixed;
     top: 200px;
@@ -84,6 +84,14 @@
     background-color: var(--demineurBackgroundColor);
     border: 10px solid var(--demineurBorderColor);
     border-radius: 1em;
+
+    #options {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        margin: 10px;
+    }
 
     #gameBoardHeader {
         background-color: var(--demineurBackgroundColor);
