@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function () {
     var clickButton = document.getElementById('clickButton');
     var autoClickButton = document.getElementById('autoClickButton');
@@ -590,7 +592,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function endGame() {
         // Supprimer tous les éléments du jeu
-        var gameContainer = document.querySelector('.gameContainer');
+        var gameContainer = document.getElementById('gameContainer');
         gameContainer.innerHTML = '';
 
         // Calculer le temps écoulé
@@ -602,22 +604,27 @@ document.addEventListener('DOMContentLoaded', function () {
         // Créer un conteneur pour le texte de félicitations et le bouton
         var endGameContainer = document.createElement('div');
         endGameContainer.style.textAlign = 'center';
-        endGameContainer.style.marginTop = '250px';
         endGameContainer.style.display = 'flex';
         endGameContainer.style.flexDirection = 'column';
         endGameContainer.style.alignItems = 'center';
+        endGameContainer.style.height= '800px';
+
 
         // Créer un élément de texte pour afficher le message de félicitations
         var congratulationsText = document.createElement('div');
         congratulationsText.textContent = 'Félicitations ! Vous avez terminé le jeu en ' + hours + ' heures, ' + minutes + ' minutes et ' + seconds + ' secondes. Merci beaucoup d\'avoir joué ! Ne clique surtout pas sur le bouton !!!';
         congratulationsText.style.fontSize = '30px';
         congratulationsText.style.fontWeight = 'bold';
+        congratulationsText.style.backgroundColor = 'black';
         congratulationsText.style.color = getRandomColor();
+        congratulationsText.style.marginTop= '40%';
 
         // Créer un bouton pour mettre une image en fond de gameContainer
         var imageButton = document.createElement('button');
         imageButton.textContent = 'Ne pas appuyer dessus !!!!!!!!!';
         imageButton.style.marginTop = '20px'; // Modifier la marge supérieure selon vos besoins
+        imageButton.style.backgroundColor= 'lightblue';
+        imageButton.style.width='200px';
         imageButton.addEventListener('click', function() {
             imageButton.addEventListener('click', function() {
                 var images = [
@@ -641,6 +648,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 congratulationsText.style.color = getRandomColor();
             });
         });
+
+        // Ajouter un effet de survol sur le bouton
+        imageButton.addEventListener('mouseover', function() {
+            imageButton.style.backgroundColor = 'lightgreen';
+        });
+
+// Retirer l'effet de survol lorsque la souris quitte le bouton
+        imageButton.addEventListener('mouseout', function() {
+            imageButton.style.backgroundColor = 'lightblue';
+        });
+
+
+
 
         // Ajouter le texte de félicitations et le bouton au conteneur
         endGameContainer.appendChild(congratulationsText);
