@@ -44,7 +44,7 @@ export class TowerButton{
         let imagePath = Path.BASE_PATH_TOWER + this.buttonID + ".png";
         this.domElement.querySelector("img").src = imagePath;
         this.price = element.querySelector(".cost").innerText;
-        console.log(this.price)
+        // console.log(this.price)
 
         // Add listeners
         // this.stopDrag = this.stopDrag.bind(this);
@@ -63,7 +63,7 @@ export class TowerButton{
 
 
      handleClick(){
-        console.log("clicked "+this.buttonID);
+        // console.log("clicked "+this.buttonID);
     }
 
 

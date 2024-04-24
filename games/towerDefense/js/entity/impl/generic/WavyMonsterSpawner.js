@@ -71,15 +71,19 @@ export class WavyMonsterSpawner extends GameObject{
             }));
 
         // -------------------------------------------- V 4
-        this.waves.push(new EnemyWave(0.2,
+        this.waves.push(new EnemyWave(0.3,
             {
                 skeleton : {
                     amount : 100,
                     spawnFunc : () => new Skeleton()
+                },
+                ogre : {
+                    amount : 10,
+                    spawnFunc : () => new Ogre()
                 }
             }));
         // -------------------------------------------- V 5
-        this.waves.push(new EnemyWave(5,
+        this.waves.push(new EnemyWave(3,
             {
                 skeleton : {
                     amount : 20,
@@ -102,14 +106,17 @@ export class WavyMonsterSpawner extends GameObject{
         //----------------------------------------------------End wave (infinite)
         let ewInfinite = new EnemyWaveInfinite(3);
         this.waves.push(ewInfinite);
+
+        //Display first wave
+        Engine.setProgress(1);
     }
     update(dt) {
         accumulatedTime += dt;
 
         let wave = this.waves[this.currentWaveIndex];
         if (wave.isFinished()){
-            console.log(" ---- NEW WAVE -> "+ this.currentWaveIndex);
             this.currentWaveIndex++;
+            console.log(" ---- NEW WAVE -> "+ this.currentWaveIndex);
             Engine.setProgress(this.currentWaveIndex+1);
             wave = this.waves[this.currentWaveIndex];
         }

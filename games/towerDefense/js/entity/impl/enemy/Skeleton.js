@@ -17,7 +17,7 @@ export class Skeleton extends Enemy{
         super("skeleton", x, y, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
         this.score = 2;
-        this.coinDropped = 1;
+        this.coinDropped = 2;
     }
 
     onDeath() {
