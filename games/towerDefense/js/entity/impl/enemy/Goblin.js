@@ -13,8 +13,8 @@ export class Goblin extends Enemy{
         const spriteRenderer = new SpriteRenderer(image);
         super("goblin", 0, 0, velocity, health, health, 2);
         this.addComponent(spriteRenderer)
-        this.attackRate = 3;
-        this.damage = 20;
+        this.attackRate = 2.5;
+        this.damage = 25;
         this.coinDropped = 5;
         this.score = 10;
     }

@@ -8,7 +8,7 @@ import {CanonBall} from "../projectile/CanonBall.js";
 
 export class MiniCanon extends Tower{
     constructor() {
-        const health = 80;
+        const health = 40;
         const damage = 18;
         const attackRate = 2.5;
 

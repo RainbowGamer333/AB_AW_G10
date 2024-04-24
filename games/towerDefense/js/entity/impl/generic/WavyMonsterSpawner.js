@@ -37,10 +37,10 @@ export class WavyMonsterSpawner extends GameObject{
         // Ogre x 5
         // Goblin x 5
         // skeleton x 3
-        this.waves.push(new EnemyWave(3,
+        this.waves.push(new EnemyWave(2.5,
             {
                 goblin : {
-                    amount : 15,
+                    amount : 20,
                     spawnFunc : () => new Goblin()
                 },
                 skeleton : {

@@ -7,7 +7,7 @@ export class Ogre extends Enemy {
         const health = 200;
         const velocity = 5;
         const damage = 50;
-        const attackRate = 4;
+        const attackRate = 4.5;
 
         let image = new Image();
         image.src = Path.OGRE;
