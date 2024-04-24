@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             megaAutoClickCostDisplay.classList.remove('hidden');
             autoClickButton.classList.add('hidden');
             autoClickCostDisplay.classList.add('hidden');
-            AchievementUtils.increaseCounterAndTryUnlock(7, 1);
+            AchievementUtils.increaseCounterAndTryUnlock(6, 1);
         } else {
             megaAutoClickButton.classList.add('hidden');
         }
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
             }, 3000); //   durée de l'animation CSS
-            AchievementUtils.increaseCounterAndTryUnlock(6, 1);
+            AchievementUtils.increaseCounterAndTryUnlock(5, 1);
         }
 
         if (score >= 1 && !startTime) {
@@ -492,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function () {
             incrementCoins(100000000);
             // Mise à jour de l'affichage
             updateScore();
-            AchievementUtils.increaseCounterAndTryUnlock(5, 1);
+            AchievementUtils.increaseCounterAndTryUnlock(4, 1);
         }
     });
 
@@ -607,7 +607,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function checkEndGame() {
         if (score >= 1100000000) {
             endGame(); // Appel à endGame() lorsque le score atteint 1 milliard
-            AchievementUtils.increaseCounterAndTryUnlock(9, 1);
+
         }
     }
 
@@ -631,6 +631,7 @@ document.addEventListener('DOMContentLoaded', function () {
         endGameContainer.style.alignItems = 'center';
         endGameContainer.style.height= '800px';
 
+        AchievementUtils.increaseCounterAndTryUnlock(7, 1);
 
         // Créer un élément de texte pour afficher le message de félicitations
          let congratulationsText = document.createElement('div');
