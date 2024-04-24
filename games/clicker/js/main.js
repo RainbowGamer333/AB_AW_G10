@@ -645,6 +645,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var randomIndex = Math.floor(Math.random() * images.length);
                 var randomImage = images[randomIndex];
                 gameContainer.style.backgroundImage = 'url("images/' + randomImage + '")';
+                gameContainer.style.backgroundRepeat = 'space';
                 congratulationsText.style.color = getRandomColor();
             });
         });
