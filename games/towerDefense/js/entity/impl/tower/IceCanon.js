@@ -45,6 +45,7 @@ export class IceCanon extends Tower{
         projectile.x = this.x + offsetX;
         projectile.damage = this.damage;
         projectile.source = this;
+        projectile.setDeadZone(6);
         Engine.addGameObject(projectile);
     }
 }

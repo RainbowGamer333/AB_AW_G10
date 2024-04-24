@@ -110,6 +110,7 @@ export class WavyMonsterSpawner extends GameObject{
         if (wave.isFinished()){
             console.log(" ---- NEW WAVE -> "+ this.currentWaveIndex);
             this.currentWaveIndex++;
+            Engine.setProgress(this.currentWaveIndex+1);
             wave = this.waves[this.currentWaveIndex];
         }
 

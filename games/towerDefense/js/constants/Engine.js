@@ -8,6 +8,7 @@ export class Engine {
     static canvas;
     static coinBalance = 150;//150
     static score = 0;
+    static progress = 0;
     static villageHealth = 0;
     static maxVillageHealth = 0;
     static villageHousesAlive = [];
@@ -74,5 +75,9 @@ export class Engine {
             Engine.gameState = gState.END;
             console.log("THE END OF THE GAME")
         }
+    }
+
+    static setProgress(number) {
+        this.progress = number;
     }
 }

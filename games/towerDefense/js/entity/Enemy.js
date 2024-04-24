@@ -50,7 +50,7 @@ export class Enemy extends Entity{
         if (this.y >= Constants.height+Constants.TILE_SIZE_ZOOMED ){
             this.kill();
             Engine.score -= this.score;
-            Engine.coinBalance -= this.coinBalance;
+            Engine.coinBalance -= this.coinDropped;
         }
     }
 

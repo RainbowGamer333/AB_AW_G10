@@ -36,6 +36,7 @@ export class Canon extends Tower{
         projectile.y = y;
         projectile.x = this.x;
         projectile.source = this;
+        projectile.setDeadZone(8);
         Engine.addGameObject(projectile);
 
     }

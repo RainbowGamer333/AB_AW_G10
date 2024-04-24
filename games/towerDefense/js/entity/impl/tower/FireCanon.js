@@ -38,6 +38,7 @@ export class FireCanon extends Tower{
         projectile.x = this.x;
         projectile.damage = this.damage;
         projectile.source = this;
+        projectile.setDeadZone(9);
         Engine.addGameObject(projectile);
 
     }

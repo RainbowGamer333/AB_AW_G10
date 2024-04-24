@@ -10,10 +10,10 @@ export class Necromancer extends Enemy {
      spawnInterval = 1;
      accumulatedTime = 0.0;
     constructor() {
-        const health = 400;
+        const health = 300;
         const velocity = 6;
         const damage = 50;
-        const attackRate = 10;
+        const attackRate = 12;
 
 
         let image = new Image();

@@ -8,6 +8,7 @@ export class Gui {
      towerButtons = [];
      coinElement = null;
      scoreElement = null;
+     progressElement = null;
      villageElement = null;
 
      constructor() {
@@ -51,6 +52,7 @@ export class Gui {
          this.coinElement = document.getElementById("coin_card_value");
          this.scoreElement = document.getElementById("score_card_value");
          this.villageElement = document.getElementById("village_card_value");
+         this.progressElement = document.getElementById("progress_card_value");
      }
 
 
@@ -63,7 +65,7 @@ export class Gui {
         //TODO DO EVENT NOT UPDATE !
         this.coinElement.textContent = Engine.coinBalance;
         this.scoreElement.textContent = Engine.score;
-
+        this.progressElement.textContent = Engine.progress;
         this.villageElement.textContent =  Math.trunc(Engine.villageHealth/Engine.maxVillageHealth*100)+"%";
      }
 
