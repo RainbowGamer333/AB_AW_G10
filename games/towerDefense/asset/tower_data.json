@@ -14,13 +14,6 @@
     "isSpecial": true
   },
   {
-    "name": "spell_heal",
-    "display_name": "SOIN",
-    "price":75,
-    "cool_down": 1000,
-    "isSpecial": true
-  },
-  {
     "name": "remover",
     "display_name": "RETIRER",
     "price":100,

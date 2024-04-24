@@ -36,7 +36,6 @@ export class Gui {
                      "                <span class=\"cost\">"+cost+"</span>\n" +
                      "            </button>")
 
-
                  if (towerButtonElement.isSpecial){
                      leftContainer.appendChild(element);
                  }else{
@@ -46,7 +45,7 @@ export class Gui {
                  this.towerButtons.push( buttonElement); //TODO ENABLE THIS
              }
 
-             console.log(dataArray);
+             // console.log(dataArray);
          });
 
          this.coinElement = document.getElementById("coin_card_value");
