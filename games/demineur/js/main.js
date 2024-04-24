@@ -1,21 +1,18 @@
 import { GameBoard } from "./gameBoard.js";
 import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
+import {initialiserScoresDemineur} from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 
 const account = JSON.parse(sessionStorage.getItem("account"));
+const scoreboard = document.querySelector(".scoreboard");
 const overlay = document.getElementById("overlay");
-
 const cancel = document.querySelectorAll(".cancel");
-
 const difficulte = document.getElementById("difficulte");
 const popupDifficulte = document.getElementById("popupDifficulte");
 const formDifficulte = document.getElementById("formDifficulte");
-
 const theme = document.getElementById("theme");
 const popupTheme = document.getElementById("popupTheme");
 const formTheme = document.getElementById("formTheme");
-
-
 const custom = document.getElementById("custom");
 const customW = document.getElementById("customW");
 const customH = document.getElementById("customH");
@@ -24,6 +21,9 @@ let gameBoard;
 
 function onload() {
     if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
+    if (scoreboard.children[1].querySelector(".score").innerHTML === "(...)") {
+        initialiserScoresDemineur();
+    }
     gameBoard = new GameBoard(9, 9, 10, "facile");
     setupForm();
     AchievementUtils.init("demineur");
