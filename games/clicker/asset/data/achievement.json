@@ -6,9 +6,45 @@
     "value": 1
   },
   {
-    "name" : "Grand apprenti",
-    "imageURL": "/games/clicker/asset/imgAchievements/1.png",
-    "desc": "gros loser",
+    "name" : "Cliqueur FOUUUUU",
+    "imageURL": "/games/clicker/asset/imgAchievements/2.png",
+    "desc": "tu débloques les premiers bonus",
+    "value": 1
+  },
+  {
+    "name" : "AIR FROUSSS",
+    "imageURL": "/games/clicker/asset/imgAchievements/3.png",
+    "desc": "tu viens de débloquer la 6e images",
+    "value": 1
+  },
+  {
+    "name" : "Ben-galow",
+    "imageURL": "/games/clicker/asset/imgAchievements/4.png",
+    "desc": "tu as découvert tous les membres du bengalowwww",
+    "value": 1
+  },
+  {
+    "name" : "BOUUUU GROS TRICHEUUUURRR",
+    "imageURL": "/games/clicker/asset/imgAchievements/5.png",
+    "desc": "Je rêve ou tu viens de TRICHER ?",
+    "value": 1
+  },
+  {
+    "name" : "C'est déjà la fin ???",
+    "imageURL": "/games/clicker/asset/imgAchievements/6.png",
+    "desc": "Et non, tu viens juste de débloquer le dernier personnage, gagne encore 100 Millions et c'est fini, promis",
+    "value": 1
+  },
+  {
+    "name" : "Ca va super viiiiteeeeeeee !!!! ",
+    "imageURL": "/games/clicker/asset/imgAchievements/7.png",
+    "desc": "tu viens de débloquer les méga bonus !",
+    "value": 1
+  },
+  {
+    "name" : "NE CLIQUE PAS SUR LE BOUTONNNNN",
+    "imageURL": "/games/clicker/asset/imgAchievements/8.png",
+    "desc": "tu as terminé le jeu mais NE CLIQUE PAS SUR LE BOUTON !!!",
     "value": 1
   }
 ]
