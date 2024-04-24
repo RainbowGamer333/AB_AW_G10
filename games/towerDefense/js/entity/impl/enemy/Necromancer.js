@@ -39,7 +39,7 @@ export class Necromancer extends Enemy {
     }
 
     spawnSkeleton(){
-        const choice = Utils.randomIntFromInterval(0,7);
+        const choice = Utils.randomIntFromInterval(0,3);
         // const choice = 3;
         switch (choice) {
             case 0: { // Spawn at the same position

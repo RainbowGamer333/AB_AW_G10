@@ -1,91 +1,91 @@
 [
   {
     "name": "spell_wind",
-    "display_name": "Sort de Vent",
+    "display_name": "SORT DE VENT",
     "price":265,
     "cool_down": 1000,
     "isSpecial": true
   },
   {
     "name": "annihilator",
-    "display_name": "Rayon mortel",
+    "display_name": "RAYON MORTEL",
     "price":1000,
     "cool_down": 1000,
     "isSpecial": true
   },
   {
     "name": "spell_heal",
-    "display_name": "Soin",
+    "display_name": "SOIN",
     "price":75,
     "cool_down": 1000,
     "isSpecial": true
   },
   {
     "name": "remover",
-    "display_name": "Retirer",
+    "display_name": "RETIRER",
     "price":100,
     "cool_down": 1000,
     "isSpecial": true
   },
   {
     "name": "mini_canon",
-    "display_name": "Mini canon",
+    "display_name": "MINI CANON",
     "price":35,
     "cool_down": 1000,
     "isSpecial": false
   },
   {
     "name": "double_canon",
-    "display_name": "Double canon",
-    "price":100,
+    "display_name": "DOUBLE CANON",
+    "price":155,
     "cool_down": 1000,
     "isSpecial": false
   },
   {
     "name": "ice_canon",
-    "display_name": "Canon glacé",
+    "display_name": "CANON GLACÉ",
     "price":400,
     "cool_down": 1000,
     "isSpecial": false
   },
   {
     "name": "canon",
-    "display_name": "Canon",
+    "display_name": "CANON",
     "price":200,
     "cool_down": 1000,
     "isSpecial": false
   },
   {
     "name": "fire_canon",
-    "display_name": "Canon de feu",
+    "display_name": "CANON DE FEU",
     "price":500,
     "cool_down": 1000,
     "isSpecial": false
   },
   {
     "name": "tesla",
-    "display_name": "Tesla",
+    "display_name": "TESLA",
     "price":120,
     "cool_down": 1000,
     "isSpecial": false
   },
   {
     "name": "landmine",
-    "display_name": "Mine",
+    "display_name": "MINE",
     "price":50,
     "cool_down": 1000,
     "isSpecial": false
   },
   {
     "name": "low_wall",
-    "display_name": "Muret",
+    "display_name": "MURET",
     "price":50,
     "cool_down": 1000,
     "isSpecial": false
   },
   {
     "name": "wall",
-    "display_name": "Rempart",
+    "display_name": "REMPART",
     "price":400,
     "cool_down": 1000,
     "isSpecial": false
@@ -93,7 +93,7 @@
 
   {
     "name": "golden_tree",
-    "display_name": "Arbre doré",
+    "display_name": "ARBRE DORÉ",
     "price":50,
     "cool_down": 1000,
     "isSpecial": false

@@ -91,6 +91,10 @@ canvas{
     align-items: center;
     align-content: flex-start;
 }
+.gui-top{
+    backdrop-filter: blur(1px);
+    border-radius: 25px 25px 0 0;
+}
 
 
 .guiCard{
