@@ -1,3 +1,6 @@
+import AchievementUtils from "../../../js/AchievementUtils.js";
+
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -32,6 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var hasReachedButtonOne = false;
     var hasReachedButtonTwo = false;
+
+    const account = JSON.parse(sessionStorage.getItem("account"));
+    if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
+
+    AchievementUtils.init("clicker");
+
 
     function startTimer() {
         startTime = Date.now();
@@ -120,90 +129,101 @@ document.addEventListener('DOMContentLoaded', function () {
         updateCoins();
         updateButton();
 
+        if (score >= 10){
+            console.log('test');
+            AchievementUtils.increaseCounterAndTryUnlock(0, 1);
+        }
+
+        if (score >= 20){
+            console.log('test');
+            AchievementUtils.increaseCounterAndTryUnlock(1, 1);
+        }
+
         // Vérifiez si le score atteint le seuil pour chaque image et faites disparaître les rectangles correspondants
         if (score >= 1000) {
             var rectangle = document.querySelector('#imageOne .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //  durée de l'animation CSS
+
         }
         if (score >= 5000) {
             var rectangle = document.querySelector('#imageTwo .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 25000) {
             var rectangle = document.querySelector('#imageThree .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 50000) {
             var rectangle = document.querySelector('#imageFour .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 100000) {
             var rectangle = document.querySelector('#imageFive .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 250000) {
             var rectangle = document.querySelector('#imageSix .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 500000) {
             var rectangle = document.querySelector('#imageSeven .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 1000000) {
             var rectangle = document.querySelector('#imageEight .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 5000000) {
             var rectangle = document.querySelector('#imageNine .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 100000000) {
             var rectangle = document.querySelector('#imageTen .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 500000000) {
             var rectangle = document.querySelector('#imageEleven .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 1000000000) {
             var rectangle = document.querySelector('#imageTwelve .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
 
         if (score >= 1 && !startTime) {

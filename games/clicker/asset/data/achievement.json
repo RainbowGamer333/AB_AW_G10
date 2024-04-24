@@ -1,13 +1,14 @@
 [
   {
     "name" : "Apprenti cliqueur",
-    "imageURL": "../TODO/todo.png",
+    "imageURL": "/games/clicker/asset/imgAchievements/1.png",
     "desc": "découvre la première image",
     "value": 1
   },
   {
-    "name" : "TODO2",
-    "imageURL": "../TODO/todo2.png",
-    "desc": "to describe2"
+    "name" : "Grand apprenti",
+    "imageURL": "/games/clicker/asset/imgAchievements/1.png",
+    "desc": "gros loser",
+    "value": 1
   }
 ]
