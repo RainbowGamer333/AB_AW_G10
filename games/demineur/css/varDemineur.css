@@ -1,17 +1,17 @@
 :root {
-    --url-unclicked: url("../asset/grille/unclicked.png");
-    --url-flag: url("../asset/grille/flag.png");
-    --url-mine: url("../asset/grille/mine.png");
-    --url-fake-mine: url("../asset/grille/fake-mine.png");
-    --url-0: url("../asset/grille/0.png");
-    --url-1: url("../asset/grille/1.png");
-    --url-2: url("../asset/grille/2.png");
-    --url-3: url("../asset/grille/3.png");
-    --url-4: url("../asset/grille/4.png");
-    --url-5: url("../asset/grille/5.png");
-    --url-6: url("../asset/grille/6.png");
-    --url-7: url("../asset/grille/7.png");
-    --url-8: url("../asset/grille/8.png");
+    --url-retro-unclicked: url("../asset/themes/retro/grille/unclicked.png");
+    --url-retro-flag: url("../asset/themes/retro/grille/flag.png");
+    --url-retro-mine: url("../asset/themes/retro/grille/mine.png");
+    --url-retro-fake-mine: url("../asset/themes/retro/grille/fake-mine.png");
+    --url-retro-0: url("../asset/themes/retro/grille/0.png");
+    --url-retro-1: url("../asset/themes/retro/grille/1.png");
+    --url-retro-2: url("../asset/themes/retro/grille/2.png");
+    --url-retro-3: url("../asset/themes/retro/grille/3.png");
+    --url-retro-4: url("../asset/themes/retro/grille/4.png");
+    --url-retro-5: url("../asset/themes/retro/grille/5.png");
+    --url-retro-6: url("../asset/themes/retro/grille/6.png");
+    --url-retro-7: url("../asset/themes/retro/grille/7.png");
+    --url-retro-8: url("../asset/themes/retro/grille/8.png");
 
 
     --demineurBackgroundColor: #c7c7c7;

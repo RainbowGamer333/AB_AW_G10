@@ -1,13 +1,24 @@
 export class Smiley {
+    button;
+    smiley;
+    _isClicked;
+    _theme;
+    _src;
 
     constructor() {
         this.button = document.querySelector("#gameBoardHeaderSmileyButton");
         this.smiley = document.querySelector("#smiley");
         this._isClicked = false;
+        this.theme = "retro";
     }
 
     get isClicked() {
         return this._isClicked;
+    }
+
+    set theme(theme) {
+        this._theme = theme;
+        this._src = `./asset/themes/${theme}/header/`;
     }
 
     setClicked(value) {
@@ -51,15 +62,15 @@ export class Smiley {
 
 
     normal() {
-        this.smiley.src = "asset/header/normal.png";
+        this.smiley.src = `${this._src}/normal.png`;
     }
 
     shock() {
-        this.smiley.src = "asset/header/shock.png";
+        this.smiley.src = `${this._src}/shock.png`;
     }
 
     defeat() {
-        this.smiley.src = "asset/header/defeat.png";
+        this.smiley.src = `${this._src}/defeat.png`;
     }
 
     victory() {
