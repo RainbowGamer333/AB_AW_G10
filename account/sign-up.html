@@ -20,28 +20,27 @@
         <h1>Inscription</h1>
         <form id="form">
             <p id="alert"></p>
-            <label>
-                Nom d'utilisateur
-                <input type="text" id="usernameRegister">
-            </label>
-            <label>
-                Adresse email
-                <input type="email" id="emailRegister">
-            </label>
-            <label>
-                Mot de passe
-                <input type="password" class="hide_field" id="passwordRegister">
-            </label>
-            <label>
-                Confirmer le mot de passe
-                <input type="password" class="hide_field" id="passwordRegisterConfirm">
-            </label>
+            <label for="usernameRegister">Nom d'utilisateur</label>
+            <input type="text" id="usernameRegister">
+
+            <label for="emailRegister">Adresse email</label>
+            <input type="email" id="emailRegister">
+
+            <label for="passwordRegister">Mot de passe</label>
+            <div class="password_container">
+                <input type="password" class="password_field" id="passwordRegister">
+                <img src="../asset/icons/view_closed.png" alt="eye" class="eye">
+            </div>
+
+
+            <label for="passwordRegisterConfirm">Confirmer le mot de passe</label>
+            <div class="password_container">
+                <input type="password" class="password_field" id="passwordRegisterConfirm">
+            </div>
+
             <div class="bottom_container">
                 <a href="/AB_AW_G10/account/log-in.html">Connexion</a>
-                <label>
-                    <input type="submit" value="S'inscrire">
-
-                </label>
+                <input type="submit" value="S'inscrire">
             </div>
         </form>
     </div>

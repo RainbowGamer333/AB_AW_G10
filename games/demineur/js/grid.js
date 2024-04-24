@@ -5,6 +5,7 @@ import {Smiley} from "./smiley.js";
 import { initialiserScoresDemineur } from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
+import {VolumeDemineur} from "../../../js/Volume.js";
 
 const account = JSON.parse(sessionStorage.getItem("account"));
 
@@ -19,12 +20,15 @@ export class Grid {
     _noFlags = true;
 
 
-    constructor(gameBoard, numberRows, numberColumns, numberMines) {
+    constructor(gameBoard, numberRows, numberColumns, numberMines, difficulty) {
         //initialiserScoresDemineur();
         this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
+        this.difficulty = difficulty;
         this._nbCellulesRevelee = 0;
+
+        VolumeDemineur.init();
 
         this.timer = new Timer();
         this.minesCounter = new MineCounter();
@@ -33,6 +37,7 @@ export class Grid {
 
         this._numberMines = numberMines;
         this.cells = [];
+
         this.creerGrid(numberRows, numberColumns);
         this.ajouterListeners();
     }
@@ -79,7 +84,6 @@ export class Grid {
      * Affiche la cellule à la position (row, col). Effectue la gestion des mines et des cases vides
      * @param row la ligne de la cellule à afficher
      * @param col la colonne de la cellule à afficher
-     * @param callback le callback à appeler si la partie est gagnée
      */
     afficherCellule(row, col) {
         let cell = this.cells[row][col];
@@ -94,12 +98,15 @@ export class Grid {
             return;
         }
 
-        if (cell.valeur === 0) {
-            this.decouvrirZeros(row, col);
-        }
-
         if (this._nbCellulesRevelee === this.cells.length * this.cells[0].length - this._numberMines) {
             if (!this._victory) this.victory();
+        }
+
+        if (cell.valeur === 0) {
+            VolumeDemineur.playZero();
+            this.decouvrirZeros(row, col)
+        } else {
+            VolumeDemineur.playClick();
         }
     }
 
@@ -120,12 +127,14 @@ export class Grid {
                     e.preventDefault();
                     // Le clique droit ne marche pas sur une cellule désactivée ou déjà visible
                     if (cell.visible || cell.disabled) return;
-                    this;this._noFlags = false;
+                    this._noFlags = false;
 
                     if (cell.flag) {
+                        VolumeDemineur.playRemoveFlag();
                         cell.removeFlag();
                         this.minesCounter.incrementMineCounter();
                     } else {
+                        VolumeDemineur.playPlaceFlag();
                         cell.addFlag();
                         this.minesCounter.decrementMineCounter();
                     }
@@ -213,7 +222,8 @@ export class Grid {
                             this.timer.startTimer();
                         }
 
-                        this.afficherCellule(i, j);
+                        this.afficherCellule(i, j)
+
                     }
                 });
             }
@@ -226,7 +236,7 @@ export class Grid {
      * @param j la colonne de la cellule
      */
     previewCasesAutour(i, j) {
-        if (!this.cells[i][j].visible) this.cells[i][j].element.classList.remove("unclicked");;
+        if (!this.cells[i][j].visible) this.cells[i][j].element.classList.remove("unclicked");
         this.coordonneesAutour(i, j).forEach((coord) => {
             this.cells[coord[0]][coord[1]].element.classList.remove("unclicked");
         });
@@ -332,6 +342,7 @@ export class Grid {
     victory() {
         this._victory = true;
         this.timer.stopTimer();
+        VolumeDemineur.playVictory();
         this.smiley.victory();
         this.mettreFlags();
         this.disableCells();
@@ -346,28 +357,30 @@ export class Grid {
             AchievementUtils.increaseCounterAndTryUnlock(2, 1);
             AchievementUtils.increaseCounterAndTryUnlock(3, 1);
             AchievementUtils.increaseCounterAndTryUnlock(4, 1);
+
+            switch (this.difficulty) {
+                case "facile":
+                    AchievementUtils.increaseCounterAndTryUnlock(5, 1);
+                    break;
+                case "moyen":
+                    AchievementUtils.increaseCounterAndTryUnlock(6, 1);
+                    break;
+                case "difficile":
+                    AchievementUtils.increaseCounterAndTryUnlock(7, 1);
+                    break;
+            }
+
+            if (this._noFlags) AchievementUtils.increaseCounterAndTryUnlock(8, 1);
+
+            if (this.timer.time <= 100) AchievementUtils.increaseCounterAndTryUnlock(9, 1);
+            if (this.timer.time <= 50) AchievementUtils.increaseCounterAndTryUnlock(10, 1);
+            if (this.timer.time <= 30) AchievementUtils.increaseCounterAndTryUnlock(11, 1);
+            if (this.timer.time <= 15) AchievementUtils.increaseCounterAndTryUnlock(12, 1);
+
+            this.updateScore(account.username, this.timer.time);
         }
 
-        switch (this.difficulty) {
-            case "facile":
-                AchievementUtils.increaseCounterAndTryUnlock(5, 1);
-                break;
-            case "moyen":
-                AchievementUtils.increaseCounterAndTryUnlock(6, 1);
-                break;
-            case "difficile":
-                AchievementUtils.increaseCounterAndTryUnlock(7, 1);
-                break;
-        }
 
-        if (this._noFlags) AchievementUtils.increaseCounterAndTryUnlock(8, 1);
-
-        if (this.timer.time <= 100) AchievementUtils.increaseCounterAndTryUnlock(9, 1);
-        if (this.timer.time <= 50) AchievementUtils.increaseCounterAndTryUnlock(10, 1);
-        if (this.timer.time <= 30) AchievementUtils.increaseCounterAndTryUnlock(11, 1);
-        if (this.timer.time <= 15) AchievementUtils.increaseCounterAndTryUnlock(12, 1);
-
-        //this.updateScore(account.username, this.timer.time);
     }
 
     /**
@@ -376,6 +389,7 @@ export class Grid {
      */
     gameOver(mineCliquee) {
         this.timer.stopTimer();
+        VolumeDemineur.playGameOver();
         this.smiley.defeat();
         this.afficherMines(mineCliquee);
         this.disableCells();
@@ -449,7 +463,6 @@ export class Grid {
      * Retourne toutes les coordonnées autour de la cellule qui peuvent être affichées. Ne comprend pas les cellules sortant de la grille.
      * @param row la ligne de la cellule
      * @param col la colonne de la cellule
-     * @param cells la liste des cellules à révéler
      * @returns {*[]} les coordonnées autour de la cellule qui peuvent être affichées
      */
     canDisplayAutour(row, col) {
@@ -483,7 +496,6 @@ export class Grid {
         if (cell.isMine()) this.gameOver(cell);
         else {
             this.afficherCellule(row, col);
-            this._numberCasesRevealed += 1;
             if (cell.valeur === 0) this.decouvrirZeros(row, col);
         }
     }
@@ -500,8 +512,11 @@ export class Grid {
     }
 
     updateScore(nom, score) {
+        console.log("updating score");
+        console.log(this.difficulty);
         switch (this.difficulty) {
             case "facile":
+                console.log("facile");
                 ScoreboardDemineur.updateFacile(nom, score);
                 break;
             case "moyen":
@@ -537,5 +552,6 @@ export class Grid {
      */
     stop() {
         this.timer.stopTimer();
+        this.smiley.normal();
     }
 }

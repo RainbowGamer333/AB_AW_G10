@@ -1,80 +1,4 @@
-let admin = [
-    {
-        userId: 0,
-        username: "Rainbow",
-        password: "test",
-        mail: "mike.litoris@gmail.com",
-        image: "image2.jpg",
-        role: "admin",
-
-        demineur: {
-            difficulte: {
-                facile: {
-                    score: 0
-                },
-                moyen: {
-                    score: 0
-                },
-                difficile: {
-                    score: 0
-                }
-            }
-        },
-
-        clicker: {
-            score: 100,
-            pieces: 100,
-
-            achievements: [
-                {
-                    name: "Apprenti cliqueur",
-                    description: "Découvrez 1 image",
-                    obtained: false
-                },
-                {
-                    name: "Cliqueur confirmé",
-                    description: "Découvrez 5 images",
-                    obtained: false
-                },
-                {
-                    name: "Cliqueur expert",
-                    description: "Découvrez 10 images",
-                    obtained: false
-                },
-                {
-                    name: "Détective privé ou quoi ?",
-                    description: "Trouver 5 easter eggs",
-                    obtained: false
-                },
-                {
-                    name: "Artiste sous LSD",
-                    description: "Changez la couleur de fond",
-                    obtained: false
-                },
-                {
-                    name: "Contrat de footballeur",
-                    description: "Obtenir 1 million de pièces",
-                    obtained: false
-                },
-                {
-                    name: "Jeff Bezos",
-                    description: "Obtenir 1 milliard de pièces",
-                    obtained: false
-                },
-                {
-                    name: "Fou furieux",
-                    description: "Effectuer 10k cliques sans dépenser de pièces",
-                    obtained: false
-                }
-
-            ]
-        },
-
-        towerDefense: {
-            score: 0,
-        }
-    },
-];
+import {AB_Utils} from "../AB_Utils.js";
 
 export function createAccount(username, password, mail) {
     let account = {
@@ -87,33 +11,29 @@ export function createAccount(username, password, mail) {
         demineur: initialiseDemineur(),
         clicker: initialiseClicker(),
         towerDefense: initialiseTowerDefense()
-    }
+    };
+    return account;
+}
+
+function createAdmin() {
+    let account = createAccount("Rainbow", "test", "mike.litoris@gmail.com");
+    account.image = "image2.jpg";
+    account.role = "admin";
     return account;
 }
 
 function initialiseImageAleatoire() {
-    return Math.floor(Math.random() * 4) + 1 + ".png";
+    let number = Math.floor(Math.random() * 12) + 1;
+    return "image" + number + ".jpg";
 }
 
 function initialiseDemineur() {
     return {
-        difficulte: {
-            facile: {
-                score: 0
-            },
-            moyen: {
-                score: 0
-            },
-            difficile: {
-                score: 0
-            }
-        },
-        achievements: initialiseDemineurAchievements()
+        facile: 0,
+        moyen: 0,
+        difficile: 0,
+        achievements: initialiserAchievementsGame("demineur")
     }
-}
-
-function initialiseDemineurAchievements() {
-    return null;
 }
 
 
@@ -121,59 +41,41 @@ function initialiseClicker() {
     return {
         score: 0,
         pieces: 0,
-        achievements: initialiseClickerAchievements()
+        achievements: initialiserAchievementsGame("clicker")
     }
 }
 
-function initialiseClickerAchievements() {
-    return [
-        {
-            name: "Apprenti cliqueur",
-            description: "Découvrez 1 image",
-            obtained: false
-        },
-        {
-            name: "Cliqueur confirmé",
-            description: "Découvrez 5 images",
-            obtained: false
-        },
-        {
-            name: "Cliqueur expert",
-            description: "Découvrez 10 images",
-            obtained: false
-        },
-        {
-            name: "Détective privé ou quoi ?",
-            description: "Trouver 5 easter eggs",
-            obtained: false
-        },
-        {
-            name: "Artiste sous LSD",
-            description: "Changez la couleur de fond",
-            obtained: false
-        },
-        {
-            name: "Contrat de footballeur",
-            description: "Obtenir 1 million de pièces",
-            obtained: false
-        },
-        {
-            name: "Jeff Bezos",
-            description: "Obtenir 1 milliard de pièces",
-            obtained: false
-        }
-    ]
-}
 
 function initialiseTowerDefense() {
     return {
         score: 0,
-        achievements: initialiseTowerDefenseAchievements()
+        achievements: initialiserAchievementsGame("towerDefense")
     }
 }
 
-function initialiseTowerDefenseAchievements() {
-    return null;
+
+function initialiserAchievementsGame(gameName) {
+    const achievementPATH = "../../games/" + gameName + "/asset/data/achievement.json";
+    let achievements = [];
+
+    AB_Utils.readTextFile(achievementPATH, (achievement) => {
+        let json = JSON.parse(achievement);
+        if (!json) {
+            console.error("JSON reading error");
+            return;
+        }
+
+        json.forEach((json) => {
+            achievements.push({
+                name: json.name,
+                valueNeed: json.value,
+                valueCurrent: 0,
+                unlocked: false
+            });
+        });
+        return achievements;
+    });
+    return achievements;
 }
 
 
@@ -182,5 +84,5 @@ function initialiseTowerDefenseAchievements() {
  */
 export function clearAccounts() {
     localStorage.removeItem("accounts");
-    localStorage.setItem("accounts", JSON.stringify(admin));
+    localStorage.setItem("accounts", JSON.stringify([createAdmin()]));
 }

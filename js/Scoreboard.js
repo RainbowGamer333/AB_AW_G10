@@ -22,7 +22,7 @@ class Scoreboard {
             score: score
         });
 
-        if (ascending) scores.sort((a, b) => a.score - b.score);
+        if (!ascending) scores.sort((a, b) => a.score - b.score);
         else scores.sort((a, b) => b.score - a.score);
 
         localStorage.setItem(gameName, JSON.stringify(scores));

@@ -7,16 +7,18 @@ const game = document.getElementById("game");
 const overlay = document.getElementById("overlay");
 const popup = document.getElementById("popup");
 const cancel = document.getElementById("cancel");
-const gameBoard = new GameBoard(9, 9, 10);
 const form = document.getElementById("form");
 const custom = document.getElementById("custom");
 const customW = document.getElementById("customW");
 const customH = document.getElementById("customH");
 const customM = document.getElementById("customM");
+let gameBoard;
 
 function onload() {
+    if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
+    gameBoard = new GameBoard(9, 9, 10, "facile");
     setupForm();
-    AchievementUtils.init(account.username, "demineur", "./asset/data/achievement.json");
+    AchievementUtils.init("demineur");
 }
 
 /**
@@ -24,7 +26,6 @@ function onload() {
  */
 function setupForm() {
     game.addEventListener("click", function() {
-        console.log("click");
         overlay.style.display = "block";
         popup.style.display = "block";
     });
@@ -69,16 +70,16 @@ function submitForm() {
     let diff = document.querySelector('input[name="diff"]:checked').value;
     switch(diff) {
         case "facile":
-            gameBoard.reinitialiserGrille(9, 9, 10);
-            //ScoreboardDemineur.displayFacile();
+            gameBoard.reinitialiserGrille(9, 9, 10, "facile");
+            ScoreboardDemineur.displayFacile();
             break;
         case "moyen":
-            gameBoard.reinitialiserGrille(16, 16, 40);
-            //ScoreboardDemineur.displayMoyen();
+            gameBoard.reinitialiserGrille(16, 16, 40, "moyen");
+            ScoreboardDemineur.displayMoyen();
             break;
         case "difficile":
-            gameBoard.reinitialiserGrille(30, 16, 99);
-            //ScoreboardDemineur.displayDifficile();
+            gameBoard.reinitialiserGrille(30, 16, 99, "difficile");
+            ScoreboardDemineur.displayDifficile();
             break;
         case "custom":
             let nbCols = document.querySelector('input[name="customW"]').value;
@@ -88,10 +89,17 @@ function submitForm() {
             nbCols = nbCols < 9 ? 9 : nbCols;
             nbMines = nbMines < 1 ? 1 : nbMines;
 
-            gameBoard.reinitialiserGrille(nbCols, nbRows, nbMines);
+            gameBoard.reinitialiserGrille(nbCols, nbRows, nbMines, "custom");
             break;
     }
 }
 
+export function resetDemineur() {
+    gameBoard.resetGame();
+}
 
-window.addEventListener("load", onload);
+
+window.addEventListener("DOMContentLoaded", () => {
+    console.log("loaded");
+    if (window.location.href.includes("demineur")) onload();
+});

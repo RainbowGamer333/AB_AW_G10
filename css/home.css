@@ -19,6 +19,8 @@
     backdrop-filter: blur(10px);
     color: white;
     transition: 0.1s ease-in-out all;
+    z-index: 5;
+    position: relative;
 }
 .gameCard .image_container{
     border-radius:  var(--borderRadius) var(--borderRadius) 0 0;
