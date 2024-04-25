@@ -251,10 +251,9 @@ export class Grid {
      */
     previewCasesAutour(i, j) {
         if (!this.cells[i][j].visible) this.cells[i][j].element.classList.remove("unclicked");
-        this.coordonneesAutour(i, j).forEach((coord) => {
+        for (let coord of this.coordonneesAutour(i, j)) {
             this.cells[coord[0]][coord[1]].element.classList.remove("unclicked");
-        });
-
+        }
     }
 
     /**
@@ -264,9 +263,9 @@ export class Grid {
      */
     unPreviewCasesAutour(i, j) {
         this.cells[i][j].element.classList.add("unclicked");
-        this.coordonneesAutour(i, j).forEach((coord) => {
+        for(let coord of this.coordonneesAutour(i, j)) {
             this.cells[coord[0]][coord[1]].element.classList.add("unclicked");
-        });
+        }
     }
 
     /**
@@ -276,9 +275,9 @@ export class Grid {
      */
     decouvrirAlentours(row, col) {
         if (this.compterFlags(row, col) !== this.cells[row][col].valeur) return;
-        this.coordonneesAutour(row, col).forEach((coord) => {
-            if (this.canDisplay(coord[0], coord[1])) this.cliqueCellule(coord[0], coord[1]);
-        });
+        for (let coord of this.coordonneesAutour(row, col)) {
+            if (!this.cells[coord[0]][coord[1]].flag) this.afficherCellule(coord[0], coord[1]);
+        }
     }
 
     /**
@@ -321,9 +320,9 @@ export class Grid {
      */
     compterMines(row, col) {
         let nbMines = 0;
-        this.coordonneesAutour(row, col).forEach((coord) => {
+        for (let coord of this.coordonneesAutour(row, col)) {
             if (this.cells[coord[0]][coord[1]].isMine()) nbMines++;
-        });
+        }
         return nbMines;
     }
 
@@ -335,9 +334,9 @@ export class Grid {
      */
     compterFlags(row, col) {
         let nbFlags = 0;
-        this.coordonneesAutour(row, col).forEach((coord) => {
+        for (let coord of this.coordonneesAutour(row, col)) {
             if (this.cells[coord[0]][coord[1]].flag) nbFlags++;
-        });
+        }
         return nbFlags;
     }
 
@@ -347,7 +346,9 @@ export class Grid {
      * @param col la colonne de la cellule
      */
     decouvrirZeros(row, col) {
-        this.canDisplayAutour(row, col).forEach((coord) => this.afficherCellule(coord[0], coord[1]));
+        for (let coord of this.canDisplayAutour(row, col)) {
+            this.afficherCellule(coord[0], coord[1]);
+        }
     }
 
     /**
@@ -482,11 +483,11 @@ export class Grid {
     canDisplayAutour(row, col) {
         let coordonnees = this.coordonneesAutour(row, col);
         let newCoordonnees = [];
-        coordonnees.forEach((coord) => {
+        for (let coord of coordonnees) {
             if (this.canDisplay(coord[0], coord[1])) {
                 newCoordonnees.push(coord);
             }
-        });
+        }
         return newCoordonnees;
     }
 
@@ -554,11 +555,11 @@ export class Grid {
         this.minesCounter.initialiseMineCounter(0);
 
         // Reinitialiser toutes les cellules
-        this.cells.forEach((rows) => {
+        for (let rows of this.cells) {
             rows.forEach((cell) => {
                 cell.reinitialiserCellule();
             });
-        });
+        }
     }
 
     /**

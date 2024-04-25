@@ -56,24 +56,24 @@ function setupForm() {
         submitTheme();
     });
 
-    cancel.forEach(cancelButton => {
+    for(let cancelButton of cancel) {
         cancelButton.addEventListener("click", function() {
             overlay.style.display = "none";
             popupDifficulte.style.display = "none";
             popupTheme.style.display = "none";
         });
-    });
+    }
 
 
 
 
     displayCustoms(custom.checked);
     let diff = document.querySelectorAll('input[name="diff"]');
-    diff.forEach((radio) => {
+    for (let radio of diff) {
         radio.addEventListener('change', function() {
             displayCustoms(this.value === "custom");
         });
-    });
+    }
 }
 
 /**
