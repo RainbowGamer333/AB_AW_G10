@@ -21,15 +21,17 @@
     --url-smiley-mine: url("../asset/themes/smiley/grille/mine.png");
     --url-smiley-fake-mine: url("../asset/themes/smiley/grille/fake-mine.png");
     /*
-    --url-smiley-unclicked: url("../asset/themes/smiley/grille/unclicked.png");
-    --url-smiley-0: url("../asset/themes/smiley/grille/0.png");
-    --url-smiley-1: url("../asset/themes/smiley/grille/1.png");
-    --url-smiley-2: url("../asset/themes/smiley/grille/2.png");
-    --url-smiley-3: url("../asset/themes/smiley/grille/3.png");
-    --url-smiley-4: url("../asset/themes/smiley/grille/4.png");
-    --url-smiley-5: url("../asset/themes/smiley/grille/5.png");
-    --url-smiley-6: url("../asset/themes/smiley/grille/6.png");
-    --url-smiley-7: url("../asset/themes/smiley/grille/7.png");
-    --url-smiley-8: url("../asset/themes/smiley/grille/8.png");
-     */
+    Les images smiley n'existent pas donc on les initialisent avec le theme retro
+    */
+    --url-smiley-unclicked: url("../asset/themes/retro/grille/unclicked.png");
+    --url-smiley-0: url("../asset/themes/retro/grille/0.png");
+    --url-smiley-1: url("../asset/themes/retro/grille/1.png");
+    --url-smiley-2: url("../asset/themes/retro/grille/2.png");
+    --url-smiley-3: url("../asset/themes/retro/grille/3.png");
+    --url-smiley-4: url("../asset/themes/retro/grille/4.png");
+    --url-smiley-5: url("../asset/themes/retro/grille/5.png");
+    --url-smiley-6: url("../asset/themes/retro/grille/6.png");
+    --url-smiley-7: url("../asset/themes/retro/grille/7.png");
+    --url-smiley-8: url("../asset/themes/retro/grille/8.png");
+
 }
