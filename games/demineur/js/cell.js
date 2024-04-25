@@ -39,6 +39,7 @@ export class Cell {
     }
 
     set theme(theme) {
+        this.element.classList.remove(this._theme);
         this._theme = theme;
         this.element.classList.add(theme);
     }

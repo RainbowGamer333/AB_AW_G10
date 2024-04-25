@@ -61,6 +61,10 @@ export class GameBoard {
         }
     }
 
+    setTheme(theme) {
+        this.grid.theme = theme;
+    }
+
     resetGame() {
         this.reinitialiserGrille(9, 9, 10, "facile");
     }

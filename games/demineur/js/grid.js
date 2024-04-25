@@ -65,6 +65,7 @@ export class Grid {
                 cell.theme = theme;
             });
         });
+        this.smiley.theme = theme;
     }
 
     /**

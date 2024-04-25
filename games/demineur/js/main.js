@@ -4,7 +4,6 @@ import AchievementUtils from "../../../js/AchievementUtils.js";
 import {initialiserScoresDemineur} from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 
 const account = JSON.parse(sessionStorage.getItem("account"));
-const scoreboard = document.querySelector(".scoreboard");
 const overlay = document.getElementById("overlay");
 const cancel = document.querySelectorAll(".cancel");
 const difficulte = document.getElementById("difficulte");
@@ -21,13 +20,11 @@ let gameBoard;
 
 function onload() {
     if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
-    if (scoreboard.children[1].querySelector(".score").innerHTML === "(...)") {
-        initialiserScoresDemineur();
-    }
     gameBoard = new GameBoard(9, 9, 10, "facile");
     setupForm();
     AchievementUtils.init("demineur");
 }
+
 
 /**
  * Initialise les événements du formulaire.
@@ -56,7 +53,7 @@ function setupForm() {
         e.preventDefault();
         overlay.style.display = "none";
         popupTheme.style.display = "none";
-        //submitTheme();
+        submitTheme();
     });
 
     cancel.forEach(cancelButton => {
@@ -120,6 +117,22 @@ function submitDifficulte() {
             break;
     }
 }
+
+
+function submitTheme() {
+   let theme = document.querySelector('input[name="theme"]:checked').id;
+   console.log("value theme", theme);
+   switch (theme) {
+       case 'themeRetro':
+           gameBoard.setTheme("retro");
+           break;
+       case 'themeSmiley':
+           gameBoard.setTheme("smiley");
+           break;
+    }
+}
+
+
 
 export function resetDemineur() {
     gameBoard.resetGame();
