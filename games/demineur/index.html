@@ -22,8 +22,8 @@
     <main>
         <div id="gameContainer">
             <div id="overlay"></div>
-            <div id="popup">
-                <form id="form" method="post">
+            <div id="popupDifficulte">
+                <form id="formDifficulte" method="post">
                     <label>
                         <input type="radio" id="facile" name="diff" value="facile" checked>
                         Facile
@@ -52,30 +52,47 @@
                         <input type="number" name="customM">
                         Mines
                     </label>
-                    <input id="submit" type="submit" value="submit">
-                    <input id="cancel" type="button" value="cancel">
+                    <input id="submitDiff" type="submit" value="submit">
+                    <input id="cancelDiff" class="cancel" type="button" value="cancel">
+                </form>
+            </div>
+
+            <div id="popupTheme">
+                <form id="formTheme">
+                    <label>
+                        <input type="radio" name="theme" id="themeRetro" checked>
+                        Retro
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" id="themeSmiley">
+                        Smiley
+                    </label>
+
+                    <input id="submitTheme" type="submit" value="submit">
+                    <input id="cancelTheme" class="cancel" type="button" value="cancel">
                 </form>
             </div>
 
             <div id="gameBoard">
                 <div id="options">
-                    <a href="#" id="game">Difficulté</a>
+                    <a href="#" id="difficulte">Difficulté</a>
+                    <a href="#" id="theme">Thème</a>
                 </div>
                 <div id="gameBoardHeader">
                     <div id="gameBoardHeaderMineCounter">
-                        <img id="mineH" src="asset/header/timer0.png" alt="h">
-                        <img id="mineT" src="asset/header/timer0.png" alt="t">
-                        <img id="mineU" src="asset/header/timer0.png" alt="u">
+                        <img id="mineH" src="asset/themes/retro/header/timer0.png" alt="h">
+                        <img id="mineT" src="asset/themes/retro/header/timer0.png" alt="t">
+                        <img id="mineU" src="asset/themes/retro/header/timer0.png" alt="u">
                     </div>
                     <div id="gameBoardHeaderSmiley">
                         <button id="gameBoardHeaderSmileyButton">
-                            <img id="smiley" src="asset/header/normal.png" alt="smile">
+                            <img id="smiley" src="asset/themes/retro/header/normal.png" alt="smile">
                         </button>
                     </div>
                     <div id="gameBoardHeaderTime">
-                        <img id="timerH" src="asset/header/timer0.png" alt="h">
-                        <img id="timerT" src="asset/header/timer0.png" alt="t">
-                        <img id="timerU" src="asset/header/timer0.png" alt="u">
+                        <img id="timerH" src="asset/themes/retro/header/timer0.png" alt="h">
+                        <img id="timerT" src="asset/themes/retro/header/timer0.png" alt="t">
+                        <img id="timerU" src="asset/themes/retro/header/timer0.png" alt="u">
                     </div>
                 </div>
                 <div id="grille"></div>

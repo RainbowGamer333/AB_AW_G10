@@ -18,7 +18,7 @@
     z-index: 2;
 }
 
-#popup {
+#popupDifficulte, #popupTheme {
     display: none;
     position: fixed;
     top: 200px;
@@ -85,6 +85,14 @@
     border: 10px solid var(--demineurBorderColor);
     border-radius: 1em;
 
+    #options {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        margin: 10px;
+    }
+
     #gameBoardHeader {
         background-color: var(--demineurBackgroundColor);
         background-repeat: repeat;
@@ -104,7 +112,7 @@
 
         #gameBoardHeaderSmileyButton {
             background-color: var(--demineurBackgroundColor);
-            background-image: url("../asset/grille/unclicked.png");
+            background-image: url("../asset/themes/retro/grille/unclicked.png");
             background-size: 100% 100%;
             border: none;
             width: 50px;
