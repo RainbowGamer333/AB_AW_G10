@@ -6,14 +6,14 @@ body, html {
 
 #leftPanel {
     width: 33.33%;
-    height: 1500px;
+    height: 1100px;
     float: left;
     background-color: #f2f2f2;
 }
 
 #rightPanel {
     width: 66.66%;
-    height: 1500px;
+    height: 1100px;
     float: left;
     background-color: #e6e6e6;
 }
@@ -313,6 +313,9 @@ body, html {
     animation: moveUp 2s ease;
 
 }
+.mega-auto-click-animation hover {
+    cursor: none;
+}
 
 .decompose-animation {
     transition: transform 6s ease, opacity 6s ease; /* Transition pour la transformation et l'opacité */
@@ -559,6 +562,8 @@ body, html {
 
 .image-cell {
     text-align: center; /* Centrer le contenu à l'intérieur de chaque cellule */
+    height: 200px;
+    margin-bottom: 30px;
 }
 
 .image-container {
