@@ -1,8 +1,6 @@
 import AchievementUtils from "../../../js/AchievementUtils.js";
 
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
      let clickButton = document.getElementById('clickButton');
      let autoClickButton = document.getElementById('autoClickButton');
@@ -35,6 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
      let hasReachedButtonOne = false;
      let hasReachedButtonTwo = false;
+
+     let h4ElementsToHide = document.querySelectorAll('.h4-to-hide');
 
     const account = JSON.parse(sessionStorage.getItem("account"));
     if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
@@ -136,12 +136,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         // Vérifiez si le score atteint le seuil pour chaque image et faites disparaître les rectangles correspondants
-        if (score >= 1000) {
-             let rectangle = document.querySelector('#imageOne .rectangle');
+        if (score >= 2000) {
+            let rectangle = document.querySelector('#imageOne .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+                h4Element.style.display = 'none';
             }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image2000');
+            h4Element.classList.add('decompose-animation');
             AchievementUtils.increaseCounterAndTryUnlock(0, 1);
 
         }
@@ -150,35 +153,50 @@ document.addEventListener('DOMContentLoaded', function () {
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image5000');
+            h4Element.classList.add('decompose-animation');
         }
         if (score >= 25000) {
              let rectangle = document.querySelector('#imageThree .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image25000');
+            h4Element.classList.add('decompose-animation');
         }
         if (score >= 50000) {
              let rectangle = document.querySelector('#imageFour .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image50000');
+            h4Element.classList.add('decompose-animation');
         }
         if (score >= 100000) {
              let rectangle = document.querySelector('#imageFive .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image100000');
+            h4Element.classList.add('decompose-animation');
         }
         if (score >= 250000) {
              let rectangle = document.querySelector('#imageSix .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image250000');
+            h4Element.classList.add('decompose-animation');
             AchievementUtils.increaseCounterAndTryUnlock(2, 1);
         }
         if (score >= 500000) {
@@ -186,28 +204,40 @@ document.addEventListener('DOMContentLoaded', function () {
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image500000');
+            h4Element.classList.add('decompose-animation');
         }
         if (score >= 1000000) {
              let rectangle = document.querySelector('#imageEight .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image1000000');
+            h4Element.classList.add('decompose-animation');
         }
         if (score >= 5000000) {
              let rectangle = document.querySelector('#imageNine .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image5000000');
+            h4Element.classList.add('decompose-animation');
         }
         if (score >= 100000000) {
              let rectangle = document.querySelector('#imageTen .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image100000000');
+            h4Element.classList.add('decompose-animation');
             AchievementUtils.increaseCounterAndTryUnlock(3, 1);
         }
         if (score >= 500000000) {
@@ -215,14 +245,20 @@ document.addEventListener('DOMContentLoaded', function () {
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image500000000');
+            h4Element.classList.add('decompose-animation');
         }
         if (score >= 1000000000) {
              let rectangle = document.querySelector('#imageTwelve .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
                 rectangle.style.display = 'none'; //  cache le rectangle après l'animation
-            }, 3000); //   durée de l'animation CSS
+                h4Element.style.display = 'none';
+            }, 3000); //  durée de l'animation CSS
+            let h4Element = document.getElementById('image1000000000');
+            h4Element.classList.add('decompose-animation');
             AchievementUtils.increaseCounterAndTryUnlock(5, 1);
         }
 
