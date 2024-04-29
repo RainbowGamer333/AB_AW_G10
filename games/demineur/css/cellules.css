@@ -7,61 +7,59 @@
 
 
 .cell {
-    &.retro {
-        &.unclicked {
-            background-image: var(--url-unclicked);
-        }
+    &.unclicked {
+        background-image: var(--url-unclicked);
+    }
 
-        &.flag {
-            background-image:  var(--url-flag), var(--url-unclicked);
-        }
+    &.flag {
+        background-image:  var(--url-flag), var(--url-unclicked);
+    }
 
-        &.mine {
-            background-image: var(--url-mine);
+    &.mine {
+        background-image: var(--url-mine);
 
-            &.clicked {
-                background-color: red;
-            }
+        &.clicked {
+            background-color: red;
         }
+    }
 
-        &.fake-mine {
-            background-image: var(--url-fake-mine);
-        }
+    &.fake-mine {
+        background-image: var(--url-fake-mine);
+    }
 
-        &.zero {
-            background-image: var(--url-0);
-        }
+    &.zero {
+        background-image: var(--url-0);
+    }
 
-        &.one {
-            background-image: var(--url-1);
-        }
+    &.one {
+        background-image: var(--url-1);
+    }
 
-        &.two {
-            background-image: var(--url-2);
-        }
+    &.two {
+        background-image: var(--url-2);
+    }
 
-        &.three {
-            background-image: var(--url-3);
-        }
+    &.three {
+        background-image: var(--url-3);
+    }
 
-        &.four {
-            background-image: var(--url-4);
-        }
+    &.four {
+        background-image: var(--url-4);
+    }
 
-        &.five {
-            background-image: var(--url-5);
-        }
+    &.five {
+        background-image: var(--url-5);
+    }
 
-        &.six {
-            background-image: var(--url-6);
-        }
+    &.six {
+        background-image: var(--url-6);
+    }
 
-        &.seven {
-            background-image: var(--url-7);
-        }
+    &.seven {
+        background-image: var(--url-7);
+    }
 
-        &.eight {
-            background-image: var(--url-8);
-        }
+    &.eight {
+        background-image: var(--url-8);
     }
 }
