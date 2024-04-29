@@ -68,7 +68,20 @@
             }
             & .score{
                 text-shadow: 0px 0px 26px #ecbc7a;
+
             }
         }
     }
+}
+
+.title-nickname, .name{
+    width: 150px;
+}
+
+.title-rank, .rank{
+    min-width: 75px
+}
+
+.title-score, .score{
+    min-width: 60px;
 }
