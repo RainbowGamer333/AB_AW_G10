@@ -1,3 +1,11 @@
+export function initialiserScores() {
+    console.log("initialiserScores");
+    initialiserScoresDemineur();
+    initialiserScoresClicker();
+    initialiserScoresTowerDefense();
+}
+
+
 export function initialiserScoresDemineur() {
     clearScoresDemineur();
     initialiserScoresDemineurFacile();
@@ -75,8 +83,6 @@ export function initialiserScoresClicker() {
 
 function clearScoresClicker() {
     localStorage.removeItem("scoreClicker");
-    localStorage.setItem("scoreClicker", JSON.stringify([]));
-
 }
 
 
@@ -101,5 +107,4 @@ export function initialiserScoresTowerDefense() {
 
 function clearScoresTowerDefense() {
     localStorage.removeItem("scoreTowerDefense");
-    localStorage.setItem("scoreTowerDefense", []);
 }
