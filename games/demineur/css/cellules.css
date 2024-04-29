@@ -9,15 +9,15 @@
 .cell {
     &.retro {
         &.unclicked {
-            background-image: var(--url-retro-unclicked);
+            background-image: var(--url-unclicked);
         }
 
         &.flag {
-            background-image:  var(--url-retro-flag), var(--url-retro-unclicked);
+            background-image:  var(--url-flag), var(--url-unclicked);
         }
 
         &.mine {
-            background-image: var(--url-retro-mine);
+            background-image: var(--url-mine);
 
             &.clicked {
                 background-color: red;
@@ -25,101 +25,43 @@
         }
 
         &.fake-mine {
-            background-image: var(--url-retro-fake-mine);
+            background-image: var(--url-fake-mine);
         }
 
         &.zero {
-            background-image: var(--url-retro-0);
+            background-image: var(--url-0);
         }
 
         &.one {
-            background-image: var(--url-retro-1);
+            background-image: var(--url-1);
         }
 
         &.two {
-            background-image: var(--url-retro-2);
+            background-image: var(--url-2);
         }
 
         &.three {
-            background-image: var(--url-retro-3);
+            background-image: var(--url-3);
         }
 
         &.four {
-            background-image: var(--url-retro-4);
+            background-image: var(--url-4);
         }
 
         &.five {
-            background-image: var(--url-retro-5);
+            background-image: var(--url-5);
         }
 
         &.six {
-            background-image: var(--url-retro-6);
+            background-image: var(--url-6);
         }
 
         &.seven {
-            background-image: var(--url-retro-7);
+            background-image: var(--url-7);
         }
 
         &.eight {
-            background-image: var(--url-retro-8);
-        }
-    }
-
-    &.smiley {
-        &.unclicked {
-            background-image: var(--url-smiley-unclicked);
-        }
-
-        &.flag {
-            background-image:  var(--url-smiley-flag), var(--url-smiley-unclicked);
-        }
-
-        &.mine {
-            background-image: var(--url-smiley-mine);
-
-            &.clicked {
-                background-color: red;
-            }
-        }
-
-        &.fake-mine {
-            background-image: var(--url-smiley-fake-mine);
-        }
-
-        &.zero {
-            background-image: var(--url-smiley-0);
-        }
-
-        &.one {
-            background-image: var(--url-smiley-1);
-        }
-
-        &.two {
-            background-image: var(--url-smiley-2);
-        }
-
-        &.three {
-            background-image: var(--url-smiley-3);
-        }
-
-        &.four {
-            background-image: var(--url-smiley-4);
-        }
-
-        &.five {
-            background-image: var(--url-smiley-5);
-        }
-
-        &.six {
-            background-image: var(--url-smiley-6);
-        }
-
-        &.seven {
-            background-image: var(--url-smiley-7);
-        }
-
-        &.eight {
-            background-image: var(--url-smiley-8);
+            background-image: var(--url-8);
         }
     }
 }
