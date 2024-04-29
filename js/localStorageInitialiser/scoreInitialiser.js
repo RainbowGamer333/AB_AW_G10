@@ -74,7 +74,18 @@ function clearScoresClicker() {
 
 export function initialiserScoresTowerDefense() {
     clearScoresTowerDefense();
-    let scores = [];
+    let scores = [
+        {nom: "F", score: 1},
+        {nom: "FabuLeMich", score: 2},
+        {nom: "Stephane06", score: 3},
+        {nom: "Quentin12", score: 4},
+        {nom: "Florent78", score: 5},
+        {nom: "A", score: 6},
+        {nom: "B", score: 7},
+        {nom: "C", score: 8},
+        {nom: "D", score: 9},
+        {nom: "E", score: 10}
+    ];
     //TODO
 
     localStorage.setItem("scoreTowerDefense", JSON.stringify(scores));

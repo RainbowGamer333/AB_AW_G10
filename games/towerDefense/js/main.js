@@ -14,6 +14,7 @@ import {MapUtils} from "./utils/MapUtils.js";
 import {Utils} from "./utils/Utils.js";
 import {AB_Utils} from "../../../js/AB_Utils.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
+import {initialiserScoresTowerDefense} from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 
 
 Engine.canvas = document.getElementById("gameCanvas");
@@ -38,6 +39,7 @@ function init(){
 
 
     const achievementPATH = "/games/towerDefense/asset/data/achievement.json";
+    initialiserScoresTowerDefense();
     AchievementUtils.init("towerDefense", achievementPATH);
 
     MapUtils.createGround();
