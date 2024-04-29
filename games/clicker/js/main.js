@@ -1,35 +1,46 @@
+import AchievementUtils from "../../../js/AchievementUtils.js";
+
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    var clickButton = document.getElementById('clickButton');
-    var autoClickButton = document.getElementById('autoClickButton');
-    var clickPlus1Button = document.getElementById('clickPlus1');
-    var scoreDisplay = document.getElementById('score');
-    var autoClickCostDisplay = document.getElementById('autoClickCostDisplay');
-    var clickPlus1CostDisplay = document.getElementById('clickPlus1CostDisplay');
-    var coinsDisplay = document.getElementById('coinsDisplay');
-    var cpsDisplay = document.getElementById('cpsDisplay');
-    var nextClickValueDisplay = document.getElementById('nextClickValueDisplay'); // Ajout de l'affichage de la prochaine valeur de clic
-    var megaAutoClickButton = document.getElementById('megaAutoClickButton');
-    var megaAutoClickCostDisplay = document.getElementById('megaAutoClickCostDisplay');
-    var clickPlus1000Button = document.getElementById('clickPlus1000Button');
-    var clickPlus1000CostDisplay = document.getElementById('clickPlus1000CostDisplay');
+     let clickButton = document.getElementById('clickButton');
+     let autoClickButton = document.getElementById('autoClickButton');
+     let clickPlus1Button = document.getElementById('clickPlus1');
+     let scoreDisplay = document.getElementById('score');
+     let autoClickCostDisplay = document.getElementById('autoClickCostDisplay');
+     let clickPlus1CostDisplay = document.getElementById('clickPlus1CostDisplay');
+     let coinsDisplay = document.getElementById('coinsDisplay');
+     let cpsDisplay = document.getElementById('cpsDisplay');
+     let nextClickValueDisplay = document.getElementById('nextClickValueDisplay'); // Ajout de l'affichage de la prochaine valeur de clic
+     let megaAutoClickButton = document.getElementById('megaAutoClickButton');
+     let megaAutoClickCostDisplay = document.getElementById('megaAutoClickCostDisplay');
+     let clickPlus1000Button = document.getElementById('clickPlus1000Button');
+     let clickPlus1000CostDisplay = document.getElementById('clickPlus1000CostDisplay');
 
-    var timerDisplay = document.getElementById('timerDisplay'); // Ajout de la référence au chronomètre
-    var startTime;
-    var timerInterval;
+     let timerDisplay = document.getElementById('timerDisplay'); // Ajout de la référence au chronomètre
+     let startTime;
+     let timerInterval;
 
-    var score = 0;
-    var autoClicks = 0;
-    var clickPlus1Multiplier = 1;
-    var autoClickCost = 1500;
-    var clickPlus1Cost = 500;
-    var megaAutoClickCost = 50000;
-    var clickPlus1000Cost = 10000;
-    var coins = 0;
-    var cps = 0;
-    var nextClickValue = clickPlus1Multiplier; // Initialisation de la prochaine valeur de clic
+     let score = 0;
+     let autoClicks = 0;
+     let clickPlus1Multiplier = 1;
+     let autoClickCost = 1500;
+     let clickPlus1Cost = 500;
+     let megaAutoClickCost = 50000;
+     let clickPlus1000Cost = 10000;
+     let coins = 0;
+     let cps = 0;
+     let nextClickValue = clickPlus1Multiplier; // Initialisation de la prochaine valeur de clic
 
-    var hasReachedButtonOne = false;
-    var hasReachedButtonTwo = false;
+     let hasReachedButtonOne = false;
+     let hasReachedButtonTwo = false;
+
+    const account = JSON.parse(sessionStorage.getItem("account"));
+    if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
+
+    AchievementUtils.init("clicker");
+
 
     function startTimer() {
         startTime = Date.now();
@@ -41,14 +52,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateTimer() {
-        var elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+         let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
         displayTime(elapsedTime); // Mettre à jour l'affichage du chronomètre
     }
 
     function displayTime(time) {
-        var seconds = time % 60;
-        var minutes = Math.floor(time / 60) % 60;
-        var hours = Math.floor(time / 3600);
+         let seconds = time % 60;
+         let minutes = Math.floor(time / 60) % 60;
+         let hours = Math.floor(time / 3600);
         timerDisplay.textContent = 'Temps écoulé: ' + hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
     }
 
@@ -68,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (score >= 1000 || hasReachedButtonTwo) {
             autoClickButton.classList.remove('hidden');
             autoClickCostDisplay.classList.remove('hidden');
+            AchievementUtils.increaseCounterAndTryUnlock(1, 1);
         } else {
             autoClickButton.classList.add('hidden');
         }
@@ -84,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             megaAutoClickCostDisplay.classList.remove('hidden');
             autoClickButton.classList.add('hidden');
             autoClickCostDisplay.classList.add('hidden');
+            AchievementUtils.increaseCounterAndTryUnlock(6, 1);
         } else {
             megaAutoClickButton.classList.add('hidden');
         }
@@ -118,90 +131,99 @@ document.addEventListener('DOMContentLoaded', function () {
         updateCoins();
         updateButton();
 
+
+
+
+
         // Vérifiez si le score atteint le seuil pour chaque image et faites disparaître les rectangles correspondants
         if (score >= 1000) {
-            var rectangle = document.querySelector('#imageOne .rectangle');
+             let rectangle = document.querySelector('#imageOne .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //  durée de l'animation CSS
+            AchievementUtils.increaseCounterAndTryUnlock(0, 1);
+
         }
         if (score >= 5000) {
-            var rectangle = document.querySelector('#imageTwo .rectangle');
+             let rectangle = document.querySelector('#imageTwo .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 25000) {
-            var rectangle = document.querySelector('#imageThree .rectangle');
+             let rectangle = document.querySelector('#imageThree .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 50000) {
-            var rectangle = document.querySelector('#imageFour .rectangle');
+             let rectangle = document.querySelector('#imageFour .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 100000) {
-            var rectangle = document.querySelector('#imageFive .rectangle');
+             let rectangle = document.querySelector('#imageFive .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 250000) {
-            var rectangle = document.querySelector('#imageSix .rectangle');
+             let rectangle = document.querySelector('#imageSix .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
+            AchievementUtils.increaseCounterAndTryUnlock(2, 1);
         }
         if (score >= 500000) {
-            var rectangle = document.querySelector('#imageSeven .rectangle');
+             let rectangle = document.querySelector('#imageSeven .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 1000000) {
-            var rectangle = document.querySelector('#imageEight .rectangle');
+             let rectangle = document.querySelector('#imageEight .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 5000000) {
-            var rectangle = document.querySelector('#imageNine .rectangle');
+             let rectangle = document.querySelector('#imageNine .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 100000000) {
-            var rectangle = document.querySelector('#imageTen .rectangle');
+             let rectangle = document.querySelector('#imageTen .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
+            AchievementUtils.increaseCounterAndTryUnlock(3, 1);
         }
         if (score >= 500000000) {
-            var rectangle = document.querySelector('#imageEleven .rectangle');
+             let rectangle = document.querySelector('#imageEleven .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
         }
         if (score >= 1000000000) {
-            var rectangle = document.querySelector('#imageTwelve .rectangle');
+             let rectangle = document.querySelector('#imageTwelve .rectangle');
             rectangle.classList.add('decompose-animation');
             setTimeout(() => {
-                rectangle.style.display = 'none'; // Cacher le rectangle après l'animation
-            }, 3000); // Assurez-vous que cette valeur est supérieure à la durée de l'animation CSS
+                rectangle.style.display = 'none'; //  cache le rectangle après l'animation
+            }, 3000); //   durée de l'animation CSS
+            AchievementUtils.increaseCounterAndTryUnlock(5, 1);
         }
 
         if (score >= 1 && !startTime) {
@@ -470,6 +492,7 @@ document.addEventListener('DOMContentLoaded', function () {
             incrementCoins(100000000);
             // Mise à jour de l'affichage
             updateScore();
+            AchievementUtils.increaseCounterAndTryUnlock(4, 1);
         }
     });
 
@@ -479,9 +502,9 @@ document.addEventListener('DOMContentLoaded', function () {
 //////////////////////////////image//////////////////////////
     // Fonction pour générer une couleur aléatoire au format hexadecimal
     function getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
+         let letters = '0123456789ABCDEF';
+         let color = '#';
+        for ( let i = 0; i < 6; i++) {
             color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
@@ -490,91 +513,91 @@ document.addEventListener('DOMContentLoaded', function () {
 // Ajoutez un gestionnaire d'événements à l'image
     document.getElementById('imageOne').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('leftPanel').style.backgroundColor = randomColor;
     });
 
     document.getElementById('imageTwo').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('title').style.color = randomColor;
     });
 
     document.getElementById('imageThree').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('timerDisplay').style.color = randomColor;
     });
 
     document.getElementById('imageFour').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('score').style.color = randomColor;
     });
 
     document.getElementById('imageFive').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('coinsDisplay').style.color = randomColor;
     });
 
     document.getElementById('imageSix').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('cpsDisplay').style.color = randomColor;
     });
 
     document.getElementById('imageSeven').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('nextClickValueDisplay').style.color = randomColor;
     });
 
     document.getElementById('imageEight').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('valueGame').style.backgroundColor = randomColor;
     });
 
     document.getElementById('imageNine').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('rightPanel').style.backgroundColor = randomColor;
     });
 
     document.getElementById('imageTen').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('zoneClicker').style.color = randomColor;
     });
 
     document.getElementById('imageEleven').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('').style.backgroundColor = randomColor;
     });
 
     document.getElementById('imageTwelve').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('').style.color = randomColor;
     });
 
     document.getElementById('clickButton').addEventListener('click', function () {
         // Génère une couleur aléatoire
-        var randomColor = getRandomColor();
+         let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('clickButton').style.backgroundColor = randomColor;
     });
@@ -584,43 +607,50 @@ document.addEventListener('DOMContentLoaded', function () {
     function checkEndGame() {
         if (score >= 1100000000) {
             endGame(); // Appel à endGame() lorsque le score atteint 1 milliard
+
         }
     }
 
 
     function endGame() {
         // Supprimer tous les éléments du jeu
-        var gameContainer = document.querySelector('.gameContainer');
+         let gameContainer = document.getElementById('gameContainer');
         gameContainer.innerHTML = '';
 
         // Calculer le temps écoulé
-        var elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-        var hours = Math.floor(elapsedTime / 3600);
-        var minutes = Math.floor((elapsedTime % 3600) / 60);
-        var seconds = elapsedTime % 60;
+         let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+         let hours = Math.floor(elapsedTime / 3600);
+         let minutes = Math.floor((elapsedTime % 3600) / 60);
+         let seconds = elapsedTime % 60;
 
         // Créer un conteneur pour le texte de félicitations et le bouton
-        var endGameContainer = document.createElement('div');
+         let endGameContainer = document.createElement('div');
         endGameContainer.style.textAlign = 'center';
-        endGameContainer.style.marginTop = '250px';
         endGameContainer.style.display = 'flex';
         endGameContainer.style.flexDirection = 'column';
         endGameContainer.style.alignItems = 'center';
+        endGameContainer.style.height= '800px';
+
+        AchievementUtils.increaseCounterAndTryUnlock(7, 1);
 
         // Créer un élément de texte pour afficher le message de félicitations
-        var congratulationsText = document.createElement('div');
+         let congratulationsText = document.createElement('div');
         congratulationsText.textContent = 'Félicitations ! Vous avez terminé le jeu en ' + hours + ' heures, ' + minutes + ' minutes et ' + seconds + ' secondes. Merci beaucoup d\'avoir joué ! Ne clique surtout pas sur le bouton !!!';
         congratulationsText.style.fontSize = '30px';
         congratulationsText.style.fontWeight = 'bold';
+        congratulationsText.style.backgroundColor = 'black';
         congratulationsText.style.color = getRandomColor();
+        congratulationsText.style.marginTop= '40%';
 
         // Créer un bouton pour mettre une image en fond de gameContainer
-        var imageButton = document.createElement('button');
+         let imageButton = document.createElement('button');
         imageButton.textContent = 'Ne pas appuyer dessus !!!!!!!!!';
         imageButton.style.marginTop = '20px'; // Modifier la marge supérieure selon vos besoins
+        imageButton.style.backgroundColor= 'lightblue';
+        imageButton.style.width='200px';
         imageButton.addEventListener('click', function() {
             imageButton.addEventListener('click', function() {
-                var images = [
+                 let images = [
                     'Alexis.jpg',
                     'buffaa.gif',
                     'Elyan.jpg',
@@ -635,12 +665,26 @@ document.addEventListener('DOMContentLoaded', function () {
                     'theoS.jpg',
                     'titouan.jpg',
                 ];
-                var randomIndex = Math.floor(Math.random() * images.length);
-                var randomImage = images[randomIndex];
+                 let randomIndex = Math.floor(Math.random() * images.length);
+                 let randomImage = images[randomIndex];
                 gameContainer.style.backgroundImage = 'url("images/' + randomImage + '")';
+                gameContainer.style.backgroundRepeat = 'space';
                 congratulationsText.style.color = getRandomColor();
             });
         });
+
+        // Ajouter un effet de survol sur le bouton
+        imageButton.addEventListener('mouseover', function() {
+            imageButton.style.backgroundColor = 'lightgreen';
+        });
+
+// Retirer l'effet de survol lorsque la souris quitte le bouton
+        imageButton.addEventListener('mouseout', function() {
+            imageButton.style.backgroundColor = 'lightblue';
+        });
+
+
+
 
         // Ajouter le texte de félicitations et le bouton au conteneur
         endGameContainer.appendChild(congratulationsText);

@@ -60,8 +60,16 @@ function clearScoresDemineur() {
 export function initialiserScoresClicker() {
     clearScoresClicker();
     let scores = [];
-    //TODO
-
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
     localStorage.setItem("scoreClicker", JSON.stringify(scores));
 }
 

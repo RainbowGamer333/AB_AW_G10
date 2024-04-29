@@ -1,13 +1,17 @@
 import { GameBoard } from "./gameBoard.js";
 import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
+import {initialiserScoresDemineur} from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 
 const account = JSON.parse(sessionStorage.getItem("account"));
-const game = document.getElementById("game");
 const overlay = document.getElementById("overlay");
-const popup = document.getElementById("popup");
-const cancel = document.getElementById("cancel");
-const form = document.getElementById("form");
+const cancel = document.querySelectorAll(".cancel");
+const difficulte = document.getElementById("difficulte");
+const popupDifficulte = document.getElementById("popupDifficulte");
+const formDifficulte = document.getElementById("formDifficulte");
+const theme = document.getElementById("theme");
+const popupTheme = document.getElementById("popupTheme");
+const formTheme = document.getElementById("formTheme");
 const custom = document.getElementById("custom");
 const customW = document.getElementById("customW");
 const customH = document.getElementById("customH");
@@ -21,35 +25,55 @@ function onload() {
     AchievementUtils.init("demineur");
 }
 
+
 /**
  * Initialise les événements du formulaire.
  */
 function setupForm() {
-    game.addEventListener("click", function() {
+
+    difficulte.addEventListener("click", function() {
         overlay.style.display = "block";
-        popup.style.display = "block";
+        popupDifficulte.style.display = "block";
     });
 
-    cancel.addEventListener("click", function() {
-        overlay.style.display = "none";
-        popup.style.display = "none";
-    });
-
-    form.addEventListener("submit", (e) => {
+    formDifficulte.addEventListener("submit", (e) => {
         e.preventDefault();
         overlay.style.display = "none";
-        popup.style.display = "none";
-        submitForm();
+        popupDifficulte.style.display = "none";
+        submitDifficulte();
     });
+
+
+    theme.addEventListener("click", function() {
+       overlay.style.display = "block";
+       popupTheme.style.display = "block";
+    });
+
+    formTheme.addEventListener("submit", (e) => {
+        e.preventDefault();
+        overlay.style.display = "none";
+        popupTheme.style.display = "none";
+        submitTheme();
+    });
+
+    for(let cancelButton of cancel) {
+        cancelButton.addEventListener("click", function() {
+            overlay.style.display = "none";
+            popupDifficulte.style.display = "none";
+            popupTheme.style.display = "none";
+        });
+    }
+
+
 
 
     displayCustoms(custom.checked);
     let diff = document.querySelectorAll('input[name="diff"]');
-    diff.forEach((radio) => {
+    for (let radio of diff) {
         radio.addEventListener('change', function() {
             displayCustoms(this.value === "custom");
         });
-    });
+    }
 }
 
 /**
@@ -66,7 +90,7 @@ function displayCustoms(checked) {
 /**
  * Soumet le formulaire.
  */
-function submitForm() {
+function submitDifficulte() {
     let diff = document.querySelector('input[name="diff"]:checked').value;
     switch(diff) {
         case "facile":
@@ -93,6 +117,22 @@ function submitForm() {
             break;
     }
 }
+
+
+function submitTheme() {
+   let theme = document.querySelector('input[name="theme"]:checked').id;
+   console.log("value theme", theme);
+   switch (theme) {
+       case 'themeRetro':
+           gameBoard.setTheme("retro");
+           break;
+       case 'themeSmiley':
+           gameBoard.setTheme("smiley");
+           break;
+    }
+}
+
+
 
 export function resetDemineur() {
     gameBoard.resetGame();

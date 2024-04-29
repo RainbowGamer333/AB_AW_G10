@@ -3,12 +3,14 @@ export class Cell {
     _valeur;
     _visible;
     _flag;
+    _theme;
 
     constructor() {
         this.element = document.createElement("td");
         this._visible = false;
         this._flag = false;
         this._disabled = false;
+        this.theme = "retro";
     }
 
 
@@ -30,6 +32,16 @@ export class Cell {
 
     set valeur(valeur) {
         this._valeur = valeur;
+    }
+
+    get theme() {
+        return this._theme;
+    }
+
+    set theme(theme) {
+        this.element.classList.remove(this._theme);
+        this._theme = theme;
+        this.element.classList.add(theme);
     }
 
     setMine() {
@@ -108,28 +120,15 @@ export class Cell {
         this._visible = false;
         this._flag = false;
         this._disabled = false;
-        this.element.classList.remove("mine");
-        this.element.classList.remove("flag");
-        this.element.classList.remove("clicked");
-        this.element.classList.remove("zero");
-        this.element.classList.remove("one");
-        this.element.classList.remove("two");
-        this.element.classList.remove("three");
-        this.element.classList.remove("four");
-        this.element.classList.remove("five");
-        this.element.classList.remove("six");
-        this.element.classList.remove("seven");
-        this.element.classList.remove("eight");
-        this.element.classList.remove("fake-mine");
-        this.element.classList.add("unclicked");
-
+        this.element.classList = [];
+        this.element.classList.add("cell", "unclicked", this._theme);
     }
 
     /**
      * Crée une nouvelle cellule.
      * @returns {Cell} La cellule créée.
      */
-    static creerCellule() {
+    static creerCellule(theme) {
         let cell = new Cell();
         cell.element.classList.add("cell", "unclicked");
         return cell;
