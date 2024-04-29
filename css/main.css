@@ -30,7 +30,7 @@ body{
 main {
     width: var(--mainWidth);
     min-height: 100vh;
-    background: #403a434d;
+    background: #12111366;;
     box-shadow: var(--baseShadow);
     margin: 60px auto 0 auto;
     backdrop-filter: blur(20px) saturate(180%);
@@ -81,7 +81,7 @@ main {
 
 .game_settings{
     width: auto;
-    background-color: rgb(136 132 205 / 14%);
+    background-color: rgb(156 153 198 / 16%);
     height: 30px;
     border-radius: 0 0 10px 10px;
     display: flex;
