@@ -1,15 +1,22 @@
+import {initialiserScores} from "./localStorageInitialiser/scoreInitialiser.js";
+
 class Scoreboard {
     static displayScoreboard(gameName) {
         let scores = JSON.parse(localStorage.getItem(gameName));
         let scoreLines = document.querySelectorAll(".line");
 
         try {
+            if (scores === null) {
+                initialiserScores();
+                scores = JSON.parse(localStorage.getItem(gameName));
+            }
+
             for (let i = 0; i < scoreLines.length - 1; i++) {
                 scoreLines[i+1].querySelector(".score").innerText = scores[i].score;
                 scoreLines[i+1].querySelector(".name").innerText = scores[i].nom;
             }
         } catch (e) {
-            console.error(gameName + " n'est pas un type de score valide");
+            console.error(e);
         }
 
     }

@@ -28,10 +28,10 @@ function init(){
                             ScoreboardDemineur.displayFacile();
                             break;
                         case "clicker":
-                            ScoreboardClicker.displayScoreboard();
+                            ScoreboardClicker.displayScore();
                             break;
                         case "towerDefense":
-                            ScoreboardTowerDefense.displayScoreboard();
+                            ScoreboardTowerDefense.displayScore();
                             break;
                     }
                 }
