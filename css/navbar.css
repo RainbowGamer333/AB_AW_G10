@@ -28,6 +28,11 @@ nav{
         height: 60px;
     }
 
+    .connexion-container{
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
 
     #account {
         width: 45px;
@@ -35,6 +40,7 @@ nav{
         background-size: cover;
         filter: opacity(0.8);
         border-radius: 180px;
+        display: flex;
 
         &:hover{
             filter: opacity(1.0);
@@ -46,10 +52,10 @@ nav{
         border-radius: 10px;
         display: flex;
         align-items: center;
-        padding: 0 10px;
+        padding: 0 10px 2px 10px;
         text-align: center;
         text-decoration: none;
-        height: 40px;
+        height: 30px;
         letter-spacing: 1px;
 
         &:hover{
@@ -74,6 +80,23 @@ nav{
         padding: 0 10px;
         position: relative;
 
+        &:after{
+            content: " ";
+            width: 25px;
+            height: 25px;
+            /* background-color: #ef0000; */
+            display: flex;
+            position: absolute;
+            right: 3px;
+            top: 1px;
+            border-radius: 10px;
+            background-image: url(../asset/icons/search.png);
+            background-size: 16px;
+            background-repeat: no-repeat;
+            background-position: 6px 4px;
+            pointer-events: none;
+        }
+
 
     }
 
@@ -87,6 +110,7 @@ nav{
         border-radius: 0 0 15px 15px;
         /*backdrop-filter: invert();*/
          background-color: #373737e0;
+
 
         > div{
 
