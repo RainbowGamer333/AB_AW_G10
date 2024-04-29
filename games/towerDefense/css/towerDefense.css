@@ -158,6 +158,11 @@ canvas{
     width: 100%;
 }
 
+li{
+    letter-spacing: 1px;
+    line-height: 26px;
+}
+
 .towerButton>.cost{
     height: 20px;
     width: 100%;
@@ -274,6 +279,12 @@ canvas{
             background-color: #703636;
             color: #d5c6b0;
         }
+    }
+
+    &.fullscreen{
+     & .guiCard-title, & .guiCard-value {
+         font-size: x-large;
+     }
     }
 }
 /*.towerButton .glow {*/
