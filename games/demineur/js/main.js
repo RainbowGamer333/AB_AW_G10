@@ -2,6 +2,7 @@ import { GameBoard } from "./gameBoard.js";
 import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
 import {initialiserScoresDemineur} from "../../../js/localStorageInitialiser/scoreInitialiser.js";
+import ThemeUtils from "./ThemeUtils.js";
 
 const account = JSON.parse(sessionStorage.getItem("account"));
 const overlay = document.getElementById("overlay");
@@ -124,10 +125,12 @@ function submitTheme() {
    console.log("value theme", theme);
    switch (theme) {
        case 'themeRetro':
-           gameBoard.setTheme("retro");
+           //gameBoard.setTheme("retro");
+           ThemeUtils.setTheme("retro");
            break;
        case 'themeSmiley':
-           gameBoard.setTheme("smiley");
+           //gameBoard.setTheme("smiley");
+           ThemeUtils.setTheme("smiley");
            break;
     }
 }
