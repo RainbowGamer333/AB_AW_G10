@@ -1,6 +1,4 @@
-//Chercher tt les variables css
-//Au changement de thème, changer les valeurs des variables css
-
+import {Smiley} from "./smiley.js";
 
 export default class ThemeUtils {
     static theme = "retro";
@@ -13,6 +11,7 @@ export default class ThemeUtils {
             ThemeUtils.changeVariable(variable, theme);
         }
 
+        Smiley.theme = theme;
         ThemeUtils.theme = theme;
     }
     
@@ -25,13 +24,6 @@ export default class ThemeUtils {
         variablesCSS.push("--url-mine");
         variablesCSS.push("url-fake-flag");
 
-        /*
-        for (let property of rootStyle) {
-            if (property.includes("--url-")) {
-                variablesCSS.push(property);
-            }
-        }
-         */
         return variablesCSS;
     }
 

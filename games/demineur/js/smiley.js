@@ -1,89 +1,86 @@
 export class Smiley {
-    button;
-    smiley;
-    _isClicked;
-    _theme;
-    _src;
+    static button = document.querySelector("#gameBoardHeaderSmileyButton");
+    static smiley = document.querySelector("#smiley");
+    static _isClicked = false;
+    static _theme = "retro";
+    static _src;
 
-    constructor() {
-        this.button = document.querySelector("#gameBoardHeaderSmileyButton");
-        this.smiley = document.querySelector("#smiley");
-        this._isClicked = false;
-        this.theme = "retro";
+    static get isClicked() {
+        return Smiley._isClicked;
     }
 
-    get isClicked() {
-        return this._isClicked;
+    static get src() {
+        return Smiley._src;
     }
 
-    get src() {
-        return this._src;
+    static set src(src) {
+        Smiley._src = src;
     }
 
-    set theme(theme) {
-        this._theme = theme;
-        this._src = `./asset/themes/${theme}/header`;
+    static set theme(theme) {
+        Smiley._theme = theme;
+        Smiley._src = `./asset/themes/${theme}/header`;
 
         //On change le thème en gardant l'instance actuelle du smiley
-        let newsrc = this.smiley.src.split("/");
+        let newsrc = Smiley.smiley.src.split("/");
         let face = newsrc[newsrc.length-1];
-        this.smiley.src = `${this._src}/${face}`;
+        Smiley.smiley.src = `${Smiley._src}/${face}`;
     }
 
 
-    setClicked(value) {
-        this._isClicked = value;
+    static setClicked(value) {
+        Smiley._isClicked = value;
     }
 
     /**
      * Initialise les listeners du bouton smiley.
      * @param grid La grille de jeu
      */
-    initialiserListeners(grid) {
-        this.button.addEventListener("click", (e) => {
+    static initialiserListeners(grid) {
+        Smiley.button.addEventListener("click", (e) => {
             e.preventDefault();
-            this.normal();
-            this.setClicked(false);
+            Smiley.normal();
+            Smiley.setClicked(false);
             grid.reinitialiserPartie();
         });
 
-        this.button.addEventListener("mousedown", (e) => {
+        Smiley.button.addEventListener("mousedown", (e) => {
             e.preventDefault();
-            this.button.classList.add("pressed");
-            this.setClicked(true);
+            Smiley.button.classList.add("pressed");
+            Smiley.setClicked(true);
         });
 
-        this.button.addEventListener("mouseup", (e) => {
+        Smiley.button.addEventListener("mouseup", (e) => {
            e.preventDefault();
-              this.button.classList.remove("pressed");
-              this.setClicked(false)
+              Smiley.button.classList.remove("pressed");
+              Smiley.setClicked(false)
         });
 
-        this.button.addEventListener("mouseout", (e) => {
+        Smiley.button.addEventListener("mouseout", (e) => {
             e.preventDefault();
-            this.button.classList.remove("pressed");
+            Smiley.button.classList.remove("pressed");
         });
 
-        this.button.addEventListener("mouseover", (e) => {
+        Smiley.button.addEventListener("mouseover", (e) => {
             e.preventDefault();
-            if(this.isClicked) this.button.classList.add("pressed");
+            if(Smiley.isClicked) Smiley.button.classList.add("pressed");
         });
     }
 
 
-    normal() {
-        this.smiley.src = `${this.src}/normal.png`;
+    static normal() {
+        Smiley.smiley.src = `${Smiley.src}/normal.png`;
     }
 
-    shock() {
-        this.smiley.src = `${this.src}/shock.png`;
+    static shock() {
+        Smiley.smiley.src = `${Smiley.src}/shock.png`;
     }
 
-    defeat() {
-        this.smiley.src = `${this.src}/defeat.png`;
+    static defeat() {
+        Smiley.smiley.src = `${Smiley.src}/defeat.png`;
     }
 
-    victory() {
-        this.smiley.src = `${this.src}/victory.png`;
+    static victory() {
+        Smiley.smiley.src = `${Smiley.src}/victory.png`;
     }
 }

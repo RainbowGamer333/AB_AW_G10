@@ -32,8 +32,7 @@ export class Grid {
 
         this.timer = new Timer();
         this.minesCounter = new MineCounter();
-        this.smiley = new Smiley();
-        this.smiley.initialiserListeners(this);
+        Smiley.initialiserListeners(this);
 
         this._numberMines = numberMines;
         this.cells = [];
@@ -65,7 +64,7 @@ export class Grid {
                 cell.theme = theme;
             });
         });
-        this.smiley.theme = theme;
+        Smiley.theme = theme;
     }
 
     /**
@@ -177,7 +176,7 @@ export class Grid {
                         this.previewCasesAutour(i, j);
                     }
 
-                    this.smiley.shock();
+                    Smiley.shock();
                 });
 
                 cell.element.addEventListener("mouseout", (e) => {
@@ -205,7 +204,7 @@ export class Grid {
                 cell.element.addEventListener("mouseup", (e) => {
                     e.preventDefault();
                     if (cell.disabled) return;
-                    this.smiley.normal();
+                    Smiley.normal();
 
                     // Clique du milieu
                     if (this._middleClicked) {
@@ -358,7 +357,7 @@ export class Grid {
         this._victory = true;
         this.timer.stopTimer();
         VolumeDemineur.playVictory();
-        this.smiley.victory();
+        Smiley.victory();
         this.mettreFlags();
         this.disableCells();
 
@@ -405,7 +404,7 @@ export class Grid {
     gameOver(mineCliquee) {
         this.timer.stopTimer();
         VolumeDemineur.playGameOver();
-        this.smiley.defeat();
+        Smiley.defeat();
         this.afficherMines(mineCliquee);
         this.disableCells();
     }
@@ -567,6 +566,6 @@ export class Grid {
      */
     stop() {
         this.timer.stopTimer();
-        this.smiley.normal();
+        Smiley.normal();
     }
 }
