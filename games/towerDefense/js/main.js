@@ -14,14 +14,15 @@ import {MapUtils} from "./utils/MapUtils.js";
 import {Utils} from "./utils/Utils.js";
 import {AB_Utils} from "../../../js/AB_Utils.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
-import {initialiserScoresTowerDefense} from "../../../js/localStorageInitialiser/scoreInitialiser.js";
-
+import {initialiserScoresTowerDefense} from "/js/localStorageInitialiser/scoreInitialiser.js";
+import {Scoreboard, ScoreboardTowerDefense} from "/js/Scoreboard.js";
 
 Engine.canvas = document.getElementById("gameCanvas");
 const canvas = Engine.canvas;
 Engine.context = Engine.canvas.getContext("2d");
 Engine.gameObjects = [];
 let gui = new Gui();
+let account = null;
 
 export const gState = {
     MENU : 1,
@@ -30,7 +31,7 @@ export const gState = {
 }
 
 function init(){
-    const account = JSON.parse(sessionStorage.getItem("account"));
+    account = JSON.parse(sessionStorage.getItem("account"));
     if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
 
     Engine.context.imageSmoothingEnabled = false;
@@ -39,7 +40,7 @@ function init(){
 
 
     const achievementPATH = "/games/towerDefense/asset/data/achievement.json";
-    initialiserScoresTowerDefense();
+    // initialiserScoresTowerDefense();
     AchievementUtils.init("towerDefense", achievementPATH);
 
     MapUtils.createGround();
@@ -150,6 +151,9 @@ function displayHomeScreen(){
 
 function displayEndScreen(){
     Engine.gameState = gState.END;
+
+    ScoreboardTowerDefense.updateScore(account.username,Engine.score)//TODO implément
+
     const inGameElement = document.getElementById("gameState_InGame");
     const endGameElement = document.getElementById("gameState_EndScreen");
     inGameElement.style.display = "none";

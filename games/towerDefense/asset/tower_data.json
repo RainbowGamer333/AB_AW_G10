@@ -3,84 +3,84 @@
     "name": "spell_wind",
     "display_name": "SORT DE VENT",
     "price":300,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": true
   },
   {
     "name": "annihilator",
     "display_name": "RAYON MORTEL",
     "price":1250,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": true
   },
   {
     "name": "remover",
     "display_name": "RETIRER",
-    "price":100,
-    "cool_down": 1000,
+    "price":50,
+    "cool_down": 0,
     "isSpecial": true
   },
   {
     "name": "mini_canon",
     "display_name": "MINI CANON",
     "price":35,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": false
   },
   {
     "name": "double_canon",
     "display_name": "DOUBLE CANON",
     "price":155,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": false
   },
   {
     "name": "canon",
     "display_name": "CANON",
     "price":300,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": false
   },
   {
     "name": "fire_canon",
     "display_name": "CANON DE FEU",
     "price":775,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": false
   },
   {
     "name": "ice_canon",
     "display_name": "CANON GLACÉ",
     "price":575,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": false
   },
   {
     "name": "tesla",
     "display_name": "TESLA",
     "price":340,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": false
   },
   {
     "name": "landmine",
     "display_name": "MINE",
     "price":275,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": false
   },
   {
     "name": "low_wall",
     "display_name": "MURET",
     "price":125,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": false
   },
   {
     "name": "wall",
     "display_name": "REMPART",
     "price":400,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": false
   },
 
@@ -88,7 +88,7 @@
     "name": "golden_tree",
     "display_name": "ARBRE DORÉ",
     "price":185,
-    "cool_down": 1000,
+    "cool_down": 0,
     "isSpecial": false
   }
 ]
