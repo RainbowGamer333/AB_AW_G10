@@ -12,16 +12,16 @@ export class Demon extends Enemy {
     constructor() {
         const health = 2000;
         const velocity = 3;
-        const damage = 50;
-        const attackRate = 4;
+        const damage = 90;
+        const attackRate = 8;
 
         let image = new Image();
         image.src = Path.DEMON;
         const spriteRenderer = new SpriteRenderer(image);
         super("demon", 0, 0, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
-        this.score = 100;
-        this.coinDropped = 250;
+        this.score = 500;
+        this.coinDropped = 350;
     }
 
     update(dt) {

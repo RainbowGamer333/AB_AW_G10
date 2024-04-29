@@ -30,9 +30,12 @@ export class GoldenTree extends Tower{
         this.accumulatedTime+=dt;
         if (this.accumulatedTime>=this.attackRate){
             Engine.coinBalance += this.productionAmount;
-            const choice = Utils.randomIntFromInterval(0,3);
+            const choice = Utils.randomIntFromInterval(0,2);
             if (choice === 0) this.spawnGobelin();
             this.accumulatedTime = 0;
+
+            //Decrease life
+            this.hurtWithoutHitmarker(0.1,this)
         }
         super.updateComponents(dt);
     }

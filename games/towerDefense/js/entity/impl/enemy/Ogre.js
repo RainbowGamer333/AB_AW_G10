@@ -7,7 +7,7 @@ export class Ogre extends Enemy {
         const health = 200;
         const velocity = 5;
         const damage = 50;
-        const attackRate = 4;
+        const attackRate = 4.5;
 
         let image = new Image();
         image.src = Path.OGRE;
@@ -15,6 +15,6 @@ export class Ogre extends Enemy {
         super("ogre", 0, 0, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
         this.score = 100;
-        this.coinDropped = 50;
+        this.coinDropped = 60;
     }
 }

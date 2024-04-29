@@ -8,9 +8,9 @@ import {CanonBall} from "../projectile/CanonBall.js";
 
 export class DoubleCanon extends Tower{
     constructor() {
-        const health = 100;
-        const damage = 30;
-        const attackRate = 1.0;
+        const health = 80;
+        const damage = 26;
+        const attackRate = 1.25;
 
         let image = new Image();
         image.src = Path.DOUBLE_CANON;
@@ -43,6 +43,8 @@ export class DoubleCanon extends Tower{
         let projectile = new CanonBall();
         projectile.y = y;
         projectile.x = this.x;
+        projectile.damage = this.damage;
+        projectile.setDeadZone(7);
         projectile.source = this;
         Engine.addGameObject(projectile);
 

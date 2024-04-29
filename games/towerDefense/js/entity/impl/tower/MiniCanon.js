@@ -8,9 +8,9 @@ import {CanonBall} from "../projectile/CanonBall.js";
 
 export class MiniCanon extends Tower{
     constructor() {
-        const health = 100;
-        const damage = 30;
-        const attackRate = 2;
+        const health = 40;
+        const damage = 18;
+        const attackRate = 2.5;
 
         let image = new Image();
         image.src = Path.MINI_CANON;
@@ -36,6 +36,8 @@ export class MiniCanon extends Tower{
         projectile.y = y;
         projectile.x = this.x;
         projectile.source = this;
+        projectile.damage = this.damage;
+        projectile.setDeadZone(7);
         projectile.velocity = 100;
         Engine.addGameObject(projectile);
 

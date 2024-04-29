@@ -12,7 +12,7 @@ canvas{
     border-radius: 10px;
 }
 
-#gameContainer{
+#gameContainer, #gameState_InGame{
     /*width: 30%;*/
     max-width: 100%;
     display: flex;

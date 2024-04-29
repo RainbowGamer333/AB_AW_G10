@@ -13,7 +13,7 @@ export class Necromancer extends Enemy {
         const health = 300;
         const velocity = 6;
         const damage = 50;
-        const attackRate = 10;
+        const attackRate = 12;
 
 
         let image = new Image();
@@ -22,8 +22,8 @@ export class Necromancer extends Enemy {
         super("Necromancer", 0, 0, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
         this.spawnInterval = 5;
-        this.coinDropped = 5;
-        this.score = 5;
+        this.coinDropped = 175;
+        this.score = 150;
     }
 
 
@@ -39,7 +39,7 @@ export class Necromancer extends Enemy {
     }
 
     spawnSkeleton(){
-        const choice = Utils.randomIntFromInterval(0,10);
+        const choice = Utils.randomIntFromInterval(0,3);
         // const choice = 3;
         switch (choice) {
             case 0: { // Spawn at the same position

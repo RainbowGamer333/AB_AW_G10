@@ -1,13 +1,14 @@
 import {Tower} from "../entity/Tower.js";
 import {gState} from "../main.js";
 
-export class Engine { //TODO RENAME TO GameEngine
+export class Engine {
     static lastGameObjectID = 0;
     static context;
     static gameObjects;
     static canvas;
-    static coinBalance = 20000;//150
+    static coinBalance = 150;//150
     static score = 0;
+    static progress = 0;
     static villageHealth = 0;
     static maxVillageHealth = 0;
     static villageHousesAlive = [];
@@ -74,5 +75,9 @@ export class Engine { //TODO RENAME TO GameEngine
             Engine.gameState = gState.END;
             console.log("THE END OF THE GAME")
         }
+    }
+
+    static setProgress(number) {
+        this.progress = number;
     }
 }

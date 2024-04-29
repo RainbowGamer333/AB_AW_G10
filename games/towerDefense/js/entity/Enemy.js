@@ -11,12 +11,14 @@ export class Enemy extends Entity{
     score;
     coinDropped;
     accumulatedTime = 0.0;
+    deathListeners ;
 
     constructor(name, x, y, velocity, health, maxHealth, damage) {
         super(name, x, y, velocity, health, maxHealth, damage);
         this.score = 0;
         this.coinDropped = 0;
         this.attackRate = 1;
+        this.deathListeners = [];
         // this.addComponent(new Clickable());
     }
 
@@ -46,7 +48,9 @@ export class Enemy extends Entity{
         }
 
         if (this.y >= Constants.height+Constants.TILE_SIZE_ZOOMED ){
-            Engine.removeGameObject(this);
+            this.kill();
+            Engine.score -= this.score;
+            Engine.coinBalance -= this.coinDropped;
         }
     }
 
@@ -56,6 +60,10 @@ export class Enemy extends Entity{
         Engine.score+=this.score * multiplier;
         Engine.coinBalance+=this.coinDropped;
         this.spawnParticleGhost();
+
+        for (let i=0; i<this.deathListeners.length;i++){//Notify the listeners
+            this.deathListeners[i].notifyDeath(this);
+        }
         super.onDeath();
     }
 
@@ -79,6 +87,11 @@ export class Enemy extends Entity{
     spawnParticleHitmarker(){
         const hm = new Hitmarker(this.x,this.y);
         Engine.addGameObject(hm);
+    }
+
+    addDeathListener(listener) {
+        // console.log("addDeathListener to "+ listener)
+        this.deathListeners.push(listener);
     }
 
 

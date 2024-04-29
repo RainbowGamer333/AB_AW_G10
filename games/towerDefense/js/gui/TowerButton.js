@@ -18,6 +18,7 @@ import {Wind} from "../entity/impl/tower/Wind.js";
 import {IceCanon} from "../entity/impl/tower/IceCanon.js";
 import TDAchievementConstant from "../achievement/TDAchievementConstant.js";
 import AchievementUtils from "../../../../js/AchievementUtils.js";
+import TowerRemover from "../entity/impl/generic/TowerRemover.js";
 // import {Constants} from "../constants/Constants.js";
 
 let draggedButton = null;
@@ -30,7 +31,7 @@ export class TowerButton{
     buttonID;
     domElement;
     price;
-    isSpecial;
+    isSpecial ;
 
 
     constructor(element,isSpacial){
@@ -44,7 +45,7 @@ export class TowerButton{
         let imagePath = Path.BASE_PATH_TOWER + this.buttonID + ".png";
         this.domElement.querySelector("img").src = imagePath;
         this.price = element.querySelector(".cost").innerText;
-        console.log(this.price)
+        // console.log(this.price)
 
         // Add listeners
         // this.stopDrag = this.stopDrag.bind(this);
@@ -63,13 +64,13 @@ export class TowerButton{
 
 
      handleClick(){
-        console.log("clicked "+this.buttonID);
+        // console.log("clicked "+this.buttonID);
     }
 
 
 
     createTower(){
-        console.log("create : "+this.buttonID)
+        // console.log("create : "+this.buttonID)
         switch (this.buttonID){ //todo put values in variables
             case "mini_canon" : return new MiniCanon();
             case "double_canon": return new DoubleCanon();
@@ -83,7 +84,40 @@ export class TowerButton{
             case "annihilator": return new Annihilator();
             case "ice_canon" : return new IceCanon();
             case "spell_wind" : return new Wind();
-            default : return new LightningTower();
+            default : return new MiniCanon();
+        }
+    }
+
+    handleSpecial(mouseCoordinates){
+        console.log("create : "+this.buttonID)
+        switch (this.buttonID){ //todo put values in variables
+            case "remover" : {
+                const towerRemover = new TowerRemover(mouseCoordinates.x,mouseCoordinates.y);
+                Engine.coinBalance -= this.price;
+                return;
+            }
+            case "annihilator":{
+
+                const annihilator = new Annihilator();
+                const clippedX = Math.trunc(mouseCoordinates.x / Constants.TILE_SIZE_ZOOMED) * Constants.TILE_SIZE_ZOOMED;
+                annihilator.x = clippedX;
+                annihilator.y = Constants.TILE_SIZE_ZOOMED * (Constants.rows+1);
+                Engine.coinBalance -= this.price;
+                AchievementUtils.increaseCounterAndTryUnlock(TDAchievementConstant.SPEND_MONEY,this.price);
+                Engine.addGameObject(annihilator);
+                return;
+            }
+            case "spell_wind":{ //TODO Bad duplication
+                const wind = new Wind();
+                const clippedX = Math.trunc(mouseCoordinates.x / Constants.TILE_SIZE_ZOOMED) * Constants.TILE_SIZE_ZOOMED;
+                wind.x = clippedX;
+                wind.y = Constants.TILE_SIZE_ZOOMED * (Constants.rows+1);
+                Engine.coinBalance -= this.price;
+                AchievementUtils.increaseCounterAndTryUnlock(TDAchievementConstant.SPEND_MONEY,this.price);
+                Engine.addGameObject(wind);
+                return;
+            }
+            default : return;
         }
     }
 
@@ -133,21 +167,31 @@ function stopDrag(event) {
         if (mouseCoordinates.x>=0 && mouseCoordinates.x<=Constants.width //Check if mouse coordinates are within canvas bounds
             && mouseCoordinates.y>=0 && mouseCoordinates.y<=Constants.height){
             // console.log("stop drag : "+towerButton.buttonID)
-            let gameObject = towerButton.createTower();
-            gameObject.x = mouseCoordinates.x;
-            gameObject.y = mouseCoordinates.y;
-            const col = gameObject.getColumn();
-            const line = gameObject.getLine();
 
-            //line < Constants.rows-1 &&
-            gameObject.x = col * Constants.TILE_SIZE_ZOOMED ;
-            gameObject.y = line * Constants.TILE_SIZE_ZOOMED;
-            if ( Engine.isTileFree(gameObject.x,gameObject.y)){ //Can't place to last tine
 
-                console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
-                Engine.addGameObject(gameObject);
-                Engine.coinBalance -= towerButton.price;
-                AchievementUtils.increaseCounterAndTryUnlock(TDAchievementConstant.SPEND_MONEY,towerButton.price);
+            //Test if special
+            if (towerButton.isSpecial){
+                // let gameObject = towerButton.createSpecial();
+                towerButton.handleSpecial(mouseCoordinates);
+
+            }else{//Not special
+                let gameObject = towerButton.createTower();
+                gameObject.x = mouseCoordinates.x;
+                gameObject.y = mouseCoordinates.y;
+                const col = gameObject.getColumn();
+                const line = gameObject.getLine();
+
+                //Coordinates clipping
+                gameObject.x = col * Constants.TILE_SIZE_ZOOMED ;
+                gameObject.y = line * Constants.TILE_SIZE_ZOOMED;
+
+                if ( Engine.isTileFree(gameObject.x,gameObject.y)){ //Can't place a tower  on the top of another.
+
+                    console.log("Placing at x:"+gameObject.x +" y:"+gameObject.y)
+                    Engine.addGameObject(gameObject);
+                    Engine.coinBalance -= towerButton.price;
+                    AchievementUtils.increaseCounterAndTryUnlock(TDAchievementConstant.SPEND_MONEY,towerButton.price);
+                }
             }
         }
         // console.log("End drag x:"+mouseCoordinates.x+" y:"+mouseCoordinates.y);
