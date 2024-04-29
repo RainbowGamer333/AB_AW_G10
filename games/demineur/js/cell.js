@@ -3,14 +3,12 @@ export class Cell {
     _valeur;
     _visible;
     _flag;
-    _theme;
 
     constructor() {
         this.element = document.createElement("td");
         this._visible = false;
         this._flag = false;
         this._disabled = false;
-        this.theme = "retro";
     }
 
 
@@ -32,16 +30,6 @@ export class Cell {
 
     set valeur(valeur) {
         this._valeur = valeur;
-    }
-
-    get theme() {
-        return this._theme;
-    }
-
-    set theme(theme) {
-        this.element.classList.remove(this._theme);
-        this._theme = theme;
-        this.element.classList.add(theme);
     }
 
     setMine() {
@@ -128,7 +116,7 @@ export class Cell {
      * Crée une nouvelle cellule.
      * @returns {Cell} La cellule créée.
      */
-    static creerCellule(theme) {
+    static creerCellule() {
         let cell = new Cell();
         cell.element.classList.add("cell", "unclicked");
         return cell;

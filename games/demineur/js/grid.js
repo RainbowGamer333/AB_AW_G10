@@ -18,10 +18,8 @@ export class Grid {
     _middleClicked = false;
     _difficulty = "facile";
     _noFlags = true;
-    _theme = "retro";
 
     constructor(gameBoard, numberRows, numberColumns, numberMines, difficulty) {
-        //initialiserScoresDemineur();
         this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
@@ -53,20 +51,6 @@ export class Grid {
         this._difficulty = difficulty;
     }
 
-    get theme() {
-        return this._theme;
-    }
-
-    set theme(theme) {
-        this._theme = theme;
-        this.cells.forEach((rows) => {
-            rows.forEach((cell) => {
-                cell.theme = theme;
-            });
-        });
-        Smiley.theme = theme;
-    }
-
     /**
      * Crée la grille de jeu.
      * @param numberRows le nombre de lignes
@@ -83,7 +67,7 @@ export class Grid {
 
             // Génération cellules de la ligne
             for (let j = 0; j < numberColumns; j++) {
-                let cellule = Cell.creerCellule(this.theme);
+                let cellule = Cell.creerCellule();
                 tr.appendChild(cellule.element);
                 rows.push(cellule);
             }
