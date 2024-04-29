@@ -1,5 +1,4 @@
 export function initialiserScores() {
-    console.log("initialiserScores");
     initialiserScoresDemineur();
     initialiserScoresClicker();
     initialiserScoresTowerDefense();
@@ -25,6 +24,8 @@ function initialiserScoresDemineurFacile() {
     scores.push({nom: "Rainbow", score: 58});
     scores.push({nom: "Rainbow", score: 65});
     scores.push({nom: "Rainbow", score: 90});
+
+    sortScores(scores, true);
     localStorage.setItem("scoreDemineurFacile", JSON.stringify(scores));
 }
 
@@ -40,6 +41,8 @@ function initialiserScoresDemineurMoyen() {
     scores.push({nom: "Rainbow", score: 116});
     scores.push({nom: "Rainbow", score: 125});
     scores.push({nom: "Rainbow", score: 140});
+
+    sortScores(scores, true);
     localStorage.setItem("scoreDemineurMoyen", JSON.stringify(scores));
 }
 
@@ -55,6 +58,8 @@ function initialiserScoresDemineurDifficile() {
     scores.push({nom: "Rainbow", score: 244});
     scores.push({nom: "Rainbow", score: 276});
     scores.push({nom: "Rainbow", score: 289});
+
+    sortScores(scores, true);
     localStorage.setItem("scoreDemineurDifficile", JSON.stringify(scores));
 }
 
@@ -78,6 +83,8 @@ export function initialiserScoresClicker() {
     scores.push({nom: "John Doe", score: 0});
     scores.push({nom: "John Doe", score: 0});
     scores.push({nom: "John Doe", score: 0});
+
+    sortScores(scores, true);
     localStorage.setItem("scoreClicker", JSON.stringify(scores));
 }
 
@@ -100,11 +107,16 @@ export function initialiserScoresTowerDefense() {
         {nom: "D", score: 9},
         {nom: "E", score: 10}
     ];
-    //TODO
 
+    sortScores(scores, true);
     localStorage.setItem("scoreTowerDefense", JSON.stringify(scores));
 }
 
 function clearScoresTowerDefense() {
     localStorage.removeItem("scoreTowerDefense");
+}
+
+export function sortScores(scores, ascending) {
+    if (!ascending) scores.sort((a, b) => a.score - b.score);
+    else scores.sort((a, b) => b.score - a.score);
 }

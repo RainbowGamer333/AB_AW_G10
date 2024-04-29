@@ -1,4 +1,4 @@
-import {initialiserScores} from "./localStorageInitialiser/scoreInitialiser.js";
+import {initialiserScores, sortScores} from "./localStorageInitialiser/scoreInitialiser.js";
 
 class Scoreboard {
     static displayScoreboard(gameName) {
@@ -28,9 +28,7 @@ class Scoreboard {
             nom: username,
             score: score
         });
-
-        if (!ascending) scores.sort((a, b) => a.score - b.score);
-        else scores.sort((a, b) => b.score - a.score);
+        sortScores(scores, ascending);
 
         localStorage.setItem(gameName, JSON.stringify(scores));
         this.displayScoreboard(gameName);
