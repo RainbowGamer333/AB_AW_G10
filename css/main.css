@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'robotoregular';
-    src: url('/font/roboto-regular-webfont.woff2') format('woff2'),
-    url('/font/roboto-regular-webfont.woff') format('woff');
+    src: url('../font/roboto-regular-webfont.woff2') format('woff2'),
+    url('../font/roboto-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -10,7 +10,7 @@
 html{
     background-color: var(--backgroundColor);
     font-family: 'robotoregular', sans-serif;
-    background-image: url(/asset/background.jpg);
+    background-image: url(../asset/background.jpg);
     background-attachment: fixed;
     background-position-y: 0px;
     background-size: cover;
@@ -67,13 +67,13 @@ main {
 
         &#rules{
             &:after, &:before {
-                background-image: url("/asset/icons/rules.png");
+                background-image: url("../asset/icons/rules.png");
             }
         }
 
         &#scoreboard{
             &:after, &:before {
-                background-image: url("/asset/icons/trophy.png");
+                background-image: url("../asset/icons/trophy.png");
             }
         }
     }
