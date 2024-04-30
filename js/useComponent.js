@@ -21,7 +21,7 @@ function init(){
     //Create scoreboard - - - - - - - - - - - - - - - - - - - - - - - - - -
     const scoreboardElement = document.getElementById("scoreboard");
     if (scoreboardElement){
-        AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
+        AB_Utils.readTextFile("/AB_AW_G10/component/scoreboard.html", (text) =>{
             AB_Utils.replaceComponent("scoreboard",text, function (completed) {
                 if (completed){
                     switch(window.location.pathname.split("/")[3]) {
