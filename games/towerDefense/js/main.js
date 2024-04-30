@@ -38,21 +38,14 @@ function init(){
     Engine.gameState = gState.MENU;
     displayHomeScreen();
 
-
-    const achievementPATH = "/games/towerDefense/asset/data/achievement.json";
+    
     // initialiserScoresTowerDefense();
-    AchievementUtils.init("towerDefense", achievementPATH);
+    AchievementUtils.init("towerDefense");
 
     MapUtils.createGround();
     MapUtils.createVillage();
     //MapUtils.createTestTowers();
     MapUtils.createSpawner();
-
-
-
-    AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
-        AB_Utils.replaceComponent("scoreboard",text);
-    });
 
 
     const homeElement = document.getElementById("gameState_HomeScreen");
