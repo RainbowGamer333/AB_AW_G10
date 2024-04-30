@@ -27,7 +27,7 @@ export class Wind extends Tower{
         this.accumulatedTime+=dt;
         if (this.accumulatedTime>=this.attackRate){
             this.spawnVacuum();
-            this.hurt(40,this);
+            this.hurtWithoutHitmarker(40,this);
             this.accumulatedTime = 0;
         }
         super.updateComponents(dt);

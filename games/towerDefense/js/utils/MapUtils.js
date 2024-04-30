@@ -7,6 +7,7 @@ import {Utils} from "./Utils.js";
 import {Canon} from "../entity/impl/tower/Canon.js";
 import {MonsterSpawner} from "../entity/impl/generic/MonsterSpawner.js";
 import {Building} from "../entity/impl/generic/Building.js";
+import {WavyMonsterSpawner} from "../entity/impl/generic/WavyMonsterSpawner.js";
 
 export class MapUtils {
     static createGround(){
@@ -78,7 +79,9 @@ export class MapUtils {
     }
 
     static createSpawner(){
-        Engine.gameObjects.push(new MonsterSpawner("MonsterSpawner",0,0));
+        const spawner = new WavyMonsterSpawner("MonsterSpawner",0,0);
+        spawner.init();
+        Engine.gameObjects.push(spawner);
     }
 
 }

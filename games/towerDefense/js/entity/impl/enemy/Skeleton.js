@@ -6,7 +6,7 @@ import AchievementUtils from "../../../../../../js/AchievementUtils.js";
 
 export class Skeleton extends Enemy{
     constructor(x,y) {
-        const health = 1;
+        const health = 26;
         const velocity = 50;
         const damage = 5;
         const attackRate = 4;
@@ -17,7 +17,7 @@ export class Skeleton extends Enemy{
         super("skeleton", x, y, velocity, health, health, damage,attackRate);
         this.addComponent(spriteRenderer)
         this.score = 2;
-        this.coinDropped = 1;
+        this.coinDropped = 3;
     }
 
     onDeath() {

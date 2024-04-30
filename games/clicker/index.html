@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Pixel Clicker</title>
+    <title>Picture Discover Clicker</title>
 
 
     <link rel="stylesheet" href="css/main.css">
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../css/var.css">
     <link rel="stylesheet" href="../../css/home.css">
     <link rel="stylesheet" href="../../css/scoreboard.css">
+    <link rel="stylesheet" href="../../css/achievement.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -23,21 +24,13 @@
     </nav>
 </header>
 <main>
-    <div class="gameContainer">
+    <div id="gameContainer">
         <div id="leftPanel">
-            <h1 id="title">Pixel Clicker</h1>
+            <h1 id="title">Picture Discover Clicker</h1>
             <p id="timerDisplay">Chronomètre: 00:00:00</p>
             <button id="clickButton">Clique plus vite</button>
             <p class="trembling-text" id="score">Score: 0</p>
             <div id="zoneBonus">
-                <div id="divClickPlusUn">
-                    <button id="clickPlus1" class="hidden">Clic + 1</button>
-                    <p id="clickPlus1CostDisplay" class="hidden">Prochain achat de clic +1: 500</p>
-                </div>
-                <div id="divAutoClick">
-                    <button id="autoClickButton" class="hidden">Clic automatique</button>
-                    <p id="autoClickCostDisplay" class="hidden">Prochain achat d'autoclic: 100</p>
-                </div>
                 <div id="divClickPlusMille">
                     <button id="clickPlus1000Button" class="hidden">Clic + 1000</button>
                     <p id="clickPlus1000CostDisplay" class="hidden">Prochain achat de clic +1000: 30000</p>
@@ -46,6 +39,15 @@
                     <button id="megaAutoClickButton" class="hidden">Mega Clic automatique</button>
                     <p id="megaAutoClickCostDisplay" class="hidden">Prochain achat d'autoclic: 20000</p>
                 </div>
+                <div id="divClickPlusUn">
+                    <button id="clickPlus1" class="hidden">Clic + 1</button>
+                    <p id="clickPlus1CostDisplay" class="hidden">Prochain achat de clic +1: 500</p>
+                </div>
+                <div id="divAutoClick">
+                    <button id="autoClickButton" class="hidden">Clic automatique</button>
+                    <p id="autoClickCostDisplay" class="hidden">Prochain achat d'autoclic: 100</p>
+                </div>
+
 
 
             </div>
@@ -188,11 +190,12 @@
         </div>
     </section>
 </main>
+<div id="achievement_spawner"></div>
 <footer>
 </footer>
 
 
 </body>
-<script src="js/main.js"></script>
+<script type="module" src="js/main.js"></script>
 <script type="module" src="../../js/useComponent.js"></script>
 </html>

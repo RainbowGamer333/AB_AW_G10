@@ -16,6 +16,7 @@ html{
     background-size: cover;
     transition: 0.15s cubic-bezier(0.13, 0.02, 0.58, 1.1) background;
     scroll-behavior: smooth;
+    z-index: 0;
 }
 
 body{
@@ -29,10 +30,11 @@ body{
 main {
     width: var(--mainWidth);
     min-height: 100vh;
-    background: #403a434d;
+    background: #12111366;;
     box-shadow: var(--baseShadow);
     margin: 60px auto 0 auto;
-    backdrop-filter: blur(10px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: var(--greyBorder);
     /*overflow-y: auto; /* Permettre le défilement vertical si le contenu dépasse la hauteur de l'écran */
 
     & p, & li, & h2 {
@@ -79,7 +81,7 @@ main {
 
 .game_settings{
     width: auto;
-    background-color: rgb(136 132 205 / 14%);
+    background-color: rgb(156 153 198 / 16%);
     height: 30px;
     border-radius: 0 0 10px 10px;
     display: flex;
@@ -106,10 +108,10 @@ main {
         align-items: center;
     }
 
-    #toggle_fullscreen{
+    #toggle_fullscreen, #toggle_volume{
         width: 26px;
         height: 26px;
-        background-image: url("../asset/icons/fullscreen.png");
+
         background-color: transparent;
         background-size: cover;
         border : none;
@@ -121,6 +123,14 @@ main {
         &:active{
             filter: brightness(0.7);
         }
+    }
+
+    #toggle_fullscreen{
+        background-image: url("../asset/icons/fullscreen.png");
+    }
+
+    #toggle_volume{
+        background-image: url("../asset/icons/volume.png");
     }
 
 

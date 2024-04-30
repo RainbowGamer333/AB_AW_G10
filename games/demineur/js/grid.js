@@ -5,6 +5,7 @@ import {Smiley} from "./smiley.js";
 import { initialiserScoresDemineur } from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 import {ScoreboardDemineur} from "../../../js/Scoreboard.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
+import {VolumeDemineur} from "../../../js/Volume.js";
 
 const account = JSON.parse(sessionStorage.getItem("account"));
 
@@ -18,26 +19,18 @@ export class Grid {
     _difficulty = "facile";
     _noFlags = true;
 
-
     constructor(gameBoard, numberRows, numberColumns, numberMines, difficulty) {
-        //initialiserScoresDemineur();
         this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
         this.difficulty = difficulty;
         this._nbCellulesRevelee = 0;
 
-        this.clickAudio = new Audio("asset/sons/click.mp3");
-        this.zeroAudio = new Audio("asset/sons/zero.mp3");
-        this.placeFlagAudio = new Audio("asset/sons/flag_place.mp3");
-        this.removeFlagAudio = new Audio("asset/sons/flag_remove.mp3");
-        this.gameOverAudio = new Audio("asset/sons/game_over.mp3");
-        this.victoryAudio = new Audio("asset/sons/victory.mp3");
+        VolumeDemineur.init();
 
         this.timer = new Timer();
         this.minesCounter = new MineCounter();
-        this.smiley = new Smiley();
-        this.smiley.initialiserListeners(this);
+        Smiley.initialiserListeners(this);
 
         this._numberMines = numberMines;
         this.cells = [];
@@ -107,9 +100,10 @@ export class Grid {
         }
 
         if (cell.valeur === 0) {
-            this.zeroAudio.play().then(r => this.decouvrirZeros(row, col));
+            VolumeDemineur.playZero();
+            this.decouvrirZeros(row, col)
         } else {
-            this.clickAudio.play();
+            VolumeDemineur.playClick();
         }
     }
 
@@ -133,11 +127,11 @@ export class Grid {
                     this._noFlags = false;
 
                     if (cell.flag) {
-                        this.removeFlagAudio.play();
+                        VolumeDemineur.playRemoveFlag();
                         cell.removeFlag();
                         this.minesCounter.incrementMineCounter();
                     } else {
-                        this.placeFlagAudio.play();
+                        VolumeDemineur.playPlaceFlag();
                         cell.addFlag();
                         this.minesCounter.decrementMineCounter();
                     }
@@ -166,7 +160,7 @@ export class Grid {
                         this.previewCasesAutour(i, j);
                     }
 
-                    this.smiley.shock();
+                    Smiley.shock();
                 });
 
                 cell.element.addEventListener("mouseout", (e) => {
@@ -194,7 +188,7 @@ export class Grid {
                 cell.element.addEventListener("mouseup", (e) => {
                     e.preventDefault();
                     if (cell.disabled) return;
-                    this.smiley.normal();
+                    Smiley.normal();
 
                     // Clique du milieu
                     if (this._middleClicked) {
@@ -239,11 +233,10 @@ export class Grid {
      * @param j la colonne de la cellule
      */
     previewCasesAutour(i, j) {
-        if (!this.cells[i][j].visible) this.cells[i][j].element.classList.remove("unclicked");;
-        this.coordonneesAutour(i, j).forEach((coord) => {
+        if (!this.cells[i][j].visible) this.cells[i][j].element.classList.remove("unclicked");
+        for (let coord of this.coordonneesAutour(i, j)) {
             this.cells[coord[0]][coord[1]].element.classList.remove("unclicked");
-        });
-
+        }
     }
 
     /**
@@ -253,9 +246,9 @@ export class Grid {
      */
     unPreviewCasesAutour(i, j) {
         this.cells[i][j].element.classList.add("unclicked");
-        this.coordonneesAutour(i, j).forEach((coord) => {
+        for(let coord of this.coordonneesAutour(i, j)) {
             this.cells[coord[0]][coord[1]].element.classList.add("unclicked");
-        });
+        }
     }
 
     /**
@@ -265,9 +258,9 @@ export class Grid {
      */
     decouvrirAlentours(row, col) {
         if (this.compterFlags(row, col) !== this.cells[row][col].valeur) return;
-        this.coordonneesAutour(row, col).forEach((coord) => {
-            if (this.canDisplay(coord[0], coord[1])) this.cliqueCellule(coord[0], coord[1]);
-        });
+        for (let coord of this.coordonneesAutour(row, col)) {
+            if (!this.cells[coord[0]][coord[1]].flag) this.afficherCellule(coord[0], coord[1]);
+        }
     }
 
     /**
@@ -310,9 +303,9 @@ export class Grid {
      */
     compterMines(row, col) {
         let nbMines = 0;
-        this.coordonneesAutour(row, col).forEach((coord) => {
+        for (let coord of this.coordonneesAutour(row, col)) {
             if (this.cells[coord[0]][coord[1]].isMine()) nbMines++;
-        });
+        }
         return nbMines;
     }
 
@@ -324,9 +317,9 @@ export class Grid {
      */
     compterFlags(row, col) {
         let nbFlags = 0;
-        this.coordonneesAutour(row, col).forEach((coord) => {
+        for (let coord of this.coordonneesAutour(row, col)) {
             if (this.cells[coord[0]][coord[1]].flag) nbFlags++;
-        });
+        }
         return nbFlags;
     }
 
@@ -336,7 +329,9 @@ export class Grid {
      * @param col la colonne de la cellule
      */
     decouvrirZeros(row, col) {
-        this.canDisplayAutour(row, col).forEach((coord) => this.afficherCellule(coord[0], coord[1]));
+        for (let coord of this.canDisplayAutour(row, col)) {
+            this.afficherCellule(coord[0], coord[1]);
+        }
     }
 
     /**
@@ -345,8 +340,8 @@ export class Grid {
     victory() {
         this._victory = true;
         this.timer.stopTimer();
-        this.victoryAudio.play();
-        this.smiley.victory();
+        VolumeDemineur.playVictory();
+        Smiley.victory();
         this.mettreFlags();
         this.disableCells();
 
@@ -392,11 +387,10 @@ export class Grid {
      */
     gameOver(mineCliquee) {
         this.timer.stopTimer();
-        this.gameOverAudio.play().then(() => {
-            this.smiley.defeat();
-            this.afficherMines(mineCliquee);
-            this.disableCells();
-        });
+        VolumeDemineur.playGameOver();
+        Smiley.defeat();
+        this.afficherMines(mineCliquee);
+        this.disableCells();
     }
 
     /**
@@ -467,17 +461,16 @@ export class Grid {
      * Retourne toutes les coordonnées autour de la cellule qui peuvent être affichées. Ne comprend pas les cellules sortant de la grille.
      * @param row la ligne de la cellule
      * @param col la colonne de la cellule
-     * @param cells la liste des cellules à révéler
      * @returns {*[]} les coordonnées autour de la cellule qui peuvent être affichées
      */
     canDisplayAutour(row, col) {
         let coordonnees = this.coordonneesAutour(row, col);
         let newCoordonnees = [];
-        coordonnees.forEach((coord) => {
+        for (let coord of coordonnees) {
             if (this.canDisplay(coord[0], coord[1])) {
                 newCoordonnees.push(coord);
             }
-        });
+        }
         return newCoordonnees;
     }
 
@@ -501,7 +494,6 @@ export class Grid {
         if (cell.isMine()) this.gameOver(cell);
         else {
             this.afficherCellule(row, col);
-            this._numberCasesRevealed += 1;
             if (cell.valeur === 0) this.decouvrirZeros(row, col);
         }
     }
@@ -546,11 +538,11 @@ export class Grid {
         this.minesCounter.initialiseMineCounter(0);
 
         // Reinitialiser toutes les cellules
-        this.cells.forEach((rows) => {
+        for (let rows of this.cells) {
             rows.forEach((cell) => {
                 cell.reinitialiserCellule();
             });
-        });
+        }
     }
 
     /**
@@ -558,5 +550,6 @@ export class Grid {
      */
     stop() {
         this.timer.stopTimer();
+        Smiley.normal();
     }
 }

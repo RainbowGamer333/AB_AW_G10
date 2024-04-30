@@ -13,7 +13,7 @@ export class Annihilator extends Tower{
 
     constructor() {
         const health = 500;
-        const damage = 100;
+        const damage = 150;
         const attackRate = 0.15;
 
         // let image = new Image();
@@ -30,7 +30,7 @@ export class Annihilator extends Tower{
         this.accumulatedTime+=dt;
         if (this.accumulatedTime>=this.attackRate){
             this.spawnProjectile();
-            this.hurt(20,this);
+            this.hurtWithoutHitmarker(20,this);
 
             this.accumulatedTime = 0;
         }

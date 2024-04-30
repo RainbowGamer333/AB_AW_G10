@@ -73,6 +73,8 @@ function initialiserAchievementsGame(gameName) {
                 unlocked: false
             });
         });
+        console.log(achievements);
+        debugger;
         return achievements;
     });
     return achievements;

@@ -24,6 +24,10 @@ export class Tower extends Entity {
         super.hurt(amount, source);
     }
 
+    hurtWithoutHitmarker(amount, source) {
+        super.hurt(amount, source);
+    }
+
     spawnProjectile(){
 
     }

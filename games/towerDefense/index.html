@@ -21,40 +21,50 @@
     </header>
     <main>
         <div id="gameContainer">
-            <div class="gui left-container" id="left-container">
-            </div>
-            <div class="middle-container">
-                <div class="gui gui-top">
-                    <div class="guiCard">
-                        <span class="guiCard-title">Village</span>
-                        <span class="guiCard-value" id="village_card_value">12%</span>
-                    </div>
-                    <div class="guiCard">
-                        <span class="guiCard-title">Score</span>
-                        <span class="guiCard-value" id="score_card_value">12</span>
-                    </div>
-                    <div class="guiCard" id="progress">
-                        <span class="guiCard-title">Progress</span>
-                        <span class="guiCard-value">50%</span>
-                    </div>
-                    <div class="guiCard" id="coin_card">
-                        <img class = "coin_logo" src="asset/coin.png" alt="coin">
-                        <span class="guiCard-value" id="coin_card_value">10</span>
-                    </div>
+            <div id="gameState_InGame">
+                <div class="gui left-container" id="left-container">
                 </div>
-                <div class="canvas_container">
-                    <div class="top"></div>
-                    <div class="middle">
-                        <div class="left"></div>
-                        <canvas id="gameCanvas" width="0" height="0"></canvas>
-                        <div class="right"></div>
+                <div class="middle-container">
+                    <div class="gui gui-top">
+                        <div class="guiCard">
+                            <span class="guiCard-title">VIE</span>
+                            <span class="guiCard-value" id="village_card_value">12%</span>
+                        </div>
+                        <div class="guiCard">
+                            <span class="guiCard-title">SCORE</span>
+                            <span class="guiCard-value" id="score_card_value">12</span>
+                        </div>
+                        <div class="guiCard" id="progress">
+                            <span class="guiCard-title">VAGUE</span>
+                            <span class="guiCard-value" id="progress_card_value">0</span>
+                        </div>
+                        <div class="guiCard" id="coin_card">
+                            <img class = "coin_logo" src="asset/coin.png" alt="coin">
+                            <span class="guiCard-value" id="coin_card_value">10</span>
+                        </div>
                     </div>
-                    <div class="bottom"></div>
+                    <div class="canvas_container">
+                        <div class="top"></div>
+                        <div class="middle">
+                            <div class="left"></div>
+                            <canvas id="gameCanvas" width="0" height="0"></canvas>
+                            <div class="right"></div>
+                        </div>
+                        <div class="bottom"></div>
+                    </div>
+
                 </div>
+                <div class="gui right-container" id="right-container">
 
+                </div>
             </div>
-            <div class="gui right-container" id="right-container">
-
+            <div id="gameState_HomeScreen">
+                <button id="startGame">JOUER</button>
+            </div>
+            <div id="gameState_EndScreen">
+                <span class="endMessage"> GAME OVER !</span>
+                <span class="scoreMessage"> SCORE : </span>
+                <button id="newGame">REJOUER</button>
             </div>
         </div>
         <div class="game_settings">
@@ -72,25 +82,31 @@
             <div class="idea">
                 <ul>
                     <li>
-                        <b>But : </b> Protéger le village des monstre, la partie est finie lorsque l'état du village tombe à 0%.
+                        <b>But : </b> Protéger le village des monstre, la partie est finie lorsque l'état du village
+                        tombe à 0%.
                     </li>
                     <li>
-                        Difficulté : des monstres de plus en plus puissant et nombreux apparaissent, sur les colonnes ou des maisons sont présente.
+                        <b>Difficulté :</b> des monstres de plus en plus puissant et nombreux apparaissent, sur les colonnes
+                        ou des maisons sont présente.
                     </li>
                     <li>
                         Tuer des monstres donne des pièces et augmente le score.
                     </li>
                     <li>
-                        Gros projectile qui peut toucher trois ennemis, deviens de plus en plus rapide et petit a chaque touche, fait aussi de moins en moins de dégât
+                        À chaque fois qu'un monstre est tué, le score qu'il rapporte
+                        est multiplié par le nombre de maisons restantes.
                     </li>
                     <li>
-                        Chaque arbre doré produit <b>10</b> pièces toutes les 10 secondes, chaque arbre multiplie par 2 le nombre de gobelin.
+                        Gros projectile qui peut toucher trois ennemis, deviens de plus en plus rapide et petit a chaque
+                        touche, fait aussi de moins en moins de dégât
                     </li>
                     <li>
-                        Le <b>Canon de feu</b> tire des gros boulets enflammés capable de traverser le premier ennemi qu'il touche
+                        Chaque arbre doré produit <b>10</b> pièces toutes les 10 secondes, chaque arbre multiplie par 2
+                        le nombre de gobelin.
                     </li>
                     <li>
-                        Le score augmente lorsqu'un ennemi est tué, le nombre de point obtenu dépend du nombre de maison débout.
+                        Le <b>Canon de feu</b> tire des gros boulets enflammés capable de traverser le premier ennemi
+                        qu'il touche
                     </li>
                 </ul>
             </div>

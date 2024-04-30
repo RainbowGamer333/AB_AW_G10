@@ -55,9 +55,13 @@ export class GameBoard {
         gameBoard.style.width = (this.nbCols * this.tailleCells) + "px";
 
         let cells = document.getElementsByClassName("cell");
-        for (let i = 0; i < cells.length; i++) {
-            cells[i].style.width = this.tailleCells + "px";
-            cells[i].style.height = this.tailleCells + "px";
+        for (let cell  of cells) {
+            cell.style.width = this.tailleCells + "px";
+            cell.style.height = this.tailleCells + "px";
         }
+    }
+
+    resetGame() {
+        this.reinitialiserGrille(9, 9, 10, "facile");
     }
 }

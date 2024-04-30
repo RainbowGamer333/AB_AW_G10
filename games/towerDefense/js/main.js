@@ -14,13 +14,14 @@ import {MapUtils} from "./utils/MapUtils.js";
 import {Utils} from "./utils/Utils.js";
 import {AB_Utils} from "../../../js/AB_Utils.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
+import {initialiserScoresTowerDefense} from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 
 
 Engine.canvas = document.getElementById("gameCanvas");
 const canvas = Engine.canvas;
 Engine.context = Engine.canvas.getContext("2d");
 Engine.gameObjects = [];
-const gui = new Gui();
+let gui = new Gui();
 
 export const gState = {
     MENU : 1,
@@ -29,11 +30,16 @@ export const gState = {
 }
 
 function init(){
+    const account = JSON.parse(sessionStorage.getItem("account"));
+    if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
+
     Engine.context.imageSmoothingEnabled = false;
-    Engine.gameState = gState.GAME;
+    Engine.gameState = gState.MENU;
+    displayHomeScreen();
 
 
     const achievementPATH = "/games/towerDefense/asset/data/achievement.json";
+    initialiserScoresTowerDefense();
     AchievementUtils.init("towerDefense", achievementPATH);
 
     MapUtils.createGround();
@@ -42,23 +48,40 @@ function init(){
     MapUtils.createSpawner();
 
 
-    //Apply canvas size
-    canvas.width = Constants.width;
-    canvas.height = Constants.height;
-    console.log("width: "+canvas.width + " height:"+canvas.height);
-
-
-    canvas.addEventListener('mousedown', function(e) {
-        Gui.getCanvasMouseCoordinates(canvas, e)
-    })
-
-    console.log("Successfully initialized");
 
     AB_Utils.readTextFile("/component/scoreboard.html", (text) =>{
         AB_Utils.replaceComponent("scoreboard",text);
     });
+
+
+    const homeElement = document.getElementById("gameState_HomeScreen");
+    homeElement.querySelector("#startGame");
+    homeElement.addEventListener( "click",() => {
+        setTimeout(displayGame,50);
+        // displayGame();
+    })
+
+    //Enable reset buttons
+    const resetButtonElement = document.getElementById("resetGame");
+    const newGameButtonElement = document.getElementById("newGame");
+    resetButtonElement.addEventListener( "click",() => {
+        resetGame();
+    })
+    newGameButtonElement.addEventListener( "click",() => {
+        resetGame();
+    })
+
 }
 
+function resetGame() {
+    location.reload();
+    // Engine.gameObjects = [];
+    // Engine.villageHousesAlive = [];
+    // Engine.villageHealth = 0;
+    // Engine.maxVillageHealth = 0;
+    // // gui = new Gui();
+    // init();
+}
 
 
 // Définir la fonction de mise à jour du jeu
@@ -94,14 +117,19 @@ function gameLoop(timestamp) {
     lastTimestamp = timestamp;
 
     if (Engine.gameState === gState.GAME){
-        // Rendre le jeu
+        // Rendre le jeu (le dessiner -> côté front)
         renderGame();
 
-        updateGame(dt);
+        updateGame(dt); //mettre a jour le jeu (coté back)
     }else if (Engine.gameState === gState.MENU){
         console.log("MENU STATE")
+        displayHomeScreen();
+        return;
     }else if (Engine.gameState === gState.END){
         renderGame();
+
+        displayEndScreen();
+        return;
         //TODO
         // console.log("END STATEEE")
     }
@@ -110,8 +138,59 @@ function gameLoop(timestamp) {
     requestAnimationFrame(gameLoop);
 }
 
+function displayHomeScreen(){
+    Engine.gameState = gState.MENU;
+    const inGameElement = document.getElementById("gameState_InGame");
+    const endGameElement = document.getElementById("gameState_EndScreen");
+    const homeElement = document.getElementById("gameState_HomeScreen");
+    inGameElement.style.display = "none";
+    endGameElement.style.display = "none";
+    homeElement.style.display = "flex";
+}
+
+function displayEndScreen(){
+    Engine.gameState = gState.END;
+    const inGameElement = document.getElementById("gameState_InGame");
+    const endGameElement = document.getElementById("gameState_EndScreen");
+    inGameElement.style.display = "none";
+    endGameElement.style.display = "flex";
+
+    const scoreElement = endGameElement.querySelector("span.scoreMessage");
+    scoreElement.innerText = "Score: " + Engine.score;
+}
+
+function displayGame(){
+    Engine.gameState = gState.GAME;
+    const inGameElement = document.getElementById("gameState_InGame");
+    const endGameElement = document.getElementById("gameState_EndScreen");
+    const homeElement = document.getElementById("gameState_HomeScreen");
+    endGameElement.style.display = "none";
+    homeElement.style.display = "none";
+    inGameElement.style.display = "flex";
+
+    MapUtils.createGround();
+    MapUtils.createVillage();
+    //MapUtils.createTestTowers();
+    MapUtils.createSpawner();
+
+
+    //Apply canvas size
+    canvas.width = Constants.width;
+    canvas.height = Constants.height;
+    console.log("width: "+canvas.width + " height:"+canvas.height);
+
+
+    canvas.addEventListener('mousedown', function(e) {
+        Gui.getCanvasMouseCoordinates(canvas, e)
+    })
+
+    console.log("Successfully initialized");
+
+    requestAnimationFrame(gameLoop);
+
+}
+
 
 
 init();
 // gameLoop();
-requestAnimationFrame(gameLoop);

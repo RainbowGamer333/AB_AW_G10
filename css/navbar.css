@@ -28,6 +28,11 @@ nav{
         height: 60px;
     }
 
+    .connexion-container{
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
 
     #account {
         width: 45px;
@@ -35,6 +40,7 @@ nav{
         background-size: cover;
         filter: opacity(0.8);
         border-radius: 180px;
+        display: flex;
 
         &:hover{
             filter: opacity(1.0);
@@ -46,10 +52,10 @@ nav{
         border-radius: 10px;
         display: flex;
         align-items: center;
-        padding: 0 10px;
+        padding: 0 10px 2px 10px;
         text-align: center;
         text-decoration: none;
-        height: 40px;
+        height: 30px;
         letter-spacing: 1px;
 
         &:hover{
@@ -63,7 +69,7 @@ nav{
     }
 
     & #search_container{
-        backdrop-filter: blur(10px);
+        /*backdrop-filter: blur(10px);*/
         /*outline: none;*/
         border-radius: var(--borderRadius);
         border: none;
@@ -74,33 +80,65 @@ nav{
         padding: 0 10px;
         position: relative;
 
+        &:after{
+            content: " ";
+            width: 25px;
+            height: 25px;
+            /* background-color: #ef0000; */
+            display: flex;
+            position: absolute;
+            right: 3px;
+            top: 1px;
+            border-radius: 10px;
+            background-image: url(../asset/icons/search.png);
+            background-size: 16px;
+            background-repeat: no-repeat;
+            background-position: 6px 4px;
+            pointer-events: none;
+        }
+
 
     }
 
-    & .search_results_container {
+     #search_results_container {
         position: absolute;
         height: fit-content;
-        min-height: 60px;
+        /*min-height: 60px;*/
         width: 90%;
+        /*box-shadow: 0px 0px 12px 4px black;*/
+        z-index: 11;
+        border-radius: 0 0 15px 15px;
+        /*backdrop-filter: invert();*/
+         background-color: #373737e0;
+
+
         > div{
 
-            background-color: rgb(255 255 255 / 11%);
-            backdrop-filter: blur(10px);
+            /*background-color: rgb(255 255 255 / 11%);*/
+
             /*transform: translateY(25px);*/
         }
 
-        & .search_result{
+         .search_result{
             height: 20px;
             padding: 1px 10px;
             margin: 0;
-            background-color: #7b7b7b30;
+            background-color: #424242b5;
             display: flex;
             flex-direction: column;
+             text-decoration: none;
+
+
 
             &:hover {
                 color: var(--colMain);
+                background-color: rgba(80, 80, 80, 0.71);
                 cursor: pointer;
             }
+
+             &.no_hover:hover{
+                cursor: auto;
+             }
 
             &:last-of-type{
                 border-radius: 0px 0 10px 10px;

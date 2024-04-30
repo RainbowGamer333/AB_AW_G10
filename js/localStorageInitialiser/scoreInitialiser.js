@@ -1,3 +1,10 @@
+export function initialiserScores() {
+    initialiserScoresDemineur();
+    initialiserScoresClicker();
+    initialiserScoresTowerDefense();
+}
+
+
 export function initialiserScoresDemineur() {
     clearScoresDemineur();
     initialiserScoresDemineurFacile();
@@ -17,6 +24,8 @@ function initialiserScoresDemineurFacile() {
     scores.push({nom: "Rainbow", score: 58});
     scores.push({nom: "Rainbow", score: 65});
     scores.push({nom: "Rainbow", score: 90});
+
+    sortScores(scores, true);
     localStorage.setItem("scoreDemineurFacile", JSON.stringify(scores));
 }
 
@@ -32,6 +41,8 @@ function initialiserScoresDemineurMoyen() {
     scores.push({nom: "Rainbow", score: 116});
     scores.push({nom: "Rainbow", score: 125});
     scores.push({nom: "Rainbow", score: 140});
+
+    sortScores(scores, true);
     localStorage.setItem("scoreDemineurMoyen", JSON.stringify(scores));
 }
 
@@ -47,6 +58,8 @@ function initialiserScoresDemineurDifficile() {
     scores.push({nom: "Rainbow", score: 244});
     scores.push({nom: "Rainbow", score: 276});
     scores.push({nom: "Rainbow", score: 289});
+
+    sortScores(scores, true);
     localStorage.setItem("scoreDemineurDifficile", JSON.stringify(scores));
 }
 
@@ -60,27 +73,50 @@ function clearScoresDemineur() {
 export function initialiserScoresClicker() {
     clearScoresClicker();
     let scores = [];
-    //TODO
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
+    scores.push({nom: "John Doe", score: 0});
 
+    sortScores(scores, true);
     localStorage.setItem("scoreClicker", JSON.stringify(scores));
 }
 
 function clearScoresClicker() {
     localStorage.removeItem("scoreClicker");
-    localStorage.setItem("scoreClicker", JSON.stringify([]));
-
 }
 
 
 export function initialiserScoresTowerDefense() {
     clearScoresTowerDefense();
-    let scores = [];
-    //TODO
+    let scores = [
+        {nom: "F", score: 1},
+        {nom: "FabuLeMich", score: 2},
+        {nom: "Stephane06", score: 3},
+        {nom: "Quentin12", score: 4},
+        {nom: "Florent78", score: 5},
+        {nom: "A", score: 6},
+        {nom: "B", score: 7},
+        {nom: "C", score: 8},
+        {nom: "D", score: 9},
+        {nom: "E", score: 10}
+    ];
 
+    sortScores(scores, true);
     localStorage.setItem("scoreTowerDefense", JSON.stringify(scores));
 }
 
 function clearScoresTowerDefense() {
     localStorage.removeItem("scoreTowerDefense");
-    localStorage.setItem("scoreTowerDefense", []);
+}
+
+export function sortScores(scores, ascending) {
+    if (!ascending) scores.sort((a, b) => a.score - b.score);
+    else scores.sort((a, b) => b.score - a.score);
 }

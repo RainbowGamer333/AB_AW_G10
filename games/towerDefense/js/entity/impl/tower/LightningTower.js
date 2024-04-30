@@ -8,7 +8,7 @@ import {Constants} from "../../../constants/Constants.js";
 
 export class LightningTower extends Tower {
     constructor() {
-        const health = 150;
+        const health = 120;
         const damage = 2;
         const attackRate = 0.15;
         const range = 3
@@ -39,6 +39,9 @@ export class LightningTower extends Tower {
         projectile.damage = this.damage;
         projectile.setDeadZone(5);
         Engine.addGameObject(projectile);
+
+        //Decrease life of the tesla
+        this.hurtWithoutHitmarker(0.1,this)
 
     }
 }
