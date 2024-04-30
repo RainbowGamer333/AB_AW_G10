@@ -1,4 +1,5 @@
 import AchievementUtils from "../../../js/AchievementUtils.js";
+import {ScoreboardClicker} from "../../../js/Scoreboard.js";
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -676,7 +677,7 @@ document.addEventListener('DOMContentLoaded', function () {
         congratulationsText.style.fontWeight = 'bold';
         congratulationsText.style.backgroundColor = 'black';
         congratulationsText.style.color = getRandomColor();
-        congratulationsText.style.marginTop= '40%';
+        congratulationsText.style.marginTop= '30%';
 
         // Créer un bouton pour mettre une image en fond de gameContainer
          let imageButton = document.createElement('button');
@@ -728,6 +729,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Ajouter le conteneur à gameContainer
         gameContainer.appendChild(endGameContainer);
+
+        this.updateScoreboard(account.username,);
     }
 
 });
