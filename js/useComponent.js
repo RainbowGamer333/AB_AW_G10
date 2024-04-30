@@ -6,6 +6,7 @@ import SearchUtils from "./SearchUtils.js";
 import { resetDemineur } from "../games/demineur/js/main.js";
 
 function init(){
+    console.log(window.location.pathname);
     //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     AB_Utils.readTextFile("./component/footer.html", (text) =>{
         AB_Utils.replaceComponent("footer",text);
