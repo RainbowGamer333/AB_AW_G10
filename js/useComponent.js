@@ -8,12 +8,12 @@ import { resetDemineur } from "../games/demineur/js/main.js";
 function init(){
     console.log(window.location.pathname);
     //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    AB_Utils.readTextFile("./component/footer.html", (text) =>{
+    AB_Utils.readTextFile("/AB_AW_G10/component/footer.html", (text) =>{
         AB_Utils.replaceComponent("footer",text);
     });
 
     //Create navbar - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    AB_Utils.readTextFile("./component/navbar.html", (text) =>{
+    AB_Utils.readTextFile("/AB_AW_G10/component/navbar.html", (text) =>{
         AB_Utils.replaceComponent("nav",text);
         updateNavbar();
     });
