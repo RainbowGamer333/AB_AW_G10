@@ -654,11 +654,15 @@ document.addEventListener('DOMContentLoaded', function () {
          let gameContainer = document.getElementById('gameContainer');
         gameContainer.innerHTML = '';
 
+        let endTime = new Date();
+
         // Calculer le temps écoulé
-         let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-         let hours = Math.floor(elapsedTime / 3600);
-         let minutes = Math.floor((elapsedTime % 3600) / 60);
-         let seconds = elapsedTime % 60;
+        let elapsedTime = endTime - startTime; // Calcule le temps écoulé en millisecondes
+        let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+        let minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+        let timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+
 
         // Créer un conteneur pour le texte de félicitations et le bouton
          let endGameContainer = document.createElement('div');
@@ -672,7 +676,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Créer un élément de texte pour afficher le message de félicitations
          let congratulationsText = document.createElement('div');
-        congratulationsText.textContent = 'Félicitations ! Vous avez terminé le jeu en ' + hours + ' heures, ' + minutes + ' minutes et ' + seconds + ' secondes. Merci beaucoup d\'avoir joué ! Ne clique surtout pas sur le bouton !!!';
+        congratulationsText.textContent = 'Félicitations ! Vous avez terminé le jeu en ' + timeString + '. Merci beaucoup d\'avoir joué ! Ne Cliquez SURTOUT PAS sur le BOUTON';
+
         congratulationsText.style.fontSize = '30px';
         congratulationsText.style.fontWeight = 'bold';
         congratulationsText.style.backgroundColor = 'black';
