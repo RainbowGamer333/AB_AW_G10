@@ -3,7 +3,7 @@ export class Smiley {
     static smiley = document.querySelector("#smiley");
     static _isClicked = false;
     static _theme = "retro";
-    static _src;
+    static _src = `./asset/themes/${Smiley._theme}/header`;
 
     static get isClicked() {
         return Smiley._isClicked;
