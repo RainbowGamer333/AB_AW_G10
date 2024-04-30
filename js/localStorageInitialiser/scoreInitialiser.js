@@ -96,16 +96,16 @@ function clearScoresClicker() {
 export function initialiserScoresTowerDefense() {
     clearScoresTowerDefense();
     let scores = [
-        {nom: "F", score: 1},
-        {nom: "FabuLeMich", score: 2},
-        {nom: "Stephane06", score: 3},
-        {nom: "Quentin12", score: 4},
-        {nom: "Florent78", score: 5},
-        {nom: "A", score: 6},
-        {nom: "B", score: 7},
-        {nom: "C", score: 8},
-        {nom: "D", score: 9},
-        {nom: "E", score: 10}
+        {nom: "Feldup", score: 7800},
+        {nom: "MicBuffa", score: 48950},
+        {nom: "Stephane06", score: 480},
+        {nom: "Géralt", score: 0 },//125450
+        {nom: "Florent78", score: 48900},
+        {nom: "StephDaSilv", score: 5480},
+        {nom: "Quentin12", score: 24780},
+        {nom: "GG-Ez", score: 1450},
+        {nom: "Raumin", score: 1},//98650
+        {nom: "Loughan", score: 0}//72400
     ];
 
     sortScores(scores, true);

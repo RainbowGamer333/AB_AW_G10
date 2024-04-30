@@ -1,6 +1,6 @@
 import {initialiserScores, sortScores} from "./localStorageInitialiser/scoreInitialiser.js";
 
-class Scoreboard {
+export class Scoreboard {
     static displayScoreboard(gameName) {
         let scores = JSON.parse(localStorage.getItem(gameName));
         let scoreLines = document.querySelectorAll(".line");
