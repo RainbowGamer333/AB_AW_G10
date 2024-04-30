@@ -14,7 +14,7 @@ import {MapUtils} from "./utils/MapUtils.js";
 import {Utils} from "./utils/Utils.js";
 import {AB_Utils} from "../../../js/AB_Utils.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
-import {ScoreboardTowerDefense} from "./js/Scoreboard.js";
+import {ScoreboardTowerDefense} from "../../../js/Scoreboard.js";
 
 Engine.canvas = document.getElementById("gameCanvas");
 const canvas = Engine.canvas;
