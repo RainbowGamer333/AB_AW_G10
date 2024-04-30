@@ -18,10 +18,8 @@ export class Grid {
     _middleClicked = false;
     _difficulty = "facile";
     _noFlags = true;
-    _theme = "retro";
 
     constructor(gameBoard, numberRows, numberColumns, numberMines, difficulty) {
-        //initialiserScoresDemineur();
         this._victory = false;
         this._miningGrid = document.createElement("table");
         this._miningGrid.id = "miningGrid";
@@ -32,8 +30,7 @@ export class Grid {
 
         this.timer = new Timer();
         this.minesCounter = new MineCounter();
-        this.smiley = new Smiley();
-        this.smiley.initialiserListeners(this);
+        Smiley.initialiserListeners(this);
 
         this._numberMines = numberMines;
         this.cells = [];
@@ -54,20 +51,6 @@ export class Grid {
         this._difficulty = difficulty;
     }
 
-    get theme() {
-        return this._theme;
-    }
-
-    set theme(theme) {
-        this._theme = theme;
-        this.cells.forEach((rows) => {
-            rows.forEach((cell) => {
-                cell.theme = theme;
-            });
-        });
-        this.smiley.theme = theme;
-    }
-
     /**
      * Crée la grille de jeu.
      * @param numberRows le nombre de lignes
@@ -84,7 +67,7 @@ export class Grid {
 
             // Génération cellules de la ligne
             for (let j = 0; j < numberColumns; j++) {
-                let cellule = Cell.creerCellule(this.theme);
+                let cellule = Cell.creerCellule();
                 tr.appendChild(cellule.element);
                 rows.push(cellule);
             }
@@ -177,7 +160,7 @@ export class Grid {
                         this.previewCasesAutour(i, j);
                     }
 
-                    this.smiley.shock();
+                    Smiley.shock();
                 });
 
                 cell.element.addEventListener("mouseout", (e) => {
@@ -205,7 +188,7 @@ export class Grid {
                 cell.element.addEventListener("mouseup", (e) => {
                     e.preventDefault();
                     if (cell.disabled) return;
-                    this.smiley.normal();
+                    Smiley.normal();
 
                     // Clique du milieu
                     if (this._middleClicked) {
@@ -358,7 +341,7 @@ export class Grid {
         this._victory = true;
         this.timer.stopTimer();
         VolumeDemineur.playVictory();
-        this.smiley.victory();
+        Smiley.victory();
         this.mettreFlags();
         this.disableCells();
 
@@ -405,7 +388,7 @@ export class Grid {
     gameOver(mineCliquee) {
         this.timer.stopTimer();
         VolumeDemineur.playGameOver();
-        this.smiley.defeat();
+        Smiley.defeat();
         this.afficherMines(mineCliquee);
         this.disableCells();
     }
@@ -567,6 +550,6 @@ export class Grid {
      */
     stop() {
         this.timer.stopTimer();
-        this.smiley.normal();
+        Smiley.normal();
     }
 }

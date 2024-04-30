@@ -2,36 +2,17 @@
     --demineurBackgroundColor: #c7c7c7;
     --demineurBorderColor: #a9a9a9;
 
-    --url-retro-unclicked: url("../asset/themes/retro/grille/unclicked.png");
-    --url-retro-flag: url("../asset/themes/retro/grille/flag.png");
-    --url-retro-mine: url("../asset/themes/retro/grille/mine.png");
-    --url-retro-fake-mine: url("../asset/themes/retro/grille/fake-mine.png");
-    --url-retro-0: url("../asset/themes/retro/grille/0.png");
-    --url-retro-1: url("../asset/themes/retro/grille/1.png");
-    --url-retro-2: url("../asset/themes/retro/grille/2.png");
-    --url-retro-3: url("../asset/themes/retro/grille/3.png");
-    --url-retro-4: url("../asset/themes/retro/grille/4.png");
-    --url-retro-5: url("../asset/themes/retro/grille/5.png");
-    --url-retro-6: url("../asset/themes/retro/grille/6.png");
-    --url-retro-7: url("../asset/themes/retro/grille/7.png");
-    --url-retro-8: url("../asset/themes/retro/grille/8.png");
-
-
-    --url-smiley-flag: url("../asset/themes/smiley/grille/flag.png");
-    --url-smiley-mine: url("../asset/themes/smiley/grille/mine.png");
-    --url-smiley-fake-mine: url("../asset/themes/smiley/grille/fake-mine.png");
-    /*
-    Les images smiley n'existent pas donc on les initialisent avec le theme retro
-    */
-    --url-smiley-unclicked: url("../asset/themes/retro/grille/unclicked.png");
-    --url-smiley-0: url("../asset/themes/retro/grille/0.png");
-    --url-smiley-1: url("../asset/themes/retro/grille/1.png");
-    --url-smiley-2: url("../asset/themes/retro/grille/2.png");
-    --url-smiley-3: url("../asset/themes/retro/grille/3.png");
-    --url-smiley-4: url("../asset/themes/retro/grille/4.png");
-    --url-smiley-5: url("../asset/themes/retro/grille/5.png");
-    --url-smiley-6: url("../asset/themes/retro/grille/6.png");
-    --url-smiley-7: url("../asset/themes/retro/grille/7.png");
-    --url-smiley-8: url("../asset/themes/retro/grille/8.png");
-
+    --url-unclicked: url("../asset/themes/retro/grille/unclicked.png");
+    --url-flag: url("../asset/themes/retro/grille/flag.png");
+    --url-mine: url("../asset/themes/retro/grille/mine.png");
+    --url-fake-mine: url("../asset/themes/retro/grille/fake-mine.png");
+    --url-0: url("../asset/themes/retro/grille/0.png");
+    --url-1: url("../asset/themes/retro/grille/1.png");
+    --url-2: url("../asset/themes/retro/grille/2.png");
+    --url-3: url("../asset/themes/retro/grille/3.png");
+    --url-4: url("../asset/themes/retro/grille/4.png");
+    --url-5: url("../asset/themes/retro/grille/5.png");
+    --url-6: url("../asset/themes/retro/grille/6.png");
+    --url-7: url("../asset/themes/retro/grille/7.png");
+    --url-8: url("../asset/themes/retro/grille/8.png");
 }

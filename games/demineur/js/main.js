@@ -125,11 +125,9 @@ function submitTheme() {
    console.log("value theme", theme);
    switch (theme) {
        case 'themeRetro':
-           //gameBoard.setTheme("retro");
            ThemeUtils.setTheme("retro");
            break;
        case 'themeSmiley':
-           //gameBoard.setTheme("smiley");
            ThemeUtils.setTheme("smiley");
            break;
     }

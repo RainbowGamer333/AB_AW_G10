@@ -1,32 +1,38 @@
-//Chercher tt les variables css
-//Au changement de thème, changer les valeurs des variables css
-
+import {Smiley} from "./smiley.js";
 
 export default class ThemeUtils {
+    static theme = "retro";
+
 
     static setTheme(theme) {
-        ThemeUtils.getThemeVariablesFromCss();
+        let variables = ThemeUtils.getThemeVariablesFromCss();
+
+        for (let variable of variables) {
+            ThemeUtils.changeVariable(variable, theme);
+        }
+
+        Smiley.theme = theme;
+        ThemeUtils.theme = theme;
     }
     
     static getThemeVariablesFromCss() {
         let root = document.documentElement;
         let rootStyle = getComputedStyle(root);
-        console.log(rootStyle.getPropertyValue("--url-retro-flag").split("/"));
+        let variablesCSS = [];
 
-        //root.style.setProperty("--url-retro-flag", "url('../asset/themes/smiley/grille/flag.png')");
-        //console.log(rootStyle.getPropertyValue("--url-retro-flag"));
+        variablesCSS.push("--url-flag");
+        variablesCSS.push("--url-mine");
+        variablesCSS.push("url-fake-flag");
+
+        return variablesCSS;
     }
-
-
 
 
     static changeVariable(variable, theme) {
         let root = document.documentElement;
         let rootStyle = getComputedStyle(root);
         let value = rootStyle.getPropertyValue(variable);
-        let themesPath = "../asset/themes/";
-
-        root.style.setProperty(variable, value.replace("retro", theme));
-        console.log(rootStyle.getPropertyValue(variable));
+        
+        root.style.setProperty(variable, value.replace(ThemeUtils.theme, theme));
     }
 }
