@@ -5,14 +5,8 @@
 
 import {Gui} from "./gui/Gui.js";
 import {Constants} from "./constants/Constants.js";
-import {GameObject} from "./GameObject.js";
-import {SpriteRenderer} from "./component/SpriteRenderer.js";
-import {Path} from "./constants/Path.js";
-import {MonsterSpawner} from "./entity/impl/generic/MonsterSpawner.js";
 import {Engine} from "./constants/Engine.js";
 import {MapUtils} from "./utils/MapUtils.js";
-import {Utils} from "./utils/Utils.js";
-import {AB_Utils} from "../../../js/AB_Utils.js";
 import AchievementUtils from "../../../js/AchievementUtils.js";
 import {ScoreboardTowerDefense} from "../../../js/Scoreboard.js";
 
