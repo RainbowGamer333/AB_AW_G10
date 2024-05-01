@@ -48,3 +48,21 @@ function updateProfileInformationTable() {
     pseudo.children[1].innerHTML = account.username;
     email.children[1].innerHTML = account.mail;
 }
+
+
+const dropdowns = document.querySelectorAll('.dropdown');
+
+dropdowns.forEach(dropdown => {
+    const btnDrop = dropdown.querySelector('.bloc-top');
+    let toggleIndex = 0;
+
+    btnDrop.addEventListener('click', () => {
+        if (toggleIndex === 0) {
+            dropdown.style.height = `${dropdown.scrollHeight}px`;
+            toggleIndex++;
+        } else {
+            dropdown.style.height = `${btnDrop.scrollHeight}px`;
+            toggleIndex--;
+        }
+    });
+});
