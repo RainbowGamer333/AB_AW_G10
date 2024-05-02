@@ -101,7 +101,7 @@ function createAchievementsList(userAchievementsList, ul) {
         p.innerHTML = achievement.name;
 
         let span = document.createElement("span");
-        span.innerHTML = `${achievement.valueCurrent}/${achievement.valueNeed}`;
+        span.innerHTML = `${Math.min(achievement.valueCurrent, achievement.valueNeed)}/${achievement.valueNeed}`;
 
         li.appendChild(img);
         li.appendChild(p);

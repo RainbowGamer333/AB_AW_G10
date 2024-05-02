@@ -46,7 +46,7 @@ export default class AchievementUtils {
     }
 
     static displayAchievement(achievementID) {
-        const achievementPATH = "../games/" + AchievementUtils.gameName + "/asset/data/achievement.json";
+        const achievementPATH = "../" + AchievementUtils.gameName + "/asset/data/achievement.json";
         AB_Utils.readTextFile(achievementPATH, (achievement) => {
             let json = JSON.parse(achievement);
             if (!json) {
