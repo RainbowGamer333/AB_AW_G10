@@ -106,7 +106,6 @@ body {
 
 .bloc-top {
     padding: 20px;
-    display: block;
     width: 100%;
     border: none;
     outline: none;
@@ -125,21 +124,21 @@ body {
 
 
 
-.bloc-links {
+.achievements_container {
     padding: 0 22px;
 }
 
-.bloc-links li {
+.achievements_container li {
     list-style-type: none;
     padding: 5px 0;
 }
 
-.bloc-links li a {
+.achievements_container li a {
     font-size: 18px;
     color: #f1f1f1;
     margin-left: 5px;
 }
-.bloc-links li:last-child{
+.achievements_container li:last-child{
     padding-bottom: 25px;
 }
 

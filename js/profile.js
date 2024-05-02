@@ -11,6 +11,7 @@ console.log(account);
 window.addEventListener("load", function() {
     updateProfileImageBackground();
     updateProfileInformationTable();
+    updateAchievements()
 });
 
 randomizeProfileButton.addEventListener("click", function() {
@@ -66,3 +67,47 @@ dropdowns.forEach(dropdown => {
         }
     });
 });
+
+
+function updateAchievements() {
+    let trophes = document.querySelector(".trophes");
+    for (let achievementBox of trophes.children) {
+        let ul = document.querySelectorAll(".achievements_list");
+
+        switch (achievementBox.id) {
+            case "demineur":
+                createAchievementsList(account.demineur.achievements, ul[0]);
+                break;
+            case "clicker":
+                createAchievementsList(account.clicker.achievements, ul[1]);
+                break;
+            case "towerDefense":
+                createAchievementsList(account.towerDefense.achievements, ul[2]);
+                break;
+        }
+    }
+}
+
+function createAchievementsList(userAchievementsList, ul) {
+    for (let achievement of userAchievementsList) {
+        let li = document.createElement("li");
+        li.classList.add("achievement_element");
+
+        let img = document.createElement("img");
+        img.src = ""; //TODO: Add image path on user creation
+        img.alt = "achievement";
+
+        let p = document.createElement("p");
+        p.innerHTML = achievement.name;
+
+        let span = document.createElement("span");
+        span.innerHTML = `${achievement.valueCurrent}/${achievement.valueNeed}`;
+
+        li.appendChild(img);
+        li.appendChild(p);
+        li.appendChild(span);
+
+        ul.appendChild(li);
+    }
+    return ul;
+}
