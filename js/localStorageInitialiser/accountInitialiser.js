@@ -59,22 +59,24 @@ function initialiserAchievementsGame(gameName) {
     let achievements = [];
 
     AB_Utils.readTextFile(achievementPATH, (achievement) => {
-        let json = JSON.parse(achievement);
-        if (!json) {
+        let jsonArray = JSON.parse(achievement);
+        if (!jsonArray) {
             console.error("JSON reading error");
             return;
         }
 
-        json.forEach((json) => {
-            achievements.push({
+        jsonArray.forEach((json) => {
+            console.log(json);
+            let achievement = {
                 name: json.name,
+                desc: json.desc,
+                img: json["imageURL"],
                 valueNeed: json.value,
                 valueCurrent: 0,
                 unlocked: false
-            });
+            };
+            achievements.push(achievement);
         });
-        console.log(achievements);
-        debugger;
         return achievements;
     });
     return achievements;

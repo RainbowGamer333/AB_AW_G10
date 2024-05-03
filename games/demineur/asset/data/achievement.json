@@ -1,7 +1,7 @@
 [
   {
     "name" : "Bienvenue au démineur",
-    "imageURL": "/games/demineur/asset/grille/1.png",
+    "imageURL": "/games/demineur/asset/themes/retro/grille/1.png",
     "desc": "Completer votre premier jeu",
     "value" : 1
   },
