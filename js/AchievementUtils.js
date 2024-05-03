@@ -57,7 +57,7 @@ export default class AchievementUtils {
 
             let data = json[achievementID];
 
-            AB_Utils.readTextFile("../component/achievement.html", (text) => {
+            AB_Utils.readTextFile("../../component/achievement.html", (text) => {
                 let elementTagName = "achievement_spawner";
                 const oldElement = document.getElementById(elementTagName);
                 const newElement = document.createElement("div");
