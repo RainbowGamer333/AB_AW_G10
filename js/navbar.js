@@ -8,16 +8,15 @@ export function updateNavbar() {
         defaultProfileImageNavbar();
     }
 
-    let account = document.getElementById("account");
+    displayUsername();
+
+    let account = document.querySelector(".account-container");
     account.addEventListener("click", function () {
         if (sessionActive()) {
             window.location.href = "/AB_AW_G10/account/account.html";
         } else {
             window.location.href = "/AB_AW_G10/account/log-in.html";
         }
-    });
-    account.addEventListener("mouseover", function () {
-        account.style.cursor = "pointer";
     });
 
 }
@@ -56,6 +55,12 @@ function displayDeconnexion() {
     deconnexion.style.display = "flex";
 
     deconnexion.addEventListener("click", deconnecter);
+}
+
+function displayUsername() {
+    let account = JSON.parse(sessionStorage.getItem("account"));
+    let username = document.getElementById("username");
+    if (account) username.innerHTML = account.username;
 }
 
 function updateLocalStorage(account, callback) {

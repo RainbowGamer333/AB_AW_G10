@@ -1,4 +1,4 @@
-nav{
+nav {
     background: var(--navbarColor);
     width: 100vw;
     height: 60px;
@@ -30,22 +30,40 @@ nav{
 
     .connexion-container{
         display: flex;
-        gap: 15px;
+        gap: 25px;
         align-items: center;
-    }
 
-    #account {
-        width: 45px;
-        height: 45px;
-        background-size: cover;
-        filter: opacity(0.8);
-        border-radius: 180px;
-        display: flex;
+        .account-container {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            filter: opacity(0.8);
 
-        &:hover{
-            filter: opacity(1.0);
+            #account {
+                width: 45px;
+                height: 45px;
+                background-size: cover;
+                border-radius: 180px;
+                display: flex;
+            }
+
+            span {
+                font-size: 1.2em;
+                color: white;
+                font-weight: 600;
+            }
+
+            &:hover{
+                cursor: pointer;
+                color: white;
+                filter: opacity(1.0);
+            }
+
+
         }
     }
+
+
 
     .connexion_deconnexion {
         background-color: var(--colMain);
