@@ -70,7 +70,7 @@ function initialiserAchievementsGame(gameName) {
             let achievement = {
                 name: json.name,
                 desc: json.desc,
-                img: json["imageURL"],
+                imageURL: json.imageURL,
                 valueNeed: json.value,
                 valueCurrent: 0,
                 unlocked: false

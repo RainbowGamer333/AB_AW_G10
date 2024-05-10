@@ -94,7 +94,7 @@ function createAchievementsList(userAchievementsList, ul) {
         li.classList.add("achievement_element");
 
         let img = document.createElement("img");
-        img.src = achievement.img;
+        img.src = achievement.imageURL;
         img.alt = "achievement";
 
         let p = document.createElement("p");
