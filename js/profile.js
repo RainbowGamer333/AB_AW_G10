@@ -55,15 +55,19 @@ const dropdowns = document.querySelectorAll('.dropdown');
 
 dropdowns.forEach(dropdown => {
     const btnDrop = dropdown.querySelector('.bloc-top');
-    let toggleIndex = 0;
+    const achievements = dropdown.querySelector('.achievements_container');
+    let open = false;
 
     btnDrop.addEventListener('click', () => {
-        if (toggleIndex === 0) {
+        if (!open) {
+            achievements.style.display = "block";
             dropdown.style.height = `${dropdown.scrollHeight+10}px`;
-            toggleIndex++;
+            open = !open;
+
         } else {
-            dropdown.style.height = `${btnDrop.scrollHeight}px`;
-            toggleIndex--;
+            dropdown.style.height = `${btnDrop.scrollHeight+5}px`;
+            achievements.style.display = "none";
+            open = !open;
         }
     });
 });
