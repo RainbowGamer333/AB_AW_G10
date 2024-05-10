@@ -59,7 +59,7 @@ dropdowns.forEach(dropdown => {
 
     btnDrop.addEventListener('click', () => {
         if (toggleIndex === 0) {
-            dropdown.style.height = `${dropdown.scrollHeight}px`;
+            dropdown.style.height = `${dropdown.scrollHeight+10}px`;
             toggleIndex++;
         } else {
             dropdown.style.height = `${btnDrop.scrollHeight}px`;
@@ -97,13 +97,19 @@ function createAchievementsList(userAchievementsList, ul) {
         img.src = achievement.imageURL;
         img.alt = "achievement";
 
+        let h1 = document.createElement("h1");
+        h1.innerHTML = achievement.name;
+
         let p = document.createElement("p");
-        p.innerHTML = achievement.name;
+        p.innerHTML = achievement.desc;
 
         let span = document.createElement("span");
         span.innerHTML = `${Math.min(achievement.valueCurrent, achievement.valueNeed)}/${achievement.valueNeed}`;
 
+        if (achievement.unlocked) li.classList.add("unlocked");
+
         li.appendChild(img);
+        li.appendChild(h1);
         li.appendChild(p);
         li.appendChild(span);
 
