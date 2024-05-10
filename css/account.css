@@ -1,3 +1,7 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .profile{
     padding-top: 80px;
 }
@@ -88,11 +92,6 @@
     padding: 0;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
 .dropdown {
     max-width: 80%;
     height: 80px;
@@ -117,29 +116,19 @@ body {
     color: #f1f1f1;
     cursor: pointer;
     border-radius:  5px;
-}
-.bloc-top img {
-    width: 30px
-}
 
-
+    img {
+        width: 30px;
+    }
+}
 
 .achievements_container {
-    padding: 0 22px;
-}
-
-.achievements_container li {
-    list-style-type: none;
-    padding: 5px 0;
-}
-
-.achievements_container li a {
-    font-size: 18px;
-    color: #f1f1f1;
-    margin-left: 5px;
-}
-.achievements_container li:last-child{
-    padding-bottom: 25px;
+    li {
+        list-style-type: none;
+        background-color: rgba(255, 255, 255, 0.1);
+        margin: 10px;
+        padding: 15px 20px;
+    }
 }
 
 
