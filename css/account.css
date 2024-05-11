@@ -56,12 +56,7 @@ body {
         width: 50%;
     }
 
-    #changerPasswordButton {
-        background-color: rgb(255 255 255 / 1%);
-        color: white;
-        border-radius: 8px;
-        margin-top: 5px;
-    }
+
 }
 
 .profileInfo {
@@ -145,6 +140,39 @@ body {
         }
     }
 }
+
+.management {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0 20px 0;
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: var(--colMain);
+        color: #f1f1f1;
+        font-size: 1em;
+        transition: background-color 0.2s linear;
+
+        &:hover {
+            transition: 0.2s linear all;
+            filter: brightness(1.2);
+        }
+
+
+        &.alertButton {
+            background-color: red;
+            color: white;
+
+            &:hover {
+                background-color: darkred;
+            }
+        }
+    }
+}
+
 
 
 
