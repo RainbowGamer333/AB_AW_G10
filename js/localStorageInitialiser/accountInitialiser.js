@@ -66,7 +66,6 @@ function initialiserAchievementsGame(gameName) {
         }
 
         jsonArray.forEach((json) => {
-            console.log(json);
             let achievement = {
                 name: json.name,
                 desc: json.desc,

@@ -40,7 +40,7 @@ export class AB_Utils {
         if (oldElement){
             oldElement.replaceWith(newElement)
         }else{
-            console.log("Node with the tag "+elementTagName+" not found.")
+            console.error("Node with the tag "+elementTagName+" not found.")
         }
         if (callback) {
             callback(true);

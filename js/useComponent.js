@@ -6,7 +6,6 @@ import SearchUtils from "./SearchUtils.js";
 import { resetDemineur } from "../games/demineur/js/main.js";
 
 function init(){
-    console.log(window.location.pathname);
     //Create footer - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     AB_Utils.readTextFile("/AB_AW_G10/component/footer.html", (text) =>{
         AB_Utils.replaceComponent("footer",text);
@@ -134,7 +133,6 @@ function init(){
                 && !document.mozFullScreen
                 && !document.msFullscreenElement) {
                 ///fire your event
-                console.log("KIKOKOK")
                 const gameContainerElement = document.getElementById("gameContainer");
                 gameContainerElement.classList.remove("fullscreen");
             }
@@ -172,7 +170,6 @@ function update(){
         let value = (height - pos) * velocity;
 
         element.style.backgroundPositionY = value  +  'px';
-        // console.log(value)
     }
 }
 

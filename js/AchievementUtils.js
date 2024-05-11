@@ -50,7 +50,7 @@ export default class AchievementUtils {
         AB_Utils.readTextFile(achievementPATH, (achievement) => {
             let json = JSON.parse(achievement);
             if (!json) {
-                console.log("JSON reading error");
+                console.error("JSON reading error");
                 return;
             }
             //TODO HANDLE ERRORS

@@ -7,7 +7,7 @@ const randomizeProfileButton = document.getElementById("randomizeProfileButton")
 const profileImageElement = document.getElementById("imageDeProfil");
 const changerPasswordButton = document.getElementById("changerPasswordButton");
 
-console.log(account);
+
 
 window.addEventListener("load", function() {
     updateProfileImageBackground();
@@ -22,7 +22,6 @@ window.addEventListener("load", function() {
     });
 
     changerPasswordButton.addEventListener("click", function() {
-        console.log("click");
         window.location.href = "password.html";
     });
 
