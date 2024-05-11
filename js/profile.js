@@ -1,4 +1,5 @@
 import {updateNavbar} from "./navbar.js";
+import {deconnecterCompte, supprimerCompte} from "./accountHandler.js";
 
 const account = JSON.parse(sessionStorage.getItem("account"));
 
@@ -12,20 +13,25 @@ window.addEventListener("load", function() {
     updateProfileImageBackground();
     updateProfileInformationTable();
     updateAchievements()
-});
 
-randomizeProfileButton.addEventListener("click", function() {
-    let imageUrl = generateRandomProfileImage();
-    updateSessionImage(imageUrl);
-    updateNavbar();
-    updateProfileImageBackground();
-});
+    randomizeProfileButton.addEventListener("click", function() {
+        let imageUrl = generateRandomProfileImage();
+        updateSessionImage(imageUrl);
+        updateNavbar();
+        updateProfileImageBackground();
+    });
 
-changerPasswordButton.addEventListener("click", function() {
-    console.log("click");
-    window.location.href = "password.html";
-});
+    changerPasswordButton.addEventListener("click", function() {
+        console.log("click");
+        window.location.href = "password.html";
+    });
 
+    let supprimer = document.getElementById("deleteAccountButton");
+    supprimer.addEventListener("click", function() {
+        confirm("Voulez vous vraiment supprimer votre compte ?");
+        supprimerCompte();
+    });
+});
 
 function generateRandomProfileImage() {
     const randomImageIndex = Math.floor(Math.random() * 13) + 1; // Génère un nombre aléatoire entre 1 et 5

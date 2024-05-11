@@ -1,3 +1,4 @@
+import {deconnecterCompte} from "./accountHandler.js";
 
 export function updateNavbar() {
     if (sessionActive()) {
@@ -44,7 +45,7 @@ function displayConnexion() {
     connexion.style.display = "flex";
     deconnexion.style.display = "none";
 
-    deconnexion.removeEventListener("click", deconnecter);
+    deconnexion.removeEventListener("click", deconnecterCompte);
 }
 
 function displayDeconnexion() {
@@ -54,7 +55,7 @@ function displayDeconnexion() {
     connexion.style.display = "none";
     deconnexion.style.display = "flex";
 
-    deconnexion.addEventListener("click", deconnecter);
+    deconnexion.addEventListener("click", deconnecterCompte);
 }
 
 function displayUsername() {
@@ -63,20 +64,9 @@ function displayUsername() {
     if (account) username.innerHTML = account.username;
 }
 
-function updateLocalStorage(account, callback) {
-    let accounts = JSON.parse(localStorage.getItem("accounts"));
-    let index = accounts.findIndex(acc => acc.username === account.username);
-    accounts[index] = account;
-    localStorage.setItem("accounts", JSON.stringify(accounts));
-    callback();
-}
 
-function deconnecter() {
-    updateLocalStorage(JSON.parse(sessionStorage.getItem("account")), () => {
-        sessionStorage.removeItem("account");
-        window.location.href = "/AB_AW_G10/index.html";
-    });
-}
+
+
 
 function sessionActive() {
     return JSON.parse(sessionStorage.getItem("account"));

@@ -2,41 +2,37 @@ import { createAccount, clearAccounts } from "./localStorageInitialiser/accountI
 
 const accounts = JSON.parse(localStorage.getItem("accounts"));
 
-// S'il y a aucun compte dans le local storage, on initialise avec le compte admin
-if (accounts === null || accounts === []) {
-    clearAccounts();
-}
+window.addEventListener("DOMContentLoaded", () => {
+    if (accounts === null || accounts === []) {
+        clearAccounts();
+    }
 
-//clearAccounts();
-//console.log(accounts);
+    const eyes = document.querySelectorAll(".eye");
+    eyes.forEach(eye => {
+        eye.addEventListener("click", (e) => {
+            e.preventDefault();
+            let passwordField = eye.previousElementSibling;
 
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eye.src = "../asset/icons/view.png";
+            }
+            else if (passwordField.type === "text") {
+                passwordField.type = "password";
+                eye.src = "../asset/icons/view_closed.png";
+            }
+        });
+    });
 
-const eyes = document.querySelectorAll(".eye");
-eyes.forEach(eye => {
-    eye.addEventListener("click", (e) => {
+    let accountForm = document.querySelector("#form");
+    if (accountForm) accountForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        let passwordField = eye.previousElementSibling;
-        console.log(passwordField);
-
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            eye.src = "../asset/icons/view.png";
-        }
-        else if (passwordField.type === "text") {
-            passwordField.type = "password";
-            eye.src = "../asset/icons/view_closed.png";
-        }
+        if (window.location.pathname === "/AB_AW_G10/account/sign-up.html") registerAccount();
+        else if (window.location.pathname === "/AB_AW_G10/account/log-in.html") loginAccount();
+        else if (window.location.pathname === "/AB_AW_G10/account/password.html") changePassword();
     });
 });
 
-
-
-document.querySelector("#form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (window.location.pathname === "/AB_AW_G10/account/sign-up.html") registerAccount();
-    else if (window.location.pathname === "/AB_AW_G10/account/log-in.html") loginAccount();
-    else if (window.location.pathname === "/AB_AW_G10/account/password.html") changePassword();
-});
 
 function loginAccount() {
     let username = document.querySelector("#usernameLogin").value;
@@ -92,12 +88,6 @@ function changePassword() {
     else {
         account.password = newPassword.value;
         sessionStorage.setItem("account", JSON.stringify(account));
-        /*
-        let accounts = JSON.parse(localStorage.getItem("accounts"));
-        let index = accounts.findIndex(acc => acc.username === account.username);
-        accounts[index] = account;
-        setAccounts(accounts);
-        */
         window.location.href = "../account/account.html";
     }
 }
@@ -120,4 +110,29 @@ function loginSession(account) {
 
 function alertLogin(message) {
     document.getElementById("alert").innerText = message;
+}
+
+function updateLocalStorage(account, callback) {
+    let accounts = JSON.parse(localStorage.getItem("accounts"));
+    let index = accounts.findIndex(acc => acc.username === account.username);
+    accounts[index] = account;
+    localStorage.setItem("accounts", JSON.stringify(accounts));
+    callback();
+}
+
+export function deconnecterCompte() {
+    updateLocalStorage(JSON.parse(sessionStorage.getItem("account")), () => {
+        sessionStorage.removeItem("account");
+        window.location.href = "/AB_AW_G10/index.html";
+    });
+}
+
+export function supprimerCompte() {
+    let account = JSON.parse(sessionStorage.getItem("account"));
+    let accounts = JSON.parse(localStorage.getItem("accounts"));
+    let index = accounts.findIndex(acc => acc.username === account.username);
+    accounts.splice(index, 1);
+    localStorage.setItem("accounts", JSON.stringify(accounts));
+    sessionStorage.removeItem("account");
+    window.location.href = "/AB_AW_G10/index.html";
 }
