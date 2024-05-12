@@ -2,6 +2,10 @@ import AchievementUtils from "../../../js/AchievementUtils.js";
 import {ScoreboardClicker} from "../../../js/Scoreboard.js";
 //import {initialiserScoresClicker} from "../../../js/localStorageInitialiser/scoreInitialiser.js";
 
+/**
+ * variable pour le clicker
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
      let clickButton = document.getElementById('clickButton');
      let autoClickButton = document.getElementById('autoClickButton');
@@ -32,12 +36,21 @@ document.addEventListener('DOMContentLoaded', function () {
      let hasReachedButtonOne = false;
      let hasReachedButtonTwo = false;
 
-
+    /**
+     * vérifier si l'utilisateur est connecté
+     */
     const account = JSON.parse(sessionStorage.getItem("account"));
     if (account === null) window.location.href = "/AB_AW_G10/account/log-in.html";
 
+    /**
+     * initialiser les scores et achievements
+     */
     AchievementUtils.init("clicker");
-    ////////////////timer//////////////////////////
+
+
+    /**
+     * initialiser du chronomètre
+     */
     function startTimer() {
         startTime = Date.now();
         timerInterval = setInterval(updateTimer, 1000);
@@ -56,7 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
         timerDisplay.textContent = 'Temps écoulé: ' + hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
     }
 
-    ////////mettre à jour les boutons sous le clicker///////
+    /**
+     * fonction pour mettre à jour les boutons cachés ou non
+     */
     function updateButton() {
         if (coins >= autoClickCost) {
             autoClickButton.removeAttribute('disabled');
@@ -96,7 +111,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
     }
-////////bouton qui incrémente les scores//////
+
+    /**
+     * fonction pour initialiser les scores
+     */
     clickButton.addEventListener('click', function () {
         // Utilise la prochaine valeur de clic pour incrémenter le score
         incrementScore(nextClickValue);
@@ -108,7 +126,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     })
 
-    /////////affichage du score//////
+    /**
+     * fonction pour mettre à jour le score et les images
+     */
     function updateScore() {
         scoreDisplay.textContent = 'Score: ' + score;
         scoreDisplay.classList.add("trembling-animation");
@@ -258,6 +278,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    /**
+     * fonction pour mettre à jour les pièces
+     */
     function updateCoins() {
         coinsDisplay.textContent = 'Pièces: ' + coins;
         autoClickCostDisplay.textContent = 'Prochain achat d\'autoclic: ' + autoClickCost;
@@ -266,6 +289,10 @@ document.addEventListener('DOMContentLoaded', function () {
         clickPlus1000CostDisplay.textContent = 'Prochain achat de clic +1000: ' + clickPlus1000Cost;
     }
 
+    /**
+     * fonction pour incrémenter le score
+     * @param amount
+     */
     function incrementScore(amount) {
         if (score < 1100000000) {
             score += amount;
@@ -276,11 +303,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    /**
+     * fonction pour incrémenter les pièces
+     * @param amount
+     */
     function incrementCoins(amount) {
         coins += amount;
         updateCoins();
     }
 
+    /**
+     * fonction pour acheter le clic automatique
+     */
     function toggleAutoClick() {
         if (coins >= autoClickCost) {
             autoClicks += 1;
@@ -336,6 +370,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    /**
+     * fonction pour acheter le mega clic automatique
+     */
     function toggleMegaAutoClick() {
         if (coins >= megaAutoClickCost) {
             autoClicks += 1000;
@@ -403,6 +440,10 @@ document.addEventListener('DOMContentLoaded', function () {
             hasReachedButtonTwo = true;
         }
     }
+
+    /**
+     * fonction pour acheter le clic +1
+     */
     function toggleClickPlus1() {
         if (coins >= clickPlus1Cost) {
             coins -= clickPlus1Cost;
@@ -415,7 +456,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-
+    /**
+     * fonction pour acheter le clic +1000
+     */
     function toggleClickPlus1000() {
         if (coins >= clickPlus1000Cost) {
             coins -= clickPlus1000Cost;
@@ -427,39 +470,47 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+    /**
+     * fonction pour mettre à jour la valeur du clic
+     */
     setInterval(function () {
         nextClickValueDisplay.textContent = 'Ajout de : ' + nextClickValue;
     }, 10);
 
-// Ajoutez un écouteur d'événements au bouton MegaAutoClick
+    /**
+     * ecouteurs d'événements pour les boutons
+     */
     megaAutoClickButton.addEventListener('click', function () {
         toggleMegaAutoClick();
     });
-
-
-// Ajoutez un écouteur d'événements au bouton ClicPlus1000
     clickPlus1000Button.addEventListener('click', function () {
         toggleClickPlus1000();
     });
-
-
-
     autoClickButton.addEventListener('click', function () {
         toggleAutoClick();
     });
-
     clickPlus1Button.addEventListener('click', function () {
         toggleClickPlus1();
     });
 
+    /**
+     * initialisation des scores et boutons
+     */
     updateButton();
     updateScore();
 
+    /**
+     * compteur de clics par seconde
+     */
     setInterval(function () {
         cpsDisplay.textContent = 'Clics par seconde: ' + cps;
         cps = 0;
     }, 1000);
 
+    /**
+     * fonction pour l'animation du clic
+     * @param amount
+     */
     function playClickAnimation(amount) {
         const animationContainer = document.getElementById('animationContainer');
         const plusOne = document.createElement('div');
@@ -476,6 +527,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
     }
 
+    /**
+     * fonction pour l'animation du clic automatique
+     * @param amount
+     */
     function playAutoClickAnimation(amount) {
         const animationContainer = document.getElementById('animationContainer');
         const autoClick = document.createElement('div');
@@ -492,6 +547,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
     }
 
+    /**
+     * fonction pour l'animation du mega clic automatique
+     * @param amount
+     */
     function playMegaAutoClickAnimation(amount) {
         const animationContainer = document.getElementById('animationContainer');
         const autoClick = document.createElement('div');
@@ -508,6 +567,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
     }
 
+    /**
+     * fonction pour l'animation du clic +1000
+     * @param amount
+     */
     function playClick1000Animation(amount) {
         const animationContainer = document.getElementById('animationContainer');
         const autoClick = document.createElement('div');
@@ -524,7 +587,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
     }
 
-    // cheat code ^^
+    /**
+     * ecoeurteur d'événement pour le cheat code
+     */
     document.addEventListener('keydown', function(event) {
         // Vérification de la séquence de touche pour le cheat
         if (event.key === 'b' && event.ctrlKey) {
@@ -537,8 +602,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-//////////////////////////////image//////////////////////////
-    // Fonction pour générer une couleur aléatoire au format hexadecimal
+
+    /**
+     * fonction pour générer une couleur aléatoire
+     * @returns {string}
+     */
     function getRandomColor() {
          let letters = '0123456789ABCDEF';
          let color = '#';
@@ -548,91 +616,82 @@ document.addEventListener('DOMContentLoaded', function () {
         return color;
     }
 
-// Ajoutez un gestionnaire d'événements à l'image
+
+    /**
+     * écouteurs d'événements pour les images
+     */
     document.getElementById('imageOne').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('leftPanel').style.backgroundColor = randomColor;
     });
-
     document.getElementById('imageTwo').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('title').style.color = randomColor;
     });
-
     document.getElementById('imageThree').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('timerDisplay').style.color = randomColor;
     });
-
     document.getElementById('imageFour').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('score').style.color = randomColor;
     });
-
     document.getElementById('imageFive').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('coinsDisplay').style.color = randomColor;
     });
-
     document.getElementById('imageSix').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('cpsDisplay').style.color = randomColor;
     });
-
     document.getElementById('imageSeven').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('nextClickValueDisplay').style.color = randomColor;
     });
-
     document.getElementById('imageEight').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('valueGame').style.backgroundColor = randomColor;
     });
-
     document.getElementById('imageNine').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('rightPanel').style.backgroundColor = randomColor;
     });
-
     document.getElementById('imageTen').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('zoneClicker').style.color = randomColor;
     });
-
     document.getElementById('imageEleven').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('').style.backgroundColor = randomColor;
     });
-
     document.getElementById('imageTwelve').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
         // Applique la couleur aléatoire à la div leftPanel
         document.getElementById('').style.color = randomColor;
     });
-
     document.getElementById('clickButton').addEventListener('click', function () {
         // Génère une couleur aléatoire
          let randomColor = getRandomColor();
@@ -640,6 +699,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('clickButton').style.backgroundColor = randomColor;
     });
 
+    /**
+     * fonction pour vérifier la fin du jeu
+     */
     function checkEndGame() {
         if (score >= 1100000000) {
             endGame(); // Appel à endGame() lorsque le score atteint 1 milliard
@@ -648,20 +710,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    /**
+     * fonction pour terminer le jeu
+     */
     function endGame() {
         // Supprimer tous les éléments du jeu
          let gameContainer = document.getElementById('gameContainer');
         gameContainer.innerHTML = '';
 
-        const endTime = new Date();
-
+        const endTime = new Date(); // Crée un objet Date pour l'heure actuelle
         let elapsedTime = endTime - startTime; // Calcule le temps écoulé en millisecondes
-        let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
-        let minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
-        let timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+        let hours = Math.floor(elapsedTime / (1000 * 60 * 60)); // Calcule les heures
+        let minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60)); // Calcule les minutes
+        let seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000); // Calcule les secondes
+        let timeString = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0'); // Crée une chaîne de caractères pour l'heure
         let elapsedTimeInSeconds = (endTime - startTime) / 1000; // Calcule le temps écoulé en secondes
-        let timeStringSecond = elapsedTimeInSeconds.toString();
+        let timeStringSecond = elapsedTimeInSeconds.toString(); // Crée une chaîne de caractères pour le temps écoulé en secondes
 
         // Créer un conteneur pour le texte de félicitations et le bouton
         let endGameContainer = document.createElement('div');
@@ -676,7 +740,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Créer un élément de texte pour afficher le message de félicitations
          let congratulationsText = document.createElement('div');
         congratulationsText.textContent = 'Félicitations ! Vous avez terminé le jeu en ' + timeString + '. Merci beaucoup d\'avoir joué ! Ne Cliquez SURTOUT PAS sur le BOUTON';
-
         congratulationsText.style.fontSize = '30px';
         congratulationsText.style.fontWeight = 'bold';
         congratulationsText.style.backgroundColor = 'black';
@@ -719,7 +782,7 @@ document.addEventListener('DOMContentLoaded', function () {
             imageButton.style.backgroundColor = 'lightgreen';
         });
 
-// Retirer l'effet de survol lorsque la souris quitte le bouton
+        // Retirer l'effet de survol lorsque la souris quitte le bouton
         imageButton.addEventListener('mouseout', function() {
             imageButton.style.backgroundColor = 'lightblue';
         });
