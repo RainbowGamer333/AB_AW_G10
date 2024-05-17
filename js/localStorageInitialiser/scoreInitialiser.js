@@ -25,7 +25,7 @@ function initialiserScoresDemineurFacile() {
     scores.push({nom: "Rainbow", score: 65});
     scores.push({nom: "Rainbow", score: 90});
 
-    sortScores(scores, true);
+    sortScores(scores, false);
     localStorage.setItem("scoreDemineurFacile", JSON.stringify(scores));
 }
 
@@ -42,7 +42,7 @@ function initialiserScoresDemineurMoyen() {
     scores.push({nom: "Rainbow", score: 125});
     scores.push({nom: "Rainbow", score: 140});
 
-    sortScores(scores, true);
+    sortScores(scores, false);
     localStorage.setItem("scoreDemineurMoyen", JSON.stringify(scores));
 }
 
@@ -59,7 +59,7 @@ function initialiserScoresDemineurDifficile() {
     scores.push({nom: "Rainbow", score: 276});
     scores.push({nom: "Rainbow", score: 289});
 
-    sortScores(scores, true);
+    sortScores(scores, false);
     localStorage.setItem("scoreDemineurDifficile", JSON.stringify(scores));
 }
 
@@ -84,7 +84,7 @@ export function initialiserScoresClicker() {
     scores.push({nom: "John Doe", score: 100000000});
     scores.push({nom: "John Doe", score: 100000000});
 
-    sortScores(scores, true);
+    sortScores(scores, false);
     localStorage.setItem("scoreClicker", JSON.stringify(scores));
 }
 
