@@ -793,9 +793,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Ajouter le conteneur à gameContainer
         gameContainer.appendChild(endGameContainer);
-
-        console.log("username : " + account.username);
-        console.log("score : " + timeStringSecond);
         ScoreboardClicker.updateScore(account.username, timeStringSecond);
     }
 
