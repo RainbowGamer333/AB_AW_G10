@@ -1,3 +1,12 @@
+/**
+ * Classe représentant une cellule du démineur. Une cellule peut prendre plusieurs valeurs :
+ * - -3 : fausse mine
+ * - -2 : mine
+ * - -1 : mine non découverte
+ * - 0 : cellule vide
+ * - 1 à 8 : cellule avec un nombre de mines adjacentes
+ * Une cellule peut également avoir un drapeau
+ */
 export class Cell {
     element;
     _valeur;
@@ -40,11 +49,17 @@ export class Cell {
         return this._valeur === -1;
     }
 
+    /**
+     * Ajoute un drapeau à la cellule.
+     */
     addFlag() {
         this._flag = true;
         this.element.classList.add("flag");
     }
 
+    /**
+     * Retire le drapeau de la cellule.
+     */
     removeFlag() {
         this._flag = false;
         this.element.classList.remove("flag");
@@ -55,10 +70,11 @@ export class Cell {
     }
 
     /**
-     * Ajoute la classe correspondant à la valeur de la cellule. -3 pour les fausses mines, -2 pour les mines, -1 pour les mines non découvertes, 0 pour les cellules vides, et 1 à 8 pour les cellules avec un nombre de mines adjacentes.
+     * Ajoute la classe correspondant à la valeur de la cellule. Ne fonctionne pas si la cellule est désactivée ou si elle a un drapeau.
      */
     afficheCellule() {
         this._visible = true;
+        if (this.disabled || this.flag) return;
         switch(this._valeur) {
             case -3:
                 this.element.classList.add("fake-mine");
@@ -109,7 +125,7 @@ export class Cell {
         this._flag = false;
         this._disabled = false;
         this.element.classList = [];
-        this.element.classList.add("cell", "unclicked", this._theme);
+        this.element.classList.add("cell", "unclicked");
     }
 
     /**

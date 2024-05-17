@@ -1,9 +1,15 @@
 import {Smiley} from "./smiley.js";
 
+/**
+ * Classe utilitaire pour la gestion des thèmes.
+ */
 export default class ThemeUtils {
     static theme = "retro";
 
-
+    /**
+     * Change le thème du jeu.
+     * @param theme Thème à appliquer
+     */
     static setTheme(theme) {
         let variables = ThemeUtils.getThemeVariablesFromCss();
 
@@ -14,10 +20,13 @@ export default class ThemeUtils {
         Smiley.theme = theme;
         ThemeUtils.theme = theme;
     }
-    
+
+    /**
+     * Récupère les variables CSS du thème actuel.
+     * @returns {*[]} la liste des variables CSS du thème actuel
+     */
     static getThemeVariablesFromCss() {
         let root = document.documentElement;
-        let rootStyle = getComputedStyle(root);
         let variablesCSS = [];
 
         variablesCSS.push("--url-flag");
@@ -28,6 +37,11 @@ export default class ThemeUtils {
     }
 
 
+    /**
+     * Remplace l'ancien thème de la variable par le nouveau.
+     * @param variable la variable CSS à changer
+     * @param theme le thème à appliquer
+     */
     static changeVariable(variable, theme) {
         let root = document.documentElement;
         let rootStyle = getComputedStyle(root);
