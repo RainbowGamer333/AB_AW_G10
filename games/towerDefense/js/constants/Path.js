@@ -1,3 +1,4 @@
+//Dynamic Path for the textures
 export class Path {
     //BASE
     static BASE_PATH = "asset/";

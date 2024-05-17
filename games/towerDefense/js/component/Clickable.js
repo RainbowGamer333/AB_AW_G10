@@ -3,6 +3,7 @@ import {Engine} from "../constants/Engine.js";
 import {Constants} from "../constants/Constants.js";
 import {Gui} from "../gui/Gui.js";
 
+//Component à ajouter un a GameObject permettant de rendre des éléments clickables
 export class Clickable extends Component{
     constructor() {
         super();

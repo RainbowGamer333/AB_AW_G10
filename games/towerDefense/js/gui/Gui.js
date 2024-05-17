@@ -1,9 +1,9 @@
 import {TowerButton} from "./TowerButton.js";
 import {Engine} from "../constants/Engine.js";
 import {Path} from "../constants/Path.js";
-import {Utils} from "../utils/Utils.js";
 import {AB_Utils} from "../../../../js/AB_Utils.js";
 
+//Handle the graphical user interface
 export class Gui {
      towerButtons = [];
      coinElement = null;
@@ -54,7 +54,7 @@ export class Gui {
          this.progressElement = document.getElementById("progress_card_value");
      }
 
-
+    //Updating the scores, progress, balance and village health to the screen.
      update(dt){
         for (let i=0; i<this.towerButtons.length; i++){
             this.towerButtons[i].update(dt);
@@ -73,6 +73,7 @@ export class Gui {
 
     }
 
+    //Get the canvas mouse coordinates relative to the canvas.
     static getCanvasMouseCoordinates(){
         const mouseX = event.clientX - Engine.canvas.getBoundingClientRect().left;
         const mouseY = event.clientY - Engine.canvas.getBoundingClientRect().top;

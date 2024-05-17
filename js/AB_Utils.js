@@ -4,7 +4,7 @@ export class AB_Utils {
         rawFile.overrideMimeType("application/json");
         rawFile.open("GET", file, false);
         rawFile.onreadystatechange = function() {
-            if (rawFile.readyState === 4 && rawFile.status == "200") {
+            if (rawFile.readyState === 4 && rawFile.status === 200) {
                 callback(rawFile.responseText);
             }
         }

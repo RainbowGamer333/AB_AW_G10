@@ -1,12 +1,13 @@
 import {Tower} from "../entity/Tower.js";
 import {gState} from "../main.js";
 
+//The heart of the game
 export class Engine {
     static lastGameObjectID = 0;
     static context;
     static gameObjects;
     static canvas;
-    static coinBalance = 150;//150
+    static coinBalance = 15000;//150
     static score = 0;
     static progress = 0;
     static villageHealth = 0;

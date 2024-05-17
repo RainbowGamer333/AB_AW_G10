@@ -1,5 +1,4 @@
 import {GameObject} from "../../../GameObject.js";
-import {EntityFactory} from "../../../EntityFactory.js";
 import {Engine} from "../../../constants/Engine.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";
@@ -15,6 +14,8 @@ import EnemyWaveInfinite from "./EnemyWaveInfinite.js";
 const spawnInterval = 2;
 let accumulatedTime = 0.0; // Temps accumulé depuis le dernier spawn
 let counter = 0;
+
+//A monster spawner which uses the principle of waves
 export class WavyMonsterSpawner extends GameObject{
     currentWaveIndex = 0;
     waves = [];

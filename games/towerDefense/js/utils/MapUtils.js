@@ -9,6 +9,7 @@ import {MonsterSpawner} from "../entity/impl/generic/MonsterSpawner.js";
 import {Building} from "../entity/impl/generic/Building.js";
 import {WavyMonsterSpawner} from "../entity/impl/generic/WavyMonsterSpawner.js";
 
+//Group of utilities function to build a game map quickly
 export class MapUtils {
     static createGround(){
         //Create ground

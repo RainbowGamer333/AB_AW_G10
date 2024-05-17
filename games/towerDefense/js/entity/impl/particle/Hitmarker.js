@@ -1,12 +1,9 @@
-import {Enemy} from "../../Enemy.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
-import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";
-import {GameObject} from "../../../GameObject.js";
-import {Engine} from "../../../constants/Engine.js";
 import {Particle} from "../../Particle.js";
 
+//A hitmarker particle, displayed when an entity is hit
 export class Hitmarker extends Particle {
     lifespan = 0.1;
     accumulatedTime = 0.0;

@@ -1,7 +1,7 @@
-const $card = document.querySelector('.towerButton');
 const cards = document.getElementsByClassName('towerButton');
 let bounds;
-console.log("KIKIDDD")
+
+//Animation des cartes pour poser les tours
 function rotateToMouse(e) {
     const mouseX = e.clientX;
     const mouseY = e.clientY;

@@ -65,9 +65,6 @@ function setupForm() {
         });
     }
 
-
-
-
     displayCustoms(custom.checked);
     let diff = document.querySelectorAll('input[name="diff"]');
     for (let radio of diff) {
@@ -89,7 +86,7 @@ function displayCustoms(checked) {
 
 
 /**
- * Soumet le formulaire.
+ * Soumet le formulaire de difficultés.
  */
 function submitDifficulte() {
     let diff = document.querySelector('input[name="diff"]:checked').value;
@@ -120,6 +117,9 @@ function submitDifficulte() {
 }
 
 
+/**
+ * Soumet le formulaire de thèmes.
+ */
 function submitTheme() {
    let theme = document.querySelector('input[name="theme"]:checked').id;
    console.log("value theme", theme);
@@ -133,8 +133,9 @@ function submitTheme() {
     }
 }
 
-
-
+/**
+ * Réinitialise le jeu
+ */
 export function resetDemineur() {
     gameBoard.resetGame();
 }

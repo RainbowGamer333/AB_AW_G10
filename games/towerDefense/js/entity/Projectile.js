@@ -1,9 +1,9 @@
-import {GameObject} from "../GameObject.js";
 import {Engine} from "../constants/Engine.js";
 import {Entity} from "./Entity.js";
 import {Constants} from "../constants/Constants.js";
 import {Enemy} from "./Enemy.js";
 
+//The abstract representation of projectile
 export class Projectile extends Entity{
     velocity;
     damage;
@@ -21,6 +21,7 @@ export class Projectile extends Entity{
         this.source = source;
     }
 
+    //Handle the progress of the projectile through the game & handles collisions with ennemies
     update(dt) {
         super.update(dt);
         this.y -= this.velocity*dt;
@@ -45,6 +46,7 @@ export class Projectile extends Entity{
         this.deadzone = this.y - (deadZone*Constants.TILE_SIZE_ZOOMED) ;
     }
 
+    //Event when a target is touched by the projectile
     onTargetTouched(target){
         target.hurt(this.damage,this);
         Engine.removeGameObject(this);

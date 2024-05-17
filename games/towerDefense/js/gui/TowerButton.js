@@ -8,8 +8,6 @@ import {Wall} from "../entity/impl/tower/Wall.js";
 import {GoldenTree} from "../entity/impl/tower/GoldenTree.js";
 import {Annihilator} from "../entity/impl/tower/Annihilator.js";
 import {FireCanon} from "../entity/impl/tower/FireCanon.js";
-import {BidirectionalSonar} from "../entity/impl/tower/BidirectionalSonar.js";
-import {Tower} from "../entity/Tower.js";
 import {LowWall} from "../entity/impl/tower/LowWall.js";
 import {Landmine} from "../entity/impl/tower/Landmine.js";
 import {MiniCanon} from "../entity/impl/tower/MiniCanon.js";
@@ -27,6 +25,7 @@ let draggedButtonY = 0;
 let draggingElement = null;
 
 
+//Represent a "card" or "towerButton" which can be dragged to the world to place a tower.
 export class TowerButton{
     buttonID;
     domElement;
@@ -68,7 +67,7 @@ export class TowerButton{
     }
 
 
-
+    //return the right type of tower
     createTower(){
         // console.log("create : "+this.buttonID)
         switch (this.buttonID){ //todo put values in variables
@@ -76,7 +75,7 @@ export class TowerButton{
             case "double_canon": return new DoubleCanon();
             case "canon": return new Canon();
             case "fire_canon" : return new FireCanon();
-            case "lightning_tower": return new LightningTower();
+            case "tesla": return new LightningTower();
             case "landmine": return new Landmine();
             case "wall" : return new Wall();
             case "low_wall" : return new LowWall();
@@ -88,6 +87,8 @@ export class TowerButton{
         }
     }
 
+
+    //Handling special "cards"
     handleSpecial(mouseCoordinates){
         console.log("create : "+this.buttonID)
         switch (this.buttonID){ //todo put values in variables
@@ -128,6 +129,7 @@ export class TowerButton{
 
 }
 
+//Start the dragging of a card
 function startDrag(event,towerButton) {
     if (towerButton.price > Engine.coinBalance){
         console.log("Not enough coins");
@@ -142,6 +144,7 @@ function startDrag(event,towerButton) {
     draggedButton.style.transform = `translate(${0}px, ${0}px)`;
 }
 
+//drag the card and keep tracking of it
 function drag(event) {
     // console.log("drag")
     if (draggedButton) {
@@ -150,6 +153,7 @@ function drag(event) {
     }
 }
 
+//Stop dragging
 function stopDrag(event) {
     if (draggedButton && draggingElement) {
         let towerButton = draggingElement;

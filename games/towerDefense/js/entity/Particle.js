@@ -1,8 +1,7 @@
 import {GameObject} from "../GameObject.js";
-import {Path} from "../constants/Path.js";
-import {SpriteRenderer} from "../component/SpriteRenderer.js";
 import {Engine} from "../constants/Engine.js";
 
+//the abstract representation of the particle
 export class Particle extends GameObject{
     lifespan = 2;
     accumulatedTime = 0.0;

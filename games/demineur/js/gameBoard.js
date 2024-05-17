@@ -1,7 +1,7 @@
 import { Grid } from "./grid.js";
 
 /**
- * Le plateau de jeu. Contient toutes les méthodes pour gérer les éléments en dehors de la grille.
+ * Le plateau de jeu. Contient toutes les fonctions pour gérer les éléments en dehors de la grille.
  */
 export class GameBoard {
     constructor(nbRows, nbCols, nbMines, difficulty) {
@@ -11,6 +11,7 @@ export class GameBoard {
         this.nbRows = nbRows;
         this.nbCols = nbCols;
         this.nbMines = nbMines;
+        this.difficulty = difficulty;
 
         this.tailleCells = 30;
         this.tailleMargin = 60;
@@ -34,7 +35,7 @@ export class GameBoard {
      * @param nbMines Nombre de mines
      * @param difficulty Difficulté de la grille
      */
-    reinitialiserGrille(nbCols, nbRows, nbMines, difficulty) {
+    reinitialiserGrille(nbCols, nbRows, nbMines, difficulty = this.difficulty) {
         this.grid.stop();
         this.grille.innerHTML = "";
 
@@ -51,8 +52,7 @@ export class GameBoard {
      * Met à jour le style de la grille de jeu.
      */
     setStyle() {
-        let gameBoard = document.getElementById("gameBoard");
-        gameBoard.style.width = (this.nbCols * this.tailleCells) + "px";
+        this.gameBoard.style.width = (this.nbCols * this.tailleCells) + "px";
 
         let cells = document.getElementsByClassName("cell");
         for (let cell  of cells) {
@@ -61,7 +61,10 @@ export class GameBoard {
         }
     }
 
+    /**
+     * Réinitialise la grille de jeu avec les mêmes dimensions et le même nombre de mines.
+     */
     resetGame() {
-        this.reinitialiserGrille(9, 9, 10, "facile");
+        this.reinitialiserGrille(this.nbCols, this.nbRows, this.nbMines);
     }
 }

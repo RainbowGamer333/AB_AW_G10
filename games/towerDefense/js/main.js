@@ -91,15 +91,13 @@ function renderGame() {
     for (let i = 0; i < Engine.gameObjects.length; i++){
         Engine.gameObjects[i].render();
     }
-
-    // ctx.fillStyle = "#ffffff"; // Couleur du carré (blanc ici)
-    // ctx.fillRect(50, 50, 50, 50); // Paramètres : position x, position y, largeur, hauteur
 }
 
 // G A M E  L O O P
+// The heart of the game, called the fastest as possible to update the game.
 let lastTimestamp = 0;
 function gameLoop(timestamp) {
-    // Mettre à jour le jeu
+    //The time between each frame
     const dt = (timestamp - lastTimestamp) / 1000;
     lastTimestamp = timestamp;
 
@@ -117,14 +115,13 @@ function gameLoop(timestamp) {
 
         displayEndScreen();
         return;
-        //TODO
-        // console.log("END STATEEE")
     }
 
     // Appeler la boucle de jeu à nouveau
     requestAnimationFrame(gameLoop);
 }
 
+//Display the home screen
 function displayHomeScreen(){
     Engine.gameState = gState.MENU;
     const inGameElement = document.getElementById("gameState_InGame");
@@ -135,6 +132,7 @@ function displayHomeScreen(){
     homeElement.style.display = "flex";
 }
 
+//Display the end screen
 function displayEndScreen(){
     Engine.gameState = gState.END;
 
@@ -149,6 +147,7 @@ function displayEndScreen(){
     scoreElement.innerText = "Score: " + Engine.score;
 }
 
+//Display the display page
 function displayGame(){
     Engine.gameState = gState.GAME;
     const inGameElement = document.getElementById("gameState_InGame");
@@ -167,7 +166,7 @@ function displayGame(){
     //Apply canvas size
     canvas.width = Constants.width;
     canvas.height = Constants.height;
-    console.log("width: "+canvas.width + " height:"+canvas.height);
+    // console.log("width: "+canvas.width + " height:"+canvas.height);
 
 
     canvas.addEventListener('mousedown', function(e) {
