@@ -24,6 +24,7 @@ let draggedButtonX = 0;
 let draggedButtonY = 0;
 let draggingElement = null;
 
+
 //Represent a "card" or "towerButton" which can be dragged to the world to place a tower.
 export class TowerButton{
     buttonID;
@@ -74,7 +75,7 @@ export class TowerButton{
             case "double_canon": return new DoubleCanon();
             case "canon": return new Canon();
             case "fire_canon" : return new FireCanon();
-            case "lightning_tower": return new LightningTower();
+            case "tesla": return new LightningTower();
             case "landmine": return new Landmine();
             case "wall" : return new Wall();
             case "low_wall" : return new LowWall();
