@@ -10,7 +10,7 @@ import {VolumeDemineur} from "../../../js/Volume.js";
 const account = JSON.parse(sessionStorage.getItem("account"));
 
 /**
- * La grille de jeu. Contient toutes les fonctionnalités du jeu.
+ * La grille de jeu. Contient toutes les fonctionnalités qui permettent de jouer au démineur.
  */
 export class Grid {
     _firstClick = true;
@@ -144,17 +144,18 @@ export class Grid {
                     if (cell.visible) this.decouvrirAlentours(i, j);
                 });
 
+
                 cell.element.addEventListener("mousedown", (e) => {
                     e.preventDefault();
                     if (cell.disabled) return;
 
-                    // Bouton gauche
+                    // Presser le clique gauche preview la cellule
                     if (e.button === 0 && !cell.visible && !cell.flag) {
                         this._isClicked = true;
                         cell.element.classList.remove("unclicked");
                     }
 
-                    // Bouton milieu
+                    // Presser le clique milieu preview les cellules autour
                     else if (e.button === 1) {
                         this._middleClicked = true;
                         this.previewCasesAutour(i, j);
@@ -163,6 +164,7 @@ export class Grid {
                     Smiley.shock();
                 });
 
+                // Retirer la souris de la cellule enlève le preview
                 cell.element.addEventListener("mouseout", (e) => {
                     e.preventDefault();
                     if (this._isClicked) {
@@ -174,6 +176,7 @@ export class Grid {
 
                 });
 
+                // Passer la souris sur la cellule ajoute le preview
                 cell.element.addEventListener("mouseover", (e) => {
                     e.preventDefault();
                     if (cell.disabled) return;
@@ -190,7 +193,7 @@ export class Grid {
                     if (cell.disabled) return;
                     Smiley.normal();
 
-                    // Clique du milieu
+                    // Clique du milieu affiche les cellules autour
                     if (this._middleClicked) {
                         this._middleClicked = false;
                         if (cell.visible) {
@@ -199,13 +202,12 @@ export class Grid {
                         this.unPreviewCasesAutour(i, j);
                     }
 
-                    // Afficher la cellule avec clique gauche
+                    // Clique gauche affiche la case
                     else if (this._isClicked) {
                         this._isClicked = false;
 
                         // Le clique ne marche pas sur une cellule désactivée ou avec un drapeau
                         if (cell.flag || cell.visible) return;
-
 
                         // Au premier clique on initialise les mines et les valeurs
                         // Ceci permet de commencer une partie sans cliquer immédiatement sur une mine
@@ -220,7 +222,6 @@ export class Grid {
                         }
 
                         this.afficherCellule(i, j)
-
                     }
                 });
             }
@@ -228,7 +229,7 @@ export class Grid {
     }
 
     /**
-     * Effectue un "preview" des cellules autour de la cellule
+     * Ajoute un "preview" des cellules autour de la cellule
      * @param i la ligne de la cellule
      * @param j la colonne de la cellule
      */
@@ -252,7 +253,7 @@ export class Grid {
     }
 
     /**
-     * Affiche toutes les cellules autour de la cellule si le nombre de drapeaux autour d'elle est égal à sa valeur.
+     * Affiche toutes les cellules autour de la cellule selectionnée si le nombre de drapeaux autour d'elle est égal à sa valeur.
      * @param row la ligne de la cellule
      * @param col la colonne de la cellule
      */
@@ -345,10 +346,7 @@ export class Grid {
         this.mettreFlags();
         this.disableCells();
 
-        console.log("Timer : " + this.timer.time);
-
-        // Verification des achievements
-
+        // Verification des achievements et MAJ du tableau de scores
         if (account !== null) {
             AchievementUtils.increaseCounterAndTryUnlock(0, 1);
             AchievementUtils.increaseCounterAndTryUnlock(1, 1);
@@ -377,8 +375,6 @@ export class Grid {
 
             this.updateScore(account.username, this.timer.time);
         }
-
-
     }
 
     /**
@@ -401,10 +397,13 @@ export class Grid {
         for (let i = 0; i < this.cells.length; i++) {
             for (let j = 0; j < this.cells[i].length; j++) {
                 let cell = this.cells[i][j];
+
                 if (cell.isMine() && !cell.flag) {
                     if (cell === mineCliquee) cell.valeur = -2;
                     cell.afficheCellule();
-                } else if (!cell.isMine() && cell.flag) {
+                }
+
+                else if (!cell.isMine() && cell.flag) {
                     cell.valeur = -3;
                     cell.afficheCellule();
                 }
@@ -509,12 +508,14 @@ export class Grid {
         }
     }
 
+    /**
+     * Met à jour le tableau de scores correspondant à la difficulté avec le nom et le score.
+     * @param nom le username du compte connecté
+     * @param score le score du joueur
+     */
     updateScore(nom, score) {
-        console.log("updating score");
-        console.log(this.difficulty);
         switch (this.difficulty) {
             case "facile":
-                console.log("facile");
                 ScoreboardDemineur.updateFacile(nom, score);
                 break;
             case "moyen":

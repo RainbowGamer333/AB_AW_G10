@@ -1,5 +1,7 @@
+/**
+ * Compteur de mines. Contient les méthodes pour incrémenter et décrémenter le compteur, et pour l'afficher sur le gameBoard
+ */
 export class MineCounter {
-
     src = "./asset/themes/retro/header/timer";
     mines = 0;
     minesOffset = 0;
