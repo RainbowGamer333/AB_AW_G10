@@ -73,16 +73,16 @@ function clearScoresDemineur() {
 export function initialiserScoresClicker() {
     clearScoresClicker();
     let scores = [];
-    scores.push({nom: "John Doe", score: 100000000});
-    scores.push({nom: "John Doe", score: 100000000});
-    scores.push({nom: "John Doe", score: 100000000});
-    scores.push({nom: "John Doe", score: 100000000});
-    scores.push({nom: "John Doe", score: 100000000});
-    scores.push({nom: "John Doe", score: 100000000});
-    scores.push({nom: "John Doe", score: 100000000});
-    scores.push({nom: "John Doe", score: 100000000});
-    scores.push({nom: "John Doe", score: 100000000});
-    scores.push({nom: "John Doe", score: 100000000});
+    scores.push({nom: "John Doe", score: 1000000});
+    scores.push({nom: "John Doe", score: 1000000});
+    scores.push({nom: "John Doe", score: 1000000});
+    scores.push({nom: "John Doe", score: 1000000});
+    scores.push({nom: "John Doe", score: 1000000});
+    scores.push({nom: "John Doe", score: 1000000});
+    scores.push({nom: "John Doe", score: 1000000});
+    scores.push({nom: "John Doe", score: 1000000});
+    scores.push({nom: "John Doe", score: 1000000});
+    scores.push({nom: "John Doe", score: 1000000});
 
     sortScores(scores, true);
     localStorage.setItem("scoreClicker", JSON.stringify(scores));
