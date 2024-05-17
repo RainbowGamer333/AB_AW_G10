@@ -1,3 +1,4 @@
+//Game constants
 export class Constants {
 
 

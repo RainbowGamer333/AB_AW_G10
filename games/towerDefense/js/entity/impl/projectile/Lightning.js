@@ -1,8 +1,6 @@
 import {Projectile} from "../../Projectile.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
-import {Constants} from "../../../constants/Constants.js";
-import {Engine} from "../../../constants/Engine.js";
 
 export class Lightning extends Projectile{
 

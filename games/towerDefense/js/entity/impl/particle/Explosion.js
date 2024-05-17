@@ -1,12 +1,9 @@
-import {Enemy} from "../../Enemy.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
-import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";
-import {GameObject} from "../../../GameObject.js";
-import {Engine} from "../../../constants/Engine.js";
 import {Particle} from "../../Particle.js";
 
+//Particle explosion, displayed at the death on the landmine
 export class Explosion extends Particle {
     lifespan = 0.5;
     accumulatedTime = 0.0;

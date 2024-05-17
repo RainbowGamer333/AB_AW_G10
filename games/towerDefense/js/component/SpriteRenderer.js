@@ -2,6 +2,7 @@ import {Component} from "./Component.js";
 import {Constants} from "../constants/Constants.js";
 import {Engine} from "../constants/Engine.js";
 
+// Component used to render textures
 export class SpriteRenderer extends Component{
     texture;
 
@@ -10,6 +11,7 @@ export class SpriteRenderer extends Component{
         this.texture = texture;
     }
 
+    //Can be used to make animations
     update(dt){
 
     }
