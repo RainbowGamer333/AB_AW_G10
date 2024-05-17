@@ -2,6 +2,7 @@ import {GameObject} from "../GameObject.js";
 import {Engine} from "../constants/Engine.js";
 // import {Ghost} from "./impl/particle/Ghost.js";
 
+//The abstract representation of entity
 export class Entity extends GameObject{
     velocity = 20;
     health = 100;

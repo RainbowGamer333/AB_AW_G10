@@ -1,5 +1,7 @@
+/**
+ * Le timer du jeu. Auto-incrémenté toutes les secondes à partir du début du jeu
+ */
 export class Timer {
-
     interval;
     time;
     src = "./asset/themes/retro/header/timer";
@@ -10,7 +12,6 @@ export class Timer {
         this.timerHundreds = document.querySelector("#timerH");
         this.initialiseTimer();
     }
-
 
     /**
      * Initialise le compteur à 0
@@ -52,5 +53,4 @@ export class Timer {
         this.timerTens.src = this.src + minesDisplay[1] + ".png";
         this.timerUnit.src = this.src + minesDisplay[2] + ".png";
     }
-
 }

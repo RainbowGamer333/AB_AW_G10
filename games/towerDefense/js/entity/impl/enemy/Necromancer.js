@@ -38,6 +38,7 @@ export class Necromancer extends Enemy {
         }
     }
 
+    //Handle the spawning of skeletons
     spawnSkeleton(){
         const choice = Utils.randomIntFromInterval(0,3);
         // const choice = 3;

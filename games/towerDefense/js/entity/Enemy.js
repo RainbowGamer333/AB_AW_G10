@@ -4,9 +4,9 @@ import {Engine} from "../constants/Engine.js";
 import {Tower} from "./Tower.js";
 import {Ghost} from "./impl/particle/Ghost.js";
 import {Hitmarker} from "./impl/particle/Hitmarker.js";
-import {Clickable} from "../component/Clickable.js";
 
 
+//The abstract representation of enemy
 export class Enemy extends Entity{
     score;
     coinDropped;
@@ -54,7 +54,7 @@ export class Enemy extends Entity{
         }
     }
 
-
+    //Function triggered at death
     onDeath() {
         const multiplier = Math.floor(Engine.villageHealth/Engine.maxVillageHealth*9);
         Engine.score+=this.score * multiplier;
@@ -71,7 +71,7 @@ export class Enemy extends Entity{
        return gameObject instanceof Tower ;
     }
 
-
+    //Function triggered when hurted
     hurt(amount, source) {
         super.hurt(amount, source);
         if(!this.isDead()){

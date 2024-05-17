@@ -1,12 +1,8 @@
-import {Enemy} from "../../Enemy.js";
 import {Path} from "../../../constants/Path.js";
 import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
-import {Constants} from "../../../constants/Constants.js";
-import {Utils} from "../../../utils/Utils.js";
-import {GameObject} from "../../../GameObject.js";
-import {Engine} from "../../../constants/Engine.js";
 import {Particle} from "../../Particle.js";
 
+//Ghost particle, displayed on enemies death
 export class Ghost extends Particle {
     lifespan = 2;
     accumulatedTime = 0.0;

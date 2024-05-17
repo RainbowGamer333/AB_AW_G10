@@ -1,3 +1,6 @@
+/**
+ * Classe représentant le smiley du jeu. Effectue les actions de changement de visage du smiley.
+ */
 export class Smiley {
     static button = document.querySelector("#gameBoardHeaderSmileyButton");
     static smiley = document.querySelector("#smiley");
