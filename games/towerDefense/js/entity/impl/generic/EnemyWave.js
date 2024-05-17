@@ -1,5 +1,5 @@
 
-
+//A wave of enemy.
 export default class EnemyWave {
     spawnInterval;
     enemyList = [];

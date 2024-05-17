@@ -35,6 +35,7 @@ export class Demon extends Enemy {
         }
     }
 
+    //Handle teleportation for the demon
     teleport(){
         //TODO Téléport to adjacent tile instead of any
         const columnChoice = Utils.randomIntFromInterval(1,Constants.colums);

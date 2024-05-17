@@ -2,6 +2,7 @@ import {Engine} from "../../../constants/Engine.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Enemy} from "../../Enemy.js";
 
+//Handle the deletion of buildings, can destroy buildings and towers
 export default class TowerRemover{
 
 

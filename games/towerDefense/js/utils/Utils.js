@@ -1,3 +1,4 @@
+//Set of utilities function for the tower defense game
 export class Utils{
     static randomIntFromInterval(min, max) { // min and max included
         return Math.floor(Math.random() * (max - min + 1) + min)

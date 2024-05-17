@@ -1,5 +1,4 @@
 import {GameObject} from "../../../GameObject.js";
-import {EntityFactory} from "../../../EntityFactory.js";
 import {Engine} from "../../../constants/Engine.js";
 import {Constants} from "../../../constants/Constants.js";
 import {Utils} from "../../../utils/Utils.js";

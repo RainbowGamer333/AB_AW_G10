@@ -6,7 +6,7 @@ import {Demon} from "../enemy/Demon.js";
 import {Necromancer} from "../enemy/Necromancer.js";
 import {Goliath} from "../enemy/Goliath.js";
 
-
+//The infinite variant of the EnemyWave
 export default class EnemyWaveInfinite extends EnemyWave{
     constructor(spawnInterval) {
         super(spawnInterval, {});

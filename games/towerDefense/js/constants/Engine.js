@@ -1,6 +1,7 @@
 import {Tower} from "../entity/Tower.js";
 import {gState} from "../main.js";
 
+//The heart of the game
 export class Engine {
     static lastGameObjectID = 0;
     static context;

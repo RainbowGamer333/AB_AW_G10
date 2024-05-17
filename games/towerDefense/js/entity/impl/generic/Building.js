@@ -1,8 +1,4 @@
-import {GameObject} from "../../../GameObject.js";
 import {Tower} from "../../Tower.js";
-import {Path} from "../../../constants/Path.js";
-import {SpriteRenderer} from "../../../component/SpriteRenderer.js";
-import {Entity} from "../../Entity.js";
 import {Engine} from "../../../constants/Engine.js";
 
 export class Building extends Tower{
@@ -16,7 +12,7 @@ export class Building extends Tower{
 
     }
 
-
+    //Overrides of the hurt function to hurt the village
     hurt(amount,source) {
        Engine.hurtVillage(amount);
        super.hurt(amount,source);
