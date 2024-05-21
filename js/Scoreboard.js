@@ -6,9 +6,8 @@ export class Scoreboard {
         let scoreLines = document.querySelectorAll(".line");
 
         try {
-            initialiserScores();
             if (scores === null) {
-
+                initialiserScores();
                 scores = JSON.parse(localStorage.getItem(gameName));
             }
 
